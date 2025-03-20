@@ -1,0 +1,1711 @@
+Delivered-To: joshua.guttman@gmail.com
+Received: by 2002:ab2:66cd:0:b0:166:ccaf:a0da with SMTP id z13csp104014lqn;
+        Thu, 6 Oct 2022 19:08:14 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6qj8Q0tc7tFpFbMub7ARHLtO3u7hOiM+ZBAuT8jZYpa4sI0BkvycjDJZXdcbo8pDrrJhsT
+X-Received: by 2002:a63:5a63:0:b0:42f:e143:80d4 with SMTP id k35-20020a635a63000000b0042fe14380d4mr2473058pgm.456.1665108493922;
+        Thu, 06 Oct 2022 19:08:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1665108493; cv=none;
+        d=google.com; s=arc-20160816;
+        b=VR373cdW52gWgbGUuo5CDeSga7Fj+U8TXI1klkmOgpi74BNbfnOrsvvHA4EZSSbT1r
+         NrX6DmNnNc056WzOAWLbDejtjzxoQ3uSN1RspgT7MY1en3F2ncGZ1RXjrylYxenSyXHW
+         LrH7QfJj/8HFPNxDKb6Km42E06zULlEtP17v8cdhOcXlM6a5o9JP6lwgYWfJsYjNovCw
+         dWkFU1STm8SU9llZa1vd9O4rf2PmdFqAoCHCm09JlGnRSX758dGoLVYIlskViKq2Expe
+         VqoqEArmSPZUj/910Fmtca+LertIgdMkCa0NnU69X5bxxLVs5833VrJxeSIPAH5yWDkK
+         cY9w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:list-unsubscribe:mime-version:date:reply-to:to:from
+         :subject:dkim-signature:dkim-signature;
+        bh=Tuzeuit/UbBz8x2SbRxNVWeVK6apJ1sz6dNzWqxdNfY=;
+        b=C6lE1o7AacjuZ/N8vIYmtpUYnCq3JQPeVifBQ0lg+pRGm/jFado2MzsMfA5KGwFPBA
+         Srzx7GnhrM3WiRxR8SUKBXOXHqaoPhRtnEz7lvS8R92KV1q5757aScCMxc3Zpc/8uTDU
+         uuMKVYGefEorce+XtOMo5QaLn0tfNFevTJMO2eh2L/MuAm/Gmqq4qIKQ8s53k/vBov+y
+         mBL0oncP/uFcSiLZuVGwi3ybrQL3IQ6VqjAlkNnq0SbWoj+v5NxH/fdM9lTf82GBSVv2
+         A1+J82lEND1VRCTnvHrKR5idtp08yqDJh7cys+e1lm96hc7TzSjcYskhoH35/TfWqiNd
+         7XAw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@newsletters.getty.edu header.s=cm header.b=iMxlRUww;
+       dkim=pass header.i=@cmail2.com header.s=cs2013 header.b=sJktHYlB;
+       spf=pass (google.com: domain of getty-adjyujl1wdyjhtiyk1t@cmail19.com designates 203.55.21.28 as permitted sender) smtp.mailfrom=Getty-adjyujl1wdyjhtiyk1t@cmail19.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=getty.edu
+Return-Path: <Getty-adjyujl1wdyjhtiyk1t@cmail19.com>
+Received: from mx28.a.outbound.createsend.com (mx28.a.outbound.createsend.com. [203.55.21.28])
+        by mx.google.com with ESMTPS id u21-20020a056a00125500b0053f52794b23si945014pfi.88.2022.10.06.19.08.12
+        for <joshua.guttman@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 06 Oct 2022 19:08:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of getty-adjyujl1wdyjhtiyk1t@cmail19.com designates 203.55.21.28 as permitted sender) client-ip=203.55.21.28;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@newsletters.getty.edu header.s=cm header.b=iMxlRUww;
+       dkim=pass header.i=@cmail2.com header.s=cs2013 header.b=sJktHYlB;
+       spf=pass (google.com: domain of getty-adjyujl1wdyjhtiyk1t@cmail19.com designates 203.55.21.28 as permitted sender) smtp.mailfrom=Getty-adjyujl1wdyjhtiyk1t@cmail19.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=getty.edu
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=cm; d=newsletters.getty.edu;
+ h=Subject:From:To:Reply-To:Date:MIME-Version:Content-Type:X-Feedback-ID:List-Unsubscribe:Message-ID; i=egetty@newsletters.getty.edu;
+ bh=5orzvuYyp8eTfgP0XfoQZ0JHvlU=;
+ b=iMxlRUwwjg+HrX1ho43KP5IEHeYM2ahqXwc5jQiK1wWqBwgwAxQzpSrJerrEXszYEH6wD3FTgjgy
+   SyO0O20b4l7PMDyN9ITryFHYHUAEc8K8Lyw8H59/FYgWjfDLnfOjMtlVhAwKJXN3jGpCAi+VZTL4
+   Q56fROlH8LVe2jk8wEs=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=cs2013; d=cmail2.com;
+ h=Subject:From:To:Reply-To:Date:MIME-Version:Content-Type:X-Feedback-ID:List-Unsubscribe:Message-ID;
+ bh=5orzvuYyp8eTfgP0XfoQZ0JHvlU=;
+ b=sJktHYlBkaG+sg/r76OZtnEZnKSTyLIAOP6QKHZeRFZwwchf1ZBlDTvel7OQIpGNRHiFYb3bKLhw
+   jKlmY84zbcudPfivPbyglq7NQapJa7aQ3BDvtx8hWn2PicUOBT9BlBZtEasYX8tKz2//0KotLJHQ
+   lg6IjRW7+t4McY+wtRM=
+Subject: Spooky religious texts; digging into an artwork's unsavory past
+From: "Getty" <egetty@newsletters.getty.edu> 
+To: "Joshua Guttman" <joshua.guttman@gmail.com>
+Reply-To: egetty@newsletters.getty.edu
+Date: Fri, 07 Oct 2022 13:07:38 +1100
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_0dd5b790-1b94-4c32-884b-a6f983b1173c_"; charset=utf-8
+X-Mailer: Create Send
+X-Complaints-To: abuse@cmail19.com
+X-Feedback-ID: CA1-t-adjyujl:LI1-t-jlcihd:CL1-t-htuddr:createSEND
+List-Unsubscribe: <http://unsub.cmail19.com/t/t-u-adjyujl-wdyjhtiyk/>,
+ <mailto:unsubscribe-adjyujl2wdyjhtiyk2t-EEDA230C@cmail19.com?subject=Unsubscribe>
+Message-ID: <cm.1307384481840.adjyujl.wdyjhtiyk.t@cmail19.com>
+
+--_0dd5b790-1b94-4c32-884b-a6f983b1173c_
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Initial D: A Skull in a Rocky Field (detail), about 1469, Taddeo Crivelli=
+=2E Tempera colors, gold paint, gold leaf, and ink on parchment. Getty Muse=
+um
+
+GET SPOOKY      Welcome to the Office of the Dead
+
+What=E2=80=99s so spooky about religious texts? Plenty. Take "books of ho=
+urs," Christian prayer books popular in the Middle Ages. Leaf through and=
+ you'd arrive at the Office of the Dead=E2=80=94prayers that might reduce=
+ your loved ones' time in purgatory (where supposedly everyone, except th=
+ose who'd achieved sainthood, could expect to spend at least a little tim=
+e).
+
+Say your prayers [https://www.getty.edu/news/offices-dead-halloween-scar=
+y-medieval-books/]
+
+Denise Poncher before a Vision of Death, about 1500, Master of the Chroni=
+que scandaleuse. Tempera colors, ink, and gold on parchment. Getty Museum=
+          WATCH      We tried making the most expensive pigment ever!
+
+In the latest episode of Becoming Artsy, Jessie rounds up Monica Ganio of=
+ the Getty Conservation Institute, a hammer, and a chunk of lapis lazuli =
+to make Ultramarine Blue, once the priciest paint color (and for good rea=
+son, as you'll see).
+
+Watch now [https://www.youtube.com/watch?v=3D9STtHZmfTck]
+
+ART & ARCHITECTURE      Let's talk about provenance
+
+Why do museums research their works' provenance=E2=80=94the ownership his=
+tory of an artwork, from when it was first created to its arrival at the =
+museum? Because museums need to know that they truly own an artwork (and =
+that it wasn't looted); knowing who owned an artwork sheds light on that =
+person's personality; and a strong pedigree confirms a work's significanc=
+e.
+
+Nazi looters, royal personalities, wrong time periods [https://www.getty=
+=2Eedu/news/provenance-explained-why-it-matters-who-owns-art/]
+
+Double Head, about 1543, attributed to Francesco Primaticcio. Bronze. Get=
+ty Museum              A marathon, surrealist performance at the dawn of =
+the Reagan era
+
+In 1981 artist Ulysses Jenkins presented Dream City=E2=80=94a one-time, 1=
+8-hour mash-up of music, dance, poetry, and performance art that rejected=
+ "Reagan's Hollywoodization of politics and instrumentalization of 'diver=
+sity,'" as scholar Tiana Reid tells us. We explore this memorable night i=
+n an ongoing series about how Black artists remember, record, and rewrite=
+ history.
+
+Go inside Dream City [https://www.getty.edu/news/inside-dream-city]
+
+Still from video version of Dream City, 1983, Ulysses Jenkins. Photo cour=
+tesy of the artist          FREE IN-PERSON EVENTS      This weekend at th=
+e Getty Center
+
+Looking for the Words: Poetry Pop-Up
+
+Saturday, October 8, 11:00 am=E2=80=933:30 pm
+
+Learn more [https://www.getty.edu/visit/cal/events/ev_3627.html]
+
+Paint and Poetry: Gallery Workshop
+
+Saturday, October 8, 12:15 pm and 3:15 pm
+
+Learn more [https://www.getty.edu/visit/cal/events/ev_3617.html]
+
+Ever Present: Milka Djordjevich, Victoria Fu, and Matt Rich
+
+Saturday, October 8, 5:00 pm
+
+Learn more [https://www.getty.edu/visit/cal/events/everpresent_Djordjevi=
+ch.html]
+
+COMING UP      Celebrating Indigenous Peoples' Day
+
+Saturday, October 15, 11:00 am=E2=80=932:00 pm
+
+Learn how Indigenous communities are reclaiming knowledge and revitalizin=
+g Indigenous traditions; discover traditional flavors; join a hands-on pl=
+ant dye workshop; and take curator-led tours of  Reinventing the Am=C3=A9=
+ricas: Construct. Erase. Repeat. [https://www.getty.edu/research/exhibit=
+ions_events/exhibitions/reinventing_americas/index.html] Musician Kelly C=
+aballero punctuates the celebration with a musical and spoken-word perfor=
+mance. Drop-ins welcome.
+
+Spirit Animals (detail), 2022, Denilson Baniwa         Get free tickets [=
+https://www.getty.edu/visit/cal/events/ev_3596.html?utm_medium=3Demail&u=
+tm_campaign=3DOctober%206%202022&utm_content=3DOctober%206%202022+Version=
++A+Preview+CID_4e2625553575801428e5b856ff5e8d8b&utm_source=3DCampaign%20M=
+onitor%20Communications&utm_term=3DGet%20free%20tickets]       VIRTUAL EV=
+ENT      Art Break: Musings on Cy Twombly with Dean Rader
+
+Wednesday, October 12, 12:00 pm PT
+
+To complement the exhibition Cy Twombly: Making Past Present, curator Sco=
+tt Allan and San Francisco-based poet and professor Dean Rader discuss th=
+e impact of Twombly's art on Rader's writing, with particular attention t=
+o his recent poem "Meditation on Remembering, Or a Golden Shovel for Sapp=
+ho and Breonna Taylor."
+
+Untitled (to Sappho), 1976, Cy Twombly. Oil paint, wax crayon, and graphi=
+te on paper. Private Collection. =C2=A9 Cy Twombly Foundation. Photograph=
+: Mimmo Capone         Get free tickets [https://getty.zoom.us/webinar/r=
+egister/WN_9fc_zMfpTs645a_RfyCNiw]       AROUND TOWN      LA Phil's City =
+of Birmingham Symphony Orchestra
+
+Wednesday, October 12, 8:00 pm
+
+Mirga Gra=C5=BEinyt=C4=97-Tyla and the City of Birmingham Symphony Orches=
+tra return to Walt Disney Concert Hall with a program featuring Debussy's=
+ La Mer and superstar cellist Sheku Kanneh-Mason in Haydn's First Cello C=
+oncerto. Use promo code SPWDCH for 20% off select sections.
+
+Get tickets [https://www.laphil.com/events/performances/1919/2022-10-12/=
+city-of-birmingham-symphony-orchestra?utm_source=3Dnewsletter&utm_medium=3D=
+email&utm_campaign=3Dgetty+birmingham+promo&utm_id=3Dgetty+newsletter]   =
+    YOUR GETTY
+
+From Getty school-groups docent Debra Winchester:
+
+"Walking through the Getty Center courtyard one afternoon, I noticed this=
+ view. It seemed like all that precise gridded architecture was saying, '=
+Hey, I like to play around sometimes too!'"
+
+Send us your Getty photos! We'll stock them up and share each week. Inclu=
+de your name, kind of camera used, location, and any other delightful det=
+ails.  [stories@getty.edu]
+
+Photo: Debra Winchester. iPhone XS
+
+CONNECT WITH US
+
+Subscribe to the podcast [https://itunes.apple.com/us/podcast/getty-art-=
++-ideas/id1125550898]=E2=80=94hear from artists, writers, curators, and s=
+cholars about their work.
+
+Social media
+
+Follow us, learn about what we do, and tell us about your visit!
+
+More  email newsletters [https://subscriptions.getty.edu/] from Getty
+
+Get Inspired
+
+Stories from across Getty about art, conservation, scholarship, and more.=
+
+
+Conservation News
+
+Updates on activities of the Getty Conservation Institute and timely info=
+rmation for conservation professionals.
+
+Foundation News
+
+Highlights of current initiatives and recent grants from the Getty Founda=
+tion.
+
+Museum News
+
+A closer look at the collection, exhibitions, and activities of the J. Pa=
+ul Getty Museum.
+
+Publication News
+
+New books from Getty Publications.
+
+Research News
+
+Latest resources from the Getty Research Institute, such as publications,=
+ lecture series, and digitized collections.
+
+Villa News
+
+Exhibitions and events at the Getty Villa Museum that explore the culture=
+s of the ancient Mediterranean.
+
+Museum Store
+
+Be the first to know about our latest arrivals & exclusive offers.
+
+CONTACT US
+
+General inquiries:  [visitorservices@getty.edu]
+
+Press inquiries:  [communications@getty.edu] or visit our  Press Room [=
+http://www.getty.edu/news/]
+
+Feedback:  [egetty@getty.edu]
+
+Getty Center
+
+1200 Getty Center Drive
+
+Los Angeles, CA 90049
+
+(310) 440-7300
+
+Getty Villa Museum
+
+17985 Pacific Coast Highway
+
+Pacific Palisades, CA 90272
+
+(310) 440-7300
+
+Unsubscribe https://newsletters.getty.edu/t/t-u-adjyujl-=
+wdyjhtiyk-jj/ |  Manage Preferences [https://subscriptions.getty.edu/preferences=
+?email=3D=
+joshua.guttman@gmail.com=
+]            =C2=A9 J. Paul Getty Trust |=
+  Privacy Policy [https://www.getty.edu/legal/privacy.html] |  Terms of =
+Use [https://www.getty.edu/legal/copyright.html]
+
+--_0dd5b790-1b94-4c32-884b-a6f983b1173c_
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html>
+<html lang=3D"en" xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:s=
+chemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:off=
+ice">
+<head lang=3D"en">
+<meta name=3D"format-detection" content=3D"telephone=3Dno" />
+<!--[if gte mso 9]><xml>
+ <o:OfficeDocumentSettings>
+   <o:AllowPNG/>
+   <o:PixelsPerInch>96</o:PixelsPerInch>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<style type=3D"text/css">
+body {
+	-webkit-text-size-adjust: 100% !important;
+	-ms-text-size-adjust: 100% !important;
+	-webkit-font-smoothing: antialiased !important;
+	-moz-osx-font-smoothing: grayscale !important;
+}
+img {
+	border: 0 !important;
+	outline: none !important;
+}
+p, li {
+	font-family: Arial, Helvetica, sans-serif !important;
+	font-size: 13px;
+	font-weight: normal !important;
+	color: #384044 !important;
+	line-height: 18px;
+	Margin: 0px !important;
+	Padding: 0px !important;
+}
+a {
+=09
+	color: #1a47b8;
+}
+p a {
+	font-weight: normal !important;
+	color: #1a47b8 !important;
+	text-decoration: underline !important;
+	line-height: 18px;
+	Margin: 0px !important;
+	Padding: 0px !important;
+}
+li a {
+	font-weight: normal !important;
+	color: #1a47b8 !important;
+	text-decoration: underline !important;
+	Margin: 0px !important;
+	Padding: 0px !important;
+}
+h1 {
+	font-family: Arial, Helvetica, sans-serif !important;
+	font-size: 32px !important;
+	font-weight: normal !important;
+	color: #384044 !important;
+	Margin: 0px !important;
+	Padding: 0px !important;
+	}
+h2 {
+	font-family: Arial, Helvetica, sans-serif !important;
+	font-size: 22px !important;
+	font-weight: bold !important;
+	color: #384044 !important;
+	Margin: 0px !important;
+	Padding: 0px !important;
+	}
+h3 {
+	font-family: Arial, Helvetica, sans-serif !important;
+	//font-size: 22px !important;
+	//font-size: 16px !important;
+	font-weight: bold !important;
+	color: #363636 !important;
+	Margin: 0px !important;
+	Padding: 0px !important;
+	}
+h4 {
+	font-family: Arial, Helvetica, sans-serif !important;
+	//font-size: 16px !important;
+	font-size: 14px !important;
+	font-weight: bold !important;
+	color: #959595 !important;
+	Margin: 0px !important;
+	Padding: 0px !important;
+}
+h4 li {
+	font-family: Arial, Helvetica, sans-serif !important;
+	//font-size: 16px !important;
+	font-size: 14px !important;
+	font-weight: normal !important;
+	color: #959595 !important;
+	Margin: 0px !important;
+	Padding: 0px !important;
+}
+h5 {
+	font-family: Arial, Helvetica, sans-serif !important;
+	font-size: 15px !important;
+	font-weight: bold !important;
+	color: #363636 !important;
+	margin: 0px !important;
+	padding-top: 10px !important;
+	line-height: 15px;
+}
+h6 {
+	font-family: Arial, Helvetica, sans-serif !important;
+	font-size: 11px;
+	font-weight: normal !important;
+	color: #7d7d7d !important;
+	margin: 0px !important;
+	padding-top: 5px !important;
+	line-height: 15px;
+}
+=2Efooter {
+	font-family: Arial, Helvetica, sans-serif !important;
+	font-size: 11px;
+	font-weight: normal !important;
+	color: #ffffff !important;
+	margin: 0px !important;
+	padding-top: 10px !important;
+	line-height: 15px;
+}
+table {
+	border-collapse: collapse;
+}
+=2Eunsub a {
+	color: #808080;
+	text-decoration: underline;
+}
+td, a, span {
+	border-collapse: collapse;
+	mso-line-height-rule: exactly;
+}
+=2EExternalClass * {
+	line-height: 100%;
+}
+@media screen and (max-width: 480px) {
+html {
+	-webkit-text-size-adjust: none;
+}
+p, li {
+	font-size: 16px !important;
+	line-height: 20px !important;
+}
+h6 {
+=09
+	font-size: 13px !important;
+	line-height: 18px !important;
+}
+=2Efooter {
+=09
+	font-size: 13px !important;
+	line-height: 18px !important;
+=09
+}
+=2Emobile-width {
+	width: 100% !important;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+=2Emobile-width-nopad {
+	width: 100% !important;
+}
+=2Estack {
+	display: block !important;
+	width: 100% !important;
+}
+=2Ehide {
+	display: none !important;
+}
+=2Ecenter, .center img {
+	text-align: center !important;
+	margin: 0 auto;
+}
+=2Escale img {
+	max-width: 100%;
+	height: auto;
+	margin: 0 auto;
+}
+=2Escale-up img {
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+}
+=2Eaddpad {
+	padding: 10px 0px !important;
+}
+=2Eaddpad-top {
+	padding-top: 10px !important;
+}
+=2Esanpad {
+	padding: 0px !important;
+}
+=2Esanborder {
+	border: none !important;
+}
+=2Emobile-bttn {
+		width: 230px !important;
+}
+}
+</style>
+</head>
+<body style=3D"margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;=
+padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;width:100% =
+!important;background-color:#efefef;-webkit-text-size-adjust:100% !import=
+ant;-ms-text-size-adjust:100% !important;-webkit-font-smoothing:antialias=
+ed !important;-moz-osx-font-smoothing:grayscale !important;" >
+<div style=3D"margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;p=
+adding-top:0;padding-bottom:0;padding-right:0;padding-left:0;width:100% !=
+important;background-color:#efefef;" >
+  <table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" =
+role=3D"presentation" style=3D"border-collapse:collapse;" >
+    <tr>
+      <td valign=3D"top" align=3D"center" style=3D"border-collapse:collap=
+se;mso-line-height-rule:exactly;" >
+        <table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" style=3D"border-collapse:collapse;" >
+            <tbody>
+                <tr>
+                    <td  align=3D"center" class=3D"mobile-width-nopad" st=
+yle=3D"width:550px;border-collapse:collapse;mso-line-height-rule:exactly;=
+" ><table border=3D"0" cellspacing=3D"0" cellpadding=3D"0"  class=3D"mobi=
+le-width-nopad" id=3D"template_container" role=3D"presentation" style=3D"=
+width:550px;background-color:#ffffff;border-collapse:collapse;" >
+                        <tr>
+                            <td align=3D"left" valign=3D"top" style=3D"bo=
+rder-collapse:collapse;mso-line-height-rule:exactly;" ><table border=3D"0=
+" cellspacing=3D"0" cellpadding=3D"0"  class=3D"mobile-width-nopad" role=3D=
+"presentation" style=3D"width:550px;border-collapse:collapse;" >
+									<tr>
+										<td align=3D"left" valign=3D"top" class=3D"scale-up" style=3D"b=
+order-collapse:collapse;mso-line-height-rule:exactly;" ><img label=3D"Tit=
+le Banner" src=3D"http://i1.cmail19.com/ti/t/4B/0EA/85F/033130/images/get=
+inspiredheader2.jpg" width=3D"550" border=3D"0" style=3D"display:block;bo=
+rder-width:0 !important;outline-style:none !important;" /></td>
+										</tr>
+                               =20
+									<tr>
+										<td align=3D"left" valign=3D"top" class=3D"scale-up" style=3D"b=
+order-collapse:collapse;mso-line-height-rule:exactly;" ><a href=3D"https:=
+//newsletters.getty.edu/t/t-l-adjyujl-wdyjhtiyk-y/" style=3D"col=
+or:#1a47b8;border-collapse:collapse;mso-line-height-rule:exactly;" ><img =
+label=3D"Image" src=3D"http://i1.cmail19.com/ei/t/AB/6DF/537/csimport/677=
+e0f8e-4f46-4513-a53f-1de901944dec.141820.jpg" width=3D"550" height=3D"332=
+" style=3D"border-width:0 !important;outline-style:none !important;" /></=
+a><div style=3D"padding-top:5px;padding-bottom:20px;padding-right:20px;pa=
+dding-left:20px;" ><p style=3D"font-family:Arial, Helvetica, sans-serif !=
+important;font-size:13px;font-weight:normal !important;color:#384044 !imp=
+ortant;line-height:18px;Margin:0px !important;Padding:0px !important;" >
+	<span style=3D"font-size:10px;border-collapse:collapse;mso-line-height-r=
+ule:exactly;" ><span style=3D"color:#808080;border-collapse:collapse;mso-=
+line-height-rule:exactly;" ><em>Initial D: A Skull in a Rocky Field&nbsp;=
+</em>(detail), about 1469, Taddeo Crivelli. Tempera colors, gold paint, g=
+old leaf, and ink on parchment. Getty Museum</span></span></p>
+</div></td>
+										</tr>
+								=09
+									<tr>
+										<td align=3D"left" valign=3D"top" style=3D"text-align:left;padd=
+ing-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;bor=
+der-collapse:collapse;mso-line-height-rule:exactly;" ><h4 style=3D"font-f=
+amily:Arial, Helvetica, sans-serif !important;//font-size:16px !important=
+;font-size:14px !important;font-weight:bold !important;color:#959595 !imp=
+ortant;Margin:0px !important;Padding:0px !important;" >GET SPOOKY</h4></t=
+d>
+										</tr>
+								=09
+									<tr>
+										<td style=3D"padding-top:0px;padding-bottom:20px;padding-right:=
+20px;padding-left:20px;border-collapse:collapse;mso-line-height-rule:exac=
+tly;" ><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" style=3D"border-collapse:collapse;" >
+											<tbody>
+												<tr>
+													<td  valign=3D"top" class=3D"stack sanpad" style=3D"padding-=
+right:20px;border-collapse:collapse;mso-line-height-rule:exactly;" ><h3 s=
+tyle=3D"font-family:Arial, Helvetica, sans-serif !important;//font-size:1=
+6px !important;font-weight:bold !important;color:#363636 !important;Margi=
+n:0px !important;Padding:0px !important;" >Welcome to the Office of the D=
+ead</h3><br />
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	What=E2=80=99s so spooky about religious texts? Plenty. Take "books of h=
+ours," Christian prayer books popular in the Middle Ages. Leaf through an=
+d you'd arrive at the Office of the Dead=E2=80=94prayers that might reduc=
+e your loved ones' time in purgatory (where supposedly everyone, except t=
+hose who'd achieved sainthood, could expect to spend at least a little ti=
+me). &nbsp;</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	<a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-j/" style=3D"border-collapse:collapse;mso-line-height-rule:exactly;font=
+-weight:normal !important;color:#1a47b8 !important;text-decoration:underl=
+ine !important;line-height:18px;Margin:0px !important;Padding:0px !import=
+ant;" ><strong>Say your prayers</strong></a><br />
+	&nbsp;</p>
+</td>
+													<td  valign=3D"top" class=3D"scale-up stack addpad-top" styl=
+e=3D"width:200px;text-align:left;border-collapse:collapse;mso-line-height=
+-rule:exactly;" ><a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-t/" style=3D"color:#1a47b8;border-collapse:collapse;mso=
+-line-height-rule:exactly;" ><img label=3D"Image" src=3D"http://i2.cmail1=
+9.com/ei/t/AB/6DF/537/csimport/907c946c-1d02-46fc-89e9-06cec48df956.14223=
+2.jpg" width=3D"200" height=3D"338" style=3D"border-width:0 !important;ou=
+tline-style:none !important;" /></a><h6 style=3D"font-family:Arial, Helve=
+tica, sans-serif !important;font-size:11px;font-weight:normal !important;=
+color:#7d7d7d !important;margin-top:0px !important;margin-bottom:0px !imp=
+ortant;margin-right:0px !important;margin-left:0px !important;padding-top=
+:5px !important;line-height:15px;" >
+	<span style=3D"font-size:10px;border-collapse:collapse;mso-line-height-r=
+ule:exactly;" ><span style=3D"color:#808080;border-collapse:collapse;mso-=
+line-height-rule:exactly;" ><em>Denise Poncher before a Vision of Death</=
+em>, about 1500, Master of the Chronique scandaleuse. Tempera colors, ink=
+, and gold on parchment. Getty Museum</span></span></h6>
+</td>
+													</tr>
+												</tbody>
+											</table></td>
+										</tr>
+								=09
+									<tr>
+										<td align=3D"center" style=3D"border-collapse:collapse;mso-line=
+-height-rule:exactly;" ><hr style=3D"border-top-width:3px;border-top-styl=
+e:solid;border-top-color:#636363;" ></td>
+										</tr>
+								=09
+									<tr>
+										<td align=3D"left" valign=3D"top" style=3D"text-align:left;padd=
+ing-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;bor=
+der-collapse:collapse;mso-line-height-rule:exactly;" ><h4 style=3D"font-f=
+amily:Arial, Helvetica, sans-serif !important;//font-size:16px !important=
+;font-size:14px !important;font-weight:bold !important;color:#959595 !imp=
+ortant;Margin:0px !important;Padding:0px !important;" >WATCH</h4></td>
+										</tr>
+								=09
+									<tr>
+										<td style=3D"padding-top:0px;padding-bottom:20px;padding-right:=
+20px;padding-left:20px;border-collapse:collapse;mso-line-height-rule:exac=
+tly;" ><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" style=3D"border-collapse:collapse;" >
+											<tbody>
+												<tr>
+													<td  valign=3D"top" class=3D"stack sanpad" style=3D"padding-=
+right:20px;border-collapse:collapse;mso-line-height-rule:exactly;" ><h3 s=
+tyle=3D"font-family:Arial, Helvetica, sans-serif !important;//font-size:1=
+6px !important;font-weight:bold !important;color:#363636 !important;Margi=
+n:0px !important;Padding:0px !important;" >We tried making the most expen=
+sive pigment ever!</h3><br />
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	In the latest episode of <em>Becoming Artsy</em>, Jessie rounds up Monic=
+a Ganio of the Getty Conservation Institute, a hammer, and a chunk of lap=
+is lazuli to make Ultramarine Blue, once the priciest paint color (and fo=
+r good reason, as you'll see).</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	<a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-i/" style=3D"border-collapse:collapse;mso-line-height-rule:exactly;font=
+-weight:normal !important;color:#1a47b8 !important;text-decoration:underl=
+ine !important;line-height:18px;Margin:0px !important;Padding:0px !import=
+ant;" ><strong>Watch now</strong></a><br />
+	&nbsp;</p>
+</td>
+													<td  valign=3D"top" class=3D"scale-up stack addpad-top" styl=
+e=3D"width:200px;text-align:left;border-collapse:collapse;mso-line-height=
+-rule:exactly;" ><a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-d/" style=3D"color:#1a47b8;border-collapse:collapse;mso=
+-line-height-rule:exactly;" ><img label=3D"Image" src=3D"http://i3.cmail1=
+9.com/ei/t/AB/6DF/537/csimport/BA_ScreenShot2022-10-05at7.03.32PM.192157.=
+png" width=3D"200" height=3D"216" style=3D"border-width:0 !important;outl=
+ine-style:none !important;" /></a></td>
+													</tr>
+												</tbody>
+											</table></td>
+										</tr>
+								=09
+									<tr>
+										<td align=3D"center" style=3D"border-collapse:collapse;mso-line=
+-height-rule:exactly;" ><hr style=3D"border-top-width:3px;border-top-styl=
+e:solid;border-top-color:#636363;" ></td>
+										</tr>
+								=09
+									<tr>
+										<td align=3D"left" valign=3D"top" style=3D"text-align:left;padd=
+ing-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;bor=
+der-collapse:collapse;mso-line-height-rule:exactly;" ><h4 style=3D"font-f=
+amily:Arial, Helvetica, sans-serif !important;//font-size:16px !important=
+;font-size:14px !important;font-weight:bold !important;color:#959595 !imp=
+ortant;Margin:0px !important;Padding:0px !important;" >ART &amp; ARCHITEC=
+TURE</h4></td>
+										</tr>
+								=09
+									<tr>
+										<td style=3D"padding-top:0px;padding-bottom:20px;padding-right:=
+20px;padding-left:20px;border-collapse:collapse;mso-line-height-rule:exac=
+tly;" ><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" style=3D"border-collapse:collapse;" >
+											<tbody>
+												<tr>
+													<td  valign=3D"top" class=3D"stack sanpad" style=3D"padding-=
+right:20px;border-collapse:collapse;mso-line-height-rule:exactly;" ><h3 s=
+tyle=3D"font-family:Arial, Helvetica, sans-serif !important;//font-size:1=
+6px !important;font-weight:bold !important;color:#363636 !important;Margi=
+n:0px !important;Padding:0px !important;" >Let's talk about provenance</h=
+3><br />
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	Why do museums research their works' provenance=E2=80=94the ownership hi=
+story of an artwork, from when it was first created to its arrival at the=
+ museum? Because&nbsp;museums need to know that they truly own an artwork=
+ (and that it wasn't looted); knowing who owned an artwork sheds light on=
+ that person's personality; and a strong pedigree confirms a work's signi=
+ficance.&nbsp;</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	<a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-h/" style=3D"border-collapse:collapse;mso-line-height-rule:exactly;font=
+-weight:normal !important;color:#1a47b8 !important;text-decoration:underl=
+ine !important;line-height:18px;Margin:0px !important;Padding:0px !import=
+ant;" ><strong>Nazi looters, royal personalities,&nbsp;wrong time periods=
+</strong></a></p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+</td>
+													<td  valign=3D"top" class=3D"scale-up stack addpad-top" styl=
+e=3D"width:200px;text-align:left;border-collapse:collapse;mso-line-height=
+-rule:exactly;" ><a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-k/" style=3D"color:#1a47b8;border-collapse:collapse;mso=
+-line-height-rule:exactly;" ><img label=3D"Image" src=3D"http://i4.cmail1=
+9.com/ei/t/AB/6DF/537/csimport/gm_33030601_800x800.153516.jpg" width=3D"2=
+00" height=3D"292" style=3D"border-width:0 !important;outline-style:none =
+!important;" /></a><h6 style=3D"font-family:Arial, Helvetica, sans-serif =
+!important;font-size:11px;font-weight:normal !important;color:#7d7d7d !im=
+portant;margin-top:0px !important;margin-bottom:0px !important;margin-rig=
+ht:0px !important;margin-left:0px !important;padding-top:5px !important;l=
+ine-height:15px;" >
+	<span style=3D"font-size:10px;border-collapse:collapse;mso-line-height-r=
+ule:exactly;" ><span style=3D"color:#808080;border-collapse:collapse;mso-=
+line-height-rule:exactly;" ><em>Double Head</em>, about 1543, attributed =
+to Francesco Primaticcio. Bronze. Getty Museum</span></span></h6>
+</td>
+													</tr>
+												</tbody>
+											</table></td>
+										</tr>
+								=09
+									<tr>
+										<td style=3D"padding-top:0px;padding-bottom:20px;padding-right:=
+20px;padding-left:20px;border-collapse:collapse;mso-line-height-rule:exac=
+tly;" ><hr style=3D"border-top-width:1px;border-top-style:solid;border-to=
+p-color:#cccccc;" >
+										</td>
+									</tr>
+								=09
+									<tr>
+										<td style=3D"padding-top:0px;padding-bottom:20px;padding-right:=
+20px;padding-left:20px;border-collapse:collapse;mso-line-height-rule:exac=
+tly;" ><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" style=3D"border-collapse:collapse;" >
+											<tbody>
+												<tr>
+													<td  valign=3D"top" class=3D"stack sanpad" style=3D"padding-=
+right:20px;border-collapse:collapse;mso-line-height-rule:exactly;" ><h3 s=
+tyle=3D"font-family:Arial, Helvetica, sans-serif !important;//font-size:1=
+6px !important;font-weight:bold !important;color:#363636 !important;Margi=
+n:0px !important;Padding:0px !important;" >A marathon, surrealist perform=
+ance at the dawn of the Reagan era</h3><br />
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	In 1981 artist Ulysses Jenkins presented <em>Dream City</em>=E2=80=94a o=
+ne-time, 18-hour mash-up of music, dance, poetry, and performance art tha=
+t rejected "Reagan's Hollywoodization of politics and instrumentalization=
+ of 'diversity,'" as scholar Tiana Reid tells us. We explore this memorab=
+le night in an ongoing series about how Black artists remember, record, a=
+nd rewrite history.</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	<a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-u/" style=3D"border-collapse:collapse;mso-line-height-rule:exactly;font=
+-weight:normal !important;color:#1a47b8 !important;text-decoration:underl=
+ine !important;line-height:18px;Margin:0px !important;Padding:0px !import=
+ant;" ><strong>Go inside <em>Dream City</em></strong></a><br />
+	&nbsp;</p>
+</td>
+													<td  valign=3D"top" class=3D"scale-up stack addpad-top" styl=
+e=3D"width:200px;text-align:left;border-collapse:collapse;mso-line-height=
+-rule:exactly;" ><a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-o/" style=3D"color:#1a47b8;border-collapse:collapse;mso=
+-line-height-rule:exactly;" ><img label=3D"Image" src=3D"http://i5.cmail1=
+9.com/ei/t/AB/6DF/537/csimport/Unknown-1.144209.jpeg" width=3D"200" heigh=
+t=3D"204" style=3D"border-width:0 !important;outline-style:none !importan=
+t;" /></a><h6 style=3D"font-family:Arial, Helvetica, sans-serif !importan=
+t;font-size:11px;font-weight:normal !important;color:#7d7d7d !important;m=
+argin-top:0px !important;margin-bottom:0px !important;margin-right:0px !i=
+mportant;margin-left:0px !important;padding-top:5px !important;line-heigh=
+t:15px;" >
+	<span style=3D"color:#808080;border-collapse:collapse;mso-line-height-ru=
+le:exactly;" ><span style=3D"font-size:10px;border-collapse:collapse;mso-=
+line-height-rule:exactly;" >Still from video version of <em>Dream City</e=
+m>, 1983, Ulysses Jenkins. Photo courtesy of the artist</span></span></h6=
+>
+</td>
+													</tr>
+												</tbody>
+											</table></td>
+										</tr>
+								=09
+									<tr>
+										<td align=3D"center" style=3D"border-collapse:collapse;mso-line=
+-height-rule:exactly;" ><hr style=3D"border-top-width:3px;border-top-styl=
+e:solid;border-top-color:#636363;" ></td>
+										</tr>
+								=09
+									<tr>
+										<td align=3D"left" valign=3D"top" style=3D"text-align:left;padd=
+ing-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;bor=
+der-collapse:collapse;mso-line-height-rule:exactly;" ><h4 style=3D"font-f=
+amily:Arial, Helvetica, sans-serif !important;//font-size:16px !important=
+;font-size:14px !important;font-weight:bold !important;color:#959595 !imp=
+ortant;Margin:0px !important;Padding:0px !important;" >FREE IN-PERSON EVE=
+NTS</h4></td>
+										</tr>
+								=09
+									<tr>
+										<td style=3D"padding-top:0px;padding-bottom:20px;padding-right:=
+20px;padding-left:20px;border-collapse:collapse;mso-line-height-rule:exac=
+tly;" ><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" style=3D"border-collapse:collapse;" >
+											<tbody>
+												<tr>
+													<td  valign=3D"top" class=3D"stack sanpad" style=3D"padding-=
+right:20px;border-collapse:collapse;mso-line-height-rule:exactly;" ><h3 s=
+tyle=3D"font-family:Arial, Helvetica, sans-serif !important;//font-size:1=
+6px !important;font-weight:bold !important;color:#363636 !important;Margi=
+n:0px !important;Padding:0px !important;" >This weekend at the Getty Cent=
+er</h3><br />
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	<strong>Looking for the Words: Poetry Pop-Up</strong><br />
+	Saturday, October 8, 11:00 am=E2=80=933:30 pm</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	<a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-b/" style=3D"border-collapse:collapse;mso-line-height-rule:exactly;font=
+-weight:normal !important;color:#1a47b8 !important;text-decoration:underl=
+ine !important;line-height:18px;Margin:0px !important;Padding:0px !import=
+ant;" ><strong>Learn more</strong></a></p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	<strong>Paint and Poetry: Gallery Workshop&nbsp;</strong></p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	Saturday, October 8, 12:15 pm and 3:15 pm</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	<a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-n/" style=3D"border-collapse:collapse;mso-line-height-rule:exactly;font=
+-weight:normal !important;color:#1a47b8 !important;text-decoration:underl=
+ine !important;line-height:18px;Margin:0px !important;Padding:0px !import=
+ant;" ><strong>Learn more</strong></a></p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	<strong>Ever Present:&nbsp;</strong><strong>Milka Djordjevich, Victoria =
+Fu, and Matt Rich</strong></p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	Saturday, October 8, 5:00 pm</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	<a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-p/" style=3D"border-collapse:collapse;mso-line-height-rule:exactly;font=
+-weight:normal !important;color:#1a47b8 !important;text-decoration:underl=
+ine !important;line-height:18px;Margin:0px !important;Padding:0px !import=
+ant;" ><strong>Learn more</strong></a></p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+</td>
+													<td  valign=3D"top" class=3D"scale-up stack addpad-top" styl=
+e=3D"width:200px;text-align:left;border-collapse:collapse;mso-line-height=
+-rule:exactly;" ><a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-x/" style=3D"color:#1a47b8;border-collapse:collapse;mso=
+-line-height-rule:exactly;" ><img label=3D"Image" src=3D"http://i6.cmail1=
+9.com/ei/t/AB/6DF/537/csimport/twombly_poetry.144651.jpg" width=3D"200" h=
+eight=3D"240" style=3D"border-width:0 !important;outline-style:none !impo=
+rtant;" /></a></td>
+													</tr>
+												</tbody>
+											</table></td>
+										</tr>
+								=09
+									<tr>
+										<td align=3D"center" style=3D"border-collapse:collapse;mso-line=
+-height-rule:exactly;" ><hr style=3D"border-top-width:3px;border-top-styl=
+e:solid;border-top-color:#636363;" ></td>
+										</tr>
+								=09
+									<tr>
+										<td align=3D"left" valign=3D"top" style=3D"text-align:left;padd=
+ing-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;bor=
+der-collapse:collapse;mso-line-height-rule:exactly;" ><h4 style=3D"font-f=
+amily:Arial, Helvetica, sans-serif !important;//font-size:16px !important=
+;font-size:14px !important;font-weight:bold !important;color:#959595 !imp=
+ortant;Margin:0px !important;Padding:0px !important;" >COMING UP</h4></td=
+>
+										</tr>
+								=09
+									<tr>
+										<td style=3D"padding-top:0px;padding-bottom:20px;padding-right:=
+20px;padding-left:20px;border-collapse:collapse;mso-line-height-rule:exac=
+tly;" ><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" style=3D"border-collapse:collapse;" >
+											<tbody>
+												<tr>
+													<td  valign=3D"top" class=3D"stack sanpad" style=3D"padding-=
+right:20px;border-collapse:collapse;mso-line-height-rule:exactly;" ><h3 s=
+tyle=3D"font-family:Arial, Helvetica, sans-serif !important;//font-size:1=
+6px !important;font-weight:bold !important;color:#363636 !important;Margi=
+n:0px !important;Padding:0px !important;" >Celebrating Indigenous Peoples=
+' Day</h3><br />
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	<strong>Saturday, October 15, 11:00 am=E2=80=932:00 pm</strong></p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	Learn how Indigenous communities are reclaiming knowledge and revitalizi=
+ng Indigenous traditions; discover traditional flavors; join a hands-on p=
+lant dye workshop; and take curator-led tours of <em><a href=3D"https://n=
+ewsletters.getty.edu/t/t-l-adjyujl-wdyjhtiyk-m/" style=3D"border=
+-collapse:collapse;mso-line-height-rule:exactly;font-weight:normal !impor=
+tant;color:#1a47b8 !important;text-decoration:underline !important;line-h=
+eight:18px;Margin:0px !important;Padding:0px !important;" >Reinventing th=
+e Am=C3=A9ricas: Construct. Erase. Repeat.</a>&nbsp;</em>Musician Kelly C=
+aballero punctuates the celebration with a musical and spoken-word perfor=
+mance. Drop-ins welcome.</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+</td>
+													<td  valign=3D"top" class=3D"scale-up stack addpad-top" styl=
+e=3D"width:200px;text-align:left;border-collapse:collapse;mso-line-height=
+-rule:exactly;" ><a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-c/" style=3D"color:#1a47b8;border-collapse:collapse;mso=
+-line-height-rule:exactly;" ><img label=3D"Image" src=3D"http://i7.cmail1=
+9.com/ei/t/AB/6DF/537/csimport/Unknown-2.150025.jpeg" width=3D"200" heigh=
+t=3D"263" style=3D"border-width:0 !important;outline-style:none !importan=
+t;" /></a><h6 style=3D"font-family:Arial, Helvetica, sans-serif !importan=
+t;font-size:11px;font-weight:normal !important;color:#7d7d7d !important;m=
+argin-top:0px !important;margin-bottom:0px !important;margin-right:0px !i=
+mportant;margin-left:0px !important;padding-top:5px !important;line-heigh=
+t:15px;" >
+	<span style=3D"color:#808080;border-collapse:collapse;mso-line-height-ru=
+le:exactly;" ><span style=3D"font-size:10px;border-collapse:collapse;mso-=
+line-height-rule:exactly;" ><em>Spirit Animals </em>(detail), 2022, Denil=
+son Baniwa</span></span></h6>
+</td>
+													</tr>
+												</tbody>
+											</table></td>
+										</tr>
+								=09
+                                        <tr>
+                                            <td align=3D"center"  class=3D=
+"stack center" style=3D"padding-bottom:20px;border-collapse:collapse;mso-=
+line-height-rule:exactly;" ><table class=3D"center" style=3D"border-colla=
+pse:collapse;" >
+                                                <td align=3D"center" bgco=
+lor=3D"#1a47b8" style=3D"color:#ffffff;display:block;/*width:175px;*/ pad=
+ding:10px 10px;border-collapse:collapse;mso-line-height-rule:exactly;" ><=
+a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-wdyjhtiyk-=
+q/" style=3D"font-size:16px;font-family:Arial, Helvetica, sans-serif !imp=
+ortant;text-decoration:none;line-height:1.2;display:inline-block;color:#f=
+fffff;border-collapse:collapse;mso-line-height-rule:exactly;" >Get free t=
+ickets</a></td>
+                                                    </table></td>
+                                            </tr>
+                                       =20
+									<tr>
+										<td align=3D"center" style=3D"border-collapse:collapse;mso-line=
+-height-rule:exactly;" ><hr style=3D"border-top-width:3px;border-top-styl=
+e:solid;border-top-color:#636363;" ></td>
+										</tr>
+								=09
+									<tr>
+										<td align=3D"left" valign=3D"top" style=3D"text-align:left;padd=
+ing-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;bor=
+der-collapse:collapse;mso-line-height-rule:exactly;" ><h4 style=3D"font-f=
+amily:Arial, Helvetica, sans-serif !important;//font-size:16px !important=
+;font-size:14px !important;font-weight:bold !important;color:#959595 !imp=
+ortant;Margin:0px !important;Padding:0px !important;" >VIRTUAL EVENT</h4>=
+</td>
+										</tr>
+								=09
+									<tr>
+										<td style=3D"padding-top:0px;padding-bottom:20px;padding-right:=
+20px;padding-left:20px;border-collapse:collapse;mso-line-height-rule:exac=
+tly;" ><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" style=3D"border-collapse:collapse;" >
+											<tbody>
+												<tr>
+													<td  valign=3D"top" class=3D"stack sanpad" style=3D"padding-=
+right:20px;border-collapse:collapse;mso-line-height-rule:exactly;" ><h3 s=
+tyle=3D"font-family:Arial, Helvetica, sans-serif !important;//font-size:1=
+6px !important;font-weight:bold !important;color:#363636 !important;Margi=
+n:0px !important;Padding:0px !important;" >Art Break: Musings on Cy Twomb=
+ly with Dean Rader</h3><br />
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	<strong>Wednesday, October 12, 12:00 pm PT</strong></p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	To complement the exhibition<em> Cy Twombly: Making Past Present, </em>c=
+urator Scott Allan and San Francisco-based poet and professor Dean Rader =
+discuss the impact of Twombly's art on Rader's writing, with particular a=
+ttention to his recent poem "Meditation on Remembering, Or a Golden Shove=
+l for Sappho and Breonna Taylor."</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+</td>
+													<td  valign=3D"top" class=3D"scale-up stack addpad-top" styl=
+e=3D"width:200px;text-align:left;border-collapse:collapse;mso-line-height=
+-rule:exactly;" ><a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-a/" style=3D"color:#1a47b8;border-collapse:collapse;mso=
+-line-height-rule:exactly;" ><img label=3D"Image" src=3D"http://i8.cmail1=
+9.com/ei/t/AB/6DF/537/csimport/Unknown-3.151001.jpeg" width=3D"200" heigh=
+t=3D"221" style=3D"border-width:0 !important;outline-style:none !importan=
+t;" /></a><h6 style=3D"font-family:Arial, Helvetica, sans-serif !importan=
+t;font-size:11px;font-weight:normal !important;color:#7d7d7d !important;m=
+argin-top:0px !important;margin-bottom:0px !important;margin-right:0px !i=
+mportant;margin-left:0px !important;padding-top:5px !important;line-heigh=
+t:15px;" >
+	<span style=3D"color:#808080;border-collapse:collapse;mso-line-height-ru=
+le:exactly;" ><span style=3D"font-size:10px;border-collapse:collapse;mso-=
+line-height-rule:exactly;" ><em>Untitled (to Sappho)</em>,&nbsp;</span></=
+span><span style=3D"font-size:10px;color:rgb(128, 128, 128);border-collap=
+se:collapse;mso-line-height-rule:exactly;" >1976,&nbsp;</span><span style=
+=3D"font-size:10px;color:rgb(128, 128, 128);border-collapse:collapse;mso-=
+line-height-rule:exactly;" >Cy Twombly. Oil paint, wax crayon, and graphi=
+te on paper. Private Collection. =C2=A9 Cy Twombly Foundation. Photograph=
+: Mimmo Capone</span></h6>
+</td>
+													</tr>
+												</tbody>
+											</table></td>
+										</tr>
+								=09
+                                        <tr>
+                                            <td align=3D"center"  class=3D=
+"stack center" style=3D"padding-bottom:20px;border-collapse:collapse;mso-=
+line-height-rule:exactly;" ><table class=3D"center" style=3D"border-colla=
+pse:collapse;" >
+                                                <td align=3D"center" bgco=
+lor=3D"#1a47b8" style=3D"color:#ffffff;display:block;/*width:175px;*/ pad=
+ding:10px 10px;border-collapse:collapse;mso-line-height-rule:exactly;" ><=
+a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-wdyjhtiyk-=
+f/" style=3D"font-size:16px;font-family:Arial, Helvetica, sans-serif !imp=
+ortant;text-decoration:none;line-height:1.2;display:inline-block;color:#f=
+fffff;border-collapse:collapse;mso-line-height-rule:exactly;" >Get free t=
+ickets</a></td>
+                                                    </table></td>
+                                            </tr>
+                                       =20
+									<tr>
+										<td align=3D"center" style=3D"border-collapse:collapse;mso-line=
+-height-rule:exactly;" ><hr style=3D"border-top-width:3px;border-top-styl=
+e:solid;border-top-color:#636363;" ></td>
+										</tr>
+								=09
+									<tr>
+										<td align=3D"left" valign=3D"top" style=3D"text-align:left;padd=
+ing-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;bor=
+der-collapse:collapse;mso-line-height-rule:exactly;" ><h4 style=3D"font-f=
+amily:Arial, Helvetica, sans-serif !important;//font-size:16px !important=
+;font-size:14px !important;font-weight:bold !important;color:#959595 !imp=
+ortant;Margin:0px !important;Padding:0px !important;" >AROUND TOWN</h4></=
+td>
+										</tr>
+								=09
+									<tr>
+										<td style=3D"padding-top:0px;padding-bottom:20px;padding-right:=
+20px;padding-left:20px;border-collapse:collapse;mso-line-height-rule:exac=
+tly;" ><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" style=3D"border-collapse:collapse;" >
+											<tbody>
+												<tr>
+													<td  valign=3D"top" class=3D"stack sanpad" style=3D"padding-=
+right:20px;border-collapse:collapse;mso-line-height-rule:exactly;" ><h3 s=
+tyle=3D"font-family:Arial, Helvetica, sans-serif !important;//font-size:1=
+6px !important;font-weight:bold !important;color:#363636 !important;Margi=
+n:0px !important;Padding:0px !important;" >LA Phil's City of Birmingham S=
+ymphony Orchestra </h3><br />
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	<strong>Wednesday, October 12, 8:00 pm</strong></p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	Mirga Gra=C5=BEinyt=C4=97-Tyla and the City of Birmingham Symphony Orche=
+stra return to Walt Disney Concert Hall with a program featuring Debussy'=
+s La Mer and superstar cellist Sheku Kanneh-Mason in Haydn's First Cello =
+Concerto. Use promo code SPWDCH for 20% off select sections.</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+</td>
+													<td  valign=3D"top" class=3D"scale-up stack addpad-top" styl=
+e=3D"width:200px;text-align:left;border-collapse:collapse;mso-line-height=
+-rule:exactly;" ><a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-z/" style=3D"color:#1a47b8;border-collapse:collapse;mso=
+-line-height-rule:exactly;" ><img label=3D"Image" src=3D"http://i9.cmail1=
+9.com/ei/t/AB/6DF/537/csimport/2223_WDCH_CITYOFBIRMINGHAM_564x564.151601.=
+jpg" width=3D"200" height=3D"200" style=3D"border-width:0 !important;outl=
+ine-style:none !important;" /></a></td>
+													</tr>
+												</tbody>
+											</table></td>
+										</tr>
+								=09
+                                        <tr>
+                                            <td align=3D"center"  class=3D=
+"stack center" style=3D"padding-bottom:20px;border-collapse:collapse;mso-=
+line-height-rule:exactly;" ><table class=3D"center" style=3D"border-colla=
+pse:collapse;" >
+                                                <td align=3D"center" bgco=
+lor=3D"#1a47b8" style=3D"color:#ffffff;display:block;/*width:175px;*/ pad=
+ding:10px 10px;border-collapse:collapse;mso-line-height-rule:exactly;" ><=
+a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-wdyjhtiyk-=
+v/" style=3D"font-size:16px;font-family:Arial, Helvetica, sans-serif !imp=
+ortant;text-decoration:none;line-height:1.2;display:inline-block;color:#f=
+fffff;border-collapse:collapse;mso-line-height-rule:exactly;" >Get ticket=
+s</a></td>
+                                                    </table></td>
+                                            </tr>
+                                       =20
+									<tr>
+										<td align=3D"center" style=3D"border-collapse:collapse;mso-line=
+-height-rule:exactly;" ><hr style=3D"border-top-width:3px;border-top-styl=
+e:solid;border-top-color:#636363;" ></td>
+										</tr>
+								=09
+									<tr>
+										<td align=3D"left" valign=3D"top" style=3D"text-align:left;padd=
+ing-top:20px;padding-bottom:20px;padding-right:20px;padding-left:20px;bor=
+der-collapse:collapse;mso-line-height-rule:exactly;" ><h4 style=3D"font-f=
+amily:Arial, Helvetica, sans-serif !important;//font-size:16px !important=
+;font-size:14px !important;font-weight:bold !important;color:#959595 !imp=
+ortant;Margin:0px !important;Padding:0px !important;" >YOUR GETTY</h4></t=
+d>
+										</tr>
+								=09
+									<tr>
+										<td style=3D"padding-top:0px;padding-bottom:20px;padding-right:=
+20px;padding-left:20px;border-collapse:collapse;mso-line-height-rule:exac=
+tly;" ><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" style=3D"border-collapse:collapse;" >
+											<tbody>
+												<tr>
+													<td  valign=3D"top" class=3D"stack sanpad" style=3D"padding-=
+right:20px;border-collapse:collapse;mso-line-height-rule:exactly;" ><h3 s=
+tyle=3D"font-family:Arial, Helvetica, sans-serif !important;//font-size:1=
+6px !important;font-weight:bold !important;color:#363636 !important;Margi=
+n:0px !important;Padding:0px !important;" ></h3><br />
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	From Getty school-groups&nbsp;docent <strong>Debra Winchester</strong>:<=
+/p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	"Walking through the Getty Center courtyard one afternoon, I noticed thi=
+s view. It seemed like all that precise gridded architecture was saying, =
+'Hey, I like to play around sometimes too!'"</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	<span style=3D"font-size:10px;border-collapse:collapse;mso-line-height-r=
+ule:exactly;" ><span style=3D"color:#000080;border-collapse:collapse;mso-=
+line-height-rule:exactly;" >Send us your Getty photos! We'll stock them u=
+p and share each week. Include your name, kind of camera used, location, =
+and any other delightful details. </span><a href=3D"mailto:stories@getty.=
+edu" style=3D"border-collapse:collapse;mso-line-height-rule:exactly;font-=
+weight:normal !important;color:#1a47b8 !important;text-decoration:underli=
+ne !important;line-height:18px;Margin:0px !important;Padding:0px !importa=
+nt;" ><span style=3D"color:#000080;border-collapse:collapse;mso-line-heig=
+ht-rule:exactly;" >stories@getty.edu</span></a></span></p>
+<p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-size=
+:13px;font-weight:normal !important;color:#384044 !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >
+	&nbsp;</p>
+</td>
+													<td  valign=3D"top" class=3D"scale-up stack addpad-top" styl=
+e=3D"width:200px;text-align:left;border-collapse:collapse;mso-line-height=
+-rule:exactly;" ><a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-e/" style=3D"color:#1a47b8;border-collapse:collapse;mso=
+-line-height-rule:exactly;" ><img label=3D"Image" src=3D"http://i10.cmail=
+19.com/ei/t/AB/6DF/537/csimport/Debra_Winchester_image1copy.151712.jpg" w=
+idth=3D"200" height=3D"276" style=3D"border-width:0 !important;outline-st=
+yle:none !important;" /></a><p style=3D"font-family:Arial, Helvetica, san=
+s-serif !important;font-size:13px;font-weight:normal !important;color:#38=
+4044 !important;line-height:18px;Margin:0px !important;Padding:0px !impor=
+tant;" >
+	<span style=3D"color:#808080;border-collapse:collapse;mso-line-height-ru=
+le:exactly;" ><span style=3D"font-size:10px;border-collapse:collapse;mso-=
+line-height-rule:exactly;" >Photo: Debra Winchester. iPhone XS</span></sp=
+an></p>
+</td>
+													</tr>
+												</tbody>
+											</table></td>
+										</tr>
+																	=09
+								=09
+                                </table></td>
+                            </tr>
+                    </table></td>
+                    </tr>
+			=09
+            </tbody>
+        </table></td>
+    </tr>
+=09
+	<tr>
+	      <td align=3D"center" valign=3D"top" style=3D"border-collapse:colla=
+pse;mso-line-height-rule:exactly;" ><table  align=3D"center" border=3D"0"=
+ cellspacing=3D"0" cellpadding=3D"0" class=3D"mobile-width-nopad" style=3D=
+"border-top-width:4px;border-top-style:solid;border-top-color:#636363;wid=
+th:550px;background-color:#ffffff;border-collapse:collapse;" >
+	          <tbody>
+	              <tr>
+	                  <td style=3D"text-align:left;padding-top:20px;padding-=
+bottom:20px;padding-right:20px;padding-left:20px;border-collapse:collapse=
+;mso-line-height-rule:exactly;" ><h4 style=3D"font-family:Arial, Helvetic=
+a, sans-serif !important;//font-size:16px !important;font-size:14px !impo=
+rtant;font-weight:bold !important;color:#959595 !important;Margin:0px !im=
+portant;Padding:0px !important;" >CONNECT WITH US</h4><div style=3D"margi=
+n-top:10px;border-top-width:2px;border-top-style:solid;border-top-color:#=
+cccccc;" >
+	                      </div></td>
+	                  </tr>
+					  <tr>
+						  <td style=3D"text-align:left;padding-top:0px;padding-bottom:20px;=
+padding-right:20px;padding-left:20px;border-collapse:collapse;mso-line-he=
+ight-rule:exactly;" >
+							<table style=3D"border-collapse:collapse;" >
+								<td valign=3D"top" style=3D"border-collapse:collapse;mso-line-hei=
+ght-rule:exactly;" ><img src=3D"http://i4.cmail19.com/ti/t/4B/0EA/85F/033=
+130/images/podcast.jpg" width=3D"30" style=3D"border-width:0 !important;o=
+utline-style:none !important;" /></td>
+								<td style=3D"width:10px;border-collapse:collapse;mso-line-height-=
+rule:exactly;" ></td>
+								<td style=3D"border-collapse:collapse;mso-line-height-rule:exactl=
+y;" ><p style=3D"font-family:Arial, Helvetica, sans-serif !important;font=
+-size:13px;font-weight:normal !important;color:#384044 !important;line-he=
+ight:18px;Margin:0px !important;Padding:0px !important;" ><a href=3D"http=
+s://newsletters.getty.edu/t/t-l-adjyujl-wdyjhtiyk-s/" style=3D"b=
+order-collapse:collapse;mso-line-height-rule:exactly;font-weight:normal !=
+important;color:#1a47b8 !important;text-decoration:underline !important;l=
+ine-height:18px;Margin:0px !important;Padding:0px !important;" >Subscribe=
+ to the podcast</a>&mdash;hear from artists, writers, curators, and schol=
+ars about their work.<p style=3D"font-family:Arial, Helvetica, sans-serif=
+ !important;font-size:13px;font-weight:normal !important;color:#384044 !i=
+mportant;line-height:18px;Margin:0px !important;Padding:0px !important;" =
+></p></p></td>
+							</table>
+						  </td>
+					  </tr>
+					  <tr>
+						<td align=3D"left" style=3D"padding-top:0px;padding-bottom:20px;pad=
+ding-right:20px;padding-left:20px;border-collapse:collapse;mso-line-heigh=
+t-rule:exactly;" ><h5 style=3D"padding-bottom:5px;font-family:Arial, Helv=
+etica, sans-serif !important;font-size:15px !important;font-weight:bold !=
+important;color:#363636 !important;margin-top:0px !important;margin-botto=
+m:0px !important;margin-right:0px !important;margin-left:0px !important;p=
+adding-top:10px !important;line-height:15px;" >Social media</h5><p style=3D=
+"font-family:Arial, Helvetica, sans-serif !important;font-size:13px;font-=
+weight:normal !important;color:#384044 !important;line-height:18px;Margin=
+:0px !important;Padding:0px !important;" >Follow us, learn about what we =
+do, and tell us about your visit!</p></td>
+					  </tr>
+					   <tr>
+						  <td style=3D"text-align:left;padding-top:0px;padding-bottom:20px;=
+padding-right:20px;padding-left:20px;border-collapse:collapse;mso-line-he=
+ight-rule:exactly;" >
+							<table style=3D"border-collapse:collapse;" >
+								<td style=3D"border-collapse:collapse;mso-line-height-rule:exactl=
+y;" ><a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-g/" style=3D"text-decoration:none;color:#1a47b8;border-collapse:col=
+lapse;mso-line-height-rule:exactly;" ><img src=3D"http://i5.cmail19.com/t=
+i/t/4B/0EA/85F/033130/images/icon_facebook.gif" width=3D"31" style=3D"bor=
+der-width:0 !important;outline-style:none !important;" /></a></td>
+								<td style=3D"width:10px;border-collapse:collapse;mso-line-height-=
+rule:exactly;" ></td>
+								<td style=3D"border-collapse:collapse;mso-line-height-rule:exactl=
+y;" ><a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-w/" style=3D"text-decoration:none;color:#1a47b8;border-collapse:col=
+lapse;mso-line-height-rule:exactly;" ><img src=3D"http://i8.cmail19.com/t=
+i/t/4B/0EA/85F/033130/images/instagram.gif" width=3D"31" style=3D"border-=
+width:0 !important;outline-style:none !important;" /></a></td>
+								<td style=3D"width:10px;border-collapse:collapse;mso-line-height-=
+rule:exactly;" ></td>
+								<td style=3D"border-collapse:collapse;mso-line-height-rule:exactl=
+y;" ><a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-yd/" style=3D"text-decoration:none;color:#1a47b8;border-collapse:co=
+llapse;mso-line-height-rule:exactly;" ><img src=3D"http://i6.cmail19.com/=
+ti/t/4B/0EA/85F/033130/images/icon_twitter.gif" width=3D"31" style=3D"bor=
+der-width:0 !important;outline-style:none !important;" /></a></td>
+								<td style=3D"width:10px;border-collapse:collapse;mso-line-height-=
+rule:exactly;" ></td>
+								<td style=3D"border-collapse:collapse;mso-line-height-rule:exactl=
+y;" ><a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-yh/" style=3D"text-decoration:none;color:#1a47b8;border-collapse:co=
+llapse;mso-line-height-rule:exactly;" ><img src=3D"http://i7.cmail19.com/=
+ti/t/4B/0EA/85F/033130/images/icon_youtube.gif" width=3D"31" style=3D"bor=
+der-width:0 !important;outline-style:none !important;" /></a></td>
+								<td style=3D"width:10px;border-collapse:collapse;mso-line-height-=
+rule:exactly;" ></td>
+								<td style=3D"border-collapse:collapse;mso-line-height-rule:exactl=
+y;" ><a href=3D"https://newsletters.getty.edu/t/t-l-adjyujl-=
+wdyjhtiyk-yk/" style=3D"text-decoration:none;color:#1a47b8;border-collapse:co=
+llapse;mso-line-height-rule:exactly;" ><img src=3D"http://i9.cmail19.com/=
+ti/t/4B/0EA/85F/033130/images/icon_pinterest.gif" width=3D"31" style=3D"b=
+order-width:0 !important;outline-style:none !important;" /></a></td>
+							</table>
+						  </td>
+					  </tr>
+					  <tr>
+						<td align=3D"left" style=3D"padding-top:0px;padding-bottom:20px;pad=
+ding-right:20px;padding-left:20px;border-collapse:collapse;mso-line-heigh=
+t-rule:exactly;" ><div style=3D"border-top-width:2px;border-top-style:sol=
+id;border-top-color:#cccccc;height:10px;" ></div><h5 style=3D"font-family=
+:Arial, Helvetica, sans-serif !important;font-size:15px !important;font-w=
+eight:bold !important;color:#363636 !important;margin-top:0px !important;=
+margin-bottom:0px !important;margin-right:0px !important;margin-left:0px =
+!important;padding-top:10px !important;line-height:15px;" >More <a href=3D=
+"https://newsletters.getty.edu/t/t-l-adjyujl-wdyjhtiyk-yu/" styl=
+e=3D"color:#1a47b8;border-collapse:collapse;mso-line-height-rule:exactly;=
+" >email newsletters</a> from Getty</h5></td>
+						</tr>
+				=09
+					<tr>
+	<td style=3D"padding-top:0px;padding-bottom:20px;padding-right:20px;padd=
+ing-left:20px;border-collapse:collapse;mso-line-height-rule:exactly;" ><t=
+able width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"border-collapse:collapse;" >
+		<tbody>
+			<tr>
+				<td  class=3D"stack" valign=3D"top" style=3D"width:250px;border-colla=
+pse:collapse;mso-line-height-rule:exactly;" ><table width=3D"100%" border=
+=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"border-collapse:colla=
+pse;" >
+					<tbody>
+						<tr>
+							<td style=3D"border-collapse:collapse;mso-line-height-rule:exactly=
+;" ><p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-=
+size:13px;font-weight:normal !important;color:#384044 !important;line-hei=
+ght:18px;Margin:0px !important;Padding:0px !important;" ><strong>Get Insp=
+ired</strong><br />
+Stories from across Getty about art, conservation, scholarship, and more.=
+ </p></td>
+						</tr>
+						<tr><td style=3D"height:10px;border-collapse:collapse;mso-line-heig=
+ht-rule:exactly;" ></td></tr>
+						<tr>
+							<td style=3D"border-collapse:collapse;mso-line-height-rule:exactly=
+;" ><p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-=
+size:13px;font-weight:normal !important;color:#384044 !important;line-hei=
+ght:18px;Margin:0px !important;Padding:0px !important;" ><strong>Conserva=
+tion News</strong><br />
+Updates on activities of the Getty Conservation Institute and timely info=
+rmation for conservation professionals.</p></td>
+						</tr>
+						<tr><td style=3D"height:10px;border-collapse:collapse;mso-line-heig=
+ht-rule:exactly;" ></td></tr>
+						<tr>
+							<td style=3D"border-collapse:collapse;mso-line-height-rule:exactly=
+;" ><p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-=
+size:13px;font-weight:normal !important;color:#384044 !important;line-hei=
+ght:18px;Margin:0px !important;Padding:0px !important;" ><strong>Foundati=
+on News</strong><br />
+Highlights of current initiatives and recent grants from the Getty Founda=
+tion.</p></td>
+						</tr>
+						<tr><td style=3D"height:10px;border-collapse:collapse;mso-line-heig=
+ht-rule:exactly;" ></td></tr>
+						<tr>
+							<td style=3D"border-collapse:collapse;mso-line-height-rule:exactly=
+;" ><p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-=
+size:13px;font-weight:normal !important;color:#384044 !important;line-hei=
+ght:18px;Margin:0px !important;Padding:0px !important;" ><strong>Museum N=
+ews</strong><br />
+A closer look at the collection, exhibitions, and activities of the J. Pa=
+ul Getty Museum.</p></td>
+						</tr>
+						</tbody>
+					</table></td>
+				<td class=3D"stack hide" style=3D"border-collapse:collapse;mso-line-h=
+eight-rule:exactly;" >&nbsp;</td>
+				<td  class=3D"stack addpad-top" valign=3D"top" style=3D"width:250px;b=
+order-collapse:collapse;mso-line-height-rule:exactly;" ><table width=3D"1=
+00%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"border-col=
+lapse:collapse;" >
+					<tbody>
+						<tr>
+							<td style=3D"border-collapse:collapse;mso-line-height-rule:exactly=
+;" ><p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-=
+size:13px;font-weight:normal !important;color:#384044 !important;line-hei=
+ght:18px;Margin:0px !important;Padding:0px !important;" ><strong>Publicat=
+ion News</strong><br />
+New books from Getty Publications.</p></td>
+						</tr>
+						<tr><td style=3D"height:10px;border-collapse:collapse;mso-line-heig=
+ht-rule:exactly;" ></td></tr>
+						<tr>
+							<td style=3D"border-collapse:collapse;mso-line-height-rule:exactly=
+;" ><p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-=
+size:13px;font-weight:normal !important;color:#384044 !important;line-hei=
+ght:18px;Margin:0px !important;Padding:0px !important;" ><strong>Research=
+ News</strong><br />
+Latest resources from the Getty Research Institute, such as publications,=
+ lecture series, and digitized collections.</p></td>
+						</tr>
+						<tr><td style=3D"height:10px;border-collapse:collapse;mso-line-heig=
+ht-rule:exactly;" ></td></tr>
+						<tr>
+							<td style=3D"border-collapse:collapse;mso-line-height-rule:exactly=
+;" ><p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-=
+size:13px;font-weight:normal !important;color:#384044 !important;line-hei=
+ght:18px;Margin:0px !important;Padding:0px !important;" ><strong>Villa Ne=
+ws</strong><br />
+Exhibitions and events at the Getty Villa Museum that explore the culture=
+s of the ancient Mediterranean.</p></td>
+						</tr>
+						<tr><td style=3D"height:10px;border-collapse:collapse;mso-line-heig=
+ht-rule:exactly;" ></td></tr>
+						<tr>
+							<td style=3D"border-collapse:collapse;mso-line-height-rule:exactly=
+;" ><p style=3D"font-family:Arial, Helvetica, sans-serif !important;font-=
+size:13px;font-weight:normal !important;color:#384044 !important;line-hei=
+ght:18px;Margin:0px !important;Padding:0px !important;" ><strong>Museum S=
+tore</strong><br />
+Be the first to know about our latest arrivals & exclusive offers.</p></t=
+d>
+						</tr>
+						</tbody>
+					</table></td>
+				</tr>
+			</tbody>
+		</table></td>
+	</tr>
+	              </tbody>
+            </table></td>
+        </tr>
+=09
+	<tr>
+	      <td align=3D"center" valign=3D"top" style=3D"border-collapse:colla=
+pse;mso-line-height-rule:exactly;" ><table  align=3D"center" border=3D"0"=
+ cellspacing=3D"0" cellpadding=3D"0" class=3D"mobile-width-nopad" style=3D=
+"border-top-width:4px;border-top-style:solid;border-top-color:#636363;wid=
+th:550px;background-color:#ffffff;border-collapse:collapse;" >
+	          <tbody>
+	              <tr>
+	                  <td style=3D"text-align:left;padding-top:20px;padding-=
+bottom:20px;padding-right:20px;padding-left:20px;border-collapse:collapse=
+;mso-line-height-rule:exactly;" ><h4 style=3D"font-family:Arial, Helvetic=
+a, sans-serif !important;//font-size:16px !important;font-size:14px !impo=
+rtant;font-weight:bold !important;color:#959595 !important;Margin:0px !im=
+portant;Padding:0px !important;" >CONTACT US</h4>
+	                      </td>
+	                  </tr>
+				  <tr>
+					  <td style=3D"text-align:left;padding-top:0px;padding-bottom:20px;p=
+adding-right:20px;padding-left:20px;border-collapse:collapse;mso-line-hei=
+ght-rule:exactly;" ><p style=3D"font-family:Arial, Helvetica, sans-serif =
+!important;font-size:13px;font-weight:normal !important;color:#384044 !im=
+portant;line-height:18px;Margin:0px !important;Padding:0px !important;" >=
+General inquiries: <a href=3D"mailto:visitorservices@getty.edu" style=3D"=
+border-collapse:collapse;mso-line-height-rule:exactly;font-weight:normal =
+!important;color:#1a47b8 !important;text-decoration:underline !important;=
+line-height:18px;Margin:0px !important;Padding:0px !important;" >visitors=
+ervices@getty.edu</a><br />
+						Press inquiries: <a href=3D"mailto:communications@getty.edu" style=3D=
+"border-collapse:collapse;mso-line-height-rule:exactly;font-weight:normal=
+ !important;color:#1a47b8 !important;text-decoration:underline !important=
+;line-height:18px;Margin:0px !important;Padding:0px !important;" >communi=
+cations@getty.edu</a> or visit our <a href=3D"https://newsletters.getty.e=
+du/t/t-l-adjyujl-wdyjhtiyk-jl/" style=3D"border-collapse:collaps=
+e;mso-line-height-rule:exactly;font-weight:normal !important;color:#1a47b=
+8 !important;text-decoration:underline !important;line-height:18px;Margin=
+:0px !important;Padding:0px !important;" >Press Room</a><br />
+						Feedback: <a href=3D"mailto:egetty@getty.edu" style=3D"border-colla=
+pse:collapse;mso-line-height-rule:exactly;font-weight:normal !important;c=
+olor:#1a47b8 !important;text-decoration:underline !important;line-height:=
+18px;Margin:0px !important;Padding:0px !important;" >egetty@getty.edu</a>=
+</p></td>
+					  </tr>
+					 =20
+								=09
+					<tr>
+						<td style=3D"padding-top:0px;padding-bottom:20px;padding-right:20px=
+;padding-left:20px;border-collapse:collapse;mso-line-height-rule:exactly;=
+" ><table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"=
+ style=3D"border-collapse:collapse;" >
+							<tbody>
+								<tr>
+									<td  class=3D"stack" style=3D"width:250px;border-collapse:collap=
+se;mso-line-height-rule:exactly;" ><table width=3D"100%" border=3D"0" cel=
+lspacing=3D"0" cellpadding=3D"0" style=3D"border-collapse:collapse;" >
+										<tbody>
+											<tr>
+												<td style=3D"border-collapse:collapse;mso-line-height-rule:ex=
+actly;" ><p style=3D"font-family:Arial, Helvetica, sans-serif !important;=
+font-size:13px;font-weight:normal !important;color:#384044 !important;lin=
+e-height:18px;Margin:0px !important;Padding:0px !important;" ><strong>Get=
+ty Center</strong><br />
+													1200 Getty Center Drive<br />
+													Los Angeles, CA 90049<br />
+													(310) 440-7300<br />
+<br />
+												=09
+													</p></td>
+												</tr>
+											</tbody>
+										</table></td>
+									<td class=3D"stack hide" style=3D"border-collapse:collapse;mso-l=
+ine-height-rule:exactly;" >&nbsp;</td>
+									<td  class=3D"stack addpad-top" valign=3D"top" style=3D"width:25=
+0px;border-collapse:collapse;mso-line-height-rule:exactly;" ><table width=
+=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"borde=
+r-collapse:collapse;" >
+										<tbody>
+											<tr>
+												<td style=3D"border-collapse:collapse;mso-line-height-rule:ex=
+actly;" ><p style=3D"font-family:Arial, Helvetica, sans-serif !important;=
+font-size:13px;font-weight:normal !important;color:#384044 !important;lin=
+e-height:18px;Margin:0px !important;Padding:0px !important;" ><strong>Get=
+ty Villa Museum</strong><br />
+													17985 Pacific Coast Highway<br />
+													Pacific Palisades, CA 90272<br />
+													(310) 440-7300<br />
+<br />
+											=09
+													 </p></td>
+												</tr>
+											</tbody>
+										</table></td>
+									</tr>
+								</tbody>
+							</table></td>
+						</tr>
+				=09
+				=09
+	              </tbody>
+            </table></td>
+        </tr>
+	=09
+		<tr>
+	      <td align=3D"center" valign=3D"top" style=3D"padding-bottom:20px;b=
+order-collapse:collapse;mso-line-height-rule:exactly;" ><table  align=3D"=
+center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" class=3D"mobile-=
+width-nopad" style=3D"width:550px;background-color:#5b5b5b;border-collaps=
+e:collapse;" >
+	          <tbody>
+				<tr>
+	<td style=3D"padding-top:20px;padding-bottom:20px;padding-right:20px;pad=
+ding-left:20px;border-collapse:collapse;mso-line-height-rule:exactly;" ><=
+table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" sty=
+le=3D"border-collapse:collapse;" >
+		<tbody>
+			<tr>
+				<td  class=3D"stack" style=3D"width:240px;border-collapse:collapse;ms=
+o-line-height-rule:exactly;" ><table width=3D"100%" border=3D"0" cellspac=
+ing=3D"0" cellpadding=3D"0" style=3D"border-collapse:collapse;" >
+					<tbody>
+						<tr>
+							<td class=3D"footer" style=3D"border-collapse:collapse;mso-line-he=
+ight-rule:exactly;font-family:Arial, Helvetica, sans-serif !important;fon=
+t-size:11px;font-weight:normal !important;color:#ffffff !important;margin=
+-top:0px !important;margin-bottom:0px !important;margin-right:0px !import=
+ant;margin-left:0px !important;padding-top:10px !important;line-height:15=
+px;" ><a href=3D"https://newsletters.getty.edu/t/t-u-adjyujl-=
+wdyjhtiyk-r/" style=3D"color:#ffffff;border-collapse:collapse;mso-line-heigh=
+t-rule:exactly;" >Unsubscribe</a> | <a  href=3D"https://newsletters.getty=
+=2Eedu/t/t-l-adjyujl-wdyjhtiyk-jr/" style=3D"color:#ffffff;border-=
+collapse:collapse;mso-line-height-rule:exactly;" >Manage Preferences</a><=
+/td>
+							</tr>
+						<tr>
+							<td valign=3D"top" style=3D"padding-top:10px;border-collapse:colla=
+pse;mso-line-height-rule:exactly;" ><img src=3D"http://i10.cmail19.com/ti=
+/t/4B/0EA/85F/033130/images/signoff_horiz.png" width=3D"132" style=3D"bor=
+der-width:0 !important;outline-style:none !important;" /></td>
+							</tr>
+					=09
+						</tbody>
+					</table></td>
+				<td class=3D"stack hide" style=3D"border-collapse:collapse;mso-line-h=
+eight-rule:exactly;" >&nbsp;</td>
+				<td  class=3D"stack addpad-top" valign=3D"bottom" style=3D"width:260p=
+x;border-collapse:collapse;mso-line-height-rule:exactly;" ><table width=3D=
+"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"border-c=
+ollapse:collapse;" >
+					<tbody>
+						<tr>
+							<td class=3D"footer" style=3D"border-collapse:collapse;mso-line-he=
+ight-rule:exactly;font-family:Arial, Helvetica, sans-serif !important;fon=
+t-size:11px;font-weight:normal !important;color:#ffffff !important;margin=
+-top:0px !important;margin-bottom:0px !important;margin-right:0px !import=
+ant;margin-left:0px !important;padding-top:10px !important;line-height:15=
+px;" >&copy; J. Paul Getty Trust | <a href=3D"https://newsletters.getty.e=
+du/t/t-l-adjyujl-wdyjhtiyk-jy/" style=3D"color:#ffffff;border-co=
+llapse:collapse;mso-line-height-rule:exactly;" >Privacy Policy</a> | <a h=
+ref=3D"https://newsletters.getty.edu/t/t-l-adjyujl-wdyjhtiyk-jt/=
+" style=3D"color:#ffffff;border-collapse:collapse;mso-line-height-rule:ex=
+actly;" >Terms of Use</a></td>
+							</tr>
+						</tbody>
+					</table></td>
+				</tr>
+			</tbody>
+		</table></td>
+	</tr>
+			  </tbody>
+			 </table>
+			</td>
+		</tr>
+=09
+	 =20
+  </table>
+</div><img src=3D"https://communications.cmail19.com/t/t-o-adjyujl-=
+wdyjhtiyk/o.gif"  width=3D"1" height=3D"1" border=3D"0" alt=3D"" style=
+=3D"visibility:hidden !important;display:block !important;height:1px !imp=
+ortant;width:1px !important;border-width:0 !important;margin-top:0 !impor=
+tant;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !=
+important;padding-top:0 !important;padding-bottom:0 !important;padding-ri=
+ght:0 !important;padding-left:0 !important;outline-style:none !important;=
+" /></body>
+</html>=
+
+
+
+
+--_0dd5b790-1b94-4c32-884b-a6f983b1173c_--

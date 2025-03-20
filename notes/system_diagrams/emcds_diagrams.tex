@@ -1,0 +1,72 @@
+\documentclass{article}
+
+\usepackage[all]{xy}
+\usepackage{lscape}
+
+\begin{document}
+\paragraph{The Email Mini-CDS:  System structure.} ~\\
+\textbf{Joshua D. Guttman, The MITRE Corporation.} \hfill 
+\texttt{guttman@mitre.org}
+
+\begin{figure}[h]
+  \centering
+  \begin{picture}(300,200)\thicklines 
+    \put(30,140){\makebox(40,20){high side}}
+    \put(230,140){\makebox(40,20)[r]{low side}}
+    \put(10,65){\framebox(10,10)}\put(0,50){deliver}
+    \put(280,65){\framebox(10,10)}\put(265,40){\shortstack{receive \\ externally}}
+    \put(50,40){\framebox(200,60)}
+
+    \thinlines
+    \put(50,65){\framebox(10,10)}\put(52,50){\makebox(30,20){\small intake}}
+    \put(240,65){\framebox(10,10)}\put(218,50){\makebox(30,20)[r]{\small
+        export}}
+    \put(22,70){\vector(1,0){26}}
+    \put(252,70){\vector(1,0){26}}
+    \put(150,150){\line(0,-1){40}}
+    \put(150,0){\line(0,1){30}}
+  \end{picture}
+  \caption{Mini-CDS in its environment}
+  \label{fig:external:structure}
+\end{figure}
+
+\noindent
+%
+In Fig.~\ref{fig:internal:structure}, the squares represent the
+processes in the pipeline, and the ovals represent directories in
+which those processes write successive forms of a message.  The
+straight right-facing arrows represent the processes writing these
+outputs, and the wavy arrows represent the files in the directory
+being read by the process at the head of arrow.  The dotted arrows
+represent the network connections from the \emph{deliver} process
+within the enclave and to the \emph{receive externally} process on the
+low side network, as shown in Fig.~\ref{fig:external:structure}.
+
+\begin{landscape}
+  \begin{figure}
+    \centering
+    \[\xymatrix@R=6mm@C=8mm{&&&&&&&& \\
+        \null\ar@{..>}[r]&*+=[F]{~\strut}\ar[r]^w&
+        *+[o][F]{~\strut}\ar@{~>}[r]^{r} &
+        *+=[F]{~\strut}\ar[r]^w &
+        *+[o][F]{~\strut}\ar@{~>}[r]^{r} &
+        *+=[F]{~\strut}\ar[r]^w &
+        *+[o][F]{~\strut}\ar@{~>}[r]^{r} &
+        *+=[F]{~\strut}\ar@{..>}[r] &
+        \null \\
+        &\txt{\iffalse\tiny\fi intake \\ \iffalse\tiny\fi server}& \txt{\iffalse\tiny\fi incoming}&
+        \txt{\iffalse\tiny\fi rewrite \\ \iffalse\tiny\fi one}& \txt{\iffalse\tiny\fi rewritten}&
+        \txt{\iffalse\tiny\fi filter \\ \iffalse\tiny\fi one}& \txt{\iffalse\tiny\fi outgoing}&
+        \txt{\iffalse\tiny\fi export \\ \iffalse\tiny\fi one}& }
+    \]
+    \caption{Mini-CDS internal structure.}
+    \label{fig:internal:structure}
+  \end{figure}
+
+\end{landscape}
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:

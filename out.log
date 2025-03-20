@@ -1,0 +1,148 @@
+commit d16fca7666927baeb3e87d29e706f16d466a2ad1
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Mon Dec 9 14:56:15 2024 -0500
+
+    script.sh
+
+commit aebfc88a917799320fa004fbe1d2e52226f054b5
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Mon Dec 9 14:43:31 2024 -0500
+
+    fixed a dune file error
+
+commit f62225440c4caaf665e4e94a1e9966db7d5541e1
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Mon Dec 9 14:28:18 2024 -0500
+
+    cosmetic update to act.ml
+
+commit a3df6909bf532ba99e4fcb3149e54febdd63e9d7
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Fri Dec 6 09:38:18 2024 -0500
+
+    small adjustment to ignore ambient environment variables when not testing
+
+commit ac11a235d8a6544f85b2392be5dfc1a520e2839f
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Thu Dec 5 16:44:04 2024 -0500
+
+    Considerably more testing and re-orging!  Id love to have KU start to try integrating now.  See LayeredAttestation/src/demo_layered_attestation/README
+
+commit af9dd81df2b1f8e021e0a28adedff795a01b4d26
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Wed Dec 4 16:25:45 2024 -0500
+
+    ready to test failure modes
+
+commit 5d4e2a8a74eaaa6b18c1ccd1f03a3676c93d7176
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Wed Nov 27 16:22:48 2024 -0500
+
+    Working demo!  Though not everything has been tested yet
+
+commit 4669ccbb3679688d8ebe6e078cfca53a696935cb
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Tue Nov 12 20:37:28 2024 -0500
+
+    read_config isnt working yet but its progressing
+
+commit a9968e8d6c3ef8c466e4da23673a015446ae75a8
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Mon Nov 11 20:39:44 2024 -0500
+
+    focusing on reading configuration files.  Still in flux
+
+commit cbb5f79aca609b27971195c53d3929b754ca159d
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Mon Nov 4 17:25:26 2024 -0500
+
+    removing redundant assured_pipeline
+
+commit 0c14a5a56139bc658f97aae2834ee8ed14bc3f62
+Author: James Carter <jwcarter@gmail.com>
+Date:   Mon Nov 4 16:06:33 2024 -0500
+
+    src/demo_layered_attestation: Added a simple assured pipeline demo
+    
+    The purpose of the demo is to show an example of SELinux policy for
+    an assured pipeline.
+    
+    Signed-off-by: James Carter <jwcarter@gmail.com>
+
+commit ef2c066cc62da00aa151309f618eec0f6d2dddcf
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Mon Nov 4 16:00:14 2024 -0500
+
+    added the selinux materials
+
+commit ba923c61397eae5adcb739404bfd2c453745c679
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Mon Nov 4 15:51:16 2024 -0500
+
+    added selinux material directory
+
+commit 98d7ea34d42d63e2cfcac6746a066a4aeb645d97
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Thu Oct 10 13:47:17 2024 -0400
+
+    forcing update to transforms.ml
+
+commit 37b4f04a101e7e0d99c2b1c977b8440ba15b9933
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Thu Oct 10 13:09:54 2024 -0400
+
+    Now processes a few actions correctly; see the top of bin/some_actions.ml for those examples
+
+commit 9da480bf6009a1dcd22d92d1b20cafec1e85a653
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Wed Oct 2 17:53:13 2024 -0400
+
+    plugging away on the code to transform msgs...
+
+commit c5a9514bcf50d1d3e5b98c4eb9962432b9e04159
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Wed Oct 2 15:40:10 2024 -0400
+
+    README typos corrected, etc
+
+commit 721b1553759af6f53b30fefd3b29a598dad10571
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Wed Oct 2 15:33:25 2024 -0400
+
+    README typos corrected
+
+commit ac8bd47667f84507968f8c14f5f2d3e3ae935756
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Tue Oct 1 17:56:55 2024 -0400
+
+    added README
+
+commit 004256910823da0332d9f0c64208ab773058381d
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Sun Sep 29 17:29:25 2024 -0400
+
+    lots of progress here
+
+commit 5a2e5fc823850ea003c2bfd40580c60b4ee852fc
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Sat Sep 28 20:25:28 2024 -0400
+
+    set up pipeline!
+
+commit b5d5ec18854fbc15e9ca3dd1b6fe5600b90b50e6
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Thu Sep 26 13:48:22 2024 -0400
+
+    small reorgs
+
+commit cd64faa71c911470f72224a3abac000745403da2
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Wed Sep 25 15:25:31 2024 -0400
+
+    reorg names and directiries
+
+commit a9e39a99ae945b260df524acc4447fdcdf69bbfa
+Author: Joshua D. Guttman <guttman@mitre.org>
+Date:   Wed Sep 18 17:27:13 2024 -0400
+
+    defined ocaml code to implement the pipeline in pipeline.ml

@@ -1,0 +1,819 @@
+Delivered-To: joshua.guttman@gmail.com
+Received: by 2002:ab2:6758:0:b0:164:a31:e3ae with SMTP id h24csp487476lqo;
+        Thu, 15 Sep 2022 12:04:04 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5SZ8fn47c76fRv5jjyKtZn0jDi7U99YGyEFzJC1aVbl/kjytGQ5p5o8GzGesEMIgshxi5v
+X-Received: by 2002:a63:e80f:0:b0:439:9ac5:af1c with SMTP id s15-20020a63e80f000000b004399ac5af1cmr1065879pgh.123.1663268644472;
+        Thu, 15 Sep 2022 12:04:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663268644; cv=none;
+        d=google.com; s=arc-20160816;
+        b=lbwt8Fxgw67K2ld9/nF3Qrxku37hjkaoWoNA+LQJDddpJ8jKaxUEbwiSSRxAYdvF7R
+         PPt7G1gtgfxBdcciZcUJwiIi77HgVcbGwmQ7HFbq8mcQqhfeXjEC5rogbE/LOzrOmk5J
+         xYzYw2/0H0E+Sr87Cx515wqOHzrW4/WpNXbh9g8S4685yvVZ6Q9mWvSLmwbsL1dpd9ZC
+         1TVPWMK7pnZIxUXG1lzsKGJZAMpQTdCABhYnTu2aT6J1wr/pCX3nbbkLMt9lNFQdMRX3
+         e8LS52PYMvQVbZ2HQjuLtcXetR3+WiXZkhXC7mhGCcqSVadmK0Bz+ks5KUy3kGCM5Oa7
+         pU1g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:mime-version:subject:message-id:to:reply-to:from
+         :date:dkim-signature:dkim-signature;
+        bh=jsjNtls6Qx/yzJyMO+TBob5hqhXJIBKicXYaiIjpSVw=;
+        b=stDXS8QUdVQ4qpgSAOoGiSOm1o3XeWbJmOhzwIeJ3dAsaRfuwsA/heUxnRTDCkvqsO
+         sh7EhzxJtEERzcgt8mku/8nEXS28fFEWBEz2wrSnDMULmadZXc4CCPzvbHokStnHNpJI
+         ciW3jhPul3samD1PyhahtOaiSDcgGweUrxbVqwAANwRuRicfPu/fKnW1Gximk8Oro9L/
+         8AHy+xnejed6ayqX4FY49Of8cu1bFFocvv3ZIEPjKxTO2OmKH0/yzwZdrBT//vm7vyUi
+         cgQSA9yKguLsnWW9it72/V8R74y4Zzylv0klsriDa1h+pMK+GpRSkiiCEEhRFWUTbeaK
+         qEKQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@uchicago.edu header.s=m1 header.b=XDFAfztH;
+       dkim=pass header.i=@mktomail.com header.s=m1 header.b=gjl7dxCU;
+       spf=pass (google.com: domain of 250-cqh-936.0.51372.0.0.36348.9.3608484@em-sj-77.mktomail.com designates 199.15.214.199 as permitted sender) smtp.mailfrom=250-CQH-936.0.51372.0.0.36348.9.3608484@em-sj-77.mktomail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=uchicago.edu
+Return-Path: <250-CQH-936.0.51372.0.0.36348.9.3608484@em-sj-77.mktomail.com>
+Received: from em-sj-99.mktomail.com (em-sj-99.mktomail.com. [199.15.214.199])
+        by mx.google.com with ESMTPS id gt14-20020a17090af2ce00b001fdeb9a2540si18268293pjb.156.2022.09.15.12.04.03
+        for <joshua.guttman@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Sep 2022 12:04:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 250-cqh-936.0.51372.0.0.36348.9.3608484@em-sj-77.mktomail.com designates 199.15.214.199 as permitted sender) client-ip=199.15.214.199;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@uchicago.edu header.s=m1 header.b=XDFAfztH;
+       dkim=pass header.i=@mktomail.com header.s=m1 header.b=gjl7dxCU;
+       spf=pass (google.com: domain of 250-cqh-936.0.51372.0.0.36348.9.3608484@em-sj-77.mktomail.com designates 199.15.214.199 as permitted sender) smtp.mailfrom=250-CQH-936.0.51372.0.0.36348.9.3608484@em-sj-77.mktomail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=uchicago.edu
+X-MSFBL: EgeaOifo+mZXyz30UGUrayA27FQS8QCFVxYkWI/CeEk=|eyJyIjoiam9zaHVhLmd
+	1dHRtYW5AZ21haWwuY29tIiwidSI6IjI1MC1DUUgtOTM2OjA6Mjg2NDI6OTY3NjE
+	6MjcwMjA5OjM2MzQ4Ojk6NTEzNzI6MzYwODQ4NCIsImciOiJiZy1zai0wMSIsImI
+	iOiJkdnAtMTk5LTE1LTIxNC0xOTkifQ==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663268547;
+	s=m1; d=uchicago.edu; i=@uchicago.edu;
+	h=Content-Type:MIME-Version:Subject:To:From:Date;
+	bh=jsjNtls6Qx/yzJyMO+TBob5hqhXJIBKicXYaiIjpSVw=;
+	b=XDFAfztHkUNZH9k7T1/oIv+eVwoQ6WfIPd5LL9d638kB+bYWFzxIfcItTra4F5g6
+	gTJEUHRnixi/W1NQlD0sfcQUDNAnvgsPBtMsNvI9fJsEqXK9uW1uUGs/3qs9MFscBD/
+	hKwDMGaJWRgZRO0ITJcwAhX25NvaiAhGf7TW1Mr8=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663268547;
+	s=m1; d=mktomail.com; i=@mktomail.com;
+	h=Content-Type:MIME-Version:Subject:To:From:Date;
+	bh=jsjNtls6Qx/yzJyMO+TBob5hqhXJIBKicXYaiIjpSVw=;
+	b=gjl7dxCUhoUSwIf6XLiDclSzZuaj73qYRp0HpSItdqKOwg7gtfjfofk05kJWgeRL
+	/2Jt4+TE2RiI66WwgEwO1cw2mSvz1wzhO42TTq6YWUcXuCahmwlGkwQW+F/pkfyMK8n
+	Xifll5vrR3VHxO/zeBmkN06zK+YaosN8nyZ+pTHQ=
+Date: Thu, 15 Sep 2022 14:02:27 -0500 (CDT)
+From: 
+	The University of Chicago Office of Gift Planning <giftplan@uchicago.edu>
+Reply-To: giftplan@uchicago.edu
+To: joshua.guttman@gmail.com
+Message-ID: <768705056.204686229.1663268547008@sjmktmail-batch1j.marketo.org>
+Subject: Reminder: Special webinar: Charitable Gifts of Real Estate
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_204686228_1245829344.1663268547008"
+X-Binding: bg-sj-01
+List-Unsubscribe: <mailto:IZJGSQKJJE2WM2CPOF3GWYTRHFBFMVSMGJTT2PI=.51372.36348.9@unsub-sj.mktomail.com>
+X-MarketoID: 250-CQH-936:0:28642:96761:270209:36348:9:51372:3608484
+X-PVIQ: mkto-250CQH936-000001-000000-051372
+X-Mailfrom: 250-CQH-936.0.51372.0.0.36348.9.3608484@em-sj-77.mktomail.com
+X-MktArchive: false
+X-MSYS-API: {"options":{"open_tracking":false,"click_tracking":false}}
+X-MktMailDKIM: true
+
+------=_Part_204686228_1245829344.1663268547008
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Problems viewing this email? View online. https://engage.uchicago.edu/index=
+.php/email/emailWebview?mkt_tok=3DMjUwLUNRSC05MzYAAAGG4YCZu3exbC-SOH9e0TXph=
+xV13wSOVp2LzTVWzaHmtpnV7YBG9qlHK6dJRM6ymcxEhMCBGESIT_BpzIp86GfNi0UtqhMekVQT=
+2ubFX4vnvqSJ&md_id=3D36348
+
+Have you considered making a gift of real estate <https://go2.uchicago.edu/=
+dc/6fIbvuaSLN4gAP1ogTBc7ne7eoG_DHXjEm_07yHdarSfPgQlqSYoNNBWrjbjC8hyf7Mq7D07=
+YUpRe5-j_GKe9jJK8-xxDPs4T4dqbWXwgG0=3D/MjUwLUNRSC05MzYAAAGG4YCZut70ytTl7yu5=
+-r_mXdODU96Z0JfLQ3ERibvOgyJGWBmMbLAxhMyGJIkmcRIVnXhTATo=3D> to the Universi=
+ty, or would you like to learn more about the benefits and considerations i=
+nvolved in this charitable transaction? Watch this brief introductory video=
+ <https://go2.uchicago.edu/dc/fzlCALmHi4teSQ63diB7cmetB2wDYie4IG3EM1SwLFgDv=
+PfXbBps9FG30htKFqcS/MjUwLUNRSC05MzYAAAGG4YCZut70ytTl7yu5-r_mXdODU96Z0JfLQ3E=
+RibvOgyJGWBmMbLAxhMyGJIkmcRIVnXhTATo=3D> and join Kea L. Gorden, senior ass=
+ociate director in the Office of Gift Planning, and Robert Rush, AM=E2=80=
+=9993, associate general counsel at UChicago, for an interactive webinar. I=
+n addition to presenting a case study, Gorden and Rush will cover the tax a=
+dvantages, associated benefits, requirements, and expectations involved in =
+making a real estate gift. They will also allow time for your questions.
+This event is open to all UChicago alumni and friends. Registration for thi=
+s webinar is free but required.
+${cta-text} <https://go2.uchicago.edu/dc/WuBo1ILNBgtZYddeCa5nFsw90YgRovLDrI=
+LmLr8M9UU=3D/MjUwLUNRSC05MzYAAAGG4YCZut70ytTl7yu5-r_mXdODU96Z0JfLQ3ERibvOgy=
+JGWBmMbLAxhMyGJIkmcRIVnXhTATo=3D>
+Tuesday, September 20, 2022
+11:00 a.m.=E2=80=93noon (CDT)
+If you have questions or require special assistance, please contact the Off=
+ice of Gift Planning at giftplan@uchicago.edu <mailto:giftplan@uchicago.edu=
+>, or call 773.702.3130.
+
+This Planned Giving email was sent to joshua.guttman@gmail.com. If you no l=
+onger wish to receive these emails, you may update your communication prefe=
+rences at any time.
+https://engage.uchicago.edu/general-preferences.html?program=3D14426&mkt_un=
+subscribe=3D1&mkt_tok=3DMjUwLUNRSC05MzYAAAGG4YCZu3exbC-SOH9e0TXphxV13wSOVp2=
+LzTVWzaHmtpnV7YBG9qlHK6dJRM6ymcxEhMCBGESIT_BpzIp86GfNi0UtqhMekVQT2ubFX4vnvq=
+SJ
+
+------=_Part_204686228_1245829344.1663268547008
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" lang=3D"en">
+<head>=20
+<title>The University of Chicago</title>=20
+<!-- Marketo Variable Definitions -->=20
+<!-- General Variables -->       =20
+<!-- Horizontal Rule Module Variables -->  =20
+<!-- CTA Button Module Variables -->           =20
+<!-- Other Meta Tags -->=20
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8" />=
+=20
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1,=
+ minimum-scale=3D1, maximum-scale=3D1" />=20
+<meta name=3D"robots" content=3D"noindex,nofollow" />=20
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge" />=20
+<!--[if mso]><style type=3D"text/css" media=3D"all">#listcell {width:370px =
+!important;}</style><![endif]-->=20
+<style type=3D"text/css" media=3D"all"> @-ms-viewport { width: device-width=
+; } </style>=20
+<style type=3D"text/css" media=3D"all">
+        @media only screen and (max-width: 525px){
+            #template-wrapper { width:100% !important; }
+            table#boxing { width: 100% !important; }
+            .photo img { margin: auto !important;}
+            .contents { text-align: center !important; margin: auto !import=
+ant;}
+            #ctaButtonWrap { width: auto !important;}
+            #spacerMobile { height: 30px !important; line-height: 30px !imp=
+ortant; font-size: 30px !important;}
+            .padding { margin-left: 3% !important; margin-right: 3% !import=
+ant; width:94% !important; }
+            .columnspacer{width:5px !important;}
+            .numbercell {width:20px !important;}
+            body { width: auto !important;}
+            table[class=3D"table420"] { width: 100% !important;}
+            table[class=3D"table1-2"] { width: 100% !important; text-align:=
+ center !important; clear: both !important; }
+            td[class=3D"outer"] { min-width: 0 !important;}
+            .full-width { width: 100% !important;}
+        }
+    </style>=20
+</head>=20
+<body bgcolor=3D"#f5f5f5" style=3D"background-color:#f5f5f5;background:#f5f=
+5f5; margin-bottom: 0; -webkit-text-size-adjust: 100%; padding-bottom: 0; m=
+in-width: 100%; margin-top: 0; margin-right: 0; -ms-text-size-adjust: 100%;=
+ margin-left: 0; padding-top: 0; padding-right: 0; padding-left: 0; width: =
+100%; margin:0;"><style type=3D"text/css">div#emailPreHeader{ display: none=
+ !important; }</style><div id=3D"emailPreHeader" style=3D"mso-hide:all; vis=
+ibility:hidden; opacity:0; color:transparent; mso-line-height-rule:exactly;=
+ line-height:0; font-size:0px; overflow:hidden; border-width:0; display:non=
+e !important;">Register to join us on Tuesday, September 20.               =
+                               </div>
+<div style=3D"color:#534F44;font-size:11px;font-family:Arial, Helvetica, sa=
+ns-serif;text-align:center;">Problems viewing this email? <a href=3D
+"https://go2.uchicago.edu/v/MjUwLUNRSC05MzYAAAGG4YCZuq51v1h5ffri_fj5P3vctJp=
+LWboeScpLsCb5LBd7V_DAusEf6kjv5mCazQujdsxZ3gY=3D" style=3D"font-family:Arial=
+, Helvetica, sans-serif;font-size:11px;color:#800000;"
+>View online.</a><br /><br /></div>
+=20
+<!-- Outer table START -->=20
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"mso-margin-bottom-alt: 0; mso-margin-top-alt: 0; -webkit-text-size-a=
+djust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-r=
+space: 0pt; border-spacing: 0; border-collapse: collapse;">=20
+<tbody>=20
+<tr>=20
+<td align=3D"center" class=3D"outer" valign=3D"top" bgcolor=3D"#f5f5f5" sty=
+le=3D"mso-margin-bottom-alt: 0; mso-margin-top-alt: 0; -webkit-text-size-ad=
+just: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rs=
+pace: 0pt; word-break: break-word; -webkit-hyphens: none; -moz-hyphens: non=
+e; hyphens: none; min-width: 600px; border-collapse: collapse; background-c=
+olor: #F5F5F5;">=20
+<table align=3D"center" id=3D"boxing" border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" bgcolor=3D"#f5f5f5" style=3D"mso-margin-bottom-alt: 0; mso-marg=
+in-top-alt: 0; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; =
+mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-col=
+lapse: collapse;margin-top: 0; margin-right: auto; margin-bottom: 0; margin=
+-left: auto;">=20
+<tbody>=20
+<tr>=20
+<td style=3D"mso-margin-bottom-alt: 0; mso-margin-top-alt: 0; -webkit-text-=
+size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt; word-break: break-word; -webkit-hyphens: none; -moz-hyphe=
+ns: none; hyphens: none; border-collapse: collapse;">=20
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"mktoContainer boxedbackground" id=3D"template-wrapper" width=3D"600"=
+ bgcolor=3D"#ffffff" style=3D"mso-margin-bottom-alt: 0; mso-margin-top-alt:=
+ 0; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit-hyphens:=
+ none; -moz-hyphens: none; hyphens: none; border-collapse: collapse; backgr=
+ound-color: #FFFFFF;">
+<tr class=3D"mktoModule full-width" id=3D"full-width-image-module">=20
+<td>=20
+<table style=3D"mso-margin-bottom-alt: 0; mso-margin-top-alt: 0; mso-line-h=
+eight-rule: exactly; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: =
+100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; bord=
+er-collapse: collapse;" align=3D"center" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" width=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;backgr=
+ound-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0">=20
+<tbody>=20
+<tr>=20
+<td align=3D"center" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size=
+-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: br=
+eak-word; -webkit-hyphens: none; -moz-hyphens: none; hyphens: none; border-=
+collapse: collapse;font-size:15px;font-family:Arial, Helvetica, sans-serif;=
+color:#3c3c3c;font-weight:bold;">=20
+<div align=3D"center" class=3D"mktoImg" id=3D"full-image-link" mktolockimgs=
+ize=3D"true">=20
+<a align=3D"center" href=3D
+"https://go2.uchicago.edu/dc/6fIbvuaSLN4gAP1ogTBc7ne7eoG_DHXjEm_07yHdarTrEm=
+86xBxEiV4D-ce-iZZbsK8TyJZohwli-4s9CNNNw7J3NPKXM-XtwWcjlOHxu1ZYrHUvmjh41aZvm=
+T8JAWGzTnuXuL1SamfInBpuzuHKY85yyLMppHr4jisrvahHDkE=3D/MjUwLUNRSC05MzYAAAGG4=
+YCZut70ytTl7yu5-r_mXdODU96Z0JfLQ3ERibvOgyJGWBmMbLAxhMyGJIkmcRIVnXhTATo=3D" =
+style=3D"font-family:Arial, Helvetica, sans-serif;font-size:15px;color:#155=
+f83;font-weight:bold;" target=3D"_blank"
+><img alt=3D"Charitable gifts of real estate" style=3D"-ms-interpolation-mo=
+de: bicubic; outline: none; border-right-width: 0; border-bottom-width: 0; =
+border-left-width: 0; text-decoration: none; border-top-width: 0; display: =
+block; max-width: 100%;" src=3D"https://engage.uchicago.edu/rs/250-CQH-936/=
+images/Charitable_Gifts_Email_Header.jpg" /></a>=20
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>
+<tr class=3D"mktoModule" id=3D"spacer-module">=20
+<td>=20
+<table style=3D"mso-margin-bottom-alt: 0; mso-margin-top-alt: 0; mso-line-h=
+eight-rule: exactly; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: =
+100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; bord=
+er-collapse: collapse;" align=3D"center" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" width=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;backgr=
+ound-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=20
+<table class=3D"table420" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"420">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;line-h=
+eight:50px;font-size:50px;" height=3D"50">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>
+<tr class=3D"mktoModule" id=3D"paragraph-left-module">=20
+<td>=20
+<table class=3D"bodyText" style=3D"mso-margin-bottom-alt: 0; mso-margin-top=
+-alt: 0; mso-line-height-rule: exactly; -webkit-text-size-adjust: 100%; -ms=
+-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; bord=
+er-spacing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;backgr=
+ound-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=20
+<table class=3D"table420 padding" style=3D"-webkit-text-size-adjust: 100%; =
+-ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; b=
+order-spacing: 0; border-collapse: collapse; margin-top: 0; margin-right: a=
+uto; margin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" width=3D"420">=20
+<tbody>=20
+<tr>=20
+<td class=3D"mktoText" style=3D"-moz-hyphens: none;-webkit-text-size-adjust=
+: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-=
+webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;line-height:2=
+0px;font-size:15px;font-family:Arial, Helvetica, sans-serif;color:#3c3c3c;b=
+order-collapse: collapse;text-align:left;" align=3D"left" id=3D"paragraph-l=
+eft-text">Have you considered making a <a href=3D
+"https://go2.uchicago.edu/dc/6fIbvuaSLN4gAP1ogTBc7ne7eoG_DHXjEm_07yHdarSfPg=
+QlqSYoNNBWrjbjC8hyf7Mq7D07YUpRe5-j_GKe9jJK8-xxDPs4T4dqbWXwgG0=3D/MjUwLUNRSC=
+05MzYAAAGG4YCZut70ytTl7yu5-r_mXdODU96Z0JfLQ3ERibvOgyJGWBmMbLAxhMyGJIkmcRIVn=
+XhTATo=3D" style=3D"color: #155f83;"
+><strong>gift of real estate</strong></a> to the University, or would you l=
+ike to learn more about the benefits and considerations involved in this ch=
+aritable transaction? <a href=3D
+"https://go2.uchicago.edu/dc/fzlCALmHi4teSQ63diB7cmetB2wDYie4IG3EM1SwLFgDvP=
+fXbBps9FG30htKFqcS/MjUwLUNRSC05MzYAAAGG4YCZut70ytTl7yu5-r_mXdODU96Z0JfLQ3ER=
+ibvOgyJGWBmMbLAxhMyGJIkmcRIVnXhTATo=3D" style=3D"color: #155f83;"
+><strong>Watch this brief introductory video</strong></a> and join Kea L. G=
+orden, senior associate director in the Office of Gift Planning, and Robert=
+ Rush, AM=E2=80=9993, associate general counsel at UChicago, for an interac=
+tive webinar. In addition to presenting a case study, Gorden and Rush will =
+cover the tax advantages, associated benefits, requirements, and expectatio=
+ns involved in making a real estate gift. They will also allow time for you=
+r questions.</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;line-h=
+eight:30px;font-size:30px;" height=3D"30">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>
+<tr class=3D"mktoModule" id=3D"paragraph-left-modulef3d69c6d-480d-4711-abf0=
+-1c95560000a4">=20
+<td>=20
+<table class=3D"bodyText" style=3D"mso-margin-bottom-alt: 0; mso-margin-top=
+-alt: 0; mso-line-height-rule: exactly; -webkit-text-size-adjust: 100%; -ms=
+-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; bord=
+er-spacing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;backgr=
+ound-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=20
+<table class=3D"table420 padding" style=3D"-webkit-text-size-adjust: 100%; =
+-ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; b=
+order-spacing: 0; border-collapse: collapse; margin-top: 0; margin-right: a=
+uto; margin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" width=3D"420">=20
+<tbody>=20
+<tr>=20
+<td class=3D"mktoText" style=3D"-moz-hyphens: none;-webkit-text-size-adjust=
+: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-=
+webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;line-height:2=
+0px;font-size:15px;font-family:Arial, Helvetica, sans-serif;color:#3c3c3c;b=
+order-collapse: collapse;text-align:left;" align=3D"left" id=3D"paragraph-l=
+eft-text2189edbb-9577-40aa-9ce6-9cf625e4e8a0">This event is open to all UCh=
+icago alumni and friends. Registration for this webinar is free but require=
+d.</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;line-h=
+eight:30px;font-size:30px;" height=3D"30">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>
+<tr class=3D"mktoModule" id=3D"CTA070271a4-c978-4c58-9080-460f921ddd79">=20
+<td>=20
+<table style=3D"mso-margin-bottom-alt: 0; mso-margin-top-alt: 0; mso-line-h=
+eight-rule: exactly; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: =
+100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; bord=
+er-collapse: collapse;" align=3D"center" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" width=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;backgr=
+ound-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=20
+<table class=3D"table420" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"420">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collaps=
+e;">=20
+<table bgcolor=3D"#ffffff" style=3D"background-color:#ffffff;-webkit-text-s=
+ize-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-ta=
+ble-rspace: 0pt; border-spacing: 0; border-collapse: collapse; margin-top: =
+0; margin-right: auto; margin-bottom: 0; margin-left: auto;" align=3D"cente=
+r" border=3D"0" cellpadding=3D"0" cellspacing=3D"0">=20
+<tbody>=20
+<tr>=20
+<td height=3D"2" width=3D"2" bgcolor=3D"#800000" style=3D"background-color:=
+#800000;font-size:2px;line-height:2px;">&nbsp;</td>=20
+<td height=3D"2" width=3D"30" bgcolor=3D"#800000" style=3D"background-color=
+:#800000;font-size:2px;line-height:2px;">&nbsp;</td>=20
+<td height=3D"2" bgcolor=3D"#800000" style=3D"background-color:#800000;font=
+-size:2px;line-height:2px;">&nbsp;</td>=20
+<td height=3D"2" width=3D"30" bgcolor=3D"#800000" style=3D"background-color=
+:#800000;font-size:2px;line-height:2px;">&nbsp;</td>=20
+<td height=3D"2" width=3D"2" bgcolor=3D"#800000" style=3D"background-color:=
+#800000;font-size:2px;line-height:2px;">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td height=3D"15" width=3D"2" bgcolor=3D"#800000" style=3D"background-color=
+:#800000;font-size:2px;line-height:2px;">&nbsp;</td>=20
+<td height=3D"15" width=3D"30" style=3D"font-size:2px;line-height:2px;">&nb=
+sp;</td>=20
+<td height=3D"15" style=3D"font-size:2px;line-height:2px;">&nbsp;</td>=20
+<td height=3D"15" width=3D"30" style=3D"font-size:2px;line-height:2px;">&nb=
+sp;</td>=20
+<td height=3D"15" width=3D"2" bgcolor=3D"#800000" style=3D"background-color=
+:#800000;font-size:2px;line-height:2px;">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td width=3D"2" bgcolor=3D"#800000" style=3D"background-color:#800000;font-=
+size:2px;line-height:2px;">&nbsp;</td>=20
+<td width=3D"30" style=3D"font-size:2px;line-height:2px;">&nbsp;</td>=20
+<td style=3D"font-family:Arial, Helvetica, sans-serif;font-size:15px;line-h=
+eight:20px;color:#3c3c3c;" valign=3D"top" align=3D"center" class=3D"mktEdit=
+able" id=3D"buttontexteditc56f7f44-ef79-4ea7-bc66-2e3745636729"><strong><a =
+href=3D
+"https://go2.uchicago.edu/dc/mYehI-zfJyApz7iaACXq56JUxbwhBYO-QGGvh6kpy4GOFP=
+EMsMsucnI3M30lCnursH-2XgJKcKRQp4URxGAUaMHmWhFyjvV_s5nOv2sK6HlzA8y-bH4Arq5Z4=
+y8OmS9_/MjUwLUNRSC05MzYAAAGG4YCZut70ytTl7yu5-r_mXdODU96Z0JfLQ3ERibvOgyJGWBm=
+MbLAxhMyGJIkmcRIVnXhTATo=3D" style=3D"color:#800000;"
+>Register =C2=BB</a></strong></td>=20
+<td width=3D"30" style=3D"font-size:2px;line-height:2px;">&nbsp;</td>=20
+<td width=3D"2" bgcolor=3D"#800000" style=3D"background-color:#800000;font-=
+size:2px;line-height:2px;">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td height=3D"15" width=3D"2" bgcolor=3D"#800000" style=3D"background-color=
+:#800000;font-size:2px;line-height:2px;">&nbsp;</td>=20
+<td height=3D"15" width=3D"30" style=3D"font-size:2px;line-height:2px;">&nb=
+sp;</td>=20
+<td height=3D"15" style=3D"font-size:2px;line-height:2px;">&nbsp;</td>=20
+<td height=3D"15" width=3D"30" style=3D"font-size:2px;line-height:2px;">&nb=
+sp;</td>=20
+<td height=3D"15" width=3D"2" bgcolor=3D"#800000" style=3D"background-color=
+:#800000;font-size:2px;line-height:2px;">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td height=3D"2" width=3D"2" bgcolor=3D"#800000" style=3D"background-color:=
+#800000;font-size:2px;line-height:2px;">&nbsp;</td>=20
+<td height=3D"2" width=3D"30" bgcolor=3D"#800000" style=3D"background-color=
+:#800000;font-size:2px;line-height:2px;">&nbsp;</td>=20
+<td height=3D"2" bgcolor=3D"#800000" style=3D"background-color:#800000;font=
+-size:2px;line-height:2px;">&nbsp;</td>=20
+<td height=3D"2" width=3D"30" bgcolor=3D"#800000" style=3D"background-color=
+:#800000;font-size:2px;line-height:2px;">&nbsp;</td>=20
+<td height=3D"2" width=3D"2" bgcolor=3D"#800000" style=3D"background-color:=
+#800000;font-size:2px;line-height:2px;">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;line-h=
+eight:30px;font-size:30px;" height=3D"30">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>
+<tr class=3D"mktoModule" id=3D"paragraph-center-ns-module1a4816e1-e184-4e54=
+-8189-1f302a5e5f05">=20
+<td>=20
+<table class=3D"bodyText" style=3D"mso-margin-bottom-alt: 0; mso-margin-top=
+-alt: 0; mso-line-height-rule: exactly; -webkit-text-size-adjust: 100%; -ms=
+-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; bord=
+er-spacing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;backgr=
+ound-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=20
+<table class=3D"table420 padding" style=3D"-webkit-text-size-adjust: 100%; =
+-ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; b=
+order-spacing: 0; border-collapse: collapse; margin-top: 0; margin-right: a=
+uto; margin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" width=3D"420">=20
+<tbody>=20
+<tr>=20
+<td class=3D"mktoText" style=3D"-moz-hyphens: none;-webkit-text-size-adjust=
+: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-=
+webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;line-height:2=
+0px;font-size:15px;font-family:Arial, Helvetica, sans-serif;color:#800000;b=
+order-collapse: collapse;text-align:center;" align=3D"center" id=3D"paragra=
+ph-center-ns-text6a9c21d6-24e6-4042-8339-3e5b87fef57d"><strong>Tuesday, Sep=
+tember 20, 2022</strong></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>
+<tr class=3D"mktoModule" id=3D"paragraph-center-module">=20
+<td>=20
+<table class=3D"bodyText" style=3D"mso-margin-bottom-alt: 0; mso-margin-top=
+-alt: 0; mso-line-height-rule: exactly; -webkit-text-size-adjust: 100%; -ms=
+-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; bord=
+er-spacing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;backgr=
+ound-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=20
+<table class=3D"table420 padding" style=3D"-webkit-text-size-adjust: 100%; =
+-ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; b=
+order-spacing: 0; border-collapse: collapse; margin-top: 0; margin-right: a=
+uto; margin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" width=3D"420">=20
+<tbody>=20
+<tr>=20
+<td class=3D"mktoText" style=3D"-moz-hyphens: none;-webkit-text-size-adjust=
+: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-=
+webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;line-height:2=
+5px;font-size:15px;font-family:Arial, Helvetica, sans-serif;color:#3C3C3C;b=
+order-collapse: collapse;text-align:center;" align=3D"center" id=3D"paragra=
+ph-center-text">11:00 a.m.=E2=80=93noon (CDT)</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;line-h=
+eight:30px;font-size:30px;" height=3D"30">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>
+<tr class=3D"mktoModule" id=3D"spacer-module9e819b51-7c8d-45f8-8260-35cb1ef=
+9d488">=20
+<td>=20
+<table style=3D"mso-margin-bottom-alt: 0; mso-margin-top-alt: 0; mso-line-h=
+eight-rule: exactly; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: =
+100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; bord=
+er-collapse: collapse;" align=3D"center" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" width=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;backgr=
+ound-color:#155f83;" bgcolor=3D"#155f83" valign=3D"top">=20
+<table class=3D"table420" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"420">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;line-h=
+eight:30px;font-size:30px;" height=3D"30">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>
+<tr class=3D"mktoModule" id=3D"paragraph-left-module44ed4300-2cb7-4d32-9f55=
+-d412ea8d07ce">=20
+<td>=20
+<table class=3D"bodyText" style=3D"mso-margin-bottom-alt: 0; mso-margin-top=
+-alt: 0; mso-line-height-rule: exactly; -webkit-text-size-adjust: 100%; -ms=
+-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; bord=
+er-spacing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;backgr=
+ound-color:#155f83;" bgcolor=3D"#155f83" valign=3D"top">=20
+<table class=3D"table420 padding" style=3D"-webkit-text-size-adjust: 100%; =
+-ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; b=
+order-spacing: 0; border-collapse: collapse; margin-top: 0; margin-right: a=
+uto; margin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" width=3D"420">=20
+<tbody>=20
+<tr>=20
+<td class=3D"mktoText" style=3D"-moz-hyphens: none;-webkit-text-size-adjust=
+: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-=
+webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;line-height:2=
+0px;font-size:15px;font-family:Arial, Helvetica, sans-serif;color:#ffffff;b=
+order-collapse: collapse;text-align:left;" align=3D"left" id=3D"paragraph-l=
+eft-textcad2c7a7-e2ee-4a17-9b4d-1788449ff65b">If you have questions or requ=
+ire special assistance, please contact the Office of Gift Planning at <stro=
+ng><a href=3D
+"mailto:giftplan@uchicago.edu" style=3D"color: #ffffff;" class=3D"mktNoTrac=
+k mkNoTok"
+>giftplan@uchicago.edu</a></strong>, or call 773.702.3130.</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;line-h=
+eight:25px;font-size:25px;" height=3D"25">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>
+<tr class=3D"mktoModule" id=3D"FooterModule">=20
+<td class=3D"mktoSnippet" id=3D"FooterSnippet">
+<table style=3D"mso-margin-bottom-alt: 0; mso-margin-top-alt: 0; mso-line-h=
+eight-rule: exactly; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: =
+100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; bord=
+er-collapse: collapse;" width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" =
+border=3D"0" align=3D"center">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collaps=
+e; background-color: #3c3c3c;" valign=3D"top" bgcolor=3D"#3c3c3c" align=3D"=
+center">=20
+<table class=3D"padding" style=3D"-webkit-text-size-adjust: 100%; -ms-text-=
+size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spa=
+cing: 0; border-collapse: collapse; margin: 0 auto 0 auto;" width=3D"420" c=
+ellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collaps=
+e; line-height: 40px; font-size: 40px;" height=3D"40">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-moz-hyphens: none; -webkit-text-size-adjust: 100%; mso-table-=
+lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit-hyphens=
+: none; -ms-text-size-adjust: 100%; hyphens: none; font-size: 13px; font-fa=
+mily: Arial, Helvetica, sans-serif; color: #ffffff; border-collapse: collap=
+se; text-align: center;" align=3D"center">=20
+<table align=3D"center">=20
+<tbody>=20
+<tr>=20
+<td align=3D"center"><a align=3D"center" href=3D
+"https://go2.uchicago.edu/dc/6fIbvuaSLN4gAP1ogTBc7ne7eoG_DHXjEm_07yHdarQJx7=
+0uaXpLujMLmkp0xBSmwzCE26gvK7_KRJb5HN2WLbtyvaKPbcR2A4wI6yLKImQ=3D/MjUwLUNRSC=
+05MzYAAAGG4YCZut70ytTl7yu5-r_mXdODU96Z0JfLQ3ERibvOgyJGWBmMbLAxhMyGJIkmcRIVn=
+XhTATo=3D" style=3D"font-family: Arial, Helvetica, sans-serif; font-size: 1=
+3px; color: #ffffff;"
+><img alt=3D"The University of Chicago | Office of Gift Planning" style=3D"=
+-ms-interpolation-mode: bicubic; outline: none; text-decoration: none; disp=
+lay: block; max-width: 100%; border-width: 0;" src=3D"http://engage.uchicag=
+o.edu/rs/250-CQH-936/images/wordmark_ogp_3c3c3c.jpg" /></a></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collaps=
+e; line-height: 20px; font-size: 20px;" height=3D"20">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"width: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adj=
+ust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-=
+word; -webkit-hyphens: none; -moz-hyphens: none; hyphens: none; border-coll=
+apse: collapse; line-height: 2px; font-size: 2px; background-color: #e5e5e5=
+;" height=3D"2" bgcolor=3D"#e5e5e5">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collaps=
+e; line-height: 20px; font-size: 20px;" height=3D"20">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-moz-hyphens: none; -webkit-text-size-adjust: 100%; mso-table-=
+lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit-hyphens=
+: none; -ms-text-size-adjust: 100%; hyphens: none; line-height: 18px; font-=
+size: 13px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; bord=
+er-collapse: collapse; text-align: center;" align=3D"center"><strong>The Un=
+iversity of Chicago</strong><br />5801 South Ellis Avenue<br />Chicago, IL =
+60637<br />1.800.955.0065</td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collaps=
+e; line-height: 40px; font-size: 40px;" height=3D"40">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table></td>=20
+</tr>
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<!-- Outer Table END --> =20
+<a href=3D
+"https://go2.uchicago.edu/MjUwLUNRSC05MzYAAAGG4YCZu1udhzSe_qFAx-8JZ19Uny0o3=
+UW24Fmkbte7t5SYhWnSzUGvVZvq4u-Du5nYuz8vWNU=3D"
+></a>
+<img src=3D"https://go2.uchicago.edu/trk?t=3D1&mid=3DMjUwLUNRSC05MzY6MDoyOD=
+Y0Mjo5Njc2MToyNzAyMDk6MzYzNDg6OTo1MTM3MjozNjA4NDg0Ompvc2h1YS5ndXR0bWFuQGdtY=
+WlsLmNvbQ%3D%3D" width=3D"1" height=3D"1" style=3D"display:none !important;=
+" alt=3D"" />
+
+<table
+            id=3D"UnsubscribeHTML"
+            style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: =
+100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; bord=
+er-collapse: collapse;"
+            align=3D"center"
+            border=3D"0"
+            cellpadding=3D"0"
+            cellspacing=3D"0"
+            width=3D"100%">
+            <tbody>
+                <tr>
+                    <td style=3D"-webkit-text-size-adjust: 100%;-ms-text-si=
+ze-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: bre=
+ak-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-colla=
+pse: collapse;" valign=3D"top">
+                        <table
+                            class=3D"table420"
+                            style=3D"-webkit-text-size-adjust: 100%; -ms-te=
+xt-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-=
+spacing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; m=
+argin-bottom: 0; margin-left: auto;"
+                            align=3D"center"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                           >
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div style=3D"color:#534F44;font-si=
+ze:11px;font-family:Arial, Helvetica, sans-serif;text-align:center;"><br />=
+This Planned Giving email was sent to joshua.guttman@gmail.com.<br />
+=09=09=09=09=09=09=09=09=09=09=09If you no longer wish to receive these ema=
+ils, you may
+                                            <a href=3D"https://engage.uchic=
+ago.edu/general-preferences.html?program=3D14426&mkt_unsubscribe=3D1&mkt_to=
+k=3DMjUwLUNRSC05MzYAAAGG4YCZu3exbC-SOH9e0TXphxV13wSOVp2LzTVWzaHmtpnV7YBG9ql=
+HK6dJRM6ymcxEhMCBGESIT_BpzIp86GfNi0UtqhMekVQT2ubFX4vnvqSJ" style=3D"font-fa=
+mily:Arial, Helvetica, sans-serif;font-size:11px;color:#800000;">update you=
+r communication preferences</a>
+                                            at any time.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        class=3D""
+                                        style=3D"-webkit-text-size-adjust: =
+100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt=
+;word-break: break-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: n=
+one;border-collapse: collapse;line-height:50px;font-size:50px;"
+                                        height=3D"50px">&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</body>
+</html>
+------=_Part_204686228_1245829344.1663268547008--

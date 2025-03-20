@@ -1,0 +1,919 @@
+Delivered-To: joshua.guttman@gmail.com
+Received: by 2002:ab2:6758:0:b0:164:a31:e3ae with SMTP id h24csp319578lqo;
+        Sat, 1 Oct 2022 07:30:24 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM4E+nn+VFZSFIzNS1lRVqq8OdbS3VUMNYozDV/Z87Ta6ClWxL/fp04xgaendOXuW08hdoQq
+X-Received: by 2002:a05:622a:447:b0:35d:43ae:96a6 with SMTP id o7-20020a05622a044700b0035d43ae96a6mr11071375qtx.71.1664634623643;
+        Sat, 01 Oct 2022 07:30:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664634623; cv=none;
+        d=google.com; s=arc-20160816;
+        b=UHxzFIkKO4aw9VqdQ+ndwBMZJ2hYkvADnVVqwe0zWoKCumiMvGYy1XQTKlTdMDA+Ay
+         BGZHr9x3uSRdnnaxLoKe5V110gKIRiJW2uLVByum8EVqg8Zro5XBMSLUVSX015wYXoiF
+         xzblJbCquc3H0l0u7c5/Baf53ubpXBwZwQt6Ib009VABR91SK9S7LtvRXZgVv4fbHw68
+         j1u533iCqFEIgTrjffKkAp2Z/qFqB0YnH7hfJGHsEgkmFjzsSVMjFNNtlrzv6LHNGq0H
+         Oly4feNI9MRBi+XDte0X4gnknQsmcNs5GOk7+rhRZo4HOHUgHmCYh9zp8e3FJIJixon1
+         rieg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:subject:date:message-id:to:from:list-unsubscribe
+         :list-unsubscribe-post:feedback-id:dkim-signature:dkim-signature;
+        bh=POdBhjJ5qdk8QaqLn/bMMneYuxir+hbXBpQOAZZmofU=;
+        b=PTnasaerq1xwZW9QERfuMMsqCWTRr+fYBUKm3NbEFBU+gYTN/eGqAxR4+EkH3MA5pi
+         1CWMsukA8MrORbTgw4iiIVQ0WNJLtBCh4fry0BPuVGWy0h7KnhnkLhtflpxz8AdH539a
+         PLr4DMtka6WZ/dherCVK1MeotXGpp1eWRmgrROxU5l4ITzLTFWcHy0PAywsC9AmVQspp
+         i09HfCLzVURaHH1B/FTxuDdMH1Zm/QpkamAUKWxEPMBMJLvx02BU4pkv9rHWTuxwJx8V
+         7sqMVOCSXB82A+Zvp42UqUzRboc7msvUlS1aD5RnRsNnyzB/W644n2JdGeUgyw/FcpZa
+         kmGA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@tundiproductions.org header.s=squarespace header.b=YyvvXUKR;
+       dkim=pass header.i=@f69e.squarespace-mail.com header.s=squarespace header.b=dFi5s8i7;
+       spf=pass (google.com: domain of 6524.82.c39a00009e15a8.2a978d20cac53db666570a38a18a32c9@event.f69e.squarespace-mail.com designates 142.0.181.4 as permitted sender) smtp.mailfrom=6524.82.c39a00009e15a8.2a978d20cac53db666570a38a18a32c9@event.f69e.squarespace-mail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tundiproductions.org
+Return-Path: <6524.82.c39a00009e15a8.2a978d20cac53db666570a38a18a32c9@event.f69e.squarespace-mail.com>
+Received: from out1-4.campaigns.f69e.squarespace-mail.com (out1-4.campaigns.f69e.squarespace-mail.com. [142.0.181.4])
+        by mx.google.com with ESMTPS id gy9-20020a056214242900b004afae3652c4si2764817qvb.81.2022.10.01.07.30.23
+        for <joshua.guttman@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 01 Oct 2022 07:30:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 6524.82.c39a00009e15a8.2a978d20cac53db666570a38a18a32c9@event.f69e.squarespace-mail.com designates 142.0.181.4 as permitted sender) client-ip=142.0.181.4;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@tundiproductions.org header.s=squarespace header.b=YyvvXUKR;
+       dkim=pass header.i=@f69e.squarespace-mail.com header.s=squarespace header.b=dFi5s8i7;
+       spf=pass (google.com: domain of 6524.82.c39a00009e15a8.2a978d20cac53db666570a38a18a32c9@event.f69e.squarespace-mail.com designates 142.0.181.4 as permitted sender) smtp.mailfrom=6524.82.c39a00009e15a8.2a978d20cac53db666570a38a18a32c9@event.f69e.squarespace-mail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tundiproductions.org
+DKIM-Signature: v=1; a=rsa-sha256; d=tundiproductions.org;s=squarespace;
+	c=relaxed/relaxed; q=dns/txt; t=1664634624; x=1664893824;
+	h=content-type:mime-version:subject:date:message-id:to:from:list-unsubscribe:list-unsubscribe-post:feedback-id:x-thread-info:x-report-abuse-to:subject:to:from:cc:reply-to;
+	bh=POdBhjJ5qdk8QaqLn/bMMneYuxir+hbXBpQOAZZmofU=;
+	b=YyvvXUKRQr5hucIMlRQC71J3RNnk7uV7gl0nWE+biPFi+WxX+GWCAEnJievyWTBLdqZoFA9LLLNKKol3Mtkz5Yki3U1YrUzkpzuyuF7AyxmePwvZ3FN95k8dVmDUcdzY4gVxbZtytG/Vgv6qFElqwKYz3uvN4Gf3hO6hJmCU1Iv0wrY+wXUZruVtnV/TmbMeBaldacT3OQpE/LLeFbIfk/kpyDG6bgLl7lk2ONAqxjVUxOl6cSL8CpTMFjVyrJhjvIR2Z1nqooSQR7N4akTjudSZ1VB9NAXkeQQWuiyZXQR5PGyw13SPVnQFO8TdQS9Go19qs9tQw9e/UVGFQ3HmpQ==
+DKIM-Signature: v=1; a=rsa-sha256; d=f69e.squarespace-mail.com;i=@f69e.squarespace-mail.com;s=squarespace;
+	c=relaxed/relaxed; q=dns/txt; t=1664634624; x=1664893824;
+	h=content-type:mime-version:subject:date:message-id:to:from:list-unsubscribe:list-unsubscribe-post:feedback-id:x-thread-info:x-report-abuse-to:subject:to:from:cc:reply-to;
+	bh=POdBhjJ5qdk8QaqLn/bMMneYuxir+hbXBpQOAZZmofU=;
+	b=dFi5s8i7a2ZPruhjW/FzyasI5lEHrxDjTTYZl655vWKL89DitSQ2k2v0AyFqknPFET/PL5XihqhX3CY+96eQlWAqbsbQkGh8RZ3xeJk/DoRRaD88+T6CZoDEQv8aHHbxEK/3gqYtuNrgOn3LLEptMgvLlc7I0yc4ENceFYwtC+xCW/wQokOh4K9FMhHFpnHFTscjN+wqV3xcDK+Ykc1MVIhHExLEM4r8fMNXgJG7hzy0vS+cZSmCgIn2ofmNZkr/zqYiLSUUpowTF+Lbz9aZUQq8GOR2c78qLdPQKmToiDp3vL+hbEYKNxgK1uB+JLtFT+2BlA5ugn9wH6b8pKsAVA==
+X-Report-Abuse-To: abuse@squarespace-mail.com
+X-Thread-Info: NjUyNC4xZS5jMzlhMDAwMDllMTVhOC42MzM4NGVlODExNDNmZjJmZTU2MDJmM2MtLTVhNGMyMTQyYzAyN2Q4NzAzYzc1M2Y2OS42MzM4NDUxMTExNDNmZjJmZTU1ZjZiOGUuam9zaHVhLmd1dHRtYW49Z21haWwuY29t
+Feedback-ID: 25892:25892.633845111143ff2fe55f6b8e:squarespace
+Received: from r1.us-east-1.aws.in.socketlabs.com (r1.us-east-1.aws.in.socketlabs.com [142.0.191.1]) by mxh4.email-od.com
+	with ESMTP(version=Tls12 cipher=Aes256 bits=256); Sat, 1 Oct 2022 10:30:21 -0400
+Received: from 8.41.221.48 by r1.us-east.aws.in.socketlabs.com
+	via HTTP; Sat, 1 Oct 2022 14:30:19 UTC
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+List-Unsubscribe: <https://campaign-preferences.com/unsubscribe/PO04QDlQCla2uzD1IbXNHuRcEeGYwWUwiWGMTX8CUec5Kd_ZhyM3SyI5BT6IH1X5i3gPudXY3t-TeZ8cxcLGO1aA1OQzIEW8eE_x89n2F_5ErPjYoseaN_kLPkUHvQboO7zAerFEmr9rGHjFv4QjDQncOSgoZYiqh6KzaZYMnP8VAqpH18P77nAsunYcxeMRabqQcXTbcDGyJFILjGpordVx3Boh-tH8ZkQlxhHxBVZj3S0eXkIBL-HC2ykqcIGcyJf0VAqCML6aJ-2MsIeSpbSGoJtTRrI206JCAZYrmzAn>
+X-Website-Id: 5a4c2142c027d8703c753f69
+From: "TUNDI" <info@tundiproductions.org>
+To: joshua.guttman@gmail.com
+Message-ID: <50f679fcd54a49f8b1a02afe841e4b5e@tundiproductions.org>
+Date: Sat, 01 Oct 2022 10:30:19 -0400
+Subject: Thank you!!!
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----4A58967E880F45EC8F88D68957FC0A15"
+
+------4A58967E880F45EC8F88D68957FC0A15
+Content-type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<https://tundiproductions=2Eorg/?ss_source=3Dsscampaigns&ss_campaign_id=
+=3D633845111143ff2fe55f6b8e&ss_email_id=3D63384ee81143ff2fe5602f3c&ss_c=
+ampaign_name=3DThank+you%21%21%21&ss_campaign_sent_date=3D2022-10-01T14=
+%3A30%3A19Z> OCT 1, 2022 Dear circle of TUNDI, Lieber TUNDI-Kreis: Happ=
+y Fall! You will know that TUNDI gave something extraordinary in our Wa=
+gner In Vermont 2022 Festival this past August: thank you for your gene=
+rosity of participation, attendance, and support=2E We mean it when we =
+say 'It could not have happened without you!' - every note, every ticke=
+t, every dollar, every conversation=2E What a rebirth - perhaps birth =E2=
+=80=93 as our relationship to covid shifts! Half of a 'Ring Cycle', twi=
+ce! With supporting lectures, recitals, a symposium! Followed by an int=
+ense, fruitful, beautiful Practicum that left our participants - and Je=
+nna and Hugh =E2=80=93 transformed, and ready to meet a fast-changing w=
+orld for us to make an impact upon=2E Throughout October, you will have=
+ chance to see the 2022 festival activities on Replay as they are relea=
+sed on our YouTube <https://www=2Eyoutube=2Ecom/channel/UCDmAM_hOgUuRBg=
+0iR_JfDoA> channel=2E Subscribe to the YouTube channel for instant noti=
+fications as new videos are released and keep an eye on our Facebook <h=
+ttps://www=2Efacebook=2Ecom/tundiproductions> and Instagram <https://ww=
+w=2Einstagram=2Ecom/wagnerinvermont/?igshid=3DYmMyMTA2M2Y%3D> for what'=
+s coming up=2E Wagner In Vermont had guests from Alabama, Brattleboro, =
+California, Deutschland (Norddeutscher Rundfunk in Hamburg), Wisconsin=2E=
+=2E=2Eto come and see our performances ofDas Rheingold and Die Walk=C3=BC=
+re=2E Some were expressing a five-decade passion for exploring Wagner, =
+one attendee came for his requested fifteenth birthday present: everyon=
+e, we suspect, based on many conversations and reports, was given somet=
+hing significantly beyond their expectations=2E Die Walk=C3=BCre and Si=
+egfried are proposed for 2023=2E We hope to show a video of our Das Rhe=
+ingold from 2022 as a Vorabend=2E We tremble at the prospect of G=C3=B6=
+tterd=C3=A4mmerung for 2024 (people are already asking!): the scale and=
+ artistic demands require resources that we ask you to help us find=2E =
+Please hear this as an ongoing call for large donations! You do not hav=
+e to be a King, or Bavarian, just a little bit 'mad', and continue to b=
+elieve in what we are essaying=2E So please speak well of us in your ar=
+tistic, creative, humanistic networks=2E We continue to believe in our =
+mission to take on the deepest emotions and the most burning issues of =
+being human=2E We are confident you already see TUNDI's commitment to e=
+xcellence and artistic discovery=2E With wishes that are grateful and o=
+ptimistic Jenna and Hugh More information about making a donation to TU=
+NDI  <https://tundiproductions=2Eorg/new-page-68?ss_source=3Dsscampaign=
+s&ss_campaign_id=3D633845111143ff2fe55f6b8e&ss_email_id=3D63384ee81143f=
+f2fe5602f3c&ss_campaign_name=3DThank+you%21%21%21&ss_campaign_sent_date=
+=3D2022-10-01T14%3A30%3A19Z> ~ note about gifts ~ We here at TUNDI love=
+ the idea of sending you a thank you gift for your donation, but we are=
+ guessing that not all of you need another pen or coffee mug or tote ba=
+g to add to your collection of collections=2E We would like to try an e=
+xperiment=2E If you have made a donation and you would like something i=
+n return, what would it be? Perhaps a "thank you" is perfect, or maybe =
+you'd like to visit a rehearsal or to host a private house concert or h=
+ave a personal "ho-jo-to-ho" recorded on your voicemail greeting? Be cr=
+eative with your requests and send them with your name and contact info=
+rmation to info@tundiproductions=2Eorg <mailto:info@tundiproductions=2E=
+org> and we will see what we can do=2E And if a TUNDI coffee mug is goi=
+ng to be THE THING that sparks joy for you every morning, let us know t=
+hat too! We remind you that we are here to address 'the deepest emotion=
+s and the most burning issues of being human=2E' with a commitment to m=
+aking an immense difference, we are: TUNDI GET IN TOUCH  <https://tundi=
+productions=2Eorg/contact?ss_source=3Dsscampaigns&ss_campaign_id=3D6338=
+45111143ff2fe55f6b8e&ss_email_id=3D63384ee81143ff2fe5602f3c&ss_campaign=
+_name=3DThank+you%21%21%21&ss_campaign_sent_date=3D2022-10-01T14%3A30%3=
+A19Z>  <https://tundiproductions=2Eorg/?ss_source=3Dsscampaigns&ss_camp=
+aign_id=3D633845111143ff2fe55f6b8e&ss_email_id=3D63384ee81143ff2fe5602f=
+3c&ss_campaign_name=3DThank+you%21%21%21&ss_campaign_sent_date=3D2022-1=
+0-01T14%3A30%3A19Z> TUNDI Incorporated, 71 Green Street, Brattleboro, V=
+T, 05301, United States Powered by Squarespace <https://www=2Esquarespa=
+ce=2Ecom?channel=3Dproduct_refer&subchannel=3Dcustomer&source=3Demail_c=
+ampaigns_button&campaign=3D5a4c2142c027d8703c753f69&utm_medium=3Dproduc=
+t_refer&utm_source=3Demail_campaigns_button&ss_source=3Dsscampaigns&ss_=
+campaign_id=3D633845111143ff2fe55f6b8e&ss_email_id=3D63384ee81143ff2fe5=
+602f3c&ss_campaign_name=3DThank+you%21%21%21&ss_campaign_sent_date=3D20=
+22-10-01T14%3A30%3A19Z> Unsubscribe  <https://campaign-preferences=2Eco=
+m/unsubscribe/v5KKbGyDoyppQnpSydxnn0PX3wuWyTSB_IKu1WJ-zDi87IeAoYKfKrL1P=
+BJsEKhdjUBRK5pKm0R7bu1Tuobd3pTmfwE7hIhElKy8FBTCPiTN_E_AMaklGYDoheOLBJAX=
+X51vZbULEqDrUuALrRIgSwRJABL7tyTXwvFCGJlbAHDHp2dYmzQymCCHLOtthL3xJPnT3Ub=
+hVmazEI0HfWsP9kj1xDK3Qma7sAHNwY-99VYHSys1v6HY-Fp9FPxx2W--ja4cHWN7HiYC0n=
+aYWomPaRE1lGvSOun30PCRj8CuGL7R>
+------4A58967E880F45EC8F88D68957FC0A15
+Content-type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html>
+<html xmlns=3D"http://www=2Ew3=2Eorg/1999/xhtml" xmlns:v=3D"urn:schemas=
+-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office"=
+ lang=3D"en-US" xml:lang=3D"en-US">
+ <head>=20
+  <title data-ignore-plain-text>Thank you!!!</title>=20
+  <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Dutf=
+-8">=20
+  <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scal=
+e=3D1, maximum-scale=3D1">=20
+  <meta name=3D"format-detection" content=3D"address=3Dno">=20
+  <!--[if (gte mso 9)|(IE)]>
+    <style type=3D"text/css" media=3D"screen">
+      li {
+        text-indent: -1em;
+      }
+    </style>
+    <![endif]-->=20
+  <style type=3D"text/css" media=3D"all">
+      body,
+=2Esection-text-area,
+=2Esection-text-area-wrapper,
+=2Esection-text-cell {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
+}
+body {
+    width: 100% !important;
+    min-width: 100% !important;
+    -ms-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    mso-line-height-rule: exactly;
+}
+p {
+    margin-block: 0;
+}
+@media only screen and (max-width:  593px ) {
+    table#newsletter-table {
+        border: 0 !important;
+    }
+    table#newsletter-email {
+        width: 100% !important;
+    }
+    img=2Esection-scaleable-image,
+    img=2Esection-empty-img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+    =2Ebg-none {
+        background: none !important;
+    }
+    =2Ehauto {
+        height: auto !important;
+    }
+    =2Eshow-desktop-only {
+        display: none !important;
+    }
+    =2Eshow-mobile-only {
+        display: block !important;
+        float: none !important;
+        line-height: auto !important;
+        max-height: inherit !important;
+        max-width: inherit !important;
+        margin-top: 0px !important;
+        overflow: visible !important;
+        visibility: inherit !important;
+        width: auto !important;
+    }
+    =2Estack-cell-wrap {
+        display: block !important;
+    }
+    =2Estack-cell-up {
+        display: table-header-group !important;
+    }
+    =2Estack-cell-down {
+        display: table-footer-group !important;
+    }
+    =2Emw100p {
+        max-width: 100% !important;
+    }
+    =2Esection-horizontal-padding,
+    =2Epadding-mobile-both {
+        padding-left: 22px !important;
+        padding-right: 22px !important;
+    }
+    =2Epadding-mobile-left {
+        padding-left: 22px !important;
+    }
+    =2Epadding-mobile-right {
+        padding-right: 22px !important;
+    }
+    =2Etext-left {
+        text-align: left !important;
+    }
+    =2Etext-right {
+        text-align: right !important;
+    }
+    =2Ew100p {
+        width: 100% !important;
+    }
+}
+=2Ebutton-style-solid:hover,
+=2Ebutton-style-rounded:hover {
+    opacity: =2E8 !important;
+}
+a:hover {
+    text-decoration: none !important;
+}
+span=2Email-merge-preview {
+    border-bottom: 2px dotted currentColor;
+    display: inline-block;
+    line-height: 1em !important;
+    margin-bottom: =2E125em !important;
+}
+table#newsletter-section-body =2Elinked-site-title-link {
+    color: #d7bd20 !important;
+}
+#header-header-section-stacked-top-0 =2Ebrand-name =2Elinked-site-title=
+-link {
+    color: #fff;
+    text-decoration: none;
+}
+#footer-footer-section-stacked-top-0 =2Ebrand-name =2Elinked-site-title=
+-link {
+    color: #fff;
+    text-decoration: none;
+}
+#footer-footer-section-stacked-top-0 =2Efooter-text =2Elinked-site-titl=
+e-link {
+    color: #d7bd20;
+}
+#button-button-section-2 =2Ebutton-style-outline:hover {
+    background-color: #d7bd20 !important;
+    border: 1px solid #d7bd20 !important;
+}
+#button-button-section-2 =2Ebutton-style-outline:hover =2Ebutton-sectio=
+n-label {
+    color: #000 !important;
+}
+#button-button-section-9 =2Ebutton-style-outline:hover {
+    background-color: #d7bd20 !important;
+    border: 1px solid #d7bd20 !important;
+}
+#button-button-section-9 =2Ebutton-style-outline:hover =2Ebutton-sectio=
+n-label {
+    color: #000 !important;
+}
+
+    </style>=20
+  <!--[if mso]>
+    <noscript>
+      <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+      </xml>
+    </noscript>
+    <![endif]-->=20
+  <!--[if (mso)|(mso 16)]>
+      <style type=3D"text/css">
+        a {text-decoration: none;}
+      </style>
+    <![endif]-->=20
+ </head>=20
+ <body style=3D"padding:0;margin:0;text-align:center;background-color:#=
+fff;">=20
+  <table role=3D"article" aria-label=3D"Thank you!!!" lang=3D"en-US" ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0" align=3D"center" id=3D"n=
+ewsletter-table" style=3D"font-size:16px;font-weight:normal;width:100%;=
+padding:0px;background-color:#fff;border-top:44px solid #fff;border-bot=
+tom:44px solid #fff;margin:0 auto;text-align:center;table-layout:fixed;=
+">=20
+   <tbody>
+    <tr>=20
+     <td align=3D"center" valign=3D"top" bgcolor=3D"#FFFFFF" id=3D"news=
+letter-cell" style=3D"font-size:1=2E125em;">=20
+      <div data-ignore-plain-text class=3D"newsletter-preview-text" sty=
+le=3D"color:transparent;display:none !important;height:0;max-height:0;m=
+ax-width:0;opacity:0;overflow:hidden;mso-hide:all;visibility:hidden;wid=
+th:0;">
+        Dear circle of TUNDI, Lieber TUNDI-Kreis:=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp=
+;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&n=
+bsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp=
+;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&n=
+bsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp=
+;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&n=
+bsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp=
+;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&n=
+bsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp=
+;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&n=
+bsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp=
+;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&n=
+bsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp=
+;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&n=
+bsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp=
+;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&n=
+bsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp=
+;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&n=
+bsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp=
+;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&n=
+bsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp=
+;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&n=
+bsp;=20
+      </div>=20
+      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"=
+594" bgcolor=3D"#100806" id=3D"newsletter-email">=20
+       <tbody>
+        <tr>=20
+         <td align=3D"center" valign=3D"top" id=3D"newsletter-email-wra=
+pper" class=3D"book-sans">=20
+          <table role=3D"presentation" width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0" id=3D"newsletter-section-header">=20
+           <tbody>
+            <tr>=20
+             <td align=3D"center" valign=3D"middle" id=3D"newsletter-se=
+ction-header-cell">=20
+              <div id=3D"header-header-section-stacked-top-0">=20
+               <table role=3D"presentation" width=3D"100%" cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0" bgcolor=3D"transparent" class=3D"sec=
+tion-content header-section header-section-stacked" style=3D"background=
+-color:transparent;">=20
+                <tbody>
+                 <tr>=20
+                  <td align=3D"center" valign=3D"middle" class=3D"secti=
+on-text-area section-content-cell padding-mobile-both" style=3D"padding=
+-top:55px;padding-right:66px;padding-bottom:33px;padding-left:66px;"> <=
+a class=3D"brand-logo-link" href=3D"https://f69e=2Eengage=2Esquarespace=
+-mail=2Ecom/r?m=3D63384ee81143ff2fe5602f3c&amp;u=3Dhttps%3A%2F%2Ftundip=
+roductions=2Eorg%2F%3Fss_source%3Dsscampaigns%26ss_campaign_id%3D633845=
+111143ff2fe55f6b8e%26ss_email_id%3D63384ee81143ff2fe5602f3c%26ss_campai=
+gn_name%3DThank%2Byou%2521%2521%2521%26ss_campaign_sent_date%3D2022-10-=
+01T14%253A30%253A19Z&amp;w=3D5a4c2142c027d8703c753f69&amp;l=3Den-US&amp=
+;s=3DqwEzgNiKNANpfrVmTtE56-fLyWI%3D" style=3D"color:#d7bd20 !important;=
+"><img class=3D"brand-logo" src=3D"https://images=2Esquarespace-cdn=2Ec=
+om/content/v1/5a4c2142c027d8703c753f69/1550609866660-QDZ3ZI7FYKLPFZOVN4=
+8C/color_logo_transparent%402x=2Epng" height=3D"94" alt=3D"TUNDI " styl=
+e=3D"font-size:=2E9375em;display:block;border:0;text-decoration:none;li=
+ne-height:0;font-weight:normal;font-family:'DejaVu Sans Condensed', 'Li=
+beration Sans', 'Nimbus Sans L', 'Helvetica Neue', Helvetica, Arial, sa=
+ns-serif;color:#fff;height:auto;max-height:94px;max-width:100%;width:au=
+to;"></a> </td>=20
+                 </tr>=20
+                </tbody>
+               </table>=20
+              </div> </td>=20
+            </tr>=20
+           </tbody>
+          </table>=20
+          <table role=3D"presentation" width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0" id=3D"newsletter-section-body">=20
+           <tbody>
+            <tr>=20
+             <td align=3D"center" valign=3D"top" width=3D"100%" id=3D"n=
+ewsletter-section-body-cell">=20
+              <div id=3D"text-text-section-0">=20
+               <table role=3D"presentation" width=3D"100%" cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0" bgcolor=3D"#EC8F0D" class=3D"text-se=
+ction section-content">=20
+                <tbody>
+                 <tr>=20
+                  <td valign=3D"top" class=3D"section-text-area section=
+-content-cell padding-mobile-both" style=3D"padding-top:11px;padding-ri=
+ght:44px;padding-bottom:11px;padding-left:44px;color:#111;background-co=
+lor:#ec8f0d;"> <p style=3D"color:inherit;font-size:1=2E125em;line-heigh=
+t:1=2E618em;margin:0 0 1=2E25em 0;font-weight:normal;margin-top:0;margi=
+n-bottom:0;font-family:'DejaVu Sans Condensed', 'Liberation Sans', 'Nim=
+bus Sans L', 'Helvetica Neue', Helvetica, Arial, sans-serif;text-align:=
+center;" class=3D""><strong><span data-letter-spacing=3D"4" style=3D"fo=
+nt-size:inherit;font-weight:inherit;line-height:inherit;margin:0;letter=
+-spacing:0=2E3em;">OCT 1, 2022 </span></strong></p> </td>=20
+                 </tr>=20
+                </tbody>
+               </table>=20
+              </div>=20
+              <div id=3D"text-text-section-1">=20
+               <table role=3D"presentation" width=3D"100%" cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0" bgcolor=3D"transparent" class=3D"tex=
+t-section section-content">=20
+                <tbody>
+                 <tr>=20
+                  <td valign=3D"top" class=3D"section-text-area section=
+-content-cell padding-mobile-both" style=3D"padding-top:11px;padding-ri=
+ght:44px;padding-bottom:11px;padding-left:44px;color:#fff;background-co=
+lor:transparent;"> <p class=3D"" style=3D"color:inherit;font-size:1=2E1=
+25em;line-height:1=2E618em;margin:0 0 1=2E25em 0;font-weight:normal;mar=
+gin-top:0;font-family:'DejaVu Sans Condensed', 'Liberation Sans', 'Nimb=
+us Sans L', 'Helvetica Neue', Helvetica, Arial, sans-serif;">Dear circl=
+e of TUNDI, Lieber TUNDI-Kreis:</p><p style=3D"color:inherit;font-size:=
+1=2E125em;line-height:1=2E618em;margin:0 0 1=2E25em 0;font-weight:norma=
+l;font-family:'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans =
+L', 'Helvetica Neue', Helvetica, Arial, sans-serif;margin-bottom:0in;" =
+class=3D"">Happy Fall! You will know that TUNDI gave something extraord=
+inary in our&nbsp;<span style=3D"font-size:inherit;font-weight:inherit;=
+line-height:inherit;margin:0;text-decoration:underline;">Wagner In Verm=
+ont&nbsp;</span>2022 Festival this past August: thank you for your gene=
+rosity of participation, attendance, and support=2E We mean it when we =
+say 'It could not have happened without you!' - every note, every ticke=
+t, every dollar, every conversation=2E</p><p style=3D"color:inherit;fon=
+t-size:1=2E125em;line-height:1=2E618em;margin:0 0 1=2E25em 0;font-weigh=
+t:normal;height:1=2E618em;font-family:'DejaVu Sans Condensed', 'Liberat=
+ion Sans', 'Nimbus Sans L', 'Helvetica Neue', Helvetica, Arial, sans-se=
+rif;margin-bottom:0in;" class=3D""></p><p style=3D"color:inherit;font-s=
+ize:1=2E125em;line-height:1=2E618em;margin:0 0 1=2E25em 0;font-weight:n=
+ormal;font-family:'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus S=
+ans L', 'Helvetica Neue', Helvetica, Arial, sans-serif;margin-bottom:0i=
+n;" class=3D"">What a rebirth - perhaps birth =E2=80=93 as our relation=
+ship to covid shifts! Half of a 'Ring Cycle', twice! With supporting le=
+ctures, recitals, a symposium! Followed by an intense, fruitful, beauti=
+ful Practicum that left our participants - and Jenna and Hugh =E2=80=93=
+ transformed, and ready to meet a fast-changing world for us to make an=
+ impact upon=2E&nbsp;</p><p class=3D"" style=3D"color:inherit;font-size=
+:1=2E125em;line-height:1=2E618em;margin:0 0 1=2E25em 0;font-weight:norm=
+al;height:1=2E618em;font-family:'DejaVu Sans Condensed', 'Liberation Sa=
+ns', 'Nimbus Sans L', 'Helvetica Neue', Helvetica, Arial, sans-serif;">=
+</p><p class=3D"" style=3D"color:inherit;font-size:1=2E125em;line-heigh=
+t:1=2E618em;margin:0 0 1=2E25em 0;font-weight:normal;font-family:'DejaV=
+u Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', 'Helvetica Neue'=
+, Helvetica, Arial, sans-serif;">Throughout October, you will have chan=
+ce to see the 2022 festival activities on Replay as they are released o=
+n our <a href=3D"https://f69e=2Eengage=2Esquarespace-mail=2Ecom/r?m=3D6=
+3384ee81143ff2fe5602f3c&amp;u=3Dhttps%3A%2F%2Fwww=2Eyoutube=2Ecom%2Fcha=
+nnel%2FUCDmAM_hOgUuRBg0iR_JfDoA&amp;w=3D5a4c2142c027d8703c753f69&amp;l=3D=
+en-US&amp;s=3DHNnjLOAZEONgFVLLqleYNZ8u5j8%3D" rel=3D"nofollow" style=3D=
+"color:#d7bd20 !important;">YouTube</a> channel=2E Subscribe to the You=
+Tube channel for instant notifications as new videos are released and k=
+eep an eye on our <a href=3D"https://f69e=2Eengage=2Esquarespace-mail=2E=
+com/r?m=3D63384ee81143ff2fe5602f3c&amp;u=3Dhttps%3A%2F%2Fwww=2Efacebook=
+=2Ecom%2Ftundiproductions&amp;w=3D5a4c2142c027d8703c753f69&amp;l=3Den-U=
+S&amp;s=3DZMmc_9e2TdBIckZA3I1hIHBC_iE%3D" rel=3D"nofollow" style=3D"col=
+or:#d7bd20 !important;">Facebook</a> and <a href=3D"https://f69e=2Eenga=
+ge=2Esquarespace-mail=2Ecom/r?m=3D63384ee81143ff2fe5602f3c&amp;u=3Dhttp=
+s%3A%2F%2Fwww=2Einstagram=2Ecom%2Fwagnerinvermont%2F%3Figshid%3DYmMyMTA=
+2M2Y%253D&amp;w=3D5a4c2142c027d8703c753f69&amp;l=3Den-US&amp;s=3D3qLnLG=
+2vdeuwS4DhzlbuX6Z__fM%3D" rel=3D"nofollow" style=3D"color:#d7bd20 !impo=
+rtant;">Instagram</a> for what's coming up=2E</p><p style=3D"color:inhe=
+rit;font-size:1=2E125em;line-height:1=2E618em;margin:0 0 1=2E25em 0;fon=
+t-weight:normal;height:1=2E618em;font-family:'DejaVu Sans Condensed', '=
+Liberation Sans', 'Nimbus Sans L', 'Helvetica Neue', Helvetica, Arial, =
+sans-serif;margin-bottom:0in;" class=3D""></p><p style=3D"color:inherit=
+;font-size:1=2E125em;line-height:1=2E618em;margin:0 0 1=2E25em 0;font-w=
+eight:normal;font-family:'DejaVu Sans Condensed', 'Liberation Sans', 'N=
+imbus Sans L', 'Helvetica Neue', Helvetica, Arial, sans-serif;margin-bo=
+ttom:0in;" class=3D""><span style=3D"font-size:inherit;font-weight:inhe=
+rit;line-height:inherit;margin:0;text-decoration:underline;">Wagner In =
+Vermont</span>&nbsp;had guests from Alabama, Brattleboro, California, D=
+eutschland (Norddeutscher Rundfunk in Hamburg), Wisconsin=2E=2E=2Eto co=
+me and see our performances of<em>Das Rheingold&nbsp;</em>and&nbsp;<em>=
+Die Walk=C3=BCre</em>=2E Some were expressing a five-decade passion for=
+ exploring Wagner, one attendee came for his requested fifteenth birthd=
+ay present: everyone, we suspect, based on many conversations and repor=
+ts, was given something significantly beyond their expectations=2E</p><=
+p style=3D"color:inherit;font-size:1=2E125em;line-height:1=2E618em;marg=
+in:0 0 1=2E25em 0;font-weight:normal;height:1=2E618em;font-family:'Deja=
+Vu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', 'Helvetica Neue=
+', Helvetica, Arial, sans-serif;margin-bottom:0in;" class=3D""></p><p s=
+tyle=3D"color:inherit;font-size:1=2E125em;line-height:1=2E618em;margin:=
+0 0 1=2E25em 0;font-weight:normal;font-family:'DejaVu Sans Condensed', =
+'Liberation Sans', 'Nimbus Sans L', 'Helvetica Neue', Helvetica, Arial,=
+ sans-serif;margin-bottom:0in;" class=3D"">&nbsp;<em>Die Walk=C3=BCre&n=
+bsp;</em>and&nbsp;<em>Siegfried&nbsp;</em>are proposed for 2023=2E We h=
+ope to show a video of our&nbsp;<em>Das Rheingold</em>&nbsp;from 2022 a=
+s a&nbsp;<em>Vorabend</em>=2E</p><p style=3D"color:inherit;font-size:1=2E=
+125em;line-height:1=2E618em;margin:0 0 1=2E25em 0;font-weight:normal;he=
+ight:1=2E618em;font-family:'DejaVu Sans Condensed', 'Liberation Sans', =
+'Nimbus Sans L', 'Helvetica Neue', Helvetica, Arial, sans-serif;margin-=
+bottom:0in;" class=3D""></p><p style=3D"color:inherit;font-size:1=2E125=
+em;line-height:1=2E618em;margin:0 0 1=2E25em 0;font-weight:normal;font-=
+family:'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', 'He=
+lvetica Neue', Helvetica, Arial, sans-serif;margin-bottom:0in;" class=3D=
+"">We tremble at the prospect of&nbsp;<em>G=C3=B6tterd=C3=A4mmerung</em=
+>&nbsp;for 2024 (people are already asking!): the scale and artistic de=
+mands require resources that we ask you to help us find=2E Please hear =
+this as an ongoing call for large donations! You do not have to be a Ki=
+ng, or Bavarian, just a little bit 'mad', and continue to believe in wh=
+at we are essaying=2E</p><p style=3D"color:inherit;font-size:1=2E125em;=
+line-height:1=2E618em;margin:0 0 1=2E25em 0;font-weight:normal;height:1=
+=2E618em;font-family:'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbu=
+s Sans L', 'Helvetica Neue', Helvetica, Arial, sans-serif;margin-bottom=
+:0in;" class=3D""></p><p style=3D"color:inherit;font-size:1=2E125em;lin=
+e-height:1=2E618em;margin:0 0 1=2E25em 0;font-weight:normal;font-family=
+:'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', 'Helvetic=
+a Neue', Helvetica, Arial, sans-serif;margin-bottom:0in;" class=3D"">So=
+ please speak well of us in your artistic, creative, humanistic network=
+s=2E We continue to believe in our mission to take on&nbsp;</p><p style=
+=3D"color:inherit;font-size:1=2E125em;line-height:1=2E618em;margin:0 0 =
+1=2E25em 0;font-weight:normal;height:1=2E618em;font-family:'DejaVu Sans=
+ Condensed', 'Liberation Sans', 'Nimbus Sans L', 'Helvetica Neue', Helv=
+etica, Arial, sans-serif;text-align:center;margin-bottom:0in;" class=3D=
+""></p><p style=3D"color:inherit;font-size:1=2E125em;line-height:1=2E61=
+8em;margin:0 0 1=2E25em 0;font-weight:normal;font-family:'DejaVu Sans C=
+ondensed', 'Liberation Sans', 'Nimbus Sans L', 'Helvetica Neue', Helvet=
+ica, Arial, sans-serif;text-align:center;margin-bottom:0in;" class=3D""=
+><strong>the deepest emotions and the most burning issues of being huma=
+n=2E</strong></p><p style=3D"color:inherit;font-size:1=2E125em;line-hei=
+ght:1=2E618em;margin:0 0 1=2E25em 0;font-weight:normal;height:1=2E618em=
+;font-family:'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L=
+', 'Helvetica Neue', Helvetica, Arial, sans-serif;margin-bottom:0in;" c=
+lass=3D""></p><p style=3D"color:inherit;font-size:1=2E125em;line-height=
+:1=2E618em;margin:0 0 1=2E25em 0;font-weight:normal;font-family:'DejaVu=
+ Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', 'Helvetica Neue',=
+ Helvetica, Arial, sans-serif;margin-bottom:0in;" class=3D"">We are con=
+fident you already see TUNDI's commitment to excellence and artistic di=
+scovery=2E</p><p style=3D"color:inherit;font-size:1=2E125em;line-height=
+:1=2E618em;margin:0 0 1=2E25em 0;font-weight:normal;height:1=2E618em;fo=
+nt-family:'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', =
+'Helvetica Neue', Helvetica, Arial, sans-serif;margin-bottom:0in;" clas=
+s=3D""></p><p style=3D"color:inherit;font-size:1=2E125em;line-height:1=2E=
+618em;margin:0 0 1=2E25em 0;font-weight:normal;font-family:'DejaVu Sans=
+ Condensed', 'Liberation Sans', 'Nimbus Sans L', 'Helvetica Neue', Helv=
+etica, Arial, sans-serif;margin-bottom:0in;" class=3D"">With wishes tha=
+t are grateful and optimistic</p><p style=3D"color:inherit;font-size:1=2E=
+125em;line-height:1=2E618em;margin:0 0 1=2E25em 0;font-weight:normal;fo=
+nt-family:'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', =
+'Helvetica Neue', Helvetica, Arial, sans-serif;margin-bottom:0in;" clas=
+s=3D"">Jenna and Hugh<br></p> </td>=20
+                 </tr>=20
+                </tbody>
+               </table>=20
+              </div>=20
+              <div id=3D"button-button-section-2">=20
+               <table role=3D"presentation" width=3D"100%" cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0" bgcolor=3D"#100806" class=3D"button-=
+section section-content" style=3D"width:100%;background-color:#100806;"=
+>=20
+                <tbody>
+                 <tr>=20
+                  <td align=3D"center" valign=3D"middle" class=3D"secti=
+on-content-cell section-text-area" style=3D"padding-top:22px;padding-ri=
+ght:22px;padding-bottom:22px;padding-left:22px;"> <a href=3D"https://f6=
+9e=2Eengage=2Esquarespace-mail=2Ecom/r?m=3D63384ee81143ff2fe5602f3c&amp=
+;u=3Dhttps%3A%2F%2Ftundiproductions=2Eorg%2Fnew-page-68%3Fss_source%3Ds=
+scampaigns%26ss_campaign_id%3D633845111143ff2fe55f6b8e%26ss_email_id%3D=
+63384ee81143ff2fe5602f3c%26ss_campaign_name%3DThank%2Byou%2521%2521%252=
+1%26ss_campaign_sent_date%3D2022-10-01T14%253A30%253A19Z&amp;w=3D5a4c21=
+42c027d8703c753f69&amp;l=3Den-US&amp;s=3D2KqmkrGXcKLIwaJnGG__s3_6A0o%3D=
+" class=3D"button-section-box button-style-rounded" style=3D"color:#d7b=
+d20 !important;display:inline-block;line-height:11px;margin:0;mso-paddi=
+ng-alt:0;text-align:center;text-decoration:none;transition:=2E15s;width=
+:auto;background-color:#d7bd20;border:1px solid #d7bd20;border-radius:5=
+=2E5px;padding:16px 0;"><i class=3D"button-section-mso" style=3D"letter=
+-spacing:29=2E92px;mso-font-width:-100%;mso-text-raise:26=2E95000000000=
+0003px;">&nbsp;</i><span class=3D"button-section-label" style=3D"font-w=
+eight:inherit;line-height:inherit;margin:0;font-family:'DejaVu Sans Con=
+densed', 'Liberation Sans', 'Nimbus Sans L', 'Helvetica Neue', Helvetic=
+a, Arial, sans-serif;color:#100806;display:inline-block;font-size:11px;=
+min-width:1px;mso-text-raise:15=2E95px;"><span data-letter-spacing=3D"3=
+" style=3D"font-size:inherit;font-weight:inherit;line-height:inherit;ma=
+rgin:0;letter-spacing:0=2E2em;">More information about making a donatio=
+n to TUNDI</span></span><i class=3D"button-section-mso" style=3D"letter=
+-spacing:29=2E92px;mso-font-width:-100%;mso-text-raise:26=2E95000000000=
+0003px;">&nbsp;</i></a> </td>=20
+                 </tr>=20
+                </tbody>
+               </table>=20
+              </div>=20
+              <div id=3D"spacer-spacer-section-3">=20
+               <table role=3D"presentation" width=3D"100%" cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0" bgcolor=3D"#EC8F0D" class=3D"spacer-=
+section section-content">=20
+                <tbody>
+                 <tr>=20
+                  <td align=3D"center" valign=3D"middle" class=3D"secti=
+on-content-cell" height=3D"22" style=3D"height:22px;"> </td>=20
+                 </tr>=20
+                </tbody>
+               </table>=20
+              </div>=20
+              <div id=3D"text-text-section-4">=20
+               <table role=3D"presentation" width=3D"100%" cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0" bgcolor=3D"transparent" class=3D"tex=
+t-section section-content">=20
+                <tbody>
+                 <tr>=20
+                  <td valign=3D"top" class=3D"section-text-area section=
+-content-cell padding-mobile-both" style=3D"padding-top:11px;padding-ri=
+ght:44px;padding-bottom:11px;padding-left:44px;color:#fff;background-co=
+lor:transparent;"> <p style=3D"color:inherit;font-size:1=2E125em;line-h=
+eight:1=2E618em;margin:0 0 1=2E25em 0;font-weight:normal;margin-top:0;f=
+ont-family:'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L',=
+ 'Helvetica Neue', Helvetica, Arial, sans-serif;text-align:center;" cla=
+ss=3D"">~ note about gifts ~</p><p class=3D"" style=3D"color:inherit;fo=
+nt-size:1=2E125em;line-height:1=2E618em;margin:0 0 1=2E25em 0;font-weig=
+ht:normal;margin-bottom:0;font-family:'DejaVu Sans Condensed', 'Liberat=
+ion Sans', 'Nimbus Sans L', 'Helvetica Neue', Helvetica, Arial, sans-se=
+rif;">We here at TUNDI love the idea of sending you a thank you gift fo=
+r your donation, but we are guessing that not all of you need another p=
+en or coffee mug or tote bag to add to your collection of collections=2E=
+ We would like to try an experiment=2E If you have made a donation and =
+you would like something in return, what would it be? Perhaps a "thank =
+you" is perfect, or maybe you'd like to visit a rehearsal or to host a =
+private house concert or have a personal "ho-jo-to-ho" recorded on your=
+ voicemail greeting? Be creative with your requests and send them with =
+your name and contact information to <a href=3D"mailto:info@tundiproduc=
+tions=2Eorg" target=3D"_blank" rel=3D"nofollow noopener noreferrer" sty=
+le=3D"color:#d7bd20 !important;">info@tundiproductions=2Eorg</a> and we=
+ will see what we can do=2E And if a TUNDI coffee mug is going to be<st=
+rong> THE THING</strong> that sparks joy for you every morning, let us =
+know that too! <br></p> </td>=20
+                 </tr>=20
+                </tbody>
+               </table>=20
+              </div>=20
+              <div id=3D"spacer-spacer-section-5">=20
+               <table role=3D"presentation" width=3D"100%" cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0" bgcolor=3D"#EC8F0D" class=3D"spacer-=
+section section-content">=20
+                <tbody>
+                 <tr>=20
+                  <td align=3D"center" valign=3D"middle" class=3D"secti=
+on-content-cell" height=3D"22" style=3D"height:22px;"> </td>=20
+                 </tr>=20
+                </tbody>
+               </table>=20
+              </div>=20
+              <div id=3D"text-text-section-6">=20
+               <table role=3D"presentation" width=3D"100%" cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0" bgcolor=3D"transparent" class=3D"tex=
+t-section section-content">=20
+                <tbody>
+                 <tr>=20
+                  <td valign=3D"top" class=3D"section-text-area section=
+-content-cell padding-mobile-both" style=3D"padding-top:11px;padding-ri=
+ght:44px;padding-bottom:11px;padding-left:44px;color:#fff;background-co=
+lor:transparent;"> <p style=3D"color:inherit;font-size:1=2E125em;line-h=
+eight:1=2E618em;margin:0 0 1=2E25em 0;font-weight:normal;height:1=2E618=
+em;margin-top:0;font-family:'DejaVu Sans Condensed', 'Liberation Sans',=
+ 'Nimbus Sans L', 'Helvetica Neue', Helvetica, Arial, sans-serif;text-a=
+lign:center;" class=3D""></p><p style=3D"color:inherit;font-size:1=2E12=
+5em;line-height:1=2E618em;margin:0 0 1=2E25em 0;font-weight:normal;font=
+-family:'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', 'H=
+elvetica Neue', Helvetica, Arial, sans-serif;text-align:center;" class=3D=
+"">We remind you that we are here to address&nbsp;</p><p style=3D"color=
+:inherit;font-size:1=2E125em;line-height:1=2E618em;margin:0 0 1=2E25em =
+0;font-weight:normal;font-family:'DejaVu Sans Condensed', 'Liberation S=
+ans', 'Nimbus Sans L', 'Helvetica Neue', Helvetica, Arial, sans-serif;t=
+ext-align:center;margin-bottom:0in;" class=3D""><strong>'the deepest em=
+otions and the most burning issues of being human=2E'</strong></p><p cl=
+ass=3D"" style=3D"color:inherit;font-size:1=2E125em;line-height:1=2E618=
+em;margin:0 0 1=2E25em 0;font-weight:normal;height:1=2E618em;margin-bot=
+tom:0;font-family:'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus S=
+ans L', 'Helvetica Neue', Helvetica, Arial, sans-serif;"></p> </td>=20
+                 </tr>=20
+                </tbody>
+               </table>=20
+              </div>=20
+              <div id=3D"text-text-section-7">=20
+               <table role=3D"presentation" width=3D"100%" cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0" bgcolor=3D"transparent" class=3D"tex=
+t-section section-content">=20
+                <tbody>
+                 <tr>=20
+                  <td valign=3D"top" class=3D"section-text-area section=
+-content-cell padding-mobile-both" style=3D"padding-top:11px;padding-ri=
+ght:44px;padding-bottom:11px;padding-left:44px;color:#fff;background-co=
+lor:transparent;"> <p class=3D"" style=3D"color:inherit;font-size:1=2E1=
+25em;line-height:1=2E618em;margin:0 0 1=2E25em 0;font-weight:normal;mar=
+gin-top:0;font-family:'DejaVu Sans Condensed', 'Liberation Sans', 'Nimb=
+us Sans L', 'Helvetica Neue', Helvetica, Arial, sans-serif;">with a com=
+mitment to making an immense difference, we are:</p><p style=3D"color:i=
+nherit;font-size:1=2E125em;line-height:1=2E618em;margin:0 0 1=2E25em 0;=
+font-weight:normal;font-family:'DejaVu Sans Condensed', 'Liberation San=
+s', 'Nimbus Sans L', 'Helvetica Neue', Helvetica, Arial, sans-serif;tex=
+t-align:center;margin-bottom:0in;" class=3D""><span data-letter-spacing=
+=3D"5" style=3D"font-size:inherit;font-weight:inherit;line-height:inher=
+it;margin:0;letter-spacing:0=2E4em;">TUNDI</span></p><p class=3D"" styl=
+e=3D"color:inherit;font-size:1=2E125em;line-height:1=2E618em;margin:0 0=
+ 1=2E25em 0;font-weight:normal;height:1=2E618em;margin-bottom:0;font-fa=
+mily:'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', 'Helv=
+etica Neue', Helvetica, Arial, sans-serif;"></p> </td>=20
+                 </tr>=20
+                </tbody>
+               </table>=20
+              </div>=20
+              <div id=3D"spacer-spacer-section-8">=20
+               <table role=3D"presentation" width=3D"100%" cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0" bgcolor=3D"transparent" class=3D"spa=
+cer-section section-content">=20
+                <tbody>
+                 <tr>=20
+                  <td align=3D"center" valign=3D"middle" class=3D"secti=
+on-content-cell" height=3D"22" style=3D"height:22px;"> </td>=20
+                 </tr>=20
+                </tbody>
+               </table>=20
+              </div>=20
+              <div id=3D"button-button-section-9">=20
+               <table role=3D"presentation" width=3D"100%" cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0" bgcolor=3D"transparent" class=3D"but=
+ton-section section-content" style=3D"width:100%;background-color:trans=
+parent;">=20
+                <tbody>
+                 <tr>=20
+                  <td align=3D"left" valign=3D"middle" class=3D"section=
+-content-cell section-text-area padding-mobile-both" style=3D"padding-t=
+op:11px;padding-right:66px;padding-bottom:88px;padding-left:66px;"> <a =
+href=3D"https://f69e=2Eengage=2Esquarespace-mail=2Ecom/r?m=3D63384ee811=
+43ff2fe5602f3c&amp;u=3Dhttps%3A%2F%2Ftundiproductions=2Eorg%2Fcontact%3=
+Fss_source%3Dsscampaigns%26ss_campaign_id%3D633845111143ff2fe55f6b8e%26=
+ss_email_id%3D63384ee81143ff2fe5602f3c%26ss_campaign_name%3DThank%2Byou=
+%2521%2521%2521%26ss_campaign_sent_date%3D2022-10-01T14%253A30%253A19Z&=
+amp;w=3D5a4c2142c027d8703c753f69&amp;l=3Den-US&amp;s=3DqSI-AuMsMP2QxFeo=
+UcvGHmenR1k%3D" class=3D"button-section-box button-style-outline" style=
+=3D"color:#d7bd20 !important;display:inline-block;line-height:11px;marg=
+in:0;mso-padding-alt:0;text-align:center;text-decoration:none;transitio=
+n:=2E15s;width:auto;background-color:transparent;border:1px solid #d7bd=
+20;padding:16px 0;"><i class=3D"button-section-mso" style=3D"letter-spa=
+cing:29=2E92px;mso-font-width:-100%;mso-text-raise:26=2E950000000000003=
+px;">&nbsp;</i><span class=3D"button-section-label" style=3D"font-weigh=
+t:inherit;line-height:inherit;margin:0;font-family:'DejaVu Sans Condens=
+ed', 'Liberation Sans', 'Nimbus Sans L', 'Helvetica Neue', Helvetica, A=
+rial, sans-serif;color:#d7bd20;display:inline-block;font-size:11px;min-=
+width:1px;mso-text-raise:15=2E95px;"><strong>GET IN TOUCH</strong></spa=
+n><i class=3D"button-section-mso" style=3D"letter-spacing:29=2E92px;mso=
+-font-width:-100%;mso-text-raise:26=2E950000000000003px;">&nbsp;</i></a=
+> </td>=20
+                 </tr>=20
+                </tbody>
+               </table>=20
+              </div> </td>=20
+            </tr>=20
+           </tbody>
+          </table>=20
+          <table role=3D"presentation" width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0" id=3D"newsletter-section-footer">=20
+           <tbody>
+            <tr>=20
+             <td align=3D"center" valign=3D"top" id=3D"newsletter-secti=
+on-footer-cell">=20
+              <div id=3D"footer-footer-section-stacked-top-0">=20
+               <table role=3D"presentation" width=3D"100%" cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0" bgcolor=3D"transparent" class=3D"foo=
+ter-section footer-section-stacked section-content" style=3D"background=
+-color:transparent;">=20
+                <tbody>
+                 <tr>=20
+                  <td align=3D"center" valign=3D"top" class=3D"section-=
+text-area section-content-cell padding-mobile-both" style=3D"padding-to=
+p:33px;padding-right:66px;padding-bottom:11px;padding-left:66px;"> <a c=
+lass=3D"brand-logo-link" href=3D"https://f69e=2Eengage=2Esquarespace-ma=
+il=2Ecom/r?m=3D63384ee81143ff2fe5602f3c&amp;u=3Dhttps%3A%2F%2Ftundiprod=
+uctions=2Eorg%2F%3Fss_source%3Dsscampaigns%26ss_campaign_id%3D633845111=
+143ff2fe55f6b8e%26ss_email_id%3D63384ee81143ff2fe5602f3c%26ss_campaign_=
+name%3DThank%2Byou%2521%2521%2521%26ss_campaign_sent_date%3D2022-10-01T=
+14%253A30%253A19Z&amp;w=3D5a4c2142c027d8703c753f69&amp;l=3Den-US&amp;s=3D=
+qwEzgNiKNANpfrVmTtE56-fLyWI%3D" style=3D"color:#d7bd20 !important;"><im=
+g class=3D"brand-logo" src=3D"https://images=2Esquarespace-cdn=2Ecom/co=
+ntent/v1/5a4c2142c027d8703c753f69/1550609866660-QDZ3ZI7FYKLPFZOVN48C/co=
+lor_logo_transparent%402x=2Epng" height=3D"22" alt=3D"TUNDI " style=3D"=
+font-size:=2E9375em;border:0;text-decoration:none;line-height:0;font-we=
+ight:normal;font-family:'DejaVu Sans Condensed', 'Liberation Sans', 'Ni=
+mbus Sans L', 'Helvetica Neue', Helvetica, Arial, sans-serif;margin-bot=
+tom:13=2E75px;color:#fff;display:inline;height:auto;max-height:22px;max=
+-width:100%;width:auto;"></a> <p class=3D"footer-company-info" style=3D=
+"line-height:1=2E618em;font-weight:normal;font-family:'DejaVu Sans Cond=
+ensed', 'Liberation Sans', 'Nimbus Sans L', 'Helvetica Neue', Helvetica=
+, Arial, sans-serif;color:#fff;font-size:11px;margin:0 0 13=2E75px 0;pa=
+dding:0;"> <a style=3D"color:#fff;text-decoration:none;font-size:inheri=
+t;font-family:inherit;font-weight:inherit;line-height:inherit;cursor:de=
+fault;">TUNDI Incorporated, 71 Green Street, Brattleboro, VT, 05301, Un=
+ited States</a> </p> <p class=3D"footer-links" style=3D"line-height:1=2E=
+618em;font-weight:normal;font-family:'DejaVu Sans Condensed', 'Liberati=
+on Sans', 'Nimbus Sans L', 'Helvetica Neue', Helvetica, Arial, sans-ser=
+if;color:#fff;font-size:11px;margin:0 0 13=2E75px 0;padding:0;"> Powere=
+d by <a href=3D"https://f69e=2Eengage=2Esquarespace-mail=2Ecom/r?m=3D63=
+384ee81143ff2fe5602f3c&amp;u=3Dhttps%3A%2F%2Fwww=2Esquarespace=2Ecom%3F=
+channel%3Dproduct_refer%26subchannel%3Dcustomer%26source%3Demail_campai=
+gns_button%26campaign%3D5a4c2142c027d8703c753f69%26utm_medium%3Dproduct=
+_refer%26utm_source%3Demail_campaigns_button%26ss_source%3Dsscampaigns%=
+26ss_campaign_id%3D633845111143ff2fe55f6b8e%26ss_email_id%3D63384ee8114=
+3ff2fe5602f3c%26ss_campaign_name%3DThank%2Byou%2521%2521%2521%26ss_camp=
+aign_sent_date%3D2022-10-01T14%253A30%253A19Z&amp;w=3D5a4c2142c027d8703=
+c753f69&amp;l=3Den-US&amp;s=3DKJHy8id72Gz0UlqaAV6NACAoAm4%3D" class=3D"=
+sqsp-link" style=3D"color:#fff;text-decoration:underline;display:inline=
+-block;">Squarespace</a> </p> <p class=3D"footer-links" style=3D"line-h=
+eight:1=2E618em;font-weight:normal;margin-bottom:0;font-family:'DejaVu =
+Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', 'Helvetica Neue', =
+Helvetica, Arial, sans-serif;color:#fff;font-size:11px;margin:0 0 13=2E=
+75px 0;padding:0;"> <a href=3D"https://f69e=2Eengage=2Esquarespace-mail=
+=2Ecom/r?m=3D63384ee81143ff2fe5602f3c&amp;u=3Dhttps%3A%2F%2Fcampaign-pr=
+eferences=2Ecom%2Funsubscribe%2Fv5KKbGyDoyppQnpSydxnn0PX3wuWyTSB_IKu1WJ=
+-zDi87IeAoYKfKrL1PBJsEKhdjUBRK5pKm0R7bu1Tuobd3pTmfwE7hIhElKy8FBTCPiTN_E=
+_AMaklGYDoheOLBJAXX51vZbULEqDrUuALrRIgSwRJABL7tyTXwvFCGJlbAHDHp2dYmzQym=
+CCHLOtthL3xJPnT3UbhVmazEI0HfWsP9kj1xDK3Qma7sAHNwY-99VYHSys1v6HY-Fp9FPxx=
+2W--ja4cHWN7HiYC0naYWomPaRE1lGvSOun30PCRj8CuGL7R&amp;w=3D5a4c2142c027d8=
+703c753f69&amp;l=3Den-US&amp;s=3DH1iYeAkm-szyg3Ps0Im-sdCvQRk%3D" class=3D=
+"unsubscribe-link" style=3D"text-decoration:underline;color:#fff;"> <sp=
+an class=3D"unsubscribe-link-text" style=3D"font-size:inherit;font-weig=
+ht:inherit;line-height:inherit;margin:0;">Unsubscribe</span> </a> </p> =
+</td>=20
+                 </tr>=20
+                </tbody>
+               </table>=20
+              </div> </td>=20
+            </tr>=20
+           </tbody>
+          </table> </td>=20
+        </tr>=20
+       </tbody>
+      </table> </td>=20
+    </tr>=20
+   </tbody>
+  </table> =20
+  <img src=3D"https://f69e=2Eengage=2Esquarespace-mail=2Ecom/v2/a=2Egif=
+?m=3D63384ee81143ff2fe5602f3c&amp;w=3D5a4c2142c027d8703c753f69&amp;s=3D=
+6moi5lmODXGflgirlKbtlOk7TbU%3D" alt=3D"" width=3D"0" height=3D"0">
+ </body>
+</html>
+------4A58967E880F45EC8F88D68957FC0A15--
+

@@ -1,0 +1,861 @@
+Delivered-To: joshua.guttman@gmail.com
+Received: by 2002:ab2:6758:0:b0:164:a31:e3ae with SMTP id h24csp778634lqo;
+        Sun, 2 Oct 2022 10:22:12 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5gzawAap2O27qL8jzkSiIV/+0O81pNAFm+u8v8RmzXEKo9qcLbgr+QxIRn7PhaxUXbXkcO
+X-Received: by 2002:a17:902:9a07:b0:178:8024:1393 with SMTP id v7-20020a1709029a0700b0017880241393mr18370141plp.128.1664731332347;
+        Sun, 02 Oct 2022 10:22:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664731332; cv=none;
+        d=google.com; s=arc-20160816;
+        b=pDEh2DPjlt8BkQBVJ4Pb5NMYNLNiJqrgxpCJcuwxB6D7o+eHliYfsNIOYVvmHhg77F
+         eqe9Gu2h5A1aqk358D3cwl01CN27tePIoXQbcSeeClvcyRUTPmF+v7KUCqRHayd+Z9kr
+         1dnkAfadlsC74Sm6qrJC4VpuGSXLAd8SXD8hB1RTHMjYUL9rDk/t4gbcb1kWW3cpP9d2
+         maiG/HdtjaM47rePYvXlB+2siao1qBemnwMLQQo6dxGNArbFujEX71dWcXa8WaMZ2AKu
+         4aVhXM0zFykmDbsx0tDW/McUJTKaCns9F3t93d9IelmhUtTuu9BWSeMmzy9u2dkHi3CF
+         5Ntg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:to:reply-to:subject:message-id:mime-version:from
+         :date:dkim-signature:dkim-signature;
+        bh=znHOnSEhuD0RlwkrhGUAtbCurMZ0FqOn/wTfnUW1+TI=;
+        b=jWM/wGS7fTc+6OTGFNxr0cmoJzoDJtyRDtgXdfrkBAM9miJMKtCU+BAb45BKIpsevQ
+         9DAzDORbint3uTyzNBBpZN5clFD1N6KWM3rmGr58oUNlMvscF2hkcM1YYUnhAKQlvCII
+         n3dqAuDwNNFLhdpy3mpV49OYR1qep/PuR+hr1DNdQ3KcoKwlB2dI9e5Ykyt5hawW14Tk
+         Dg4n+HVkKgdYm1r1Rej41tzlzBPogPApYKb3oPPMjDlY59F8CFlCDgWfrk4QeE77Y1bz
+         APFTVHcV5CzBHXixXV802lrWOxXXeSLThd0Uh3ntnwNJThYhkuq0hHls9JUbldvhyDPh
+         4mTg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@uptontea.emailpowerreviews.com header.s=m1 header.b=oqMH5ugd;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=l9m2w+H3;
+       spf=pass (google.com: domain of bounces+22664553-1ec7-joshua.guttman=gmail.com@pr.uptontea.emailpowerreviews.com designates 149.72.217.10 as permitted sender) smtp.mailfrom="bounces+22664553-1ec7-joshua.guttman=gmail.com@pr.uptontea.emailpowerreviews.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=emailpowerreviews.com
+Return-Path: <bounces+22664553-1ec7-joshua.guttman=gmail.com@pr.uptontea.emailpowerreviews.com>
+Received: from o5.ptr448.emailpowerreviews.com (o5.ptr448.emailpowerreviews.com. [149.72.217.10])
+        by mx.google.com with ESMTPS id h16-20020a170902f55000b001769e08c554si931495plf.545.2022.10.02.10.22.11
+        for <joshua.guttman@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 02 Oct 2022 10:22:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+22664553-1ec7-joshua.guttman=gmail.com@pr.uptontea.emailpowerreviews.com designates 149.72.217.10 as permitted sender) client-ip=149.72.217.10;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@uptontea.emailpowerreviews.com header.s=m1 header.b=oqMH5ugd;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=l9m2w+H3;
+       spf=pass (google.com: domain of bounces+22664553-1ec7-joshua.guttman=gmail.com@pr.uptontea.emailpowerreviews.com designates 149.72.217.10 as permitted sender) smtp.mailfrom="bounces+22664553-1ec7-joshua.guttman=gmail.com@pr.uptontea.emailpowerreviews.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=emailpowerreviews.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=uptontea.emailpowerreviews.com;
+	h=content-type:from:mime-version:subject:reply-to:x-feedback-id:to:
+	list-unsubscribe:cc;
+	s=m1; bh=znHOnSEhuD0RlwkrhGUAtbCurMZ0FqOn/wTfnUW1+TI=;
+	b=oqMH5ugdV8A7xsT6DvFfhVg74dhKtn0j0vn50o48MOvjvbhrFM6mcwopiCehdntisKfa
+	T9O2W5QyZYPakJlTfvS3/F9cgOfVRkgC1IVDHOGpKctNDRHjaAqR9QnoDGnYa3tZ1kIYD7
+	5SjkWtQAvBUVxVXZWsAMBW6RS9ulHYkHY=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:reply-to:x-feedback-id:to:
+	list-unsubscribe:cc;
+	s=smtpapi; bh=znHOnSEhuD0RlwkrhGUAtbCurMZ0FqOn/wTfnUW1+TI=;
+	b=l9m2w+H3Fw5vNcedLTflxd1TF4iImTunbYg1NYa+Zv0bycnSi36RFke+o5rcvmh6tib1
+	gfR+DikJvtdenHjdGNroGvusQkVkO3OakZVaLzxgxj3IUetXYMEFNshisJ3I411+N8JOXk
+	OH5jmAOYu3VpcvDzuqkeF3tBLMua7Xk/E=
+Received: by filterdrecv-b56db8d66-82nv4 with SMTP id filterdrecv-b56db8d66-82nv4-1-6339956F-10
+        2022-10-02 13:43:11.816001042 +0000 UTC m=+402908.128901852
+Received: from MjI2NjQ1NTM (unknown)
+	by geopod-ismtpd-6-1 (SG) with HTTP
+	id eOm3hgwKRmq12LeNYPnIew
+	Sun, 02 Oct 2022 13:43:11.803 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=e00fa95125e76dc9435d4c76919901b762b5211374ed8a7482861b360e6d
+Date: Sun, 02 Oct 2022 17:22:00 +0000 (UTC)
+From: The Staff at Upton Tea Imports
+	<uptontea@pr.uptontea.emailpowerreviews.com>
+Mime-Version: 1.0
+Message-ID: <eOm3hgwKRmq12LeNYPnIew@geopod-ismtpd-6-1>
+Subject: How Do You Like Your Tea? Write a Review!
+Reply-To: The Staff at Upton Tea Imports <feedback@email.uptontea.com>
+X-Feedback-ID: 22664553:SG
+X-SG-EID: 
+ =?us-ascii?Q?12A1JHUYRyxUFBhDPG+iEDAHrqAguTfkgZCPjIkpCjy5e1417tdCRWeD9yaNRj?=
+ =?us-ascii?Q?xdxe9w7X1NfW8F7E=2FjDiXN5pR016rm2vq5OmPVX?=
+ =?us-ascii?Q?7F1MTPIuoRNU=2FU=2FgsE0DdEOfO3GnK44FrrBvvPX?=
+ =?us-ascii?Q?67M9dQj512uYeXJQsuQ80Hw8fSNbamjf4wTQlHC?=
+ =?us-ascii?Q?MfZZGmwRFM6RRH=2FodXnO0QlzQXaZRJ2gv5SionX?=
+ =?us-ascii?Q?QoLULt=2FhYILn+Pgv1vKq9qAWTbpDYphghE7aj7U?=
+ =?us-ascii?Q?pISMZIbNEbN=2FcAE+=2FZqQrrlF=2FQpTKGjD62rI2C2?=
+ =?us-ascii?Q?DYfg5CP7j8WFPc8xCMZpbmNe?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsbzPRiWh+p6qH5Vu7UsY00wZ1vyFsQd5CLHvy4+Xi6p?=
+ =?us-ascii?Q?4nT5XWggEtvZm49CQC8jklS3380TnmZ39D=2F2eML?=
+ =?us-ascii?Q?LbeHrjG037vlEkr7HIoCQ=2Fj8RoHgmVsxygscM4y?=
+ =?us-ascii?Q?hLajrEN57WDyd2JN0SpCTySh4s4zgsB=2F27=2Fv6Cm?=
+ =?us-ascii?Q?QNLDOISy3pvEovMaxCtZjfZj7EcbmRDRWgqNnbW?=
+ =?us-ascii?Q?pK0Vwoc=2FEs9ttH3fWLqNH3Sa6pyJ4VJoDpwfi6M?=
+ =?us-ascii?Q?qcScJpasYkSBpybW2KyTlCYF9Ms65DtiD0GQ7hJ?=
+ =?us-ascii?Q?Ks47oAj2kWF4pqlSosA9CLWFu2ev9ahNfpvdSZm?=
+ =?us-ascii?Q?0LhBblvfi5tfBIckg6z0vLFTSkRDcVDlDvh6ZqU?=
+ =?us-ascii?Q?XJhqUji92EReeERsC522MlsnDebVKV1XYUAsZNY?=
+ =?us-ascii?Q?KNAT9vdb1XpK2XLv583s87T+2uOJgDhZFBi?=
+To: joshua.guttman@gmail.com
+X-Entity-ID: 05DySAtLktSjE7H178LVqw==
+List-Unsubscribe: 
+ =?us-ascii?Q?=3Cmailto=3Aunsubscribe=40pr=2Euptontea=2Eemailpowerreviews=2Ecom=3Fsubject=3D?=
+ =?us-ascii?Q?22664553=2EIeedT0czhNdgGOxwWIpCaw0Fc8os0G?=
+ =?us-ascii?Q?zrI9tIDzAS8I9oMDAwdTAwMABHnCBDz68UH2ruy?=
+ =?us-ascii?Q?OrrQ5kWb-WQ4BxFvec5t9AQG464FTywru6ElCxp?=
+ =?us-ascii?Q?jEamSZ6TaXgQksTK3AzT2W8vF-pqLlZom7ivdIO?=
+ =?us-ascii?Q?duEMWW2QqzF0LJcEe0Rici6EV1j5i7cXrRA=3D=3D=2EA?=
+ =?us-ascii?Q?uFdDZBMilEkPaCeZnUzLmRoEOeOsEWKupiSWgQp?=
+ =?us-ascii?Q?jlRoMDAwdTAwMKa77eWmTSJOaBweTs8oj2C0Q1s?=
+ =?us-ascii?Q?lyTqTEyfSf-Zumsdd5cMQcxtwoWg26X3zTIyo3b?=
+ =?us-ascii?Q?BBwzz5cYK50Wg1kLeVZErkdKkfXTdAXE4FFdikM?=
+ =?us-ascii?Q?mB=5Fptbls1krMuj-MTVyuPQG1oCTM58s5ivDpqHg?=
+ =?us-ascii?Q?BVKxnqdLTDK1QBjEGFFDUjHfRXzC2MpRkaz-ExS?=
+ =?us-ascii?Q?1V6m1x2x2nmnSHmbrOcCYIAXNIqdOfjIiz0=5FUan?=
+ =?us-ascii?Q?D6rhHqSDMWvjYUFJa9XMueox4aAdgnO75iRu4tM?=
+ =?us-ascii?Q?83=5FBmaVLAiGzFWYrZ32J4FUKU1q1b47s3Pt04up?=
+ =?us-ascii?Q?Kiw0zVu9iGOqIPcnHAmPRdlKVTQMFLQtRvp05wn?=
+ =?us-ascii?Q?giVNdJKdYCwKL9cR-0r6J2w7aw=5FDBIqNh8pMjid?=
+ =?us-ascii?Q?aggS7xnDJBJTZ0eTh5WY1nWMdeIMS9I0RhQTpAU?=
+ =?us-ascii?Q?KQCWduide-pE4ArMUzS5WjmqfUyRv-fqNKlLcFW?=
+ =?us-ascii?Q?z-Jk4d3tKGcycSeolllolOIU0bWKeD-WbRkqzTr?=
+ =?us-ascii?Q?8WWyF8XbVtAbLqJquJ5-pPnybInPKPgUsbks9Dh?=
+ =?us-ascii?Q?Xlb92asnVe4FbMAkZEvHlDqUDWiFAonlbMBLD5L?=
+ =?us-ascii?Q?5m37hiPfBCyDsryy0J8CZgtlVURpZkBLfqRKcid?=
+ =?us-ascii?Q?v1g02HGqyfSBlZMbNcQF4Vh9gQPrDA=3D=3D=3E?=
+
+--e00fa95125e76dc9435d4c76919901b762b5211374ed8a7482861b360e6d
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Mime-Version: 1.0
+
+
+
+Hello Joshua,
+
+Thank you for your tea order! We hope that you are enjoying your tea and in=
+vite you to share your feedback about your recent purchase. Your valued com=
+ments could help a fellow valued customer find their new favorite, too! We =
+appreciate your time.
+
+
+
+
+Your Recent Purchases
+ZY07 - 125g packet http://links.uptontea.emailpowerreviews.com/ls/click?upn=
+=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oMUBmMH1ZdheFkERYTx8Eu=
+Js7-2BdMOQNI-2FqaJOQN8uRQYv2xZId8bw4cCYZztc7dzGk0-2FbCWA9bTR40VVS7DuhJdkkix=
+wfJDuJlAVDTyqncEJXVwKQNn1HFLSVtpVDPSYcB8vT1J-2FfrYOilRhVRg4soKXKUnRSZGnVRI-=
+2Fw0mP-2FAm8c516cNwsY8CAleVSM7g3i4IA9unVqSq6BqXjDH0IEoj57L3JJljM7e3c71Yh9IA=
+GtDKz20jrpikdfF0mEMjMY8w5ywMaZGxbGSPeBAmswh6FoxAy-2F0jyVjtahbWX12lQ-2FQmRA9=
+Yx4dZCTPA9-2BivONqE9922qecL3c0q9pw5EuCAJw-2FOrcI9g8R78jtbVnD7F9mkH0qbfrB-2F=
+y3UpmLQs4QFmZEYiq3VDpzwOYjtvLEsenDqjp-2BXTW6-2Fb9m8-2B-2Bb7Q53tN2kcNGVN3WVd=
+UOsxYevy-2F1iNwF01ZBYFp2r-2F9mY0Uq_WRX5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-=
+2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaKxILTM7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfh=
+newTZyu0X3jL12v-2FGr4k6bXF-2FN-2FjEc6IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1=
+vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1jn6uu5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQ=
+rwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2FMklD8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-=
+2Fqqf-2FQ-2BJrv8L7QMFsQfhIr7WJTi0h0r2wnM9f-2Foeh25t3kk6Eu3iOApRifAakDy4Ql9-=
+2B4WTN-2BoJIymN9nV8satB2Bi8Wv3s53u4TZjqPiDYP0wPHXa-2F-2ByhrgbdgLzKoIgMCTraP=
+Y4bB8LHhuDflyOmIM39etvAbJXA3pns6ZfoRsGrCzZHgQrRghYHvHvyosReihefebyjtzvXhaIE=
+USr4Q0F4xplRYprl3JBF0m47DbdfdaIRq1dDYc4QljZO3aUo9jbcpQsH-2B83RG2lLBT5s55YlN=
+cvid8yynIYsWnr-2FyTzNY6Ei5pN09OZG6n9-2BlRkFd-2F81-2FopNTxTS3jI-2FP-2Fg-2F7l=
+KClrr-2B3ddMdPKpjMr0m4-3D Write a review
+TC46 - 80g packet http://links.uptontea.emailpowerreviews.com/ls/click?upn=
+=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oMUBmMH1ZdheFkERYTx8Zl=
+vyIrQt9dkD54HTjAZoXaZo95oVffFDKV0-2F1jGyo9M-2BIVMn-2FdxfeHtQoFvfj8n6M7hBfY2=
+MFD7dF3r3OWMqnFMqPJ8QQSD8JxAom2Qrsgvc4nBU5ZAVdUFslr8OeopNa23h1O2opAMP1o0Rh5=
+kZmUgArJ5c1WS6vA8iaMncAPvLUxiJTBN2ScCK8sGQFXXQ7bVL8LQuLrpBI4Y4WwoMR8avsGgHr=
+sJnOeMWkjLhj-2B-2BVx7wxrsUhGQkXAI7CvZxlFkFU9vpXNrwqMH0ttE6Gza32ehQOvTG2qDB6=
+nUNxpvfGWVJLIywMHhg4Hj0a70hDDan2rREgjIsyEPyreVWyNBTR2d-2FZqt1XtYQs6gowaKmcn=
+1nLGeIMOZbfVGYJ6gQNdM54lJji8dhWSmCog1-2F45BpBXo1yKHWPZbNhHbipiUXJb9WDQqoFTS=
+sGGRDAtD4c8drt_WRX5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3v=
+bLBW7nFk6PTaKxILTM7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr=
+4k6bXF-2FN-2FjEc6IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2=
+ncSQ0rRptBli1jn6uu5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh=
+7h9nmqVqz9-2FMklD8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QM=
+FsQfhIr6iZn5IQu7HOZJ6-2BfQAq87yGnigL8brTWaLierhVcIWkXaMhty-2FBfd8qWteWfqLsK=
+3Huzxt1ouJnjlWF4QIAYzLcvQZOwRIYstv91iquZmhHnQovQpCT8X6iWUMVCJiNo69cxSPZCtGN=
+Hjdi6CRdnTld51AosfMez9L-2BTAKvxc-2B98imB61oEhcLtsRldO9CPpoqABwN4VYjc-2FeYAk=
+rFRt8tsQMgVOdkmk6NGG6zhMbN5rAtFdd-2FU6vuu-2FjbBICsBEu9zcgJykBfJPcIrKIcrerIw=
+mll-2F6QYMIGAuJ103Ld6iEKlSYmQPiH5RF6hM2A9q1BkReGmD7OFJAxdYx94kcQQ-3D Write =
+a review
+TA144D: 200g packet http://links.uptontea.emailpowerreviews.com/ls/click?up=
+n=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oMUBmMH1ZdheFkERYTx89=
+p0ctpzzb7JA0orQ6n50LT2XvOMJVMKVq4MyyHKvyyexf-2Fcgh6fI-2BGchjPXqALH-2BDbjgz0=
+kYxwh35CzRW7J9NokzvClSDHeWLwtPcsejJGWIFfK9LaHsAFycZfD80-2BYNSbThEw32QA9932k=
+zyz4idz8N7pj7Z0HPlfIgMPIVBf2TwQCgkcbEEFJ6cBR4BUxad23wJEXLWAGPySIX2f8v8obLgL=
+sHL1hmHZcFemSHtfOVP2-2B0kuVgIL5kgITYXgfLGZI6aD5QY-2FObFfdjkDMgEwheTw1GbpGFn=
+tQrblYlpErvKwZKe7oIPBtSvaCwUF7JEmtFqoEMYVgcqKBLFBAsv0MTVTuB-2B00PQ8DeVeVca3=
+-2F1BITcOJvpkUHx2Q5Od-2BcELRq56FnWVL66usF4tfgigOJRP-2FhHtKrMifPQ4dLGExylE4W=
+HHMKCU8HKFv03XNzsJ79s_WRX5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVl=
+fR6PB3vbLBW7nFk6PTaKxILTM7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL1=
+2v-2FGr4k6bXF-2FN-2FjEc6IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8T=
+jV6n0o2ncSQ0rRptBli1jn6uu5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaP=
+NTw5okh7h9nmqVqz9-2FMklD8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJ=
+rv8L7QMFsQfhIr2hMQC5itK4Zr8pXTR90VBwl1Ma-2B3OYA38NC98es-2BpTPKa8WPQEuRqUbcy=
+zNhtl-2Bu5p42cEVYsEXu6-2BvYgztqWNnuu4PSeFS1JnpPMF2B1azOPNI7Bcb-2FJuhRpPFBNs=
+a-2B-2Fd0-2BLn0LGVIcJwxyYVUkLGC8NLzZ9VZjA3fBPjWGme-2Fwtgbdi7f4R6gzq-2BoUtdl=
+f4tRRsi7Qw1PJaPrk3cbt0bMXBuqHAJy1824z9pq-2F2UJ4dlJd-2F1YytfmUa5Hd3P6jPeyZXZ=
+T2k-2Fm0J4LMYAloYvSpvuVPbJJla94Aqf8aAzhEX9d-2B93seyCHO8Q9fMdsUv43fsce52nIzy=
+GopuxQySs-3D Write a review
+Sincerely,
+
+Upton Tea Imports
+http://links.uptontea.emailpowerreviews.com/ls/click?upn=3DzjaK-2F98U4O8QgM=
+DJR-2BJXzWZ1xJ6FSF0kaQvAXjjBuChmai98TIJSrT8owRWqrsKCYWs6_WRX5TkK5PuOvleLec3=
+dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaKxILTM7GvPj-2FtVF6OfI=
+VnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-2FjEc6IUUaMVLD-2FCKUJY=
+weCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1jn6uu5pzYzhcI9G5UKrW=
+yc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2FMklD8mvu8JzZNhfT-2BX=
+8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr7W1fzs4LT0WsKZ9vn-2BR4QbF2=
+B6AYBJusZYgopNNTG1GU-2FKWj8ua4YeIeH7jYCe6tepc0pCx5spVl9694ijSDKXGD13uLhdDIv=
+oPrDu3QSS0po0mJawg3Jq8xowFuPtZiZhttSjN-2BYnHfAAXzSdJ-2F3-2FYRHLEVu-2BxukJYW=
+2ahOeGyMGhMHElKH4pUwoFx7V2rrRb9r-2BzyfSb4byrmqQFSP8SUjE-2BvbGZV-2BpYx7omrBK=
+kiaO-2BH7Tlc3BcgD-2BnP-2FH8Zys07QxjNjNIWAB42zzKGKnKUpDFvMiItISr975d-2BGI-2F=
+sshXNGgjg-2FMas0gadROjUR32l-2F8-2FNHf2PVSkEw5Uuw4M-3D
+
+
+If you do not wish to receive further emails: Unsubscribe http://links.upto=
+ntea.emailpowerreviews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWQYzipu5o63=
+dyLiSkKdxUPvGa6oMQ-2Fbqw2RX41XKuRwO641DDwr8HAcJgXgK-2FDoyOXmIJ1O8Nsv9uuS2ty=
+6SSpaMeXvacLjiEu4JFyBzOLC94AOa2IIz4DNwxg36escGvCUGlQHn6yB4bK7lmxSHuh4-3Ds9j=
+z_WRX5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaK=
+xILTM7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-2F=
+jEc6IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1=
+jn6uu5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2F=
+MklD8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIrwmywsf=
+stEc2gsU3ezt7I7ksM2bFN2kp6UTe641Vwx1m2IF7-2BigtUw1NS1oVwoGtMk8S0MUL-2B58IjG=
+AiN4V5ORpcT-2BCDlWtzAcMJ4SdWaKyIBHZp3gQCWZXs-2FnHLQCSAMGRmKDulRRWH6Er-2F0H-=
+2ByQPiJdKI2VeHEITNIbM6VHy6GwGeGF56Qeztb3gA-2BPa6leti0ox-2BRBa8GdlwMofIsBkQM=
+dVUgIyxFMJn8TCO-2BigZknuwFG1oZvSiyGxyP7vcCWqv4uHW3QEJ3qyfWVKj-2FVMNcN3AN-2F=
+SR7wDjsDls1kJP-2F-2BoISTHbHXPdZ9CWob88AZxwpWB5anrOpR2St5dMnFtk-3D
+http://links.uptontea.emailpowerreviews.com/asm/?user_id=3D22664553&data=3D=
+KTbvHnk-dzj5-9VGIIh2bHYYJI8JkvuEwPFeQ4a8g9doMDAwdTAwMDhGOPdbU0o7XmB-to3kMhe=
+DqEo3PZChuaSRNFP8BzXfpx2COypndKAHPg_GKgGF0DWUGfB17E6EF9gBOSP6UQkduw7OYiCMm8=
+A1tzLLCBYkcju0ss84qhwzcURfy9-xTNUkd9xBQvpYi7UAXxjb5-hXTLgij3mAnI3NqoMA_n8QN=
+RUeoX73BejEd4bnDsMGiK6JX-7gp7LhN7HiBBGUkrvhwRYhjln-YJUBPPAwNq7VZZEH4XGWCfYy=
+pmhjAu2Pm7I5cFoT7nqBpgAMOpiSGEQwS7iqypDmvZymu0F2gPNwESkLb1Jqd_OJ_MUow7XstTJ=
+X5eQiVxmbfUm0opoVcyJti2M_aP0DdM-aIoNccF5hV9lJe1aya8hheUUYrt-hygwE4W-16dnhVB=
+NuraI08mS_r4g74Ee9TvFBDtztEVyCoAt8PMJhDY3mW2OiFNtsle0W2RuS_3jKWu80XvIPpEKmC=
+KzCrJcJHk989cs6PP21vE1rwPqntUDM50FuikHbFVEKo4_0LMW3lrjm3LkxPVaW5EInxwJNgUh0=
+YQ2QnRsyIRiKpVnzmtCE8T9DHfoqg0Vn0gTGroXBxB6gtt6NTcq75CidY7bw4OAMYR_y9IFpLmT=
+bU76x4jkote21SD7vstatEpP7rFZ_0iL5h0Ww8f4EmcAyl-EXYaz1NRMrJQVUPkdXvJV1fZc_M3=
+-cVhLa8ZiV3_vl3LfmJIholaF-MOoqHlTsLYHEbGpKs0gofShstI2xxypTyP4Rg0ywZu8TPYbL8=
+pPPaqa9sQE3RF9yaxwHe6QB9se8v7wVwBxU5-ew
+
+900 Larkspur Landing Circle, Ste. 275 Larkspur CA 94939
+
+--e00fa95125e76dc9435d4c76919901b762b5211374ed8a7482861b360e6d
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=us-ascii
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html lang=3D"en">
+<head>
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width" />
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8=
+" />
+    <style>
+        @media screen and (min-width: 480px) {
+            img[class=3D"star"],
+            img.star {
+                height: auto !important;
+                width: 45px !important;
+            }
+        }
+    </style>
+</head>
+<body style=3D"background: #ffffff;color: #666666;font-family: arial, sans;=
+font-size: 16px;line-height: 150%;-webkit-text-size-adjust: 100%;">
+<table style=3D"font-family: arial, sans;margin: 0 auto;max-width: 600px;wi=
+dth: 100%;">
+    <tr>
+        <td style=3D"border-bottom: solid 1px #dddddd;padding: 20px 0;">
+            <div><img alt=3D"header logo" src=3D"http://res.cloudinary.com/=
+powerreviews/image/upload/c_lpad,co_white,g_west,h_75,w_250/v1/ssp/fue/pk55=
+4yunxvxoizdsnbwq.jpg"></div>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding: 20px 0;">
+            <span style=3D"color: #303533;display: block;font-size: 18px;li=
+ne-height: 120%;padding-bottom: 10px;">Hello Joshua,=0D<br>=0D<br>Thank you=
+ for your tea order! We hope that you are enjoying your tea and invite you =
+to share your feedback about your recent purchase. Your valued comments cou=
+ld help a fellow valued customer find their new favorite, too! We appreciat=
+e your time.=0D<br></span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding: 0px 0;">
+            <span style=3D"color: #303533;display: block;font-size: 18px;li=
+ne-height: 120%;padding-bottom: 10px;"></span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding: 20px 0;">
+            <span style=3D"color: #303533;display: block;font-size: 20px;li=
+ne-height: 120%;">Your Recent Purchases</span>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding: 20px 0;">
+            <table style=3D"border-bottom: 1px solid #dddddd;font-family: a=
+rial, sans;padding-bottom: 20px;width: 100%;">
+                <tbody>
+                <tr>
+                    <!-- Image will be clickable to WAR with non-dynamic at=
+tributes -->
+                    <td class=3D"product-image" style=3D"padding-bottom: 15=
+px;vertical-align: top;width: 100px;">
+                        <a href=3D"http://links.uptontea.emailpowerreviews.=
+com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oMUBmM=
+H1ZdheFkERYTx8EuJs7-2BdMOQNI-2FqaJOQN8uRQYv2xZId8bw4cCYZztc7dzGk0-2FbCWA9bT=
+R40VVS7DuhJdkkixwfJDuJlAVDTyqncEJXVwKQNn1HFLSVtpVDPSYcB8vT1J-2FfrYOilRhVRg4=
+soKXKUnRSZGnVRI-2Fw0mP-2FAm8c516cNwsY8CAleVSM7g3i4IA9unVqSq6BqXjDH0IEoj57L3=
+JJljM7e3c71Yh9IAGtDKz20jrpikdfF0mEMjMY8w5ywMaZGxbGSPeBAmswh6FoxAy-2F0jyVjta=
+hbWX12lQ-2FQmRA9Yx4dZCTPA9-2BivONqE9922qecL3c0q9pw5EuCAJw-2FOrcI9g8R78jtbVn=
+D7F9mkH0qbfrB-2Fy3UpmLQs4QFmZEYiq3VDpzwOYjtvLEsenDqjp-2BXTW6-2Fb9m8-2B-2Bb7=
+Q53tN2kcNGVN3WVdUOsxbz4mVuyEQaq4mn3-2FgyM8ZwnA4yir6kaXs7fUAvZTVqpQ-3D-3DtMy=
+A_WRX5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaK=
+xILTM7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-2F=
+jEc6IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1=
+jn6uu5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2F=
+MklD8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIrzfocYC=
+uTgAtN8zVq1iF41tXSbD-2FjbQPtswJ-2BUUA4kXAJhpG-2BYScvecwHTC6LNKPFuuDFqbH-2Be=
+AWmnzJlmHef38MgKnPYoczttX4M4I7oTLMyEHO5dick9iK-2Fp7IAOmEWGpGbBfXD7-2Bv1lh4E=
+YSOODjyI97nOw01n9XnaxaZT42aosE7hi7WPtrPE3BYSb0OqtU7hid7e3Ckb34OeOjzaAor46xm=
+z5kKa0kppFFqe6oG29xF7kBkNz-2FdDb-2BD1mXDzUE2dufqvzXn3BvY2X9heE4iILowxAJuRkJ=
+RDr7MmYSe1ED7ph8DLvSPEvpkdIWwnZ-2FJdl9fa-2B438Uy4VmR09xU-3D"><img alt=3D"pr=
+oduct image" style=3D"border: 1px solid #dddddd; max-width: 100px;" height=
+=3D"auto" src=3D"https://res.cloudinary.com/powerreviews/image/fetch/f_auto=
+,fl_lossy,d_noimage.jpg,c_lpad,w_100,h_100/https%3A%2F%2Fstatic.uptoncdn.co=
+m%2Fimages%2Fl%2FV00585.jpg%3Fv%3D0-4" width=3D"100" /></a>
+                    </td>
+                    <td style=3D"width: 20px;"></td>
+                    <td style=3D"padding: 0 0 20px 0;">
+                        <div style=3D"min-width: 200px;">
+                            <a href=3D"http://links.uptontea.emailpowerrevi=
+ews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oM=
+UBmMH1ZdheFkERYTx8EuJs7-2BdMOQNI-2FqaJOQN8uRQYv2xZId8bw4cCYZztc7dzGk0-2FbCW=
+A9bTR40VVS7DuhJdkkixwfJDuJlAVDTyqncEJXVwKQNn1HFLSVtpVDPSYcB8vT1J-2FfrYOilRh=
+VRg4soKXKUnRSZGnVRI-2Fw0mP-2FAm8c516cNwsY8CAleVSM7g3i4IA9unVqSq6BqXjDH0IEoj=
+57L3JJljM7e3c71Yh9IAGtDKz20jrpikdfF0mEMjMY8w5ywMaZGxbGSPeBAmswh6FoxAy-2F0jy=
+VjtahbWX12lQ-2FQmRA9Yx4dZCTPA9-2BivONqE9922qecL3c0q9pw5EuCAJw-2FOrcI9g8R78j=
+tbVnD7F9mkH0qbfrB-2Fy3UpmLQs4QFmZEYiq3VDpzwOYjtvLEsenDqjp-2BXTW6-2Fb9m8-2B-=
+2Bb7Q53tN2kcNGVN3WVdUOsxaE9ZHZjCYOK4mk8vnyOloTd2LZv3oWaIOmjAhB3-2BdDEQ-3D-3=
+D7Bg-_WRX5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6=
+PTaKxILTM7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2F=
+N-2FjEc6IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRpt=
+Bli1jn6uu5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz=
+9-2FMklD8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr-2=
+BPxXfqyQXgSpStUblaIjYKUVoD7b5p2DJ0ygEN-2BPvfjOSVwUsvEQvIYXUqbK1zo9qMRfizIz6=
+QyWIMlWd8RdFfsp3hdrs6I93oqNjg-2Ft-2BmqbTNQMA58eqyGAvHkPJkxHyodaKvz47zuNOEcz=
+AFtLLiMDgLf-2B6I9mkmES6P-2BJ8UNAgZwpAvSZdm9RKATcyKqHgKWXtglf4XxOSz5lWmtoKy-=
+2FB2v2WOySGfEYvGUuCS1T4NuwHNBX5kiW9N39rVITlnFYKu8B3Hgn2gDKPdnCUlvhlWdTtLPha=
+-2BmFixufGDPAX-2Bu-2F1zobYcnYbZxTCJq44OnjjqTKGaIfFO8Y01TARH4-3D"><img alt=
+=3D"star image 1" class=3D"star" height=3D"auto" src=3D"http://images.power=
+reviews.com/images/fue_star.png" width=3D"32" /></a>
+                            <a href=3D"http://links.uptontea.emailpowerrevi=
+ews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oM=
+UBmMH1ZdheFkERYTx8EuJs7-2BdMOQNI-2FqaJOQN8uRQYv2xZId8bw4cCYZztc7dzGk0-2FbCW=
+A9bTR40VVS7DuhJdkkixwfJDuJlAVDTyqncEJXVwKQNn1HFLSVtpVDPSYcB8vT1J-2FfrYOilRh=
+VRg4soKXKUnRSZGnVRI-2Fw0mP-2FAm8c516cNwsY8CAleVSM7g3i4IA9unVqSq6BqXjDH0IEoj=
+57L3JJljM7e3c71Yh9IAGtDKz20jrpikdfF0mEMjMY8w5ywMaZGxbGSPeBAmswh6FoxAy-2F0jy=
+VjtahbWX12lQ-2FQmRA9Yx4dZCTPA9-2BivONqE9922qecL3c0q9pw5EuCAJw-2FOrcI9g8R78j=
+tbVnD7F9mkH0qbfrB-2Fy3UpmLQs4QFmZEYiq3VDpzwOYjtvLEsenDqjp-2BXTW6-2Fb9m8-2B-=
+2Bb7Q53tN2kcNGVN3WVdUOsxaE9ZHZjCYOK4mk8vnyOloT-2F-2F-2B8zYr7TJKWz97G99blxg-=
+3D-3D0nTh_WRX5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7=
+nFk6PTaKxILTM7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bX=
+F-2FN-2FjEc6IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0=
+rRptBli1jn6uu5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nm=
+qVqz9-2FMklD8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfh=
+Ir2XKedbWneKNBTwUJqzt7kDgPUCrVwHzt0jMDFSqHShMUalCCrZWe-2B7hgs9-2BLH7v60f52z=
+-2Fm1NKgUbyAMJlFzE0UFEoCO2J8HcW6ewSlu0y5qUwpnJdCM0Z7gmrI6rDJZu98gfjvUVSpffj=
+AhnaDYEImJZTsrx-2FZ6DXTuK6wBeF64S67d3iap0-2F6GDqIvAYvSxJ-2BgZUQwiLoHlDKJoUS=
+XCLOlIggPRjpNcaOsPUhBNn-2BpRjrroyiKUdJNJawH67t8mU5z6FbuGZ4i59BURM8hJlQJ6hDd=
+6Ue4FlcX0Vax7rbcs2VgbXMVmNBf0-2B9Kf-2F067XR-2FJO-2Bah-2Fy9Sb5JMUBPhE-3D"><i=
+mg alt=3D"star image 2" class=3D"star" height=3D"auto" src=3D"http://images=
+.powerreviews.com/images/fue_star.png" width=3D"32" /></a>
+                            <a href=3D"http://links.uptontea.emailpowerrevi=
+ews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oM=
+UBmMH1ZdheFkERYTx8EuJs7-2BdMOQNI-2FqaJOQN8uRQYv2xZId8bw4cCYZztc7dzGk0-2FbCW=
+A9bTR40VVS7DuhJdkkixwfJDuJlAVDTyqncEJXVwKQNn1HFLSVtpVDPSYcB8vT1J-2FfrYOilRh=
+VRg4soKXKUnRSZGnVRI-2Fw0mP-2FAm8c516cNwsY8CAleVSM7g3i4IA9unVqSq6BqXjDH0IEoj=
+57L3JJljM7e3c71Yh9IAGtDKz20jrpikdfF0mEMjMY8w5ywMaZGxbGSPeBAmswh6FoxAy-2F0jy=
+VjtahbWX12lQ-2FQmRA9Yx4dZCTPA9-2BivONqE9922qecL3c0q9pw5EuCAJw-2FOrcI9g8R78j=
+tbVnD7F9mkH0qbfrB-2Fy3UpmLQs4QFmZEYiq3VDpzwOYjtvLEsenDqjp-2BXTW6-2Fb9m8-2B-=
+2Bb7Q53tN2kcNGVN3WVdUOsxaE9ZHZjCYOK4mk8vnyOloT8F08MyofKjw-2F2OS-2BT7ALiQ-3D=
+-3Db1PP_WRX5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nF=
+k6PTaKxILTM7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-=
+2FN-2FjEc6IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rR=
+ptBli1jn6uu5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqV=
+qz9-2FMklD8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr=
+246fAdnjx5rq4AkgdZ-2FQ5AJYfKe3qCN1fq-2FILsHunm-2FhpEc-2FMZ95UIcY5teW4l909Xk=
+uezzuT9o5rfJPQFsLMtPsQFrphkQiNeBb7XnWGDQsPihMwkPfjJUXB87ak0nf399PRxSY2Q788v=
+5SskMmoSUE3aHlrd95-2BcAIcA4Od6apeqwBCmbHajWQfKa1iZvk-2BkmO-2BO-2B-2F46fxuxU=
+sCFfDrbAxwlp9nDdIiqQSN0FGkvZWv5HhwMz0qMG9iQwLBGFuEMBasxjzUMCeG1eRT07vA1a-2F=
+VyvE5-2FlweEV6BHf8D7GgBNTt-2BG9oPuIvTeTMyecLoqposP9aCcVUErZEctWPU4-3D"><img=
+ alt=3D"star image 3" class=3D"star" height=3D"auto" src=3D"http://images.p=
+owerreviews.com/images/fue_star.png" width=3D"32" /></a>
+                            <a href=3D"http://links.uptontea.emailpowerrevi=
+ews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oM=
+UBmMH1ZdheFkERYTx8EuJs7-2BdMOQNI-2FqaJOQN8uRQYv2xZId8bw4cCYZztc7dzGk0-2FbCW=
+A9bTR40VVS7DuhJdkkixwfJDuJlAVDTyqncEJXVwKQNn1HFLSVtpVDPSYcB8vT1J-2FfrYOilRh=
+VRg4soKXKUnRSZGnVRI-2Fw0mP-2FAm8c516cNwsY8CAleVSM7g3i4IA9unVqSq6BqXjDH0IEoj=
+57L3JJljM7e3c71Yh9IAGtDKz20jrpikdfF0mEMjMY8w5ywMaZGxbGSPeBAmswh6FoxAy-2F0jy=
+VjtahbWX12lQ-2FQmRA9Yx4dZCTPA9-2BivONqE9922qecL3c0q9pw5EuCAJw-2FOrcI9g8R78j=
+tbVnD7F9mkH0qbfrB-2Fy3UpmLQs4QFmZEYiq3VDpzwOYjtvLEsenDqjp-2BXTW6-2Fb9m8-2B-=
+2Bb7Q53tN2kcNGVN3WVdUOsxaE9ZHZjCYOK4mk8vnyOloT11NRco5BM1Bd5VUQmybleQ-3D-3D9=
+dHY_WRX5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PT=
+aKxILTM7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-=
+2FjEc6IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBl=
+i1jn6uu5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-=
+2FMklD8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIrzrgB=
+ExlE79lUZR-2Fq98xDGQa8EN73H3X0p-2BDdZS6PzK2B0y-2F6-2BpmORBy-2FC1dC3h-2FrCcF=
+hoH3S9HFrGNs9t2DNEK-2BGOyMVXuDHq0CnJTZgcpWTZCL5IXer6OtUF4fKKlfb9sSg431QolW2=
+pPB3lVtHOeEhncNjfoUUIR9MHDqSEzEmJgiZohqg-2F15LK4VhDXkHVJEre-2FKyOmDsmoe3Zo7=
+zDchw4rKj0Y-2BIcEEpJtoVoR01Jw-2BPNmoHMixIkyYAdRU4ZQEesQ4bRNwKX-2BaYcAUeoWPw=
+1l-2BBnleLr8QQhSHeWHmW-2BD9KWlV-2Fsw79X3W9d9U3UVnxp66Hf5pKKyEvWsfhC0-3D"><i=
+mg alt=3D"star image 4" class=3D"star" height=3D"auto" src=3D"http://images=
+.powerreviews.com/images/fue_star.png" width=3D"32" /></a>
+                            <a href=3D"http://links.uptontea.emailpowerrevi=
+ews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oM=
+UBmMH1ZdheFkERYTx8EuJs7-2BdMOQNI-2FqaJOQN8uRQYv2xZId8bw4cCYZztc7dzGk0-2FbCW=
+A9bTR40VVS7DuhJdkkixwfJDuJlAVDTyqncEJXVwKQNn1HFLSVtpVDPSYcB8vT1J-2FfrYOilRh=
+VRg4soKXKUnRSZGnVRI-2Fw0mP-2FAm8c516cNwsY8CAleVSM7g3i4IA9unVqSq6BqXjDH0IEoj=
+57L3JJljM7e3c71Yh9IAGtDKz20jrpikdfF0mEMjMY8w5ywMaZGxbGSPeBAmswh6FoxAy-2F0jy=
+VjtahbWX12lQ-2FQmRA9Yx4dZCTPA9-2BivONqE9922qecL3c0q9pw5EuCAJw-2FOrcI9g8R78j=
+tbVnD7F9mkH0qbfrB-2Fy3UpmLQs4QFmZEYiq3VDpzwOYjtvLEsenDqjp-2BXTW6-2Fb9m8-2B-=
+2Bb7Q53tN2kcNGVN3WVdUOsxaE9ZHZjCYOK4mk8vnyOloTgX1R-2FCXNLcHe9d8PjTKJ-2FQ-3D=
+-3Dqtin_WRX5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nF=
+k6PTaKxILTM7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-=
+2FN-2FjEc6IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rR=
+ptBli1jn6uu5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqV=
+qz9-2FMklD8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr=
+zfSENcQne1NVxtgxGCMc6aA2XEdFLVqBVO4YvF9K7kLGVjwMeLYz1oZXbQrLSPm2T0lDnv7gpNV=
+j3e4fMkM2JEp44eWYvDQmHF82vYVN7XlvX2r4E-2F-2BNk-2FzNijEVp-2B6erA33yKiYyxd6AO=
+ZVnI-2Ff3fqwrUqXZnNBkLaZW7zO-2F8vGmvrba2dZ-2FIe9Releo-2BPBgw1D-2FJ1NvYyDCcE=
+Zm-2BmcKXNbGbHXSa3k68jTFCzPUhuDVBmGTWCWTY781WZZcSWPifywcmPzgbNvkoGvaedl2N7L=
+fUnAhfPvKxv0OJXDSEmYgWYUiByRSoe22ELFPWKW3WcduLoosuQP5zVBm0HjIw-3D"><img alt=
+=3D"star image 5" class=3D"star" height=3D"auto" src=3D"http://images.power=
+reviews.com/images/fue_star.png" width=3D"32" /></a>
+                            <span style=3D"display: block;font-size: 14px;l=
+ine-height: 120%;padding-bottom: 5px;">ZY07 - 125g packet</span>
+                            <a style=3D"color: #4a99ca;text-decoration: non=
+e;" href=3D"http://links.uptontea.emailpowerreviews.com/ls/click?upn=3DF-2B=
+68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oMUBmMH1ZdheFkERYTx8EuJs7-2Bd=
+MOQNI-2FqaJOQN8uRQYv2xZId8bw4cCYZztc7dzGk0-2FbCWA9bTR40VVS7DuhJdkkixwfJDuJl=
+AVDTyqncEJXVwKQNn1HFLSVtpVDPSYcB8vT1J-2FfrYOilRhVRg4soKXKUnRSZGnVRI-2Fw0mP-=
+2FAm8c516cNwsY8CAleVSM7g3i4IA9unVqSq6BqXjDH0IEoj57L3JJljM7e3c71Yh9IAGtDKz20=
+jrpikdfF0mEMjMY8w5ywMaZGxbGSPeBAmswh6FoxAy-2F0jyVjtahbWX12lQ-2FQmRA9Yx4dZCT=
+PA9-2BivONqE9922qecL3c0q9pw5EuCAJw-2FOrcI9g8R78jtbVnD7F9mkH0qbfrB-2Fy3UpmLQ=
+s4QFmZEYiq3VDpzwOYjtvLEsenDqjp-2BXTW6-2Fb9m8-2B-2Bb7Q53tN2kcNGVN3WVdUOsxYev=
+y-2F1iNwF01ZBYFp2r-2F9mdnY3_WRX5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3f=
+ZE6GVlfR6PB3vbLBW7nFk6PTaKxILTM7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu=
+0X3jL12v-2FGr4k6bXF-2FN-2FjEc6IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQ=
+Oqsd8TjV6n0o2ncSQ0rRptBli1jn6uu5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkN=
+SlbZaPNTw5okh7h9nmqVqz9-2FMklD8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2=
+FQ-2BJrv8L7QMFsQfhIr24rgzeeBmdoTlUoMTt2XJfJ1ZPB7F2ymzRh5NciyRT-2F8dXTxj9Vos=
+qOaoasfsYHHnQHfd7DS-2BB-2Fi3f2pR-2FKztLOw3GGMKGxTre58UA4gI148Cef9u1Jxxg9wKt=
+Izu-2B-2Fn-2F7sf9cO3d1dAbaK2cusCvXfYjbVIGDZGaUtxhbiuC9xWjaI-2FxH-2FXkAoACXM=
+GeDIfcW-2BTZwSpNd8puWrGs9mkTjeMU7zaHkIRU-2BUuU8Zz3KWtW6ohqYQCVstEFqXWwnL9GD=
+HWQkhF9ycBrgQTkNsNhWXM4xklXn7Dj3-2B2kBqu3vvdV1nQWnuGxKbm658-2FLnmHynEG3DWsv=
+CjFGMa8SGhT7I-3D">
+                                Write a review
+                            </a>
+                           =20
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- Image will be clickable to WAR with non-dynamic at=
+tributes -->
+                    <td class=3D"product-image" style=3D"padding-bottom: 15=
+px;vertical-align: top;width: 100px;">
+                        <a href=3D"http://links.uptontea.emailpowerreviews.=
+com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oMUBmM=
+H1ZdheFkERYTx8ZlvyIrQt9dkD54HTjAZoXaZo95oVffFDKV0-2F1jGyo9M-2BIVMn-2FdxfeHt=
+QoFvfj8n6M7hBfY2MFD7dF3r3OWMqnFMqPJ8QQSD8JxAom2Qrsgvc4nBU5ZAVdUFslr8OeopNa2=
+3h1O2opAMP1o0Rh5kZmUgArJ5c1WS6vA8iaMncAPvLUxiJTBN2ScCK8sGQFXXQ7bVL8LQuLrpBI=
+4Y4WwoMR8avsGgHrsJnOeMWkjLhj-2B-2BVx7wxrsUhGQkXAI7CvZxlFkFU9vpXNrwqMH0ttE6G=
+za32ehQOvTG2qDB6nUNxpvfGWVJLIywMHhg4Hj0a70hDDan2rREgjIsyEPyreVWyNBTR2d-2FZq=
+t1XtYQs6gowaKmcn1nLGeIMOZbfVGYJ6gQNdM54lJji8dhWSmCog1-2F45BpBXo1yKHWPZbNhHb=
+ipiUW-2BA33t2LHYP4l-2Fndg0kd1jzukmuUqGaLvnChOdgrzX-2BQ-3D-3D0Ogy_WRX5TkK5Pu=
+OvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaKxILTM7GvPj-2=
+FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-2FjEc6IUUaMVLD=
+-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1jn6uu5pzYzhc=
+I9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2FMklD8mvu8JzZ=
+NhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr6rMvnMF3U-2Bv07axq=
+d8jLIqnm4elGbt9ZAbqDhpTrLiC3ZuyXYcGo4xmmIyPoBxFAoFoYZS-2FTFVtoBZXOszisiyLw2=
+Eprq0M2ypbktDoN3Rh2reRHx7c2PDgtu1-2F2ZiGzEbFOYLjt-2FPCOP6yzj20efqN4FyCYbb1E=
+DNb4ELpHTDITjUybn-2Fhw5rKzWGKlRzbAJpdpvWWYAZoRnqvRZkE7ELWQ9HuTzmKycYO14rLY7=
+PzTlnksSWxagCsaAYQdCxKI6Wehpcf-2BmMtZpdxtPb8lGcWYLghowd6ycNICb83AB2zORuT4ix=
+o1mMBAFgfBAOMHRcBTTKqaxT0-2FiXe0INMinw-3D"><img alt=3D"product image" style=
+=3D"border: 1px solid #dddddd; max-width: 100px;" height=3D"auto" src=3D"ht=
+tps://res.cloudinary.com/powerreviews/image/fetch/f_auto,fl_lossy,d_noimage=
+.jpg,c_lpad,w_100,h_100/https%3A%2F%2Fstatic.uptoncdn.com%2Fimages%2Fl%2Fv0=
+0596.jpg%3Fv%3D0-1" width=3D"100" /></a>
+                    </td>
+                    <td style=3D"width: 20px;"></td>
+                    <td style=3D"padding: 0 0 20px 0;">
+                        <div style=3D"min-width: 200px;">
+                            <a href=3D"http://links.uptontea.emailpowerrevi=
+ews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oM=
+UBmMH1ZdheFkERYTx8ZlvyIrQt9dkD54HTjAZoXaZo95oVffFDKV0-2F1jGyo9M-2BIVMn-2Fdx=
+feHtQoFvfj8n6M7hBfY2MFD7dF3r3OWMqnFMqPJ8QQSD8JxAom2Qrsgvc4nBU5ZAVdUFslr8Oeo=
+pNa23h1O2opAMP1o0Rh5kZmUgArJ5c1WS6vA8iaMncAPvLUxiJTBN2ScCK8sGQFXXQ7bVL8LQuL=
+rpBI4Y4WwoMR8avsGgHrsJnOeMWkjLhj-2B-2BVx7wxrsUhGQkXAI7CvZxlFkFU9vpXNrwqMH0t=
+tE6Gza32ehQOvTG2qDB6nUNxpvfGWVJLIywMHhg4Hj0a70hDDan2rREgjIsyEPyreVWyNBTR2d-=
+2FZqt1XtYQs6gowaKmcn1nLGeIMOZbfVGYJ6gQNdM54lJji8dhWSmCog1-2F45BpBXo1yKHWPZb=
+NhHbipiUUjoPpKPx0mYnipSH8F9w6oviMtgFKOfGm8JRB-2Fc6OrWA-3D-3Dys_K_WRX5TkK5Pu=
+OvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaKxILTM7GvPj-2=
+FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-2FjEc6IUUaMVLD=
+-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1jn6uu5pzYzhc=
+I9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2FMklD8mvu8JzZ=
+NhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr1q2tIapSyZPMtsr9oe=
+GqEZfMlKcyGZKYVPps0mzc-2BBBCqMffelbvHzkHJYFroK4HfmPrlEQ6jrjHAmOOhlm8MuRdZu6=
+09dk5T-2FpNI0Ac4G-2Fwqm9zcGWJejFiQsN5P6pw4pCC7GY2q50iFDduWmTEtdDml-2BXMOKXX=
+4PvgREBSrMATDSfjkXsxZswHmPyM0ComWjO0JEhseKy-2FKNRBkeI1Jf9BfuAPmOIuw4UDkOt7V=
+SCqVmjZexMiqxNu6yjFr6zHrAV-2FBEUwETD5ZdttLFUoSl-2FHZHfWEH90Tlf9ytydPElfqAAx=
+OqOzK9WbKGxi6k6Zppd59boEGIqz2S6ZtguUsk-3D"><img alt=3D"star image 1" class=
+=3D"star" height=3D"auto" src=3D"http://images.powerreviews.com/images/fue_=
+star.png" width=3D"32" /></a>
+                            <a href=3D"http://links.uptontea.emailpowerrevi=
+ews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oM=
+UBmMH1ZdheFkERYTx8ZlvyIrQt9dkD54HTjAZoXaZo95oVffFDKV0-2F1jGyo9M-2BIVMn-2Fdx=
+feHtQoFvfj8n6M7hBfY2MFD7dF3r3OWMqnFMqPJ8QQSD8JxAom2Qrsgvc4nBU5ZAVdUFslr8Oeo=
+pNa23h1O2opAMP1o0Rh5kZmUgArJ5c1WS6vA8iaMncAPvLUxiJTBN2ScCK8sGQFXXQ7bVL8LQuL=
+rpBI4Y4WwoMR8avsGgHrsJnOeMWkjLhj-2B-2BVx7wxrsUhGQkXAI7CvZxlFkFU9vpXNrwqMH0t=
+tE6Gza32ehQOvTG2qDB6nUNxpvfGWVJLIywMHhg4Hj0a70hDDan2rREgjIsyEPyreVWyNBTR2d-=
+2FZqt1XtYQs6gowaKmcn1nLGeIMOZbfVGYJ6gQNdM54lJji8dhWSmCog1-2F45BpBXo1yKHWPZb=
+NhHbipiUUjoPpKPx0mYnipSH8F9w6oUqUU6nTCHuNAjxHRkEnbiQ-3D-3D4Sn-_WRX5TkK5PuOv=
+leLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaKxILTM7GvPj-2Ft=
+VF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-2FjEc6IUUaMVLD-2=
+FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1jn6uu5pzYzhcI9=
+G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2FMklD8mvu8JzZNh=
+fT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr5kvMGdaa9LnUfApSIyxy=
+Iwi8lKo0s6CMfujJtnIY2aS-2B-2BOZL-2FoxdajqUn3ClUbqC86mrPSfPlq3NtqG-2FIB0Gh-2=
+FzdMLMabhO2rw1-2FgOxXFUrrGTrfDThld-2FDgIQbdD-2BXflP6S1TD3kyB-2FhmHTR-2BV9Lt=
+5u0Eia9ulSYZGOIUJK-2Fs9PvD5hveg1Ux-2B3XWHU-2BBQZ-2BmVgUW0XJz8q32m61-2Btr78X=
+mbw6mkK3MwSjs0cvKASydsTz2REVDOVz9KDqRHWbj-2FmpO-2BQfmVvYQXeh2apnL7-2Bk9AigH=
+boZXo-2BstE-2BGs-2BL3txqNsEfo8WvOr1igblxXOK-2FulJJXMnsdc2T5V3VNkmA-3D"><img=
+ alt=3D"star image 2" class=3D"star" height=3D"auto" src=3D"http://images.p=
+owerreviews.com/images/fue_star.png" width=3D"32" /></a>
+                            <a href=3D"http://links.uptontea.emailpowerrevi=
+ews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oM=
+UBmMH1ZdheFkERYTx8ZlvyIrQt9dkD54HTjAZoXaZo95oVffFDKV0-2F1jGyo9M-2BIVMn-2Fdx=
+feHtQoFvfj8n6M7hBfY2MFD7dF3r3OWMqnFMqPJ8QQSD8JxAom2Qrsgvc4nBU5ZAVdUFslr8Oeo=
+pNa23h1O2opAMP1o0Rh5kZmUgArJ5c1WS6vA8iaMncAPvLUxiJTBN2ScCK8sGQFXXQ7bVL8LQuL=
+rpBI4Y4WwoMR8avsGgHrsJnOeMWkjLhj-2B-2BVx7wxrsUhGQkXAI7CvZxlFkFU9vpXNrwqMH0t=
+tE6Gza32ehQOvTG2qDB6nUNxpvfGWVJLIywMHhg4Hj0a70hDDan2rREgjIsyEPyreVWyNBTR2d-=
+2FZqt1XtYQs6gowaKmcn1nLGeIMOZbfVGYJ6gQNdM54lJji8dhWSmCog1-2F45BpBXo1yKHWPZb=
+NhHbipiUUjoPpKPx0mYnipSH8F9w6og3S701oH-2Ff-2FPPtmJyr54yA-3D-3DF4Uy_WRX5TkK5=
+PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaKxILTM7GvPj=
+-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-2FjEc6IUUaMV=
+LD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1jn6uu5pzYz=
+hcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2FMklD8mvu8J=
+zZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr2ZJw9xRBcySXbVjC=
+t2jOUcnS-2BgFF1UT1O4dt5-2BwI4SZtD24OSflyYoF5VFx6K-2BLbGcK497PxZWVl-2FQJt8qe=
+EFqQnwo1BZ3-2BZ-2FZqSk0NyJ4W6-2FrmFOzVPppU-2FnDkEszAbCE-2B7UopkNpOpsWNuPS9-=
+2BIEapUJikbAFGvZdoz7Bzlwh-2FcniWYwTHAtu4pxuvUsO5G7IgYxTz7HRt7VVs7TW7j6FQAiR=
+0EvDEmbSJRXe67-2BxaqcUJSnvvep8AQkHsRHzFE0H8lZP7wUseQOT6Q2l9n4-2Bb411tc-2Fbs=
+RaOUkZq3q-2BIS8IxIj5ZGLi7m-2BY1YekyTL7f5I5jIxPMTFwUQ-2F-2FiQQk-3D"><img alt=
+=3D"star image 3" class=3D"star" height=3D"auto" src=3D"http://images.power=
+reviews.com/images/fue_star.png" width=3D"32" /></a>
+                            <a href=3D"http://links.uptontea.emailpowerrevi=
+ews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oM=
+UBmMH1ZdheFkERYTx8ZlvyIrQt9dkD54HTjAZoXaZo95oVffFDKV0-2F1jGyo9M-2BIVMn-2Fdx=
+feHtQoFvfj8n6M7hBfY2MFD7dF3r3OWMqnFMqPJ8QQSD8JxAom2Qrsgvc4nBU5ZAVdUFslr8Oeo=
+pNa23h1O2opAMP1o0Rh5kZmUgArJ5c1WS6vA8iaMncAPvLUxiJTBN2ScCK8sGQFXXQ7bVL8LQuL=
+rpBI4Y4WwoMR8avsGgHrsJnOeMWkjLhj-2B-2BVx7wxrsUhGQkXAI7CvZxlFkFU9vpXNrwqMH0t=
+tE6Gza32ehQOvTG2qDB6nUNxpvfGWVJLIywMHhg4Hj0a70hDDan2rREgjIsyEPyreVWyNBTR2d-=
+2FZqt1XtYQs6gowaKmcn1nLGeIMOZbfVGYJ6gQNdM54lJji8dhWSmCog1-2F45BpBXo1yKHWPZb=
+NhHbipiUUjoPpKPx0mYnipSH8F9w6omZUmLGWQ-2FkS0xWuUNNN5Ng-3D-3DFFN__WRX5TkK5Pu=
+OvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaKxILTM7GvPj-2=
+FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-2FjEc6IUUaMVLD=
+-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1jn6uu5pzYzhc=
+I9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2FMklD8mvu8JzZ=
+NhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr8aSfou2p37gCvAwhgV=
+I07AyQ1-2BVRSmS428AvaBzOJJ70258pH4idUFXAiAgQO6LqgGdiJgMHkEiewLMnVfpHaoTmN0e=
+lT3WhzJL5uq45jRDWcXQcBIofqVGjsvxO3PuYQxawqjimzxR-2Fq9yuTTx22rH1V1MzxWzn5xVi=
+dGuPwTAhhzhVY3AI2wkEQ3QGIUYGHcf33KdLzh8ruStI0vEDdNXun3wIKoqAhO7XOe-2FFsKvDa=
+5bFk27zBxTsbQisNSuu51MHLngUbJv1l1F-2BK-2Bud81ri1IvRTApCW2rk76mkeAS1RKrcY7DF=
+WpZm0GuV1XPzCes05p4c9KiqlJmjJdZ00o-3D"><img alt=3D"star image 4" class=3D"s=
+tar" height=3D"auto" src=3D"http://images.powerreviews.com/images/fue_star.=
+png" width=3D"32" /></a>
+                            <a href=3D"http://links.uptontea.emailpowerrevi=
+ews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oM=
+UBmMH1ZdheFkERYTx8ZlvyIrQt9dkD54HTjAZoXaZo95oVffFDKV0-2F1jGyo9M-2BIVMn-2Fdx=
+feHtQoFvfj8n6M7hBfY2MFD7dF3r3OWMqnFMqPJ8QQSD8JxAom2Qrsgvc4nBU5ZAVdUFslr8Oeo=
+pNa23h1O2opAMP1o0Rh5kZmUgArJ5c1WS6vA8iaMncAPvLUxiJTBN2ScCK8sGQFXXQ7bVL8LQuL=
+rpBI4Y4WwoMR8avsGgHrsJnOeMWkjLhj-2B-2BVx7wxrsUhGQkXAI7CvZxlFkFU9vpXNrwqMH0t=
+tE6Gza32ehQOvTG2qDB6nUNxpvfGWVJLIywMHhg4Hj0a70hDDan2rREgjIsyEPyreVWyNBTR2d-=
+2FZqt1XtYQs6gowaKmcn1nLGeIMOZbfVGYJ6gQNdM54lJji8dhWSmCog1-2F45BpBXo1yKHWPZb=
+NhHbipiUUjoPpKPx0mYnipSH8F9w6ok7nb-2FPTZcekzF0cymdw82A-3D-3DRogR_WRX5TkK5Pu=
+OvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaKxILTM7GvPj-2=
+FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-2FjEc6IUUaMVLD=
+-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1jn6uu5pzYzhc=
+I9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2FMklD8mvu8JzZ=
+NhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr78V6NSSNg1q-2FIIm2=
+3zldNTsP-2F90Qc44I7IEysQzysuJlhqmhwk41a1Jy-2F0xirT1hbw7GHplM2aL3APHqv-2BuS5=
+FiW9mxkJF7a4jBgAI-2FvuoQbo0Wad6ZPoQ68pjV5zePQO7c1kF2sEDYQYfynnJVlNPLqLLkIZD=
+Yb0ymr7BueK2s69KAN6hBQu2nQlMFPO0nTKXx-2BlJKNuvukOHfqT3SmazkO6sBH37BngARy-2B=
+w7FXW-2Bd0WKjboOcQobtSiu9XlseJyq2Xz2sbWHCwfZfuY-2FBIJhkzybR-2BRoX2SMHhTi2L5=
+Ft67bB0WOj4UZdyCinwxUHZSJukHu0kXQ371eCl9pXMc-3D"><img alt=3D"star image 5" =
+class=3D"star" height=3D"auto" src=3D"http://images.powerreviews.com/images=
+/fue_star.png" width=3D"32" /></a>
+                            <span style=3D"display: block;font-size: 14px;l=
+ine-height: 120%;padding-bottom: 5px;">TC46 - 80g packet</span>
+                            <a style=3D"color: #4a99ca;text-decoration: non=
+e;" href=3D"http://links.uptontea.emailpowerreviews.com/ls/click?upn=3DF-2B=
+68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oMUBmMH1ZdheFkERYTx8ZlvyIrQt9=
+dkD54HTjAZoXaZo95oVffFDKV0-2F1jGyo9M-2BIVMn-2FdxfeHtQoFvfj8n6M7hBfY2MFD7dF3=
+r3OWMqnFMqPJ8QQSD8JxAom2Qrsgvc4nBU5ZAVdUFslr8OeopNa23h1O2opAMP1o0Rh5kZmUgAr=
+J5c1WS6vA8iaMncAPvLUxiJTBN2ScCK8sGQFXXQ7bVL8LQuLrpBI4Y4WwoMR8avsGgHrsJnOeMW=
+kjLhj-2B-2BVx7wxrsUhGQkXAI7CvZxlFkFU9vpXNrwqMH0ttE6Gza32ehQOvTG2qDB6nUNxpvf=
+GWVJLIywMHhg4Hj0a70hDDan2rREgjIsyEPyreVWyNBTR2d-2FZqt1XtYQs6gowaKmcn1nLGeIM=
+OZbfVGYJ6gQNdM54lJji8dhWSmCog1-2F45BpBXo1yKHWPZbNhHbipiUXJb9WDQqoFTSsGGRDAt=
+D4c_sn__WRX5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nF=
+k6PTaKxILTM7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-=
+2FN-2FjEc6IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rR=
+ptBli1jn6uu5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqV=
+qz9-2FMklD8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr=
+zFcyNj3xe8-2FyorxrGM3NdhIm8rPl2cdzWvzCWBGJLmiu-2BQPc6bym8gtVjGgIGjEhGvVF7AN=
+Hxcdefyhgs7lXjDs8yG6WJS-2BYTD25qumE24bhVMbAeUbcmDemZep-2BSp2UU9Hcqn-2FywyMh=
+MJ2p-2B7LEjBy3gdhEMwzM8b95pU05EaAh3Bg2HjOgWYR1NB3pvH80XflROxgRfTKrtONJwSLZa=
+dYWlVMccczmxSqwG6AgIkKjzAQL5GvJ4gVi2ngadgtthlfLGeTvxY3yEWX0iLYACcfvx2uxpRfZ=
+cYZA3eAWf-2FtTBbNeF8sGVRUokZIOZ7pwCKCiVAxTvrhVIpI14ntZfg-3D">
+                                Write a review
+                            </a>
+                           =20
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- Image will be clickable to WAR with non-dynamic at=
+tributes -->
+                    <td class=3D"product-image" style=3D"padding-bottom: 15=
+px;vertical-align: top;width: 100px;">
+                        <a href=3D"http://links.uptontea.emailpowerreviews.=
+com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oMUBmM=
+H1ZdheFkERYTx89p0ctpzzb7JA0orQ6n50LT2XvOMJVMKVq4MyyHKvyyexf-2Fcgh6fI-2BGchj=
+PXqALH-2BDbjgz0kYxwh35CzRW7J9NokzvClSDHeWLwtPcsejJGWIFfK9LaHsAFycZfD80-2BYN=
+SbThEw32QA9932kzyz4idz8N7pj7Z0HPlfIgMPIVBf2TwQCgkcbEEFJ6cBR4BUxad23wJEXLWAG=
+PySIX2f8v8obLgLsHL1hmHZcFemSHtfOVP2-2B0kuVgIL5kgITYXgfLGZI6aD5QY-2FObFfdjkD=
+MgEwheTw1GbpGFntQrblYlpErvKwZKe7oIPBtSvaCwUF7JEmtFqoEMYVgcqKBLFBAsv0MTVTuB-=
+2B00PQ8DeVeVca3-2F1BITcOJvpkUHx2Q5Od-2BcELRq56FnWVL66usF4tfgigOJRP-2FhHtKrM=
+ifPQ4dLGExwXLzWdDkw-2FtYtIWUYLagVnL9-2By49BRgC7fogPYF32Eqg-3D-3DJTnN_WRX5Tk=
+K5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaKxILTM7Gv=
+Pj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-2FjEc6IUUa=
+MVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1jn6uu5pz=
+YzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2FMklD8mvu=
+8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr8OsWhwxeqEsJT3=
+z3ViOaOpE6dm11qL3R7oS4RUnjx26lUD0SM-2Fbiz2FmyIlQC-2BHI1-2BIdg5B-2FUFtTUmtKr=
+MGbkgOFUHIuXN59eIdkPQJrThcZePU9ztAkZ7ODhu3gx1wGh70cmb-2Bovm-2BFy2hLdgn517nm=
+D7b5XqdjfgHboPDrUWAbdq45F61oPV7Ycqq-2FDkRSRt1eZVbjFLxwgfS5ZP5l44rDjOxzgU-2B=
+meV5vCWU2r4yKiPLlvzD27YReQCbDUZ8vLed3jcWGRvoXjQAH0vlkp-2F1Ypv-2BOoRpBnSnNhi=
+znf2kwsk0illxlXZOtjVv5F7w70GEp4xQ5n56HTgPSvx-2BMw8-3D"><img alt=3D"product =
+image" style=3D"border: 1px solid #dddddd; max-width: 100px;" height=3D"aut=
+o" src=3D"https://res.cloudinary.com/powerreviews/image/fetch/f_auto,fl_los=
+sy,d_noimage.jpg,c_lpad,w_100,h_100/https%3A%2F%2Fstatic.uptoncdn.com%2Fima=
+ges%2Fl%2FV01114.jpg%3Fv%3D0-1" width=3D"100" /></a>
+                    </td>
+                    <td style=3D"width: 20px;"></td>
+                    <td style=3D"padding: 0 0 20px 0;">
+                        <div style=3D"min-width: 200px;">
+                            <a href=3D"http://links.uptontea.emailpowerrevi=
+ews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oM=
+UBmMH1ZdheFkERYTx89p0ctpzzb7JA0orQ6n50LT2XvOMJVMKVq4MyyHKvyyexf-2Fcgh6fI-2B=
+GchjPXqALH-2BDbjgz0kYxwh35CzRW7J9NokzvClSDHeWLwtPcsejJGWIFfK9LaHsAFycZfD80-=
+2BYNSbThEw32QA9932kzyz4idz8N7pj7Z0HPlfIgMPIVBf2TwQCgkcbEEFJ6cBR4BUxad23wJEX=
+LWAGPySIX2f8v8obLgLsHL1hmHZcFemSHtfOVP2-2B0kuVgIL5kgITYXgfLGZI6aD5QY-2FObFf=
+djkDMgEwheTw1GbpGFntQrblYlpErvKwZKe7oIPBtSvaCwUF7JEmtFqoEMYVgcqKBLFBAsv0MTV=
+TuB-2B00PQ8DeVeVca3-2F1BITcOJvpkUHx2Q5Od-2BcELRq56FnWVL66usF4tfgigOJRP-2FhH=
+tKrMifPQ4dLGExxaQ5lXqZZbqfgdwhUpeyA-2BVRXZI6ptzDMkVpse9WjiIw-3D-3Dk1fJ_WRX5=
+TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaKxILTM7=
+GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-2FjEc6IU=
+UaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1jn6uu5=
+pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2FMklD8m=
+vu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr0VBAwAiAFRcd=
+PUkoZdj0EBnqiLfvKHj62NTa-2FyFjIi6L-2B6ilPzajkXexh5E52Z3RIdBG2-2FqehN7P2Kbae=
+-2BEKOHqIq7WqavAURlsDKAzav5lZSkj2DDvPRzMBFbEoOpTVNaSiIzPXEnXo0qQqshJRgNEdd7=
+AMa56lF71lbrJwS2GrSTTxhZItChGH5TMEKQhtOIcRbrlVWFc-2B3oB9YUmhu7MrT5Jk1zhLvyM=
+Rtm46Ulw1fWUiZT2f5ufWPsLLrEad8yfUsCtCx3WY4Xu0Cxy2wv9i8PedCpqrwbDT3fezUn3Ndl=
+00TMxXBxXc8stQ5-2BNTwZq7ixq-2Fqj6bUI8Q7QVCYo-3D"><img alt=3D"star image 1" =
+class=3D"star" height=3D"auto" src=3D"http://images.powerreviews.com/images=
+/fue_star.png" width=3D"32" /></a>
+                            <a href=3D"http://links.uptontea.emailpowerrevi=
+ews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oM=
+UBmMH1ZdheFkERYTx89p0ctpzzb7JA0orQ6n50LT2XvOMJVMKVq4MyyHKvyyexf-2Fcgh6fI-2B=
+GchjPXqALH-2BDbjgz0kYxwh35CzRW7J9NokzvClSDHeWLwtPcsejJGWIFfK9LaHsAFycZfD80-=
+2BYNSbThEw32QA9932kzyz4idz8N7pj7Z0HPlfIgMPIVBf2TwQCgkcbEEFJ6cBR4BUxad23wJEX=
+LWAGPySIX2f8v8obLgLsHL1hmHZcFemSHtfOVP2-2B0kuVgIL5kgITYXgfLGZI6aD5QY-2FObFf=
+djkDMgEwheTw1GbpGFntQrblYlpErvKwZKe7oIPBtSvaCwUF7JEmtFqoEMYVgcqKBLFBAsv0MTV=
+TuB-2B00PQ8DeVeVca3-2F1BITcOJvpkUHx2Q5Od-2BcELRq56FnWVL66usF4tfgigOJRP-2FhH=
+tKrMifPQ4dLGExxaQ5lXqZZbqfgdwhUpeyA-2Bt4KD5a8yRfTG9zjGTnMFhw-3D-3Da1RW_WRX5=
+TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaKxILTM7=
+GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-2FjEc6IU=
+UaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1jn6uu5=
+pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2FMklD8m=
+vu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr7w7iCiiDT0-2=
+BMS8AaV2ws2gVB597FduDH-2FEDkzH3arwpO-2BnfIk8UF7tJmUDBiBCIsn0cWRB1Gcf9Q43uTc=
+Wlucw3r6J-2BIMTfzjF5jpS4ad8rvWz34crkboMdg4TkDoP1bA-2Flt4K3C0B-2F5-2B4A77WDD=
+b5A5xOPSUkK8uyn54qP8z-2B2KHw6NDw2YHq9bdpCZKI8Q7JVrGkjSXRV9dueuDVTNHPFJoJjQP=
+6pdRJBW4Fu3gpoP-2FZRpEq4c5u5exKAbmzbrB-2FixW1pPSfO-2BbyO2Sivf-2BHyQa8swKjUQ=
+QgbASz8Q4XSYZom6HMosSttLzZ0HQdmnA271MhiMmNQUdQxaM-2F1dWg-3D"><img alt=3D"st=
+ar image 2" class=3D"star" height=3D"auto" src=3D"http://images.powerreview=
+s.com/images/fue_star.png" width=3D"32" /></a>
+                            <a href=3D"http://links.uptontea.emailpowerrevi=
+ews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oM=
+UBmMH1ZdheFkERYTx89p0ctpzzb7JA0orQ6n50LT2XvOMJVMKVq4MyyHKvyyexf-2Fcgh6fI-2B=
+GchjPXqALH-2BDbjgz0kYxwh35CzRW7J9NokzvClSDHeWLwtPcsejJGWIFfK9LaHsAFycZfD80-=
+2BYNSbThEw32QA9932kzyz4idz8N7pj7Z0HPlfIgMPIVBf2TwQCgkcbEEFJ6cBR4BUxad23wJEX=
+LWAGPySIX2f8v8obLgLsHL1hmHZcFemSHtfOVP2-2B0kuVgIL5kgITYXgfLGZI6aD5QY-2FObFf=
+djkDMgEwheTw1GbpGFntQrblYlpErvKwZKe7oIPBtSvaCwUF7JEmtFqoEMYVgcqKBLFBAsv0MTV=
+TuB-2B00PQ8DeVeVca3-2F1BITcOJvpkUHx2Q5Od-2BcELRq56FnWVL66usF4tfgigOJRP-2FhH=
+tKrMifPQ4dLGExxaQ5lXqZZbqfgdwhUpeyA-2B2C-2FIWkntqvZrEKPMTx-2FS5w-3D-3DJtKe_=
+WRX5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaKxI=
+LTM7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-2FjE=
+c6IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1jn=
+6uu5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2FMk=
+lD8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr-2B8VOLj=
+RWqU7mEPPItAHnCciCwe84qIcyEuD9wdMzo90Crd8yZeWp-2FjqPnR64Bif7s-2F6B-2FBYSZ94=
+je9e-2Fp2V8ITfO27MLFnJ0UDylaIAnWhNnuFQMminnCIIzNWdRaCRa-2FmxW9I-2FUiha223yv=
+Bk2SWWwy7bC8V7jinG0E5FtWVmLfCx6wLM-2FBvEPx9DShNzviDQp3d31qTzt1Rh8NtZZC7c8N6=
+RMqcObrQ18I90104fyTR-2BPAsLKog1l43EkU3trlFq5Y3XfydSEpnMt934XAg8Us7EzS4CSzn5=
+ADpJguT2iVXX4dTl3p5KKKmyHMeekBAIRZIk0cpHKMHgYDSvcYxQ-3D"><img alt=3D"star i=
+mage 3" class=3D"star" height=3D"auto" src=3D"http://images.powerreviews.co=
+m/images/fue_star.png" width=3D"32" /></a>
+                            <a href=3D"http://links.uptontea.emailpowerrevi=
+ews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oM=
+UBmMH1ZdheFkERYTx89p0ctpzzb7JA0orQ6n50LT2XvOMJVMKVq4MyyHKvyyexf-2Fcgh6fI-2B=
+GchjPXqALH-2BDbjgz0kYxwh35CzRW7J9NokzvClSDHeWLwtPcsejJGWIFfK9LaHsAFycZfD80-=
+2BYNSbThEw32QA9932kzyz4idz8N7pj7Z0HPlfIgMPIVBf2TwQCgkcbEEFJ6cBR4BUxad23wJEX=
+LWAGPySIX2f8v8obLgLsHL1hmHZcFemSHtfOVP2-2B0kuVgIL5kgITYXgfLGZI6aD5QY-2FObFf=
+djkDMgEwheTw1GbpGFntQrblYlpErvKwZKe7oIPBtSvaCwUF7JEmtFqoEMYVgcqKBLFBAsv0MTV=
+TuB-2B00PQ8DeVeVca3-2F1BITcOJvpkUHx2Q5Od-2BcELRq56FnWVL66usF4tfgigOJRP-2FhH=
+tKrMifPQ4dLGExxaQ5lXqZZbqfgdwhUpeyA-2BjNF9ZfhC-2FBGIQuJUtoiQ8w-3D-3DK1a7_WR=
+X5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaKxILT=
+M7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-2FjEc6=
+IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1jn6u=
+u5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2FMklD=
+8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr1kC6CvvTei=
+iY7d23nZUnKizCoCmlfpMcHn6nIwoXFO-2BtYXscIB3XyWZHMdrbnkvqHk1UAXJnHhuAmZXnIHf=
+s-2FT2QOBIH9IkRiLcdJwIFJxDEi2IVrTTcaADlgkC6N74lW-2BvI33mQlv-2Fq7HyPBnN-2BWD=
+min0qmx7Y8re8vq971cRakzm0TpF0Yfzamoivpb9EZJ9L-2FujXcb5-2FUVSe4YhIg09eSwYfwR=
+dwgsvGapfnHkXb8FcBVse6HET-2B4-2B3KAZVP6vd26-2B8GrThuE47hAMLovLcD49wE09GKKWV=
+AJv09VxQn0TY5ORtuSjYg-2B2egXXYI2k1E282dU-2FFij8D53ikX4-2Bo-3D"><img alt=3D"=
+star image 4" class=3D"star" height=3D"auto" src=3D"http://images.powerrevi=
+ews.com/images/fue_star.png" width=3D"32" /></a>
+                            <a href=3D"http://links.uptontea.emailpowerrevi=
+ews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oM=
+UBmMH1ZdheFkERYTx89p0ctpzzb7JA0orQ6n50LT2XvOMJVMKVq4MyyHKvyyexf-2Fcgh6fI-2B=
+GchjPXqALH-2BDbjgz0kYxwh35CzRW7J9NokzvClSDHeWLwtPcsejJGWIFfK9LaHsAFycZfD80-=
+2BYNSbThEw32QA9932kzyz4idz8N7pj7Z0HPlfIgMPIVBf2TwQCgkcbEEFJ6cBR4BUxad23wJEX=
+LWAGPySIX2f8v8obLgLsHL1hmHZcFemSHtfOVP2-2B0kuVgIL5kgITYXgfLGZI6aD5QY-2FObFf=
+djkDMgEwheTw1GbpGFntQrblYlpErvKwZKe7oIPBtSvaCwUF7JEmtFqoEMYVgcqKBLFBAsv0MTV=
+TuB-2B00PQ8DeVeVca3-2F1BITcOJvpkUHx2Q5Od-2BcELRq56FnWVL66usF4tfgigOJRP-2FhH=
+tKrMifPQ4dLGExxaQ5lXqZZbqfgdwhUpeyA-2Bgw35wNLbwlC9eiriQgbk-2FQ-3D-3DK9RS_WR=
+X5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vbLBW7nFk6PTaKxILT=
+M7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4k6bXF-2FN-2FjEc6=
+IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2ncSQ0rRptBli1jn6u=
+u5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7h9nmqVqz9-2FMklD=
+8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMFsQfhIr-2BNoe5Pje=
+dMCOrL67ANapmHOjFNSUnZ3Urak6EE8W-2FsSWlkaCcf9KIH7BM6sPWL9Y0P5sjC-2BPIHf4Czj=
+6lZPOtqAch-2BMKwKKtuKZh-2FsF-2B9cxkAGMex12bByRiNNY43YpXWncJ8WJoeFafTKcEHdLc=
+eHJcCvFP6IgRoFbkKjc-2FTrTb3GQftWJLNkc9cZ2X1yV7LxhGCTJYlQSt3yDfFLYCWXpwc-2Bi=
+TEJ2jO-2BK3FD-2BPaCJnXw3qILMapsqL7W76F4u12rlaQ8-2F9hs20BdyXkBZiHPxv0nNogZux=
+v-2BdQXFB-2Btb36AWaccIYDmChE-2FkjkRCVAcZrJaFXNXqTNnrORD-2FKaW8-3D"><img alt=
+=3D"star image 5" class=3D"star" height=3D"auto" src=3D"http://images.power=
+reviews.com/images/fue_star.png" width=3D"32" /></a>
+                            <span style=3D"display: block;font-size: 14px;l=
+ine-height: 120%;padding-bottom: 5px;">TA144D: 200g packet</span>
+                            <a style=3D"color: #4a99ca;text-decoration: non=
+e;" href=3D"http://links.uptontea.emailpowerreviews.com/ls/click?upn=3DF-2B=
+68XduMzPsO6TWE2TruWccMSICTnIZ-2F8z9tQMqtD-2Br5oMUBmMH1ZdheFkERYTx89p0ctpzzb=
+7JA0orQ6n50LT2XvOMJVMKVq4MyyHKvyyexf-2Fcgh6fI-2BGchjPXqALH-2BDbjgz0kYxwh35C=
+zRW7J9NokzvClSDHeWLwtPcsejJGWIFfK9LaHsAFycZfD80-2BYNSbThEw32QA9932kzyz4idz8=
+N7pj7Z0HPlfIgMPIVBf2TwQCgkcbEEFJ6cBR4BUxad23wJEXLWAGPySIX2f8v8obLgLsHL1hmHZ=
+cFemSHtfOVP2-2B0kuVgIL5kgITYXgfLGZI6aD5QY-2FObFfdjkDMgEwheTw1GbpGFntQrblYlp=
+ErvKwZKe7oIPBtSvaCwUF7JEmtFqoEMYVgcqKBLFBAsv0MTVTuB-2B00PQ8DeVeVca3-2F1BITc=
+OJvpkUHx2Q5Od-2BcELRq56FnWVL66usF4tfgigOJRP-2FhHtKrMifPQ4dLGExylE4WHHMKCU8H=
+KFv03XNzsjZnd_WRX5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3vb=
+LBW7nFk6PTaKxILTM7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr4=
+k6bXF-2FN-2FjEc6IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2n=
+cSQ0rRptBli1jn6uu5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh7=
+h9nmqVqz9-2FMklD8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QMF=
+sQfhIr5-2BAf1ZikaqwUQsKdqA1LudfdGq3Lura-2FBOPZEM0y8xX5GBHIDPMnnB9Vam7YuRFVQ=
+W1f8VR8ZAy1FdxYqedPGaJ-2B5BE9xc0dN172AGiQxopuX8G-2FOw-2B6YsnGvNEhurr4mftxa1=
+yI1ICirW50mkVjb5DXBjZB8BslaaU7m4Q90AcHmLhqCLW4heiCj9f0qWm-2BRIClMKqlwsFvSaP=
+a68kznK-2FxNuYR-2Bv6A5Cq2BX3j-2F7Z2ndp31MlI-2FAUvkvyf13MxoO90GDtsj423f5M8bp=
+ymBZ-2FNwMjaLlOvjG-2FdOK3CeGCl7RWBqB5pqB0Itwp9N0SiPp55302SHw9b1T3B-2F2glqQ-=
+3D">
+                                Write a review
+                            </a>
+                           =20
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"padding: 20px 0;border-bottom: solid 1px #dddddd;">
+            Sincerely,=0D<br>=0D<br>Upton Tea Imports=0D<br>http://www.upto=
+ntea.com/=0D<br>
+            <custom name=3D"opencounter" type=3D"tracking">
+        </td>
+    </tr>
+    <tr>
+        <td style=3D"color: #aaaaaa;font-size: 14px;padding: 20px 0;text-al=
+ign: center;">
+            <b>Upton Tea</b><br />
+            900 Larkspur Landing Circle, Ste. 275 Larkspur CA 94939
+            <br />
+            <a style=3D"color: #4a99ca;text-decoration: none;" href=3D"http=
+://links.uptontea.emailpowerreviews.com/ls/click?upn=3DF-2B68XduMzPsO6TWE2T=
+ruWQYzipu5o63dyLiSkKdxUPvGa6oMQ-2Fbqw2RX41XKuRwO641DDwr8HAcJgXgK-2FDoyOXmIJ=
+1O8Nsv9uuS2ty6SSpaMeXvacLjiEu4JFyBzOLC94AOa2IIz4DNwxg36escGvCUGlQHn6yB4bK7l=
+mxSHuh4-3DcIFE_WRX5TkK5PuOvleLec3dnVMQhVmFibnr1TZPo3mV-2BD8G3fZE6GVlfR6PB3v=
+bLBW7nFk6PTaKxILTM7GvPj-2FtVF6OfIVnKfSh1RgLqj811NnClsfhnewTZyu0X3jL12v-2FGr=
+4k6bXF-2FN-2FjEc6IUUaMVLD-2FCKUJYweCLOn5Cn0Vs4NxOWcj8g1vsB9AoQOqsd8TjV6n0o2=
+ncSQ0rRptBli1jn6uu5pzYzhcI9G5UKrWyc7SRnHRP9Bdr7pVOO3OwQrwXYrkNSlbZaPNTw5okh=
+7h9nmqVqz9-2FMklD8mvu8JzZNhfT-2BX8PBnBE-2BC-2BDfzYDsLl-2Fqqf-2FQ-2BJrv8L7QM=
+FsQfhIrw5Q4xDrt14nFFsAqjxwcpM7yloaxGfPF2Q6-2BCG6Obn-2BeLVzKvnlfqUKBvSYAucZX=
+Fp-2BwP3tJbkh0nQ5nMfTGsjeEkNmpjvgFvVaatJBK5mFqtL-2BQwHpNmmcpMpNtoopKk-2FEIR=
+yw4yJu3WbTlPRzJDGfCdMYohgR6cTV-2FMG0VC4M0Ju0n1zO3J-2BJa5LR6D8IxExYQqrqQzjnd=
+WvmAIJsFpVO2Q3GiC-2B6S2aGfAutjPCv8D8k7M43XQzneP8zjdq4bpe5JWLgJq20mk6L8kpIIw=
+uCNzAcmaEXfCb3Yd3ShjXvl6CxP3sZAqjj7i9EXrKJrTu0CqwoFDgtgPN-2BGBHWDMM-3D" ali=
+as=3D"Unsubscribe">Unsubscribe</a>
+        </td>
+    </tr>
+</table>
+<span style=3D"display:none;" id=3D"http://links.uptontea.emailpowerreviews=
+.com/asm/?user_id=3D22664553&amp;data=3DKTbvHnk-dzj5-9VGIIh2bHYYJI8JkvuEwPF=
+eQ4a8g9doMDAwdTAwMDhGOPdbU0o7XmB-to3kMheDqEo3PZChuaSRNFP8BzXfpx2COypndKAHPg=
+_GKgGF0DWUGfB17E6EF9gBOSP6UQkduw7OYiCMm8A1tzLLCBYkcju0ss84qhwzcURfy9-xTNUkd=
+9xBQvpYi7UAXxjb5-hXTLgij3mAnI3NqoMA_n8QNRUeoX73BejEd4bnDsMGiK6JX-7gp7LhN7Hi=
+BBGUkrvhwRYhjln-YJUBPPAwNq7VZZEH4XGWCfYypmhjAu2Pm7I5cFoT7nqBpgAMOpiSGEQwS7i=
+qypDmvZymu0F2gPNwESkLb1Jqd_OJ_MUow7XstTJX5eQiVxmbfUm0opoVcyJti2M_aP0DdM-aIo=
+NccF5hV9lJe1aya8hheUUYrt-hygwE4W-16dnhVBNuraI08mS_r4g74Ee9TvFBDtztEVyCoAt8P=
+MJhDY3mW2OiFNtsle0W2RuS_3jKWu80XvIPpEKmCKzCrJcJHk989cs6PP21vE1rwPqntUDM50Fu=
+ikHbFVEKo4_0LMW3lrjm3LkxPVaW5EInxwJNgUh0YQ2QnRsyIRiKpVnzmtCE8T9DHfoqg0Vn0gT=
+GroXBxB6gtt6NTcq75CidY7bw4OAMYR_y9IFpLmTbU76x4jkote21SD7vstatEpP7rFZ_0iL5h0=
+Ww8f4EmcAyl-EXYaz1NRMrJQVUPkdXvJV1fZc_M3-cVhLa8ZiV3_vl3LfmJIholaF-MOoqHlTsL=
+YHEbGpKs0gofShstI2xxypTyP4Rg0ywZu8TPYbL8pPPaqa9sQE3RF9yaxwHe6QB9se8v7wVwBxU=
+5-ew"></span>
+<img src=3D"http://links.uptontea.emailpowerreviews.com/wf/open?upn=3DX6nVG=
+qSMdJTrz-2FI1LxXG5pi7I-2FroW8E9ZRVgz1nR849-2FP8Axzaws-2BK5QzPf3ET7CAA4UvEWC=
+DEgfLdP-2BagHJ0JP9JShQ0PFqKtUluxEMLZKNqjhdxPbqH6v8gKEr-2BUr0axHEkGlMSVol5XG=
+ZOKi-2FLarvApH3Cbdyngf-2BfjpusblwGi8oXqPrGrpaT7UijKop-2BuTng6UBQWf1oitVP-2B=
+YK4-2FrKAh2l2c9RYCnLWwLcWkzqDu5fGNHAEOTKo0o-2B9F2ujQKf-2B3P1EpJknpNbOHBAo90=
+7G2PttG2QZcxGgxuYWFQ3QL5n2a2uD5MdLxYasnV0oZYSb82jYiDVSS9Bkk9L45Vo-2FTHvNNJB=
+QP-2BtZFQdg1RaHZxjqNWbhpmUmrjgQCKQZha5vmOiBJBGV48Rc7LQOzyVx3xnCGzWY3-2FUo1h=
+yz18zucRZHAvt15E22SisIKkB-2F4Z5lO3zEIsvlzF1XAeBW2Xdnh1DlH17BKiNWfi-2FQZd2wW=
+oi9UvU4AHkQ3ertFFnZKP8ljjmFtCOLmN4teynflyFf-2FrjY6TfyscyHfel3Z-2B5HC6mKKHZ3=
+cnzfZdlaOw1-2Fam2aQa2LoAjp6MUrI0mRl9DoAz8P8A96J00EnH7hR2gcg00e7viOgv4wicUzv=
+46Ru39YabcZhjUxZip0YP-2B65cDlsVhvci-2Fo1PxQ1EmuGg-3D" alt=3D"" width=3D"1" =
+height=3D"1" border=3D"0" style=3D"height:1px !important;width:1px !importa=
+nt;border-width:0 !important;margin-top:0 !important;margin-bottom:0 !impor=
+tant;margin-right:0 !important;margin-left:0 !important;padding-top:0 !impo=
+rtant;padding-bottom:0 !important;padding-right:0 !important;padding-left:0=
+ !important;"/></body>
+</html>
+--e00fa95125e76dc9435d4c76919901b762b5211374ed8a7482861b360e6d--

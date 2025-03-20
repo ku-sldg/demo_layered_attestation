@@ -1,0 +1,174 @@
+Delivered-To: joshua.guttman@gmail.com
+Received: by 2002:ab2:6758:0:b0:164:a31:e3ae with SMTP id h24csp197890lqo;
+        Sat, 1 Oct 2022 02:00:37 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6hjs+OKdrEjZRezxznYxvt/jlZvJ7ZfzkqPkxzJpnZOOiozRnR/dU9+0FRiEZ1Q/pP0h29
+X-Received: by 2002:a63:c005:0:b0:442:3cc5:3497 with SMTP id h5-20020a63c005000000b004423cc53497mr5414915pgg.568.1664614837553;
+        Sat, 01 Oct 2022 02:00:37 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1664614837; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=XRLx3Pq0yJ6dp4CziABxkoPuurADYooQf/HwmL6IRBP0psgVsLpqE+dRgDkyLxGU65
+         J5ewZwtwYwgev8xozf7oYJyTAJUotapIWn22XX91at4BAkITQuLW2mZxz01sVw0ZHU7U
+         gbucTPylri5FILSEzn8FXT1ygM5hBo4kjzcyyVf3bFOpAVS3D4MGXJwB/wcVzGIEotdz
+         QWxE7EYxQZkwGlsqPSYFOIAEnVLQopD41LjR9yq4kZf8NCNCX0L+1jD0SW1XxKA8Z0+f
+         fkxbb9187pRp/cprFhBb/KuROLx7YMdetCiDFGXsJjDTmAvy6tasOLWttu3M2AmUh2U7
+         l18Q==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-transfer-encoding:content-id:auto-submitted
+         :resent-from:errors-to:list-id:message-id:date:sender:thread-index
+         :thread-topic:subject:to:from:dkim-signature;
+        bh=95dAM1xZyBQ9uOQaemo2i8X0ZeemrDSQtJfDmClgom8=;
+        b=jxfxbR7h4WWSTdu5UJKdBtfae6uEqa1pLVlR+CKQN0PxiPciJOCxihW680AgHKYskg
+         a+F6oS+W5Hfm7uayn2y2y1lj5xSFBaFkmddCWMH89Vv2b5xtrA3Pl5idELaALaNspd4P
+         rsf/zr5q1ny6CLcxgk8b4Ay36EHjXoexe++uDdPXvKkODjrKBKKHkije+7SlF63XBQNO
+         NXYH3JW6Rk6AVWlad5c5x9cgbHQleOcPEU0fzjqcgX3ByQptoUQiG/ZMaXvBu39cNm2i
+         vuqkSIYub7NT/UN1sjhxmlF9YfIz8BIZ/rbdHDepfl7rp26fGJCqF+2gj45pDvq5Qy5i
+         lPZw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@wpi0.onmicrosoft.com header.s=selector2-wpi0-onmicrosoft-com header.b=lgF3UcSb;
+       arc=pass (i=1 spf=pass spfdomain=wpi.edu);
+       spf=pass (google.com: domain of guttman@wpi.edu designates 40.107.92.132 as permitted sender) smtp.mailfrom=guttman@wpi.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lists.cs.princeton.edu
+Return-Path: <guttman@wpi.edu>
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (mail-bn7nam10on2132.outbound.protection.outlook.com. [40.107.92.132])
+        by mx.google.com with ESMTPS id n6-20020a6563c6000000b0042bc6e8d3f7si5035879pgv.642.2022.10.01.02.00.37
+        for <joshua.guttman@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 01 Oct 2022 02:00:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of guttman@wpi.edu designates 40.107.92.132 as permitted sender) client-ip=40.107.92.132;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@wpi0.onmicrosoft.com header.s=selector2-wpi0-onmicrosoft-com header.b=lgF3UcSb;
+       arc=pass (i=1 spf=pass spfdomain=wpi.edu);
+       spf=pass (google.com: domain of guttman@wpi.edu designates 40.107.92.132 as permitted sender) smtp.mailfrom=guttman@wpi.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lists.cs.princeton.edu
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=JhM+Pm2PDeAOzbmRIlXxJeEBH6cZo3fBlnqDOMc9GeZQtxZ+bu/+QnVRDv5+M2Hn4X+hJyD5L4ZUO2CHGcmHm0OowiDvL3XvfBfdoq7AcUrwYr9YJBMPGDxi+Cp9tqln8iLucRUV7ORlrCbavAu1wpG77x9RP82479wZYVX3Ge9Mo9ODlwQqJGzT4KSHluRE8wwHO1lUnkCORgPpHfUBOBPYGXIrkJmn4uOITiKKUUadii0AG/NsLRp95xthEbzCDQMc6E33DEs26TSAMI3kCLT4bkhZd0xg7RtX945L9Ly+EYLVCKaZpZxVc3fkDeu1oR7LxxDQzlcdX2S5b7Ti4A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=95dAM1xZyBQ9uOQaemo2i8X0ZeemrDSQtJfDmClgom8=;
+ b=EpuOq66wWZSsZb4pOGuTvQeSCbjqLhMRh2NmiSdBhS+70e4IkX+QjXxdH1GslsfeP9uWRxlrLvktRNXHvyQ2Wx6ZHLSjyPkdkqgQ2Wlfbi8MFYjpaeuVfSd3vGKDwPLxq0tfg9zMPG1WSbgy2Sy5tVshQs7bRoEI1Mr64iHgETbm6F00IcXvMTpZIrt6mTY54WK8QN1AA4vyN0y0oFnnWkotxpH/775tLeI/Spn7nnbV6/oz6yn8uCfMZjjWU1eSgfqM7LvJgDhywtfTvPpqAqA+TgGMUvICF4WSeewhoqsH6XlaIoDpHA+VT9dVbiWxqL+1GTLznQpEUuxaD4DQJQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wpi.edu; dmarc=none; dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wpi0.onmicrosoft.com;
+ s=selector2-wpi0-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=95dAM1xZyBQ9uOQaemo2i8X0ZeemrDSQtJfDmClgom8=;
+ b=lgF3UcSbocCYx0OrzxhXr9VKaR6MJMA9/hUtD9wHzd5DXNuW11OiEDUCYAFKRBSZXeB/F9G36rB8sejuao//xhh0WzhPUFJhrwxAegsXEOGbH9USBDPiKS75YEhkyHxoqi6ZE2VqX7OUogmWue/nL+f8Sq5bV291Q3bUsuvHaI8=
+Received: from DM6PR01MB4588.prod.exchangelabs.com (2603:10b6:5:79::27) by
+ CH0PR01MB7170.prod.exchangelabs.com (2603:10b6:610:f8::12) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5676.23; Sat, 1 Oct 2022 09:00:31 +0000
+Received: from DM6PR01MB4588.prod.exchangelabs.com ([::1]) by
+ DM6PR01MB4588.prod.exchangelabs.com ([fe80::a201:6240:d722:f89%4]) with
+ Microsoft SMTP Server id 15.20.5676.023; Sat, 1 Oct 2022 09:00:31 +0000
+From: "mailman-owner@lists.cs.princeton.edu"
+	<mailman-owner@lists.cs.princeton.edu>
+To: "Guttman, Joshua D" <guttman@wpi.edu>
+Subject: [EXT] lists.cs.princeton.edu mailing list memberships reminder
+Thread-Topic: [EXT] lists.cs.princeton.edu mailing list memberships reminder
+Thread-Index: AQHY1XRBBS9NJKmjekyeUvc/poEuZA==
+Sender: "mailman-bounces+guttman=wpi.edu@lists.cs.princeton.edu"
+	<mailman-bounces+guttman=wpi.edu@lists.cs.princeton.edu>
+Date: Sat, 1 Oct 2022 09:00:19 +0000
+Message-ID:
+ <d7c2efaf83c14672b13829afcd390158@DM6PR01MB4588.prod.exchangelabs.com>
+X-MS-Has-Attach:
+X-Auto-Response-Suppress: All
+X-MS-Exchange-Inbox-Rules-Loop: guttman@wpi.edu
+X-MS-TNEF-Correlator:
+authentication-results: spf=pass (sender IP is 128.112.136.55)
+ smtp.mailfrom=lists.cs.princeton.edu; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none
+ header.from=lists.cs.princeton.edu;compauth=pass reason=100
+received-spf: Pass (protection.outlook.com: domain of lists.cs.princeton.edu
+ designates 128.112.136.55 as permitted sender)
+ receiver=protection.outlook.com; client-ip=128.112.136.55;
+ helo=violeteyes.cs.princeton.edu; pr=C
+x-no-archive: yes
+x-beenthere: mailman@lists.CS.Princeton.EDU
+x-mailman-version: 2.1.12
+list-id: Mailman site list <mailman.lists.CS.Princeton.EDU>
+x-list-administrivia: yes
+errors-to: mailman-bounces+guttman=wpi.edu@lists.cs.princeton.edu
+x-proofpoint-guid: -jyIVh5j76uvEJk364fg3j3hdk6Ptcxf
+x-proofpoint-orig-guid: -jyIVh5j76uvEJk364fg3j3hdk6Ptcxf
+x-proofpoint-virus-version: vendor=nai engine=6500 definitions=10486
+ signatures=596816
+x-proofpoint-spam-reason: safe
+x-eopattributedmessage: 0
+x-eoptenantattributedmessage: 589c76f5-ca15-41f9-884b-55ec15a0672a:0
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic:
+ BN8NAM11FT026:EE_|DM6PR01MB4809:EE_|DM6PR01MB4588:EE_|CH0PR01MB7170:EE_
+x-ms-office365-filtering-correlation-id: f5d82670-18d3-4892-6850-08daa38b64af
+x-ms-exchange-atpmessageproperties: SA|SL
+x-microsoft-antispam: BCL:0;
+x-forefront-antispam-report:
+ CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM6PR01MB4588.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230022)(39860400002)(136003)(396003)(376002)(346002)(451199015)(6862004)(9036002)(83170400001)(108616005)(9686003)(8936002)(5660300002)(6666004)(41300700001)(7696005)(24736004)(6506007)(122000001)(71200400001)(186003)(66899015)(37630700001)(42882007)(83380400001)(478600001)(786003)(316002)(7846003)(19810500001)(66446008)(66946007)(70586007)(64756008)(66476007)(66556008)(8676002)(966005)(55016003)(75432002)(2906002)(130980200001)(223123001);DIR:OUT;SFP:1102;
+x-ms-exchange-crosstenant-originalarrivaltime: 01 Oct 2022 09:00:26.3646 (UTC)
+x-ms-exchange-crosstenant-network-message-id:
+ 7f64ad7b-ab51-41a9-7ff2-08daa38b61e3
+x-ms-exchange-crosstenant-id: 589c76f5-ca15-41f9-884b-55ec15a0672a
+x-ms-exchange-crosstenant-authsource:
+ BN8NAM11FT026.eop-nam11.prod.protection.outlook.com
+x-ms-exchange-crosstenant-authas: Anonymous
+x-ms-exchange-crosstenant-fromentityheader: Internet
+x-ms-exchange-transport-crosstenantheadersstamped: DM6PR01MB4809
+x-ms-exchange-transport-endtoendlatency: 00:00:03.3325168
+x-ms-exchange-processed-by-bccfoldering: 15.20.5676.023
+Resent-From: <guttman@wpi.edu>
+x-ms-exchange-parent-message-id:
+ <mailman.162.1664614819.5514.mailman@lists.CS.Princeton.EDU>
+auto-submitted: auto-generated
+x-ms-exchange-generated-message-source: Mailbox Rules Agent
+x-ms-office365-filtering-correlation-id-prvs:
+ 7f64ad7b-ab51-41a9-7ff2-08daa38b61e3
+x-ld-processed: 589c76f5-ca15-41f9-884b-55ec15a0672a,ExtAddr
+x-ms-exchange-senderadcheck: 0
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam-message-info:
+ FxwRUzXRynHIDTGoaX5P8uaBbw4xjp4ARJgo4qOI59VIgPdyxvmlyPzrpo9i0Jrm9+a0wBC/hXFmxSzC+XTetHoj7wDVfZ7h113GL7NitpXkf+yoiGINd8+DSMflLHHMdYAahnVobPfUX9ApaMtfCsLYy2E5WLA63enqhZdbZdlYj7okY7jfNc79VWActTEFtA9fY38mNfkCbUQuC2r6kz8HOk+Oj1DAV8IOEHxhg4HhlzhRkI7+rg7ZsuPSMmYvVxbB69xlDbJKIyyUkloGZpvNZkAI+IHR2U16nvgZYm8MlDARly90ckiBKm1Jgt4UI/qn6Fw94useUpO1at6A/eMBbSFVxkB8Cwy9+T7uc0ELn+F7BChqRgM3H5CVHwJH/SjlzCUlEpXaylaqsvzVz8cAQHDb08xB6/AeHcpET0u4KuUVcYV9/ll11P35kxITaLZzfxl6cb/Jamisq6tarsB32imusmUFgEuF5qL2ovB0RGSuu39oC4DOTKoHRkGbfYiDQb6crFRt4Bj1w745sdlmje0eC5HXMKE0SgrOZyZO6wtOw1TLu2f1IZLdaiwD0aTX9WB0mt3H88vXfjFJjmg7meirexyfzz2/fHNVBCu1mLSc1C5jmtyQ/ZiDUfs7btGmWKkSDPpVmECKGQkxxYV+O8vXeene9dD++ICR9ZxIGm9k5mio7W+YdilM/7S3uJqWh2LFPCczS1srifqN7VuBpHQP9RNPwlBpEu1I14Y=
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:
+ oRiYTf3qmZkxaYLAnKGLYsllc4eUlugvTzGVKBxRJKNZC6YnHrij09H2LV9KfYthhMJFJh3wsb9iGNYsjBrnWmPoidwTlo0gr1WI8QEvOrXxjc/iJXbVrcp+UPs4/FRd8DOHykgaI9H4/vkwdFXQQoSTZq8TPQYy37n/xO8dzgU77Ef1MxyN1GkGXzZY8V2dPSpWKr9j30dVn8KHl4cNfKYJKOJSCC6YEJ88xZqtxyHBh4yy2WtGTi7O1zcZ61cTxWLOVE7OePDdVYg6bAS5Q0A254oRGUSz28W95JCG90bKVRM+s20r785LA7BYJ+Ly
+Content-Type: text/plain; charset="iso-8859-1"
+Content-ID: <632BAE94C1BE6C4E82120CE7167EEA49@prod.exchangelabs.com>
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: wpi.edu
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT026.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f5d82670-18d3-4892-6850-08daa38b64af
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Oct 2022 09:00:31.1032
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 589c76f5-ca15-41f9-884b-55ec15a0672a
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR01MB7170
+
+This is a reminder, sent out once a month, about your
+lists.cs.princeton.edu mailing list memberships.  It includes your
+subscription info and how to use it to change it or unsubscribe from a
+list.
+
+You can visit the URLs to change your membership status or
+configuration, including unsubscribing, setting digest-style delivery
+or disabling delivery altogether (e.g., for a vacation), and so on.
+
+In addition to the URL interfaces, you can also use email to make such
+changes.  For more info, send a message to the '-request' address of
+the list (for example, mailman-request@lists.cs.princeton.edu)
+containing just the word 'help' in the message body, and an email
+message will be sent to you with instructions.
+
+If you have questions, problems, comments, etc, send them to
+mailman-owner@lists.cs.princeton.edu.  Thanks!
+
+Passwords for guttman@wpi.edu:
+
+List                                     Password // URL
+----                                     -------- =20
+deepspec@lists.cs.princeton.edu          uznauwco =20
+https://lists.cs.princeton.edu/mailman/options/deepspec/guttman%40wpi.edu
+
+dsss18@lists.cs.princeton.edu            uzpoomzo =20
+https://lists.cs.princeton.edu/mailman/options/dsss18/guttman%40wpi.edu

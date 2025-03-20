@@ -1,0 +1,783 @@
+Delivered-To: joshua.guttman@gmail.com
+Received: by 2002:ab2:6758:0:b0:164:a31:e3ae with SMTP id h24csp944181lqo;
+        Sun, 18 Sep 2022 19:13:32 -0700 (PDT)
+X-Received: by 2002:a05:6102:3666:b0:398:7f9e:278 with SMTP id bg6-20020a056102366600b003987f9e0278mr5266297vsb.50.1663553612638;
+        Sun, 18 Sep 2022 19:13:32 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1663553612; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=pcsE2TjlgOBek+v92W07x8RBSirv0j+RiTWMoA0vfZSjqoazYcG/wMCBJvX+1zHEb1
+         LprD5jFP5LHwtj5S1zQCi0ymV4b2dNBTYDTEE3QzWre3hfCJeozqtZNGNSjnP4sOHSa4
+         LfHwGD13lUClrrdMwh87b3/Z9M64172Y65zsvCYnp5sdW/ksKlxWCkANA5qjndqxudc3
+         wrjCi5e8i/is5SRM20nroWX/djR3JZe4I3uNcFbP7wnx1VRQbkC0G+968kHcP+UItVPk
+         8O1BKbhoCN8C0pS+p/2rjSsvqh3IPEwDlg65KDqFcE2AELAscBHFRUXGCOtAVk67rJFM
+         XFkQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:list-unsubscribe-post:list-unsubscribe:list-id
+         :feedback-id:message-id:date:to:reply-to:from:subject:dkim-signature
+         :dkim-signature:delivered-to;
+        bh=NByh9OgZpoUvQr4ZyDFKK4IR1gZPrVTrLlC3fS8JszQ=;
+        b=yJl+BD9b73m/MYYlDlyNOSnMgT4B0sWjVN+aSCGFib+l0T0uuA8r1FEx1AOQ8rwCY1
+         SDQje8QUkL9XcYKTHsSzHZyMyUy2np0Y5A3wgCrmsYCdqudkxyI6SgQ6LIq6V9T5r8Qu
+         2pxgQ1FUBDabW/c3dN7CENTAtWezXbaW4WOMHeJKI/K27M4StPYzC1qjsvALJHpnHg2X
+         0mhfSioDyR7s4cQdYUZLAeM06M2H6HWD3TT/7ozn1sKSlv2pmy5elNUQRxHG42Ci+Byj
+         ilg/w4uBJC6hfvMZahiwDXJ4Nribcyy9J/ZywsZeOYnIVe822cMjsamKzvvoZdPkIYwF
+         Hu6g==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=akTxdAJ5;
+       dkim=pass header.i=@mailchimpapp.net header.s=k3 header.b=jFfMYIbB;
+       arc=pass (i=1 spf=pass spfdomain=mail248.suw101.mcdlv.net dkim=pass dkdomain=gmail.mcsv.net dkim=pass dkdomain=mailchimpapp.net);
+       spf=pass (google.com: domain of jean.guttman+caf_=joshua.guttman=gmail.com@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom="jean.guttman+caf_=joshua.guttman=gmail.com@gmail.com"
+Return-Path: <jean.guttman+caf_=joshua.guttman=gmail.com@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id w83-20020a1fad56000000b00375c9fa690dsor3721376vke.8.2022.09.18.19.13.32
+        for <joshua.guttman@gmail.com>
+        (Google Transport Security);
+        Sun, 18 Sep 2022 19:13:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jean.guttman+caf_=joshua.guttman=gmail.com@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=akTxdAJ5;
+       dkim=pass header.i=@mailchimpapp.net header.s=k3 header.b=jFfMYIbB;
+       arc=pass (i=1 spf=pass spfdomain=mail248.suw101.mcdlv.net dkim=pass dkdomain=gmail.mcsv.net dkim=pass dkdomain=mailchimpapp.net);
+       spf=pass (google.com: domain of jean.guttman+caf_=joshua.guttman=gmail.com@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom="jean.guttman+caf_=joshua.guttman=gmail.com@gmail.com"
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=mime-version:list-unsubscribe-post:list-unsubscribe:list-id
+         :feedback-id:message-id:date:to:reply-to:from:subject:dkim-signature
+         :dkim-signature:delivered-to:x-gm-message-state:from:to:cc:subject
+         :date;
+        bh=NByh9OgZpoUvQr4ZyDFKK4IR1gZPrVTrLlC3fS8JszQ=;
+        b=2OUskGN3VCzRrZqGjcAQUGUHK6vDrnO3PckLDrse64b5iyzGhzXIqo+hpqNj+JyMJ3
+         aZwyP+fRI6ON8Q7F5Bb1sqquFifqMmVXSe31oLSkDGeyKp3E7AQKmdVWpAdGu1wrLq49
+         r8jT8NMtOhtt0iAoW4NWltD+V6nRQ2+r0NDZjQVJ1ucuse+wMpAVUxQZROCpb1KH/nWL
+         iD8X5F0EZU5c3Py+PMtEk0gRhz+g+Wb2urBI6YuwT5xCNUQja5MSpPEyeDEhKfL2n/e+
+         HEsmQ+kL+B/K2N7AOC8lJ4BQ12dnpK+TmjQybBk4H+WLhpw+3k43Gs1uBb2vZpzHRmO8
+         jZgw==
+X-Gm-Message-State: ACrzQf0hHgn35LXkT+A1bJfcIIWvwqbQk+NxcSNA0VpoOx+rdR8/RnOa
+	54vkQlJ4couxDo37PdwRs9R3CgkO313qgqgPEQZ9M7+n7ldECigcTg==
+X-Received: by 2002:a1f:b254:0:b0:345:87e4:17fb with SMTP id b81-20020a1fb254000000b0034587e417fbmr5357736vkf.25.1663553611929;
+        Sun, 18 Sep 2022 19:13:31 -0700 (PDT)
+X-Forwarded-To: joshua.guttman@gmail.com
+X-Forwarded-For: jean.guttman@gmail.com joshua.guttman@gmail.com
+Delivered-To: jean.guttman@gmail.com
+Received: by 2002:a59:5655:0:b0:2f2:7e1d:b227 with SMTP id p21csp1210838vqd;
+        Sun, 18 Sep 2022 19:13:30 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6e+Pm1sKp7UVpvdc6Bl100fPUsorI+efxDibUZa2aBeqmzYQWSZQSo3LWlAylDHdlq5YaQ
+X-Received: by 2002:a25:40d0:0:b0:6ae:f1e1:ac88 with SMTP id n199-20020a2540d0000000b006aef1e1ac88mr13251143yba.490.1663553610570;
+        Sun, 18 Sep 2022 19:13:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1663553610; cv=none;
+        d=google.com; s=arc-20160816;
+        b=bpAUa9nJo9RQ9p5pI4NDctO14qDP/H4VrTV/bqu2EJGip1o4eZ64pEommqhfrlV+N7
+         Rot+P7kUMWg6RGKn4s7fTNokcGB66BmXM1w/Xxrl/7Dwslqd1Stdxi2HiFPs4FSJ6fbH
+         bhO+HLvxpr/daPVFKTow2NZ9NWSkLqWyt56UtQ+EiVgGcYq00/73pykAII+njsqHCQi0
+         ec9/yqQZlqzpSAlRFbqrUF0TSCCsKVkf0GJRwIH8uW4Lm3vRh+VU8cqnBrgyQakl5vf/
+         r9A1W2/7cK6y7oOFghDIoBNNsFEpaOIrCdaqLVrQX4dNaYRZofMKEmjDHSjpIfEcobhs
+         TiGw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:list-unsubscribe-post:list-unsubscribe:list-id
+         :feedback-id:message-id:date:to:reply-to:from:subject:dkim-signature
+         :dkim-signature;
+        bh=NByh9OgZpoUvQr4ZyDFKK4IR1gZPrVTrLlC3fS8JszQ=;
+        b=Dm3qZqHwT6a2WHjyjoud9Cv1nDVzJaPYDnJgyBwKUynRGYEOGKpJmLgY/97tOeHJYV
+         xONFcuzgUfZ4XNS9vbDDAZFn9gcnUWfxskvrcUVhTOrzgKPScLC+ehS6/7yFOcP4bJc7
+         TpTfRktJSV2yR5954J1V5b/Ep62x+KEOZ4rIX6eCkBOE1MaHrSeOzZb+ehTuPczkCC3v
+         7zGb9jOEHxsELthAa/Dyv/Ky0AEHVl4TN4uwKmE7l2c7+1TA1gzqXGFMGuRvHrCSOluI
+         rki0MV93cOwVRiIdf+4cdYQZg2nprRnRD2HSR3/RMtZZhnYtvjKasPVrsMPbE45IpIRM
+         HI2A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=akTxdAJ5;
+       dkim=pass header.i=@mailchimpapp.net header.s=k3 header.b=jFfMYIbB;
+       spf=pass (google.com: domain of bounce-mc.us17_142491585.13678086-d4a6d11092@mail248.suw101.mcdlv.net designates 198.2.184.248 as permitted sender) smtp.mailfrom=bounce-mc.us17_142491585.13678086-d4a6d11092@mail248.suw101.mcdlv.net
+Return-Path: <bounce-mc.us17_142491585.13678086-d4a6d11092@mail248.suw101.mcdlv.net>
+Received: from mail248.suw101.mcdlv.net (mail248.suw101.mcdlv.net. [198.2.184.248])
+        by mx.google.com with ESMTPS id 6-20020a251806000000b006a901f54ecesi7887585yby.138.2022.09.18.19.13.30
+        for <jean.guttman@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 18 Sep 2022 19:13:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-mc.us17_142491585.13678086-d4a6d11092@mail248.suw101.mcdlv.net designates 198.2.184.248 as permitted sender) client-ip=198.2.184.248;
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.mcsv.net;
+	s=k1; t=1663553610; x=1663856010;
+	bh=NByh9OgZpoUvQr4ZyDFKK4IR1gZPrVTrLlC3fS8JszQ=;
+	h=Subject:From:Reply-To:To:Date:Message-ID:X-MC-User:Feedback-ID:
+	 List-ID:List-Unsubscribe:List-Unsubscribe-Post:Content-Type:
+	 MIME-Version:CC:Date:Subject:From;
+	b=akTxdAJ5ecvUj0iVn6JRHpL/Il48k+P9Z99E5pcmky5R5Pp58yzDIsQaPYZRGRpD6
+	 mwISVV1UZa2YWPHeLpTq/yvfY/FeOJwomV/GEm4Bw+1G7rkQIoGG0fyqdoSsnZjmGE
+	 SXIk4oc0wYNXRu+0pqZ410hUdTjEdnMMaMUgtL0D8BM1ot78mhk4AwegKnOyYqBjix
+	 JVetNEwxy131iYWe5WzPibS4E4Go4A0ki1K2j3J4dCPDtrqsCCv9xYc/cINkDYHCeA
+	 ZPjELGczWifC0INb0bvxMzq6cu4jzNB85ivB5FTA/ZojU8KM45xFfoCKkiWoDubvIy
+	 yex/2mKBRln0g==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailchimpapp.net;
+	s=k3; t=1663553610; x=1663856010;
+	i=bethg=3Dbethgalston.com@mailchimpapp.net;
+	bh=NByh9OgZpoUvQr4ZyDFKK4IR1gZPrVTrLlC3fS8JszQ=;
+	h=Subject:From:Reply-To:To:Date:Message-ID:X-MC-User:Feedback-ID:
+	 List-ID:List-Unsubscribe:List-Unsubscribe-Post:Content-Type:
+	 MIME-Version:CC:Date:Subject:From;
+	b=jFfMYIbBj0V+iukC54Qox27zAqH86ORh9vv8jVCRGaFRnaGprij0QLDhOJQDWN5AP
+	 6GyvC5OALKz9P7tLQdpWOPI4g0Njn0E7zgN8cJ+sgfbtJcVIYrG+01cREgqLf54Twa
+	 nIoex4vQ6HbBQEGxzQCkWh8Q9kejxVshmgcJRLa6CmwuIaRW+VKKVMiLSg3j5fdIX/
+	 O5EHPjcNU8GY0fl2ZhvknkBdBnDjvivRwaccu1CBDAsLqjegA0aJknsPbObdTItpWo
+	 lZyeU+F99HX6gCAxLKUBJqn0EFKyMtQVf8Ny0GYEJjqomVFm+nQlmqegIpdwTKaN++
+	 pXDKALU65WOgQ==
+Received: from localhost (localhost [127.0.0.1])
+	by mail248.suw101.mcdlv.net (Mailchimp) with ESMTP id 4MW7WZ1lBmz7mTGTp
+	for <jean.guttman@gmail.com>; Mon, 19 Sep 2022 02:13:30 +0000 (GMT)
+Subject: =?utf-8?Q?Unraveling=20Oculus=3A=20Artist=20&=20Curator=20Conversation?=
+From: =?utf-8?Q?Beth?= <bethg@bethgalston.com>
+Reply-To: =?utf-8?Q?Beth?= <bethg@bethgalston.com>
+To: <jean.guttman@gmail.com>
+Date: Mon, 19 Sep 2022 02:13:28 +0000
+Message-ID: <c6e19faa912af11c3ad731121.d4a6d11092.20220919021324.3d18562875.43269683@mail248.suw101.mcdlv.net>
+X-Mailer: Mailchimp Mailer - **CID3d18562875d4a6d11092**
+X-Campaign: mailchimpc6e19faa912af11c3ad731121.3d18562875
+X-campaignid: mailchimpc6e19faa912af11c3ad731121.3d18562875
+X-Report-Abuse: Please report abuse for this campaign here: https://mailchimp.com/contact/abuse/?u=c6e19faa912af11c3ad731121&id=3d18562875&e=d4a6d11092
+X-MC-User: c6e19faa912af11c3ad731121
+Feedback-ID: 142491585:142491585.13678086:us17:mc
+List-ID: c6e19faa912af11c3ad731121mc list <c6e19faa912af11c3ad731121.165532.list-id.mcsv.net>
+X-Accounttype: ff
+List-Unsubscribe: <https://bethgalston.us17.list-manage.com/unsubscribe?u=c6e19faa912af11c3ad731121&id=0799d96d51&e=d4a6d11092&c=3d18562875>, <mailto:unsubscribe-mc.us17_c6e19faa912af11c3ad731121.3d18562875-d4a6d11092@unsubscribe.mailchimpapp.net?subject=unsubscribe>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Content-Type: multipart/alternative; boundary="_----------=_MCPart_1436486904"
+MIME-Version: 1.0
+
+This is a multi-part message in MIME format
+
+--_----------=_MCPart_1436486904
+Content-Type: text/plain; charset="us-ascii"
+
+
+
+View this email in your browser (https://mailchi.mp/e8ff383648c1/unraveling-oculus-artist-curator-conversation?e=d4a6d11092)
+
+============================================================
+
+Dear Friends and Colleagues,
+
+I'm pleased to invite you to:
+
+Artist & Curator Conversation: Beth Galston and Mara Williams
+September 22, Thursday, 7:30 p.m. via Zoom
+
+We will be discussing Unraveling Oculus, my multimedia installation, currently on view at the Brattleboro Museum through October 10.
+
+** Register online to participate (https://bethgalston.us17.list-manage.com/track/click?u=c6e19faa912af11c3ad731121&id=dbb750ac58&e=d4a6d11092)
+or call 802-257-0124 x101
+
+For more information on the exhibit:
+** https://bethgalston.us17.list-manage.com/track/click?u=c6e19faa912af11c3ad731121&id=19b5c05051&e=d4a6d11092 (https://bethgalston.us17.list-manage.com/track/click?u=c6e19faa912af11c3ad731121&id=8ec5363b14&e=d4a6d11092)
+
+I hope you can attend!
+
+Best wishes,
+Beth
+Image: Unraveling Oculus, 2022, Brattleboro Museum and Art Center
+
+This email was sent to jean.guttman@gmail.com (mailto:jean.guttman@gmail.com)
+why did I get this? (https://bethgalston.us17.list-manage.com/about?u=c6e19faa912af11c3ad731121&id=0799d96d51&e=d4a6d11092&c=3d18562875)     unsubscribe from this list (https://bethgalston.us17.list-manage.com/unsubscribe?u=c6e19faa912af11c3ad731121&id=0799d96d51&e=d4a6d11092&c=3d18562875)     update subscription preferences (https://bethgalston.us17.list-manage.com/profile?u=c6e19faa912af11c3ad731121&id=0799d96d51&e=d4a6d11092&c=3d18562875)
+Beth Galston Sculpture . 218 Stearns St . Carlisle, MA 01741-1864 . USA
+
+Email Marketing Powered by Mailchimp
+http://www.mailchimp.com/email-referral/?utm_source=freemium_newsletter&utm_medium=email&utm_campaign=referral_marketing&aid=c6e19faa912af11c3ad731121&afl=1
+--_----------=_MCPart_1436486904
+Content-Type: text/html; charset="us-ascii"
+
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+    <head>
+        <!-- NAME: 1 COLUMN -->
+        <!--[if gte mso 15]>
+        <xml>
+            <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+        <![endif]-->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Unraveling Oculus: Artist & Curator Conversation</title>
+        
+    <style type="text/css">
+		p{
+			margin:10px 0;
+			padding:0;
+		}
+		table{
+			border-collapse:collapse;
+		}
+		h1,h2,h3,h4,h5,h6{
+			display:block;
+			margin:0;
+			padding:0;
+		}
+		img,a img{
+			border:0;
+			height:auto;
+			outline:none;
+			text-decoration:none;
+		}
+		body,#bodyTable,#bodyCell{
+			height:100%;
+			margin:0;
+			padding:0;
+			width:100%;
+		}
+		.mcnPreviewText{
+			display:none !important;
+		}
+		#outlook a{
+			padding:0;
+		}
+		img{
+			-ms-interpolation-mode:bicubic;
+		}
+		table{
+			mso-table-lspace:0pt;
+			mso-table-rspace:0pt;
+		}
+		.ReadMsgBody{
+			width:100%;
+		}
+		.ExternalClass{
+			width:100%;
+		}
+		p,a,li,td,blockquote{
+			mso-line-height-rule:exactly;
+		}
+		a[href^=tel],a[href^=sms]{
+			color:inherit;
+			cursor:default;
+			text-decoration:none;
+		}
+		p,a,li,td,body,table,blockquote{
+			-ms-text-size-adjust:100%;
+			-webkit-text-size-adjust:100%;
+		}
+		.ExternalClass,.ExternalClass p,.ExternalClass td,.ExternalClass div,.ExternalClass span,.ExternalClass font{
+			line-height:100%;
+		}
+		a[x-apple-data-detectors]{
+			color:inherit !important;
+			text-decoration:none !important;
+			font-size:inherit !important;
+			font-family:inherit !important;
+			font-weight:inherit !important;
+			line-height:inherit !important;
+		}
+		#bodyCell{
+			padding:10px;
+		}
+		.templateContainer{
+			max-width:600px !important;
+		}
+		a.mcnButton{
+			display:block;
+		}
+		.mcnImage,.mcnRetinaImage{
+			vertical-align:bottom;
+		}
+		.mcnTextContent{
+			word-break:break-word;
+		}
+		.mcnTextContent img{
+			height:auto !important;
+		}
+		.mcnDividerBlock{
+			table-layout:fixed !important;
+		}
+		body,#bodyTable{
+			background-color:#FAFAFA;
+		}
+		#bodyCell{
+			border-top:0;
+		}
+		.templateContainer{
+			border:0;
+		}
+		h1{
+			color:#202020;
+			font-family:Helvetica;
+			font-size:26px;
+			font-style:normal;
+			font-weight:bold;
+			line-height:125%;
+			letter-spacing:normal;
+			text-align:left;
+		}
+		h2{
+			color:#202020;
+			font-family:Helvetica;
+			font-size:22px;
+			font-style:normal;
+			font-weight:bold;
+			line-height:125%;
+			letter-spacing:normal;
+			text-align:left;
+		}
+		h3{
+			color:#202020;
+			font-family:Helvetica;
+			font-size:20px;
+			font-style:normal;
+			font-weight:bold;
+			line-height:125%;
+			letter-spacing:normal;
+			text-align:left;
+		}
+		h4{
+			color:#202020;
+			font-family:Helvetica;
+			font-size:18px;
+			font-style:normal;
+			font-weight:bold;
+			line-height:125%;
+			letter-spacing:normal;
+			text-align:left;
+		}
+		#templatePreheader{
+			background-color:#FAFAFA;
+			background-image:none;
+			background-repeat:no-repeat;
+			background-position:center;
+			background-size:cover;
+			border-top:0;
+			border-bottom:0;
+			padding-top:9px;
+			padding-bottom:9px;
+		}
+		#templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p{
+			color:#656565;
+			font-family:Helvetica;
+			font-size:12px;
+			line-height:150%;
+			text-align:left;
+		}
+		#templatePreheader .mcnTextContent a,#templatePreheader .mcnTextContent p a{
+			color:#656565;
+			font-weight:normal;
+			text-decoration:underline;
+		}
+		#templateHeader{
+			background-color:#FFFFFF;
+			background-image:none;
+			background-repeat:no-repeat;
+			background-position:center;
+			background-size:cover;
+			border-top:0;
+			border-bottom:0;
+			padding-top:9px;
+			padding-bottom:0;
+		}
+		#templateHeader .mcnTextContent,#templateHeader .mcnTextContent p{
+			color:#202020;
+			font-family:Helvetica;
+			font-size:16px;
+			line-height:150%;
+			text-align:left;
+		}
+		#templateHeader .mcnTextContent a,#templateHeader .mcnTextContent p a{
+			color:#007C89;
+			font-weight:normal;
+			text-decoration:underline;
+		}
+		#templateBody{
+			background-color:#FFFFFF;
+			background-image:none;
+			background-repeat:no-repeat;
+			background-position:center;
+			background-size:cover;
+			border-top:0;
+			border-bottom:2px solid #EAEAEA;
+			padding-top:0;
+			padding-bottom:9px;
+		}
+		#templateBody .mcnTextContent,#templateBody .mcnTextContent p{
+			color:#202020;
+			font-family:Helvetica;
+			font-size:16px;
+			line-height:150%;
+			text-align:left;
+		}
+		#templateBody .mcnTextContent a,#templateBody .mcnTextContent p a{
+			color:#007C89;
+			font-weight:normal;
+			text-decoration:underline;
+		}
+		#templateFooter{
+			background-color:#FAFAFA;
+			background-image:none;
+			background-repeat:no-repeat;
+			background-position:center;
+			background-size:cover;
+			border-top:0;
+			border-bottom:0;
+			padding-top:9px;
+			padding-bottom:9px;
+		}
+		#templateFooter .mcnTextContent,#templateFooter .mcnTextContent p{
+			color:#656565;
+			font-family:Helvetica;
+			font-size:12px;
+			line-height:150%;
+			text-align:center;
+		}
+		#templateFooter .mcnTextContent a,#templateFooter .mcnTextContent p a{
+			color:#656565;
+			font-weight:normal;
+			text-decoration:underline;
+		}
+	@media only screen and (min-width:768px){
+		.templateContainer{
+			width:600px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		body,table,td,p,a,li,blockquote{
+			-webkit-text-size-adjust:none !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		body{
+			width:100% !important;
+			min-width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnRetinaImage{
+			max-width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImage{
+			width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnCartContainer,.mcnCaptionTopContent,.mcnRecContentContainer,.mcnCaptionBottomContent,.mcnTextContentContainer,.mcnBoxedTextContentContainer,.mcnImageGroupContentContainer,.mcnCaptionLeftTextContentContainer,.mcnCaptionRightTextContentContainer,.mcnCaptionLeftImageContentContainer,.mcnCaptionRightImageContentContainer,.mcnImageCardLeftTextContentContainer,.mcnImageCardRightTextContentContainer,.mcnImageCardLeftImageContentContainer,.mcnImageCardRightImageContentContainer{
+			max-width:100% !important;
+			width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnBoxedTextContentContainer{
+			min-width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageGroupContent{
+			padding:9px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnCaptionLeftContentOuter .mcnTextContent,.mcnCaptionRightContentOuter .mcnTextContent{
+			padding-top:9px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageCardTopImageContent,.mcnCaptionBottomContent:last-child .mcnCaptionBottomImageContent,.mcnCaptionBlockInner .mcnCaptionTopContent:last-child .mcnTextContent{
+			padding-top:18px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageCardBottomImageContent{
+			padding-bottom:9px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageGroupBlockInner{
+			padding-top:0 !important;
+			padding-bottom:0 !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageGroupBlockOuter{
+			padding-top:9px !important;
+			padding-bottom:9px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnTextContent,.mcnBoxedTextContentColumn{
+			padding-right:18px !important;
+			padding-left:18px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnImageCardLeftImageContent,.mcnImageCardRightImageContent{
+			padding-right:18px !important;
+			padding-bottom:0 !important;
+			padding-left:18px !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcpreview-image-uploader{
+			display:none !important;
+			width:100% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		h1{
+			font-size:22px !important;
+			line-height:125% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		h2{
+			font-size:20px !important;
+			line-height:125% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		h3{
+			font-size:18px !important;
+			line-height:125% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		h4{
+			font-size:16px !important;
+			line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		.mcnBoxedTextContentContainer .mcnTextContent,.mcnBoxedTextContentContainer .mcnTextContent p{
+			font-size:14px !important;
+			line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		#templatePreheader{
+			display:block !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		#templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p{
+			font-size:14px !important;
+			line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		#templateHeader .mcnTextContent,#templateHeader .mcnTextContent p{
+			font-size:16px !important;
+			line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		#templateBody .mcnTextContent,#templateBody .mcnTextContent p{
+			font-size:16px !important;
+			line-height:150% !important;
+		}
+
+}	@media only screen and (max-width: 480px){
+		#templateFooter .mcnTextContent,#templateFooter .mcnTextContent p{
+			font-size:14px !important;
+			line-height:150% !important;
+		}
+
+}</style></head>
+    <body style="height: 100%;margin: 0;padding: 0;width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FAFAFA;">
+        <!--
+-->
+        <center>
+            <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;padding: 0;width: 100%;background-color: #FAFAFA;">
+                <tr>
+                    <td align="center" valign="top" id="bodyCell" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;padding: 10px;width: 100%;border-top: 0;">
+                        <!-- BEGIN TEMPLATE // -->
+                        <!--[if (gte mso 9)|(IE)]>
+                        <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
+                        <tr>
+                        <td align="center" valign="top" width="600" style="width:600px;">
+                        <![endif]-->
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border: 0;max-width: 600px !important;">
+                            <tr>
+                                <td valign="top" id="templatePreheader" style="background:#FAFAFA none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FAFAFA;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 9px;padding-bottom: 9px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner" style="padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+              	<!--[if mso]>
+				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+				<tr>
+				<![endif]-->
+			    
+				<!--[if mso]>
+				<td valign="top" width="600" style="width:600px;">
+				<![endif]-->
+                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" class="mcnTextContentContainer">
+                    <tbody><tr>
+                        
+                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #656565;font-family: Helvetica;font-size: 12px;line-height: 150%;">
+                        
+                            <a href="https://mailchi.mp/e8ff383648c1/unraveling-oculus-artist-curator-conversation?e=d4a6d11092" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #656565;font-weight: normal;text-decoration: underline;">View this email in your browser</a>
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                            <tr>
+                                <td valign="top" id="templateHeader" style="background:#FFFFFF none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 9px;padding-bottom: 0;"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+    <tbody class="mcnImageBlockOuter">
+            <tr>
+                <td valign="top" style="padding: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" class="mcnImageBlockInner">
+                    <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                        <tbody><tr>
+                            <td class="mcnImageContent" valign="top" style="padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                
+                                    
+                                        <img align="center" alt="" src="https://mcusercontent.com/c6e19faa912af11c3ad731121/images/c6316753-b69b-222c-53ce-806c22c2a25a.jpg" width="564" style="max-width: 1000px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class="mcnImage">
+                                    
+                                
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                            <tr>
+                                <td valign="top" id="templateBody" style="background:#FFFFFF none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 2px solid #EAEAEA;padding-top: 0;padding-bottom: 9px;"></td>
+                            </tr>
+                            <tr>
+                                <td valign="top" id="templateFooter" style="background:#FAFAFA none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FAFAFA;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 9px;padding-bottom: 9px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner" style="padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+              	<!--[if mso]>
+				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+				<tr>
+				<![endif]-->
+			    
+				<!--[if mso]>
+				<td valign="top" width="600" style="width:600px;">
+				<![endif]-->
+                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" class="mcnTextContentContainer">
+                    <tbody><tr>
+                        
+                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;font-size: 14px;line-height: 150%;text-align: left;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #656565;font-family: Helvetica;">
+                        
+                            <p style="text-align: left;font-size: 14px;line-height: 150%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #656565;font-family: Helvetica;"><span style="font-family:arial,helvetica neue,helvetica,sans-serif">Dear Friends and Colleagues,<br>
+<br>
+I'm pleased to invite you to:</span><br>
+<br>
+<strong>Artist &amp; Curator Conversation: Beth Galston and Mara Williams</strong><br>
+<strong>September 22, Thursday, 7:30 p.m. via Zoom</strong><br>
+<br>
+We&nbsp;will be discussing <em>Unraveling Oculus</em>, my multimedia installation, currently&nbsp;on view at the Brattleboro Museum through October 10.<br>
+<br>
+<a href="https://bethgalston.us17.list-manage.com/track/click?u=c6e19faa912af11c3ad731121&id=575cfa36cd&e=d4a6d11092" rel="noopener" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #656565;font-weight: normal;text-decoration: underline;">Register online to participate</a>&nbsp;or call 802-257-0124 x101<br>
+<br>
+For more information on the exhibit:<br>
+<a href="https://bethgalston.us17.list-manage.com/track/click?u=c6e19faa912af11c3ad731121&id=3d08d285fd&e=d4a6d11092" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #656565;font-weight: normal;text-decoration: underline;">https://www.brattleboromuseum.org/2022/03/01/beth-galston-unraveling-oculus/</a><br>
+<br>
+I hope you can attend!<br>
+<br>
+<span style="font-family:arial,helvetica neue,helvetica,sans-serif">Best wishes,<br>
+Beth</span></p>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+    <tbody class="mcnTextBlockOuter">
+        <tr>
+            <td valign="top" class="mcnTextBlockInner" style="padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+              	<!--[if mso]>
+				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+				<tr>
+				<![endif]-->
+			    
+				<!--[if mso]>
+				<td valign="top" width="600" style="width:600px;">
+				<![endif]-->
+                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" class="mcnTextContentContainer">
+                    <tbody><tr>
+                        
+                        <td valign="top" class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #656565;font-family: Helvetica;font-size: 12px;line-height: 150%;text-align: center;">
+                        
+                            Image: <em>Unraveling Oculus, </em>2022, Brattleboro Museum and Art Center
+                        </td>
+                    </tr>
+                </tbody></table>
+				<!--[if mso]>
+				</td>
+				<![endif]-->
+                
+				<!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                        </table>
+                        <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                        <!-- // END TEMPLATE -->
+                    </td>
+                </tr>
+            </table>
+        </center>
+                <center>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" id="canspamBarWrapper" style="background-color:#FFFFFF; border-top:1px solid #E5E5E5;">
+                    <tr>
+                        <td align="center" valign="top" style="padding-top:20px; padding-bottom:20px;">
+                            <table border="0" cellpadding="0" cellspacing="0" id="canspamBar">
+                                <tr>
+                                    <td align="center" valign="top" style="color:#606060; font-family:Helvetica, Arial, sans-serif; font-size:11px; line-height:150%; padding-right:20px; padding-bottom:5px; padding-left:20px; text-align:center;">
+                                        This email was sent to <a href="mailto:jean.guttman@gmail.com" target="_blank" style="color:#404040 !important;">jean.guttman@gmail.com</a>
+                                        <br />
+                                        <a href="https://bethgalston.us17.list-manage.com/about?u=c6e19faa912af11c3ad731121&id=0799d96d51&e=d4a6d11092&c=3d18562875" target="_blank" style="color:#404040 !important;"><em>why did I get this?</em></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://bethgalston.us17.list-manage.com/unsubscribe?u=c6e19faa912af11c3ad731121&id=0799d96d51&e=d4a6d11092&c=3d18562875" style="color:#404040 !important;">unsubscribe from this list</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://bethgalston.us17.list-manage.com/profile?u=c6e19faa912af11c3ad731121&id=0799d96d51&e=d4a6d11092&c=3d18562875" style="color:#404040 !important;">update subscription preferences</a>
+                                        <br />
+                                        Beth Galston Sculpture &middot; 218 Stearns St &middot; Carlisle, MA 01741-1864 &middot; USA
+                                        <br />
+                                        <br />
+                                        <a href="http://www.mailchimp.com/email-referral/?utm_source=freemium_newsletter&utm_medium=email&utm_campaign=referral_marketing&aid=c6e19faa912af11c3ad731121&afl=1"><img src="https://cdn-images.mailchimp.com/monkey_rewards/MC_MonkeyReward_15.png" border="0" alt="Email Marketing Powered by Mailchimp" title="Mailchimp Email Marketing" width="139" height="54" style="max-width: 100%; height: auto;"></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <style type="text/css">
+                    @media only screen and (max-width: 480px){
+                        table#canspamBar td{font-size:14px !important;}
+                        table#canspamBar td a{display:block !important; margin-top:10px !important;}
+                    }
+                </style>
+            </center><img src="https://bethgalston.us17.list-manage.com/track/open.php?u=c6e19faa912af11c3ad731121&id=3d18562875&e=d4a6d11092" height="1" width="1" alt=""></body>
+</html>
+--_----------=_MCPart_1436486904--

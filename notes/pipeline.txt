@@ -1,0 +1,68 @@
+-*- fill-column:  52 -*-
+
+Here's a *draft* view of how to orchestrate the
+successive stages of the pipeline.
+
+1.  We can have a long-lived server that listens on
+    a well-known port on the guard platform.  It
+    will select a *new* filename fnNNN.eml to write
+    the msg received on the next incoming
+    connection.
+
+    To select a *new* filename, use getrandom to
+    generate a random UUID to determine the NNN in
+    the filename.
+
+2.  When a connection is received, it forks and
+    execs the incoming msg process.  It passes a
+    file descriptor to the newly connected socket to
+    the child.  The argument vector contains the new
+    filename as well as paths to the executables for
+    the successive pipeline programs.
+
+    This programs receives until EOF and writes the
+    incoming msg into $INCOMING/fnNNN.eml.
+
+    It then execs the executable for the next
+    pipeline stage in its list of paths, passing as
+    argument vector the filename fnNNN.eml plus the
+    remainder of the list.
+
+3.  That process reads from $INCOMING/fnNNN.eml and
+    writes to $REWRITTEN/fnNNN.eml.  After reading,
+    it deletes the input file.  
+
+    It does any needed rewriting, and exits without
+    writing a result if rewriting is unsuccessful.
+    If rewriting succeeds, it execs the executable
+    for the next pipeline stage in its list of
+    paths, passing as argument vector the filename
+    fnNNN.eml plus the remainder of the list.
+
+4.  The resulting process reads from
+    $REWRITTEN/fnNNN.eml and writes to
+    $OUTGOING/fnNNN.eml.  After reading, it deletes
+    the input file.
+
+    It does the necessary pass/fail filtering on the
+    rewritten msg.  It exits without writing a
+    result if filtering fails.  If filtering
+    succeeds, it execs the executable for the last
+    pipeline (outgoing delivery) stage in its list
+    of paths, passing as argument vector the
+    filename fnNNN.eml plus the empty list of
+    executable pathnames.
+
+5.  Finally, the outgoing delivery process opens a
+    socket connection on the far side to the
+    intended next stage, reading from
+    $OUTGOING/fnNNN.eml.  After reading, it deletes
+    the input file.
+
+    On completion it marks fnNNN.eml as a completed
+    task where the orchestrating server can (when
+    needed) reuse the number.
+
+
+
+    

@@ -1,0 +1,28 @@
+(lang dune 3.16)
+
+; Copyright (c) 2025, The MITRE Corporation.
+
+(name email_header_filtering_demo)
+
+(generate_opam_files true)
+
+(source
+ (github ku-sldg/cds-demo.git))
+
+(authors "Joshua Guttman")
+
+(maintainers "Joshua Guttman")
+
+(license "Copyright (c) 2024 The MITRE Corporation.  All rights reserved.")
+
+(documentation https://url/to/documentation)
+
+(package
+ (name email_header_filtering_demo)
+ (synopsis "A short synopsis")
+ (description "A longer description")
+ (depends ocaml dune yojson)
+ (tags
+  (topics "to describe" your project)))
+
+; See the complete stanza docs at https://dune.readthedocs.io/en/stable/reference/dune-project/index.html

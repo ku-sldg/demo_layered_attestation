@@ -1,0 +1,157 @@
+A *substitution* is a JSON object
+
+    {"from": *src*,
+     "to"  : *tgt*}
+
+and indicates that relevant occurrences of *src* should be replaced
+with *tgt*.  The values *src* and *tgt* may be strings, or they may
+both be vectors of strings, for substitution in sequences of domain
+names.  
+
+A *locale* is either
+
+    "header" or else an object that is either
+
+    {"header" : *header-name*} or 
+
+    {"header" : *header-name*,
+     "field"  : *field-name*};
+
+
+where *header-name* is a string and the *field-name* is one of the
+strings "user", "domain", or "text".  The string "header" applies to
+all headers.  A particular string *header-name* applies to headers
+with that exact header field.  
+
+An *outcome* consists of either
+
+    (a) "require"
+
+    (b) "prohibit" 
+
+    (c) a substitution
+
+    (d) a deletion in case of match:  {"delete-if" : *src* }, or
+
+    (e) an insertion {"insert" : *string* }.
+
+An *action* is a JSON object
+
+    {"locale"  : *locales*,
+     "outcome" : *outcomes*}
+
+where *locales* is either a *locale* or a JSON vector of *locale*s,
+and where *outcomes* is either an *outcome* or a JSON vector of
+*outcome*s.  The effect of an *action* is to generate the Cartesian
+product of locales and outcomes.  The resulting steps are ordered
+lexicographically.  Their effect on rewriting and filtering is defined
+below.
+
+A *definition* is a JSON object either of the form 
+
+    {"declare-str" : { *src* : *values* }}
+    
+where *values* consists of a vector of strings or of the form
+
+-- *JDG*: I propose to eliminate the following:
+-- 
+--     {"declare-dom-subst" : { *src* : *values* }}
+-- 
+-- where *values* consists of a domain substitution or vector of them or
+-- of the form
+--
+-- *JDG*: continuing now with... 
+
+    {"declare-str-subst" : { *src* : *values* }}
+
+where *values* consists of a string substitution or vector of them or
+of the form
+
+    {"declare-doms" : { *src* : *values* }}
+
+where *values* consists of a vector of domain names (i.e. strings) or
+vector of such vectors.  The *src* string is called the definiendum
+and the *values* are called the definiens.
+
+The effect of the *definitions* is to cause the definiens to be
+replaced by the definiendum is all of its occurrences in actions.
+Since one definition could have a value that includes strings that
+occur as defined expressions, the expansion process should be
+repeated.  Non-terminating expansions are erroneous, ie no msg will be
+accepted under a configuration with a non-terminating expansion.
+
+A config file contains a JSON vector, containing a sequence of
+(ordered) steps.  Each step is either an *action* a *definition*.
+
+The effect of applying a (fully expanded) configuration to a msg in
+*rewriting mode* is one of:
+
+1.  The msg *fails*; 
+
+2.  The msg *succeeds* with no alteration; or
+
+3.  The msg is *rewritten*.
+
+If there is an action with *outcome* "require", and no header or field
+satisfies the associated locale specification, then the msg *fails*.
+
+If an action has *outcome* "prohibit" and some header or field
+satisfies the associated locale specification, then the msg is
+*rewritten* with each satisfying header or field removed.  
+
+If an action has *outcome* substitution
+
+    {"from": *src*,
+     "to"  : *tgt*}
+
+and some header or field satisfies the associated locale specification
+and contains *src* as a substring, then the msg is *rewritten* with
+*tgt* in place of each occurrence of *src*.  If *src* has multiple
+overlapping occurrences, the leftmost occurrence is replaced before
+considering subsequent rewrites.  Each occurrence must be found within
+a single header, specifically within its content, not the header
+string itself.
+
+If an action has *outcome* {"delete-if" : *src* } and the associated
+locale specification has an occurrence in msg containing *src*, then
+the msg is *rewritten* to remove this locale.  This applies only if
+the locale is a header, not a field within a header.  
+
+If a substitution is of the form
+
+    {"from": *src*,
+     "to"  : *tgt*}
+
+where *src* and *tgt* are strings, then the substitution is applied to
+string values within the associated locale.  If *src* and *tgt* are
+vectors of strings, then the associated locale must be a domain list.
+Any contiguous sublist *src* appearing in the domain list is replaced
+with the sublist *tgt* in this case.
+
+If an action has *outcome* {"insert" : *tgt-str* }, and the associated
+locale specification has an occurrence in msg with value *tgt-str*,
+then the msg is unchanged.  Otherwise, the msg is *rewritten* to add a
+satisfying locale with value *tgt-str* after all existing headers.
+This action is not meaningful for locales that are fields rather than
+headers.
+
+Given a sequence of actions, the final msg is the result of folding
+the msg through the successive actions from left to right; *failing*
+propagates, and the result is *succeeds* with no alteration if the
+result of every step of the fold is identical to the original msg.
+
+If a configuration may involve rewrites against a header's contents,
+and also against a field that may be present within an instance of
+that header kind, then the rewrites against either will require
+recomputing the contents of the other.  
+
+Otherwise, the msg is *rewritten* to the result of the fold.
+
+The effect of applying a configuration to a msg in *checking mode* is
+
+1.  The msg *fails* if the result of applying the configuration in
+    rewriting mode is either *failure* or *rewriting*;
+
+2.  The msg *succeeds* if the result of applying the configuration in
+    rewriting mode is *succeeds* with no alteration.
+

@@ -1,0 +1,647 @@
+Delivered-To: joshua.guttman@gmail.com
+Received: by 2002:ab2:6758:0:b0:164:a31:e3ae with SMTP id h24csp1048133lqo;
+        Thu, 29 Sep 2022 11:02:43 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM6l4YS+3cfMfR+yBumcwC1uT73g0z6xthWgEhAqU8f7r+8B9999SHrjQ77Prhiy1j7is8D7
+X-Received: by 2002:a05:622a:2c5:b0:35d:4ade:e0c3 with SMTP id a5-20020a05622a02c500b0035d4adee0c3mr3509086qtx.414.1664474563097;
+        Thu, 29 Sep 2022 11:02:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664474563; cv=none;
+        d=google.com; s=arc-20160816;
+        b=UnFgy83HuzPkv3ROZBSY1OgqZv4/miTpsCq43tUfOtQnD+VFk2Vlv6TUwNsn0MicCC
+         bedp6yR7RiRRB2oRuR4qFo1DSMJeI9Uqbc+TNGYfZ/gRhbJN9bmBCEMgJsH0JJ11dTr2
+         UjzsEMq04gT1gwvbyEafued7PzRlMjj0fcmqowesEBCnvVYM3ErQc/24TBnTwD0PPack
+         AjgCs6d+JSxBigdNSo275+8g6ANV8a/rBrTWVIj0yq9GI4JOViC3xR6JFdH0JL/MgnTu
+         0drxTHNL6sG2RMZ0Mf/XKWF1Zu1mFgPfk8adyESxso9rWKN9kFXc0KMqy0Ha4KF4mm5/
+         dCbg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe-post:list-unsubscribe:mime-version:subject:to
+         :reply-to:from:date:message-id:dkim-signature;
+        bh=dihR4zvbt024lLobTXOJkm5yNZGzyFXCLLbVBiRVkN0=;
+        b=rjLi0sdMnpHa/AfCDqF7OlXPiRH0f87eBcz8zFKOEiV0HWN3BCoW87/CZzglylTv3u
+         UTSyJcuaSABb050hHhml5NfB2Fp04qrVD7q3mgGoHyR8Cif1uKvepG+lT48ILPa3OLlK
+         asDwe2AgJrmV9k+eDL+iq764ISUhMhTUkv7m3ocMGbOs5guTdQ6FRYL23jJiDK0ay8Rq
+         9YQ6lUhbdmsaZyI0H6GBjpfIWjh1q2jI8OlAMqaMyDQC9DxKr2QhWAUc38avaE3ZaJmP
+         srcqZutTptxHhCWCFnnVRpcZJcfXLbihN+ZMiqPguegJbXzoWf68V/bNFI/Sqc0NtRun
+         ohNw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@auth.ccsend.com header.s=1000073432 header.b=MiMZ5tTj;
+       spf=pass (google.com: domain of avyiyoatmtw6xhjmkv6f2sa==_1101863191933_ikvshgsaeeq0atsuupzeew==@in.constantcontact.com designates 208.75.123.113 as permitted sender) smtp.mailfrom="AVYiyOatMTw6xhJmKv6f2sA==_1101863191933_IKvSHGSaEeq0atSuUpzeEw==@in.constantcontact.com"
+Return-Path: <AVYiyOatMTw6xhJmKv6f2sA==_1101863191933_IKvSHGSaEeq0atSuUpzeEw==@in.constantcontact.com>
+Received: from ccm113.constantcontact.com (ccm113.constantcontact.com. [208.75.123.113])
+        by mx.google.com with ESMTPS id a8-20020ad45c48000000b004afb2ddd8f6si818786qva.130.2022.09.29.11.02.42
+        for <joshua.guttman@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 29 Sep 2022 11:02:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of avyiyoatmtw6xhjmkv6f2sa==_1101863191933_ikvshgsaeeq0atsuupzeew==@in.constantcontact.com designates 208.75.123.113 as permitted sender) client-ip=208.75.123.113;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@auth.ccsend.com header.s=1000073432 header.b=MiMZ5tTj;
+       spf=pass (google.com: domain of avyiyoatmtw6xhjmkv6f2sa==_1101863191933_ikvshgsaeeq0atsuupzeew==@in.constantcontact.com designates 208.75.123.113 as permitted sender) smtp.mailfrom="AVYiyOatMTw6xhJmKv6f2sA==_1101863191933_IKvSHGSaEeq0atSuUpzeEw==@in.constantcontact.com"
+Return-Path: <AVYiyOatMTw6xhJmKv6f2sA==_1101863191933_IKvSHGSaEeq0atSuUpzeEw==@in.constantcontact.com>
+Received: from [10.252.0.94] ([10.252.0.94:55312] helo=p2-jbemailsyndicator21.ctct.net)
+	by 10.249.232.20 (envelope-from <AVYiyOatMTw6xhJmKv6f2sA==_1101863191933_IKvSHGSaEeq0atSuUpzeEw==@in.constantcontact.com>)
+	(ecelerity 4.3.1.999 r(:)) with ESMTP
+	id 0F/DD-20277-09DD5336; Thu, 29 Sep 2022 14:01:52 -0400
+DKIM-Signature: v=1; q=dns/txt; a=rsa-sha256; c=relaxed/relaxed; s=1000073432; d=auth.ccsend.com; h=date:mime-version:subject:X-Feedback-ID:X-250ok-CID:message-id:from:reply-to:list-unsubscribe:list-unsubscribe-post:to; bh=dihR4zvbt024lLobTXOJkm5yNZGzyFXCLLbVBiRVkN0=; b=MiMZ5tTjC3Df9UNslh4MLcGACbuAtFYn+jDJ6PDbFS9YpGSPEBez9204uPoX0QMSEBojhBGS5lKfXCKak7qv2AGnKUfR7I8OiYkJg0usdKy7ExexbNnhRDOBWM01zph1Zm/Dw4ku7SRJajVKI8LEAuvBDKFqxMFaXmeSpJTsI6U=
+Message-ID: <1139343393650.1101863191933.2012472553.0.321400JL.2002@scheduler.constantcontact.com>
+Date: Thu, 29 Sep 2022 14:01:52 -0400 (EDT)
+From: Blue Heron <office@blueheron.org>
+Reply-To: office@blueheron.org
+To: joshua.guttman@gmail.com
+Subject: Ockeghem's Requiem October 15!
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_54647998_97910155.1664474512142"
+List-Unsubscribe: <https://visitor.constantcontact.com/do?p=un&m=001hJ5Mus3r_5xnoZ3CfBtMLA%3D%3D&se=001jAm4ujIa4Cumol9ly2-CMw%3D%3D&t=001EkZLEx15CcE%3D&llr=6lbucgcab>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Campaign-Activity-ID: 5588b239-ab4c-4f0e-b184-998abfa7f6b0
+X-250ok-CID: 5588b239-ab4c-4f0e-b184-998abfa7f6b0
+X-Channel-ID: 20abd21c-649a-11ea-b46a-d4ae529cde13
+X-Return-Path-Hint: AVYiyOatMTw6xhJmKv6f2sA==_1101863191933_IKvSHGSaEeq0atSuUpzeEw==@in.constantcontact.com
+X-Roving-Campaignid: 1139343393650
+X-Roving-Id: 1101863191933.2012472553
+X-Feedback-ID: 20abd21c-649a-11ea-b46a-d4ae529cde13:5588b239-ab4c-4f0e-b184-998abfa7f6b0:1101863191933:CTCT
+X-CTCT-ID: 20a51e90-649a-11ea-b46a-d4ae529cde13
+
+------=_Part_54647998_97910155.1664474512142
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Concert trailer with message from Scott Metcalfe =E2=80=8A =E2=80=8A Ockegh=
+em@600 Concert 12: Requiem Saturday, October 15th 3:00 pm First Church in C=
+ambridge, Congregational 11 Garden Street, Cambridge Parking info > Buy Tic=
+kets Click below for a special video introduction by Artistic Director Scot=
+t Metcalfe One of the master=E2=80=99s most celebrated and mysterious creat=
+ions, the earliest surviving polyphonic setting of the Mass for the Dead (k=
+nown as the Requiem from the first word of the introit), together with mote=
+ts honoring Ockeghem by Antoine Busnoys and Johannes Lupi =E2=80=93 or, mor=
+e likely, Lupus Hellinck. Free pre-concert talk by Sean Gallagher (New Engl=
+and Conservatory) at 2:15 pm. Doors and box office open at 2 pm. BLUE HERON=
+ Kim Leeds & Sophie Michaux, cantus Jason McStoots, James Reese, Aaron Shee=
+han, Sumner Thompson, tenor Paul Guttry & David McFerrin, bassus Scott Metc=
+alfe, fiddle & harp Buy Tickets =E2=80=8A www.blueheron.org Connect with us=
+         Blue Heron | 950 Watertown St., Suite 8, West Newton, MA 02465 www=
+.blueheron.org Unsubscribe joshua.guttman@gmail.com Update Profile | Consta=
+nt Contact Data Notice Sent by office@blueheron.org powered by Try email ma=
+rketing for free today!
+------=_Part_54647998_97910155.1664474512142
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML>
+<html lang=3D"en-US"> <head>  <meta http-equiv=3D"Content-Type" content=3D"=
+text/html; charset=3Dutf-8"> <meta name=3D"viewport" content=3D"width=3Ddev=
+ice-width, initial-scale=3D1, maximum-scale=3D1">   <style type=3D"text/css=
+" data-premailer=3D"ignore">=20
+@media only screen and (max-width:480px) { .footer-main-width { width: 100%=
+ !important; }  .footer-mobile-hidden { display: none !important; }  .foote=
+r-mobile-hidden { display: none !important; }  .footer-column { display: bl=
+ock !important; }  .footer-mobile-stack { display: block !important; }  .fo=
+oter-mobile-stack-padding { padding-top: 3px; } }=20
+/* IE: correctly scale images with w/h attbs */ img { -ms-interpolation-mod=
+e: bicubic; }=20
+.layout { min-width: 100%; }=20
+table { table-layout: fixed; } .shell_outer-row { table-layout: auto; }=20
+/* Gmail/Web viewport fix */ u + .body .shell_outer-row { width: 622px; }=
+=20
+@media screen {  @font-face { font-family: 'Amatic SC'; font-style: normal;=
+ font-weight: 400; src: local('Amatic SC Regular'), local('AmaticSC-Regular=
+'), url(https://fonts.gstatic.com/s/amaticsc/v11/TUZyzwprpvBS1izr_vOECuSfU5=
+cP1Q.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-015=
+3, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215; }  =
+@font-face { font-family: 'Bitter'; font-style: normal; font-weight: 400; s=
+rc: local('Bitter Regular'), local('Bitter-Regular'), url(https://fonts.gst=
+atic.com/s/bitter/v13/rax8HiqOu8IVPmn7f4xpLjpSmw.woff2) format('woff2'); un=
+icode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+20=
+00-206F, U+2074, U+20AC, U+2212, U+2215; }  @font-face { font-family: 'Lobs=
+ter Two'; font-style: normal; font-weight: 400; src: local('Lobster Two'), =
+local('LobsterTwo'), url(https://fonts.gstatic.com/s/lobstertwo/v11/BngMUXZ=
+GTXPUvIoyV6yN5-fN5qWr4xCC.woff2) format('woff2'); unicode-range: U+0000-00F=
+F, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC=
+, U+2212, U+2215; }  @font-face { font-family: 'Libre Baskerville'; font-st=
+yle: normal; font-weight: 400; src: local('Libre Baskerville'), local('Libr=
+eBaskerville-Regular'), url(https://fonts.gstatic.com/s/librebaskerville/v5=
+/kmKnZrc3Hgbbcjq75U4uslyuy4kn0qNZaxMaC82U.woff2) format('woff2'); unicode-r=
+ange: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F=
+, U+2074, U+20AC, U+2212, U+2215; }  @font-face { font-family: 'Merriweathe=
+r'; font-style: normal; font-weight: 400; src: local('Merriweather Regular'=
+), local('Merriweather-Regular'), url(https://fonts.gstatic.com/s/merriweat=
+her/v19/u-440qyriQwlOrhSvowK_l5-fCZMdeX3rg.woff2) format('woff2'); unicode-=
+range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206=
+F, U+2074, U+20AC, U+2212, U+2215; }  @font-face { font-family: 'Dancing Sc=
+ript'; font-style: normal; font-weight: 400; src: local('Dancing Script Reg=
+ular'), local('DancingScript-Regular'), url(https://fonts.gstatic.com/s/dan=
+cingscript/v9/If2RXTr6YS-zF4S-kcSWSVi_szLgiuEHiC4W.woff2) format('woff2'); =
+unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+=
+2000-206F, U+2074, U+20AC, U+2212, U+2215; }  }  /* LIST AND p STYLE OVERRI=
+DES */ .text .text_content-cell p { margin: 0; padding: 0; margin-bottom: 0=
+; } .text .text_content-cell ul, .text .text_content-cell ol { padding: 0; =
+margin: 0 0 0 40px; } .text .text_content-cell li { padding: 0; margin: 0; =
+/* line-height: 1.2; Remove after testing */ } /* Text Link Style Reset */ =
+a { text-decoration: underline; } /* iOS: Autolink styles inherited */ a[x-=
+apple-data-detectors] { text-decoration: underline !important; font-size: i=
+nherit !important; font-family: inherit !important; font-weight: inherit !i=
+mportant; line-height: inherit !important; color: inherit !important; } /* =
+FF/Chrome: Smooth font rendering */ .text .text_content-cell { -webkit-font=
+-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }=20
+</style> <!--[if gte mso 9]> <style id=3D"ol-styles">=20
+/* OUTLOOK-SPECIFIC STYLES */ li { text-indent: -1em; padding: 0; margin: 0=
+; /* line-height: 1.2; Remove after testing */ } ul, ol { padding: 0; margi=
+n: 0 0 0 40px; } p { margin: 0; padding: 0; margin-bottom: 0; }=20
+</style> <![endif]-->  <style>@media only screen and (max-width:480px) {
+.button_content-cell {
+padding-top: 10px !important; padding-right: 20px !important; padding-botto=
+m: 10px !important; padding-left: 20px !important;
+}
+.button_border-row .button_content-cell {
+padding-top: 10px !important; padding-right: 20px !important; padding-botto=
+m: 10px !important; padding-left: 20px !important;
+}
+.column .content-padding-horizontal {
+padding-left: 20px !important; padding-right: 20px !important;
+}
+.layout .column .content-padding-horizontal .content-padding-horizontal {
+padding-left: 0px !important; padding-right: 0px !important;
+}
+.layout .column .content-padding-horizontal .block-wrapper_border-row .cont=
+ent-padding-horizontal {
+padding-left: 20px !important; padding-right: 20px !important;
+}
+.dataTable {
+overflow: auto !important;
+}
+.dataTable .dataTable_content {
+width: auto !important;
+}
+.image--mobile-scale .image_container img {
+width: auto !important;
+}
+.image--mobile-center .image_container img {
+margin-left: auto !important; margin-right: auto !important;
+}
+.layout-margin .layout-margin_cell {
+padding: 0px 20px !important;
+}
+.layout-margin--uniform .layout-margin_cell {
+padding: 20px 20px !important;
+}
+.scale {
+width: 100% !important; height: auto !important;
+}
+.stack {
+display: block !important; box-sizing: border-box;
+}
+.hide {
+display: none !important;
+}
+u + .body .shell_outer-row {
+width: 100% !important;
+}
+.socialFollow_container {
+text-align: center !important;
+}
+.text .text_content-cell {
+font-size: 16px !important;
+}
+.text .text_content-cell h1 {
+font-size: 24px !important;
+}
+.text .text_content-cell h2 {
+font-size: 20px !important;
+}
+.text .text_content-cell h3 {
+font-size: 20px !important;
+}
+.text--sectionHeading .text_content-cell {
+font-size: 24px !important;
+}
+.text--heading .text_content-cell {
+font-size: 24px !important;
+}
+.text--dataTable .text_content-cell .dataTable .dataTable_content-cell {
+font-size: 14px !important;
+}
+.text--dataTable .text_content-cell .dataTable th.dataTable_content-cell {
+font-size: px !important;
+}
+}
+</style>
+</head> <body class=3D"body template template--en-US" data-template-version=
+=3D"1.16.2" data-canonical-name=3D"CPE-PT16273" align=3D"center" style=3D"-=
+ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; min-width: 100%;=
+ width: 100%; margin: 0px; padding: 0px;"> <div id=3D"preheader" style=3D"c=
+olor: transparent; display: none; font-size: 1px; line-height: 1px; max-hei=
+ght: 0px; max-width: 0px; opacity: 0; overflow: hidden;"><span data-entity-=
+ref=3D"preheader">Concert trailer with message from Scott Metcalfe</span></=
+div> <div id=3D"tracking-image" style=3D"color: transparent; display: none;=
+ font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity=
+: 0; overflow: hidden;"><img src=3D"https://r20.rs6.net/on.jsp?ca=3D5588b23=
+9-ab4c-4f0e-b184-998abfa7f6b0&a=3D1101863191933&c=3D20a51e90-649a-11ea-b46a=
+-d4ae529cde13&ch=3D20abd21c-649a-11ea-b46a-d4ae529cde13" / alt=3D""></div> =
+<div class=3D"shell" lang=3D"en-US" style=3D"background-color: #16373E;">  =
+<!--[if gte mso 9]> <v:background xmlns:v=3D"urn:schemas-microsoft-com:vml"=
+ fill=3D"t"> <v:fill type=3D"tile" src=3D"https://imgssl.constantcontact.co=
+m/letters/images/backgrounds/citygrid.png" color=3D"#16373E"/> </v:backgrou=
+nd> <![endif]-->  <table class=3D"shell_panel-row" width=3D"100%" border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"background-image: url('htt=
+ps://imgssl.constantcontact.com/letters/images/backgrounds/citygrid.png');"=
+ background=3D"https://imgssl.constantcontact.com/letters/images/background=
+s/citygrid.png"> <tr> <td class=3D"shell_panel-cell" style=3D"" align=3D"ce=
+nter" valign=3D"top">  <table class=3D"shell_width-row scale" style=3D"widt=
+h: 622px;" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+"> <tr> <td class=3D"shell_width-cell" style=3D"padding: 15px 10px;" align=
+=3D"center" valign=3D"top">   <table class=3D"shell_border-row" width=3D"10=
+0%" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"> <tr>=
+ <td class=3D"shell_border-cell" style=3D"background-color: #193E45; paddin=
+g: 1px;" align=3D"center" valign=3D"top" bgcolor=3D"#193E45">   <table clas=
+s=3D"shell_content-row" width=3D"100%" align=3D"center" border=3D"0" cellpa=
+dding=3D"0" cellspacing=3D"0"> <tr> <td class=3D"shell_content-cell" style=
+=3D"border-radius: 0px; background-color: #FFFFFF; padding: 0;" align=3D"ce=
+nter" valign=3D"top" bgcolor=3D"#FFFFFF"> <table class=3D"layout layout--1-=
+column" style=3D"table-layout: fixed;" width=3D"100%" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0"> <tr> <td class=3D"column column--1 scale stack=
+" style=3D"width: 100%;" align=3D"center" valign=3D"top"><div class=3D"spac=
+er" style=3D"line-height: 10px; height: 10px;">&#x200a;</div></td> </tr> </=
+table> <table class=3D"layout layout--1-column" style=3D"table-layout: fixe=
+d;" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"> <tr> <=
+td class=3D"column column--1 scale stack" style=3D"width: 100%;" align=3D"c=
+enter" valign=3D"top"><div class=3D"spacer" style=3D"line-height: 10px; hei=
+ght: 10px;">&#x200a;</div></td> </tr> </table> <table class=3D"layout layou=
+t--1-column" style=3D"table-layout: fixed;" width=3D"100%" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0"> <tr> <td class=3D"column column--1 scale =
+stack" style=3D"width: 100%;" align=3D"center" valign=3D"top">
+<table class=3D"image image--padding-vertical image--mobile-scale image--mo=
+bile-center" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+"> <tr> <td class=3D"image_container" align=3D"center" valign=3D"top" style=
+=3D"padding-top: 10px; padding-bottom: 10px;"> <a href=3D"https://r20.rs6.n=
+et/tn.jsp?f=3D001ByU54aG-ir8sQuBGU7GVWjbrl2rtOqleFnXZCCztWhWC_gKL57HpwApF2Y=
+NzAc2invu2JZmgJYRikws9wsJnEpiJLObutwHSyf2XCUyF9XaP7BEiKZxqCwpE_LvYHxktbSc3T=
+eKpjUYZXXi6y9SD5g=3D=3D&c=3Dq7N-zvAw0bYk8fOI0lvOPjwCFEF0GnRvRby-91Ll-5p24Ej=
+riexBpg=3D=3D&ch=3Dl-WwowWtxX6SCLMvdzntZ4OpeGJp_3G555cRaNJqyJyffPgiRHGv4w=
+=3D=3D" data-trackable=3D"true"><img data-image-content class=3D"image_cont=
+ent" width=3D"559" src=3D"https://files.constantcontact.com/d750a2c8001/b8d=
+34117-83d8-4830-ad8a-2e986c8462f2.png" alt=3D"" style=3D"display: block; he=
+ight: auto; max-width: 100%;"></a> </td> </tr> </table> </td> </tr> </table=
+> <table class=3D"layout layout--1-column" style=3D"background-color: #102D=
+3F; table-layout: fixed;" width=3D"100%" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" bgcolor=3D"#102D3F"> <tr> <td class=3D"column column--1 scal=
+e stack" style=3D"width: 100%;" align=3D"center" valign=3D"top">
+<table class=3D"text text--padding-vertical" width=3D"100%" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" style=3D"table-layout: fixed;"> <tr> <td =
+class=3D"text_content-cell content-padding-horizontal" style=3D"text-align:=
+ left; font-family: Georgia,Times New Roman,Times,serif; color: #07290E; fo=
+nt-size: 14px; line-height: 1.2; display: block; word-wrap: break-word; pad=
+ding: 10px 20px;" align=3D"left" valign=3D"top"><p style=3D"text-align: cen=
+ter; margin: 0;" align=3D"center"><a href=3D"https://r20.rs6.net/tn.jsp?f=
+=3D001ByU54aG-ir8sQuBGU7GVWjbrl2rtOqleFnXZCCztWhWC_gKL57HpwPad2rdJMD_WYxkSD=
+M0dgTreBawku6MQE5yL4R6vzbYMBENrpkSQpgbyVXGZ11VrG_9bPQQH8xo5vRACcUqW0OtBvycO=
+GndCfoJTvJTYdr8_9BdQQlCN4yfAjkfruCVahiJmYmH7dH_WNVW7SrXzCsA=3D&c=3Dq7N-zvAw=
+0bYk8fOI0lvOPjwCFEF0GnRvRby-91Ll-5p24EjriexBpg=3D=3D&ch=3Dl-WwowWtxX6SCLMvd=
+zntZ4OpeGJp_3G555cRaNJqyJyffPgiRHGv4w=3D=3D" target=3D"_blank" style=3D"fon=
+t-size: 25px; font-weight: bold; text-decoration: none; color: rgb(255, 255=
+, 255); font-style: normal;">Ockeghem@600 Concert 12:&#xa0;</a><a href=3D"h=
+ttps://r20.rs6.net/tn.jsp?f=3D001ByU54aG-ir8sQuBGU7GVWjbrl2rtOqleFnXZCCztWh=
+WC_gKL57HpwPad2rdJMD_WYxkSDM0dgTreBawku6MQE5yL4R6vzbYMBENrpkSQpgbyVXGZ11VrG=
+_9bPQQH8xo5vRACcUqW0OtBvycOGndCfoJTvJTYdr8_9BdQQlCN4yfAjkfruCVahiJmYmH7dH_W=
+NVW7SrXzCsA=3D&c=3Dq7N-zvAw0bYk8fOI0lvOPjwCFEF0GnRvRby-91Ll-5p24EjriexBpg=
+=3D=3D&ch=3Dl-WwowWtxX6SCLMvdzntZ4OpeGJp_3G555cRaNJqyJyffPgiRHGv4w=3D=3D" t=
+arget=3D"_blank" style=3D"font-size: 25px; font-weight: bold; text-decorati=
+on: none; font-style: italic; color: rgb(255, 255, 255);">Requiem</a></p></=
+td> </tr> </table> </td> </tr> </table> <table class=3D"layout layout--1-co=
+lumn" style=3D"table-layout: fixed;" width=3D"100%" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0"> <tr> <td class=3D"column column--1 scale stack" =
+style=3D"width: 100%;" align=3D"center" valign=3D"top">
+<table class=3D"image image--mobile-scale image--mobile-center" width=3D"10=
+0%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"> <tr> <td class=3D"ima=
+ge_container" align=3D"center" valign=3D"top"> <img data-image-content clas=
+s=3D"image_content" width=3D"600" src=3D"https://files.constantcontact.com/=
+d750a2c8001/9e660dd4-6db7-4da0-9c2b-11399543ed48.png" alt=3D"" style=3D"dis=
+play: block; height: auto; max-width: 100%;"> </td> </tr> </table> </td> </=
+tr> </table> <table class=3D"layout layout--1-column" style=3D"table-layout=
+: fixed;" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"> =
+<tr> <td class=3D"column column--1 scale stack" style=3D"width: 100%;" alig=
+n=3D"center" valign=3D"top">
+<table class=3D"text text--padding-vertical" width=3D"100%" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" style=3D"table-layout: fixed;"> <tr> <td =
+class=3D"text_content-cell content-padding-horizontal" style=3D"text-align:=
+ left; font-family: Georgia,Times New Roman,Times,serif; color: #07290E; fo=
+nt-size: 14px; line-height: 1.2; display: block; word-wrap: break-word; pad=
+ding: 10px 20px;" align=3D"left" valign=3D"top">
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><span style=3D=
+"font-size: 20px; font-weight: bold;">Saturday, October 15th </span></p>
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><span style=3D=
+"font-size: 20px; font-weight: bold;">3:00 pm</span></p>
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><br></p>
+<p style=3D"text-align: center; margin: 0;" align=3D"center">First Church i=
+n Cambridge, Congregational</p>
+<p style=3D"text-align: center; margin: 0;" align=3D"center">11 Garden Stre=
+et, Cambridge</p>
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><a href=3D"htt=
+ps://r20.rs6.net/tn.jsp?f=3D001ByU54aG-ir8sQuBGU7GVWjbrl2rtOqleFnXZCCztWhWC=
+_gKL57HpwL02eTn_P1pgpsetOxw0N6JITh6ZYkKKljsEcE7B_8izrIatjCyGDjWj3j7-eckDfcP=
+4-wrxbdeqbS9V13AqcQN7P4CU1PPwJ_afo44STJa0VxpZyJLb-6wVY5uszVNsXCZ0opq260By&c=
+=3Dq7N-zvAw0bYk8fOI0lvOPjwCFEF0GnRvRby-91Ll-5p24EjriexBpg=3D=3D&ch=3Dl-Wwow=
+WtxX6SCLMvdzntZ4OpeGJp_3G555cRaNJqyJyffPgiRHGv4w=3D=3D" target=3D"_blank" s=
+tyle=3D"color: #3661BD; font-weight: normal; text-decoration: underline; fo=
+nt-style: normal;">Parking info &gt;</a></p>
+</td> </tr> </table> </td> </tr> </table> <table class=3D"layout layout--1-=
+column" style=3D"table-layout: fixed;" width=3D"100%" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0"> <tr> <td class=3D"column column--1 scale stack=
+" style=3D"width: 100%;" align=3D"center" valign=3D"top"> <table class=3D"b=
+utton button--padding-vertical" width=3D"100%" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" style=3D"table-layout: fixed;"> <tr> <td class=3D"butt=
+on_container content-padding-horizontal" align=3D"center" style=3D"padding:=
+ 10px 20px;">    <table class=3D"button_content-row" style=3D"width: inheri=
+t; border-radius: 5px; border-spacing: 0; background-color: #193E45; border=
+: none;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#193E4=
+5"> <tr> <td class=3D"button_content-cell" style=3D"padding: 10px 40px;" al=
+ign=3D"center"> <a class=3D"button_link" href=3D"https://r20.rs6.net/tn.jsp=
+?f=3D001ByU54aG-ir8sQuBGU7GVWjbrl2rtOqleFnXZCCztWhWC_gKL57HpwPad2rdJMD_Wc8b=
+rnG7stROAOwkzDwiFvnYY0MRbDY1GY7R_NfLRlLGe7nHG_57txiLpWe9m2KYrMwtDMyblXLY7sJ=
+_LR7cK6xs-YHMXB5vIuz5kXs8_8tC4wVSi0EcHAfcwPHi9K8gE&c=3Dq7N-zvAw0bYk8fOI0lvO=
+PjwCFEF0GnRvRby-91Ll-5p24EjriexBpg=3D=3D&ch=3Dl-WwowWtxX6SCLMvdzntZ4OpeGJp_=
+3G555cRaNJqyJyffPgiRHGv4w=3D=3D" data-trackable=3D"true" style=3D"color: #F=
+FFFFF; font-family: Georgia,Times New Roman,Times,serif; font-size: 14px; w=
+ord-wrap: break-word; font-weight: bold; text-decoration: none;">Buy Ticket=
+s</a> </td> </tr> </table>    </td> </tr> </table>   </td> </tr> </table> <=
+table class=3D"layout layout--1-column" style=3D"table-layout: fixed;" widt=
+h=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"> <tr> <td class=
+=3D"column column--1 scale stack" style=3D"width: 100%;" align=3D"center" v=
+align=3D"top">
+<table class=3D"text text--padding-vertical" width=3D"100%" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" style=3D"table-layout: fixed;"> <tr> <td =
+class=3D"text_content-cell content-padding-horizontal" style=3D"text-align:=
+ left; font-family: Georgia,Times New Roman,Times,serif; color: #07290E; fo=
+nt-size: 14px; line-height: 1.2; display: block; word-wrap: break-word; pad=
+ding: 10px 20px;" align=3D"left" valign=3D"top">
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><span style=3D=
+"font-size: 17px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255)=
+; font-style: italic;">Click below for a special video introduction </span>=
+</p>
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><span style=3D=
+"font-size: 17px; color: rgb(0, 0, 0); background-color: rgb(255, 255, 255)=
+; font-style: italic;">by Artistic Director Scott Metcalfe</span></p>
+</td> </tr> </table> </td> </tr> </table> <table class=3D"layout layout--1-=
+column" style=3D"background-color: #ffffff; table-layout: fixed;" width=3D"=
+100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#ffffff">=
+ <tr> <td class=3D"column column--1 scale stack" style=3D"width: 100%;" ali=
+gn=3D"center" valign=3D"top">
+<table class=3D"image image--mobile-scale image--mobile-center" width=3D"10=
+0%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"> <tr> <td class=3D"ima=
+ge_container" align=3D"center" valign=3D"top"> <a href=3D"https://r20.rs6.n=
+et/tn.jsp?f=3D001ByU54aG-ir8sQuBGU7GVWjbrl2rtOqleFnXZCCztWhWC_gKL57HpwMWxF8=
+NdB7l9WP-zIcyeGbOASWGeOp-ZUmqtcoBGbUPY0PnNnaIkOqnTiGuZpOUnxN7hom3f68g6vQey-=
+TqCVmXWVo5K1HcVDw=3D=3D&c=3Dq7N-zvAw0bYk8fOI0lvOPjwCFEF0GnRvRby-91Ll-5p24Ej=
+riexBpg=3D=3D&ch=3Dl-WwowWtxX6SCLMvdzntZ4OpeGJp_3G555cRaNJqyJyffPgiRHGv4w=
+=3D=3D" data-trackable=3D"true"><img data-image-content class=3D"image_cont=
+ent" width=3D"471" src=3D"https://web-extract.constantcontact.com/v1/thumbn=
+ail?url=3Dhttps%3A%2F%2Fmlsvc01-prod.s3.amazonaws.com%2Fd750a2c8001%2Fb9596=
+980-a09f-41b3-87e2-caa059ada7f3.png" alt=3D"Ockeghem@600 Concert 12: Requie=
+m trailer" style=3D"display: block; height: auto; max-width: 100%;"></a> </=
+td> </tr> </table> </td> </tr> </table> <table class=3D"layout layout--1-co=
+lumn" style=3D"background-color: #ffffff; table-layout: fixed;" width=3D"10=
+0%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#ffffff"> <=
+tr> <td class=3D"column column--1 scale stack" style=3D"width: 100%;" align=
+=3D"center" valign=3D"top">
+<table class=3D"text text--padding-vertical" width=3D"100%" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" style=3D"table-layout: fixed;"> <tr> <td =
+class=3D"text_content-cell content-padding-horizontal" style=3D"text-align:=
+ left; font-family: Georgia,Times New Roman,Times,serif; color: #07290E; fo=
+nt-size: 14px; line-height: 1.2; display: block; word-wrap: break-word; pad=
+ding: 10px 20px;" align=3D"left" valign=3D"top">
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><span style=3D=
+"color: rgb(0, 0, 0);">One of the master&#x2019;s most celebrated and myste=
+rious creations, the earliest surviving polyphonic setting of the Mass for =
+the Dead (known as the&#xa0;</span><span style=3D"font-style: italic; color=
+: rgb(0, 0, 0);">Requiem&#xa0;</span><span style=3D"color: rgb(0, 0, 0);">f=
+rom the first word of the introit), together with motets honoring Ockeghem =
+by Antoine Busnoys and Johannes Lupi &#x2013; or, more likely, Lupus Hellin=
+ck.</span></p>
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><br></p>
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><span style=3D=
+"color: rgb(0, 0, 0);">Free pre-concert talk by Sean Gallagher (New England=
+ Conservatory) at 2:15 pm.</span></p>
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><span style=3D=
+"color: rgb(0, 0, 0);">Doors and box office open at 2 pm.</span></p>
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><br></p>
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><span style=3D=
+"color: rgb(0, 0, 0);">BLUE HERON</span></p>
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><span style=3D=
+"color: rgb(0, 0, 0);">Kim Leeds &amp; Sophie Michaux, cantus</span></p>
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><span style=3D=
+"color: rgb(0, 0, 0);">Jason McStoots, James Reese, Aaron Sheehan, Sumner T=
+hompson, tenor</span></p>
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><span style=3D=
+"color: rgb(0, 0, 0);">Paul Guttry &amp; David McFerrin, bassus</span></p>
+<p style=3D"text-align: center; margin: 0;" align=3D"center"><span style=3D=
+"color: rgb(0, 0, 0);">Scott Metcalfe, fiddle &amp; harp</span></p>
+</td> </tr> </table> </td> </tr> </table> <table class=3D"layout layout--1-=
+column" style=3D"table-layout: fixed;" width=3D"100%" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0"> <tr> <td class=3D"column column--1 scale stack=
+" style=3D"width: 100%;" align=3D"center" valign=3D"top"> <table class=3D"b=
+utton button--padding-vertical" width=3D"100%" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" style=3D"table-layout: fixed;"> <tr> <td class=3D"butt=
+on_container content-padding-horizontal" align=3D"center" style=3D"padding:=
+ 10px 20px;">    <table class=3D"button_content-row" style=3D"width: inheri=
+t; border-radius: 5px; border-spacing: 0; background-color: #193E45; border=
+: none;" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#193E4=
+5"> <tr> <td class=3D"button_content-cell" style=3D"padding: 10px 40px;" al=
+ign=3D"center"> <a class=3D"button_link" href=3D"https://r20.rs6.net/tn.jsp=
+?f=3D001ByU54aG-ir8sQuBGU7GVWjbrl2rtOqleFnXZCCztWhWC_gKL57HpwPad2rdJMD_Wc8b=
+rnG7stROAOwkzDwiFvnYY0MRbDY1GY7R_NfLRlLGe7nHG_57txiLpWe9m2KYrMwtDMyblXLY7sJ=
+_LR7cK6xs-YHMXB5vIuz5kXs8_8tC4wVSi0EcHAfcwPHi9K8gE&c=3Dq7N-zvAw0bYk8fOI0lvO=
+PjwCFEF0GnRvRby-91Ll-5p24EjriexBpg=3D=3D&ch=3Dl-WwowWtxX6SCLMvdzntZ4OpeGJp_=
+3G555cRaNJqyJyffPgiRHGv4w=3D=3D" data-trackable=3D"true" style=3D"color: #F=
+FFFFF; font-family: Georgia,Times New Roman,Times,serif; font-size: 14px; w=
+ord-wrap: break-word; font-weight: bold; text-decoration: none;">Buy Ticket=
+s</a> </td> </tr> </table>    </td> </tr> </table>   </td> </tr> </table> <=
+table class=3D"layout layout--1-column" style=3D"table-layout: fixed;" widt=
+h=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"> <tr> <td class=
+=3D"column column--1 scale stack" style=3D"width: 100%;" align=3D"center" v=
+align=3D"top"><div class=3D"spacer" style=3D"line-height: 20px; height: 20p=
+x;">&#x200a;</div></td> </tr> </table> <table class=3D"layout layout--1-col=
+umn" style=3D"background-color: #091619; table-layout: fixed;" width=3D"100=
+%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" bgcolor=3D"#091619"> <t=
+r> <td class=3D"column column--1 scale stack" style=3D"width: 100%;" align=
+=3D"center" valign=3D"top">
+<table class=3D"text text--padding-vertical" width=3D"100%" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" style=3D"table-layout: fixed;"> <tr> <td =
+class=3D"text_content-cell content-padding-horizontal" style=3D"text-align:=
+ left; font-family: Georgia,Times New Roman,Times,serif; color: #07290E; fo=
+nt-size: 14px; line-height: 1.2; display: block; word-wrap: break-word; pad=
+ding: 10px 20px;" align=3D"left" valign=3D"top"><div><div style=3D"text-ali=
+gn: center;" align=3D"center"><a href=3D"https://r20.rs6.net/tn.jsp?f=3D001=
+ByU54aG-ir8sQuBGU7GVWjbrl2rtOqleFnXZCCztWhWC_gKL57HpwDeNzuhk3LS77atgUgkWj8C=
+0cGQylcRwDfFkUrgfCXeawPqv4ze4X92jNuv5P8AFmL1WBVEuloT7kqa209xR3j4k41UTiTC2Dw=
+=3D=3D&c=3Dq7N-zvAw0bYk8fOI0lvOPjwCFEF0GnRvRby-91Ll-5p24EjriexBpg=3D=3D&ch=
+=3Dl-WwowWtxX6SCLMvdzntZ4OpeGJp_3G555cRaNJqyJyffPgiRHGv4w=3D=3D" target=3D"=
+_blank" style=3D"font-size: 20px; font-weight: bold; font-family: Helvetica=
+, Arial, sans-serif; color: rgb(255, 255, 255); text-decoration: underline;=
+ font-style: normal;">www.blueheron.org</a></div></div></td> </tr> </table>=
+ </td> </tr> </table> <table class=3D"layout layout--1-column" style=3D"tab=
+le-layout: fixed;" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0"> <tr> <td class=3D"column column--1 scale stack" style=3D"width: 10=
+0%;" align=3D"center" valign=3D"top">
+<table class=3D"text text--padding-vertical" width=3D"100%" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" style=3D"table-layout: fixed;"> <tr> <td =
+class=3D"text_content-cell content-padding-horizontal" style=3D"text-align:=
+ center; font-family: Georgia,Times New Roman,Times,serif; color: #07290E; =
+font-size: 14px; line-height: 1.2; display: block; word-wrap: break-word; p=
+adding: 10px 20px;" align=3D"center" valign=3D"top"><div><div><span style=
+=3D"color: #FFFFFF;">Connect with us</span></div></div></td> </tr> </table>=
+ <table class=3D"socialFollow socialFollow--padding-vertical" width=3D"100%=
+" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"> <tr> <td class=3D"socia=
+lFollow_container content-padding-horizontal" width=3D"100%" align=3D"cente=
+r" valign=3D"top" style=3D"height: 1px; line-height: 1px; padding: 10px 20p=
+x;"> <a href=3D"https://r20.rs6.net/tn.jsp?f=3D001ByU54aG-ir8sQuBGU7GVWjbrl=
+2rtOqleFnXZCCztWhWC_gKL57HpwEn36kVSJfVTyz-7P-SWXfIaFac-1wLGWh-OaNsv6wAuDJhY=
+ugwtoPHyqXCZGqW6Ir1rsSsjo0OSpUKBD4r_FMCZ8cmoXyUl7YOZB2CAiE5gEO9yiPyDJ7o=3D&=
+c=3Dq7N-zvAw0bYk8fOI0lvOPjwCFEF0GnRvRby-91Ll-5p24EjriexBpg=3D=3D&ch=3Dl-Wwo=
+wWtxX6SCLMvdzntZ4OpeGJp_3G555cRaNJqyJyffPgiRHGv4w=3D=3D" data-trackable=3D"=
+true"><img class=3D"socialFollow_icon" alt=3D"Facebook" width=3D"32" border=
+=3D"0" src=3D"https://imgssl.constantcontact.com/letters/images/CPE/SocialI=
+cons/circles/circleColor_Facebook.png" style=3D"display: inline-block; marg=
+in: 0; padding: 0;"></a> &#xa0;<a href=3D"https://r20.rs6.net/tn.jsp?f=3D00=
+1ByU54aG-ir8sQuBGU7GVWjbrl2rtOqleFnXZCCztWhWC_gKL57HpwEn36kVSJfVTXP2KoQSRjK=
+K0nHkF_pAFcuF53FveEiSPdT9OomFev-urf8BPp-vEN4POijdNSF-NQ_TRGMo4fNlVSs-Q6VBaV=
+E4-Qaa9wvs9&c=3Dq7N-zvAw0bYk8fOI0lvOPjwCFEF0GnRvRby-91Ll-5p24EjriexBpg=3D=
+=3D&ch=3Dl-WwowWtxX6SCLMvdzntZ4OpeGJp_3G555cRaNJqyJyffPgiRHGv4w=3D=3D" data=
+-trackable=3D"true"><img class=3D"socialFollow_icon" alt=3D"Twitter" width=
+=3D"32" border=3D"0" src=3D"https://imgssl.constantcontact.com/letters/imag=
+es/CPE/SocialIcons/circles/circleColor_Twitter.png" style=3D"display: inlin=
+e-block; margin: 0; padding: 0;"></a> &#xa0;<a href=3D"https://r20.rs6.net/=
+tn.jsp?f=3D001ByU54aG-ir8sQuBGU7GVWjbrl2rtOqleFnXZCCztWhWC_gKL57HpwEn36kVSJ=
+fVTADkgR56YP_frW67JpnhRYnTE13JPqvsjs5KVBDlIeW9BhTSWvxv6pXhhaHJHVB9mKVuFjHfP=
+FYaM3V-C4tbJuymQZwniGkV9&c=3Dq7N-zvAw0bYk8fOI0lvOPjwCFEF0GnRvRby-91Ll-5p24E=
+jriexBpg=3D=3D&ch=3Dl-WwowWtxX6SCLMvdzntZ4OpeGJp_3G555cRaNJqyJyffPgiRHGv4w=
+=3D=3D" data-trackable=3D"true"><img class=3D"socialFollow_icon" alt=3D"Ins=
+tagram" width=3D"32" border=3D"0" src=3D"https://imgssl.constantcontact.com=
+/letters/images/CPE/SocialIcons/circles/circleColor_Instagram.png" style=3D=
+"display: inline-block; margin: 0; padding: 0;"></a> &#xa0;<a href=3D"https=
+://r20.rs6.net/tn.jsp?f=3D001ByU54aG-ir8sQuBGU7GVWjbrl2rtOqleFnXZCCztWhWC_g=
+KL57HpwLJTcfYXJHfo6YoGKs_xPcVNi09_hYm4ioSx41eVH49cj1u6blGTMpnsgX6LA5UUWr3rF=
+K4ZxLE4n9Qet5Js00L85zIRUz7GAdQ255NH4RQzOFR5di07YjU=3D&c=3Dq7N-zvAw0bYk8fOI0=
+lvOPjwCFEF0GnRvRby-91Ll-5p24EjriexBpg=3D=3D&ch=3Dl-WwowWtxX6SCLMvdzntZ4OpeG=
+Jp_3G555cRaNJqyJyffPgiRHGv4w=3D=3D" data-trackable=3D"true"><img class=3D"s=
+ocialFollow_icon" alt=3D"Youtube" width=3D"32" border=3D"0" src=3D"https://=
+imgssl.constantcontact.com/letters/images/CPE/SocialIcons/circles/circleCol=
+or_YouTube.png" style=3D"display: inline-block; margin: 0; padding: 0;"></a=
+> &#xa0; </td> </tr> </table> </td> </tr> </table>  </td> </tr> </table>   =
+</td> </tr> </table>   </td> </tr> </table>  </td> </tr> <tr> <td class=3D"=
+shell_panel-cell shell_panel-cell--systemFooter" style=3D"" align=3D"center=
+" valign=3D"top">  <table class=3D"shell_width-row scale" style=3D"width: 1=
+00%;" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"> <t=
+r> <td class=3D"shell_width-cell" style=3D"padding: 0px;" align=3D"center" =
+valign=3D"top">    <table class=3D"shell_content-row" width=3D"100%" align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"> <tr> <td clas=
+s=3D"shell_content-cell" style=3D"background-color: #FFFFFF; padding: 0;" a=
+lign=3D"center" valign=3D"top" bgcolor=3D"#FFFFFF"> <table class=3D"layout =
+layout--1-column" style=3D"table-layout: fixed;" width=3D"100%" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0"> <tr> <td class=3D"column column--1 s=
+cale stack" style=3D"width: 100%;" align=3D"center" valign=3D"top"> <table =
+class=3D"footer" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"font-family: Verdana,Geneva,sans-serif; color: #5d5d5d; fon=
+t-size: 12px;"> <tr> <td class=3D"footer_container" align=3D"center"> <tabl=
+e class=3D"footer-container" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" style=3D"background-color: #ffffff; margin-left: auto; =
+margin-right: auto; table-layout: auto !important;" bgcolor=3D"#ffffff">
+<tr>
+<td width=3D"100%" align=3D"center" valign=3D"top" style=3D"width: 100%;">
+<div class=3D"footer-max-main-width" align=3D"center" style=3D"margin-left:=
+ auto; margin-right: auto; max-width: 100%;">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+<tr>
+<td class=3D"footer-layout" align=3D"center" valign=3D"top" style=3D"paddin=
+g: 16px 0px;">
+<table class=3D"footer-main-width" style=3D"width: 580px;" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0">
+<tr>
+<td class=3D"footer-text" align=3D"center" valign=3D"top" style=3D"color: #=
+5d5d5d; font-family: Verdana,Geneva,sans-serif; font-size: 12px; padding: 4=
+px 0px;">
+<span class=3D"footer-column">Blue Heron<span class=3D"footer-mobile-hidden=
+"> | </span></span><span class=3D"footer-column">950 Watertown St.<span cla=
+ss=3D"footer-mobile-hidden">, </span></span><span class=3D"footer-column">S=
+uite 8<span class=3D"footer-mobile-hidden">, </span></span><span class=3D"f=
+ooter-column"></span><span class=3D"footer-column">West Newton, MA 02465</s=
+pan><span class=3D"footer-column"> www.blueheron.org</span>
+</td>
+</tr>
+<tr>
+<td class=3D"footer-row" align=3D"center" valign=3D"top" style=3D"padding: =
+10px 0px;">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+<tr>
+<td class=3D"footer-text" align=3D"center" valign=3D"top" style=3D"color: #=
+5d5d5d; font-family: Verdana,Geneva,sans-serif; font-size: 12px; padding: 4=
+px 0px;">
+<a href=3D"https://visitor.constantcontact.com/do?p=3Dun&m=3D001hJ5Mus3r_5x=
+noZ3CfBtMLA%3D&ch=3D20abd21c-649a-11ea-b46a-d4ae529cde13&ca=3D5588b239-ab4c=
+-4f0e-b184-998abfa7f6b0" style=3D"color: #5d5d5d;">Unsubscribe joshua.guttm=
+an@gmail.com</a>
+</td>
+</tr>
+<tr>
+<td class=3D"footer-text" align=3D"center" valign=3D"top" style=3D"color: #=
+5d5d5d; font-family: Verdana,Geneva,sans-serif; font-size: 12px; padding: 4=
+px 0px;">
+<a href=3D"https://visitor.constantcontact.com/do?p=3Doo&m=3D001hJ5Mus3r_5x=
+noZ3CfBtMLA%3D&ch=3D20abd21c-649a-11ea-b46a-d4ae529cde13&ca=3D5588b239-ab4c=
+-4f0e-b184-998abfa7f6b0" style=3D"color: #5d5d5d;">Update Profile</a> |
+<a class=3D"footer-about-provider" href=3D"https://r20.rs6.net/tn.jsp?f=3D0=
+01ByU54aG-ir8sQuBGU7GVWjbrl2rtOqleFnXZCCztWhWC_gKL57HpwOICuH5WDopZ4DUJudpPm=
+wtAF4Od_YBGcCr5gsWosZMtOPt9dbZZyPjpr_WJYqkNTmsu-H21e52-PdLCCkqn7sTjBM5Qx_jz=
+dI5bhlcO8kLKZih-YzOyMnB6pwUJk0KlkQnMT7KdGd5SUSrJJRDq6Xs=3D&c=3Dq7N-zvAw0bYk=
+8fOI0lvOPjwCFEF0GnRvRby-91Ll-5p24EjriexBpg=3D=3D&ch=3Dl-WwowWtxX6SCLMvdzntZ=
+4OpeGJp_3G555cRaNJqyJyffPgiRHGv4w=3D=3D" style=3D"color: #5d5d5d;">Constant=
+ Contact Data Notice</a>
+</td>
+</tr>
+<tr>
+<td class=3D"footer-text" align=3D"center" valign=3D"top" style=3D"color: #=
+5d5d5d; font-family: Verdana,Geneva,sans-serif; font-size: 12px; padding: 4=
+px 0px;">
+Sent by
+<a href=3D"mailto:office@blueheron.org" style=3D"color: #5d5d5d; text-decor=
+ation: none;">office@blueheron.org</a>
+<span class=3D"footer-column">powered by</span>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class=3D"footer-text" align=3D"center" valign=3D"top" style=3D"color: #=
+5d5d5d; font-family: Verdana,Geneva,sans-serif; font-size: 12px; padding: 4=
+px 0px;">
+<a href=3D"https://r20.rs6.net/tn.jsp?f=3D001ByU54aG-ir8sQuBGU7GVWjbrl2rtOq=
+leFnXZCCztWhWC_gKL57HpwMLkKQdvVg_OeGErhMuCQYKAeBOTJ8XwHNEcjF8kC0srCV2R3dsrp=
+3D3tLqd5cFL0NF0qMjELb7uXoYQJSdNZ-nyjp3SB5B5uHVEj08Y8B69w_N7La5KSE5KwjA41jxT=
+uITOZsRYJqsHf0fyEJAdmQ8=3D&c=3Dq7N-zvAw0bYk8fOI0lvOPjwCFEF0GnRvRby-91Ll-5p2=
+4EjriexBpg=3D=3D&ch=3Dl-WwowWtxX6SCLMvdzntZ4OpeGJp_3G555cRaNJqyJyffPgiRHGv4=
+w=3D=3D" style=3D"color: #5d5d5d; text-decoration: none;">
+<img alt=3D"Trusted Email from Constant Contact - Try it FREE today." width=
+=3D"160" border=3D"0" hspace=3D"0" vspace=3D"0" src=3D"https://imgssl.const=
+antcontact.com/letters/images/CTCTFooter/Logo_Blue_Orange_2022.png">
+</a>
+<div class=3D"footer-cta-text" style=3D"color: #5d5d5d; font-family: Verdan=
+a,Geneva,sans-serif; font-size: 9px; line-height: 2;">
+<a href=3D"https://r20.rs6.net/tn.jsp?f=3D001ByU54aG-ir8sQuBGU7GVWjbrl2rtOq=
+leFnXZCCztWhWC_gKL57HpwMLkKQdvVg_OeGErhMuCQYKAeBOTJ8XwHNEcjF8kC0srCV2R3dsrp=
+3D3tLqd5cFL0NF0qMjELb7uXoYQJSdNZ-nyjp3SB5B5uHVEj08Y8B69w_N7La5KSE5KwjA41jxT=
+uITOZsRYJqsHf0fyEJAdmQ8=3D&c=3Dq7N-zvAw0bYk8fOI0lvOPjwCFEF0GnRvRby-91Ll-5p2=
+4EjriexBpg=3D=3D&ch=3Dl-WwowWtxX6SCLMvdzntZ4OpeGJp_3G555cRaNJqyJyffPgiRHGv4=
+w=3D=3D" style=3D"color: #5d5d5d; text-decoration: none;">Try email marketi=
+ng for free today!</a>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table> </td> </tr> </table>   </td> </tr> </table>  </td> </tr> </table> =
+   </td> </tr> </table>  </td> </tr>  </table> </div>  </body> </html>
+
+------=_Part_54647998_97910155.1664474512142--

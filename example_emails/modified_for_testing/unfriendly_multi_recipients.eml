@@ -1,0 +1,157 @@
+X-CDS-Disposition:  rewrite outlook.com in selected fields, also unfriendly recipients
+Received: from BY5PR09MB4882.namprd09.prod.outlook.com (2603:10b6:a03:253::12)
+ by PH0PR09MB7689.namprd09.prod.outlook.com with HTTPS; Fri, 26 Jul 2024
+ 22:03:18 +0000
+Received: from PH0PR09MB7689.namprd09.prod.outlook.com (2603:10b6:510:6a::12)
+ by BY5PR09MB4882.namprd09.prod.outlook.com (2603:10b6:a03:253::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7784.29; Fri, 26 Jul
+ 2024 22:03:16 +0000
+Received: from PH0PR09MB7689.namprd09.prod.outlook.com
+ ([fe80::c517:8b90:a60:99c1]) by PH0PR09MB7689.namprd09.prod.outlook.com
+ ([fe80::c517:8b90:a60:99c1%4]) with mapi id 15.20.7784.020; Fri, 26 Jul 2024
+ 22:03:16 +0000
+From: Joshua D Guttman <guttman@mitre.org>
+To: comrades@internal.fsb.ru, unfriends@minsk.kgb.by, Anne Townsend <apalm@mitre.org>, Drew Buttner <abuttner@mitre.org>, Mindy
+ E Rudell <mrudell@mitre.org>, Catherine D McCollum <mccollum@mitre.org>
+Bcc: <comrades@fsb.ru>, <unfriends@kgb.by> 
+CC: Joshua D Guttman <guttman@mitre.org>
+Subject:
+	=?Windows-1252?Q?FW:_Save_the_Date_-_MITRE=92s_Safer_World_Symposium_and_?=
+ =?Windows-1252?Q?IR&D_Expo?=
+Thread-Topic:
+	=?Windows-1252?Q?Save_the_Date_-_MITRE=92s_Safer_World_Symposium_and_IR&D?=
+ =?Windows-1252?Q?_Expo?=
+Thread-Index: AQHa35ByWr/wdk3t30qVFaopRr2d87IJj0tr
+Date: Fri, 26 Jul 2024 22:03:16 +0000
+Message-ID:
+	<PH0PR09MB7689D77BF7F4D7CFC94044CEB9B42@PH0PR09MB7689.namprd09.prod.outlook.com>
+References: <D420FD92-03FA-487A-B539-DBBEA9AB27B4@mitre.org>
+In-Reply-To: <D420FD92-03FA-487A-B539-DBBEA9AB27B4@mitre.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-MS-Exchange-Organization-AuthSource: PH0PR09MB7689.namprd09.prod.outlook.com
+X-MS-Exchange-Organization-ComplianceLabelId:
+	8581680d-7be5-416f-8f6c-daa8e115280f
+X-MS-Has-Attach: yes
+X-MS-Exchange-Organization-Network-Message-Id:
+	9aa707b0-ae58-4886-abbf-08dcadbec07b
+X-MS-Exchange-Organization-SCL: 1
+X-MS-TNEF-Correlator:
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic:
+	PH0PR09MB7689:EE_|BY5PR09MB4882:EE_|PH0PR09MB7689:EE_
+x-ms-exchange-crosstenant-originalarrivaltime: 26 Jul 2024 22:03:16.3864 (UTC)
+x-ms-exchange-crosstenant-fromentityheader: Hosted
+x-ms-exchange-crosstenant-id: c620dc48-1d50-4952-8b39-df4d54d74d82
+x-ms-exchange-transport-crosstenantheadersstamped: BY5PR09MB4882
+x-ms-exchange-transport-endtoendlatency: 00:00:02.2936164
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mitre.org;
+x-ms-exchange-crosstenant-network-message-id:
+	9aa707b0-ae58-4886-abbf-08dcadbec07b
+x-forefront-antispam-report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR09MB7689.namprd09.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(41050700001);DIR:INT;
+x-ms-office365-filtering-correlation-id: 9aa707b0-ae58-4886-abbf-08dcadbec07b
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|41050700001;
+x-ms-exchange-processed-by-bccfoldering: 15.20.7784.020
+x-ms-exchange-crosstenant-authsource: PH0PR09MB7689.namprd09.prod.outlook.com
+x-ms-exchange-crosstenant-authas: Internal
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(425001)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	QYkDteC6TXG/kcOOs+hBEVisMwCD6G1Xk19FEACcUZ1XamkFCKZ3fWLJPv9n0ANWcfIZ/imUrITkR8lMwBSexWutcGcd8M/cMw+8ivWRQKhOhbrZsbXwBZiGuXhGvDAgktrUx3hrWy/BlLgn11fTa7lEiuTqPHYcNcf+pvyLWxrg9kIGL/hW9BtnTI5nYXeF4NV9d9mKa76iuVVnCwuTNURF5cxMn/ZkDdD/NW0W+sINJEtlrOKVHcpcIgohDXaNi2uC9WOYIwuErhBivnbAlQpimgzIdJb7oqlfZDmgu9e161bcb6nNVgCpUTc0WnA7zzfR+XgNkn7tC6GMByZPMhbwIqIadaELn1qPTREQDmY72x3/NxLN16LxsBtcPTgXTxAbBU2aJJVhKFaExFh7Zx0bmCweEPIfmfC29cbsQhUK09jXTG7CtTl9v7lVRYF4kcvOfLRVwNiR7getsSS78SoqBl69gIESzcIgRoYwVDK99yOKuZy9ixizGe8VtEiH2tm5QYgv6vciLsd0hvA6Rtfu/UasZLc8j2G8bClI032GpJpAKC+758V3JDT5L+JwPCEHktZW53gBKi91eE7pYBuIC6rTAXGYXxW4Rc1Z4gtVh685Kkep3McMWyGqX6JOMp5ZNezEnCunCgPHbbz1G7txiB8TbtxWZGNtrZt/DgO4MZ31KmB00sRSfA3jh4oRT/Itim60DOXeLMCiuxhaFksXdUkN4P6SMrsgYYe9hmmgua+tt39LMWj4SlJT5w/Uh/TKiOJq+BEe34nGXYRjsQgL7SY04TGpYjnIydnpQBjtp2eJ/imS08g0buO1gTcbPl0g5sCTxBbo+I0tbiIOWw==
+Content-Type: multipart/related;
+	boundary="_004_PH0PR09MB7689D77BF7F4D7CFC94044CEB9B42PH0PR09MB7689namp_";
+	type="multipart/alternative"
+MIME-Version: 1.0
+
+--_004_PH0PR09MB7689D77BF7F4D7CFC94044CEB9B42PH0PR09MB7689namp_
+Content-Type: multipart/alternative;
+	boundary="_000_PH0PR09MB7689D77BF7F4D7CFC94044CEB9B42PH0PR09MB7689namp_"
+
+--_000_PH0PR09MB7689D77BF7F4D7CFC94044CEB9B42PH0PR09MB7689namp_
+Content-Type: text/plain; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+
+This symposium and expo looks so promising.
+Have they already identified the activities to
+highlight?  Are any of our activities in the picture
+in a suitable way?
+
+Enjoy the weekend (whenever that arrives... :- ).
+
+  Joshua
+
+--
+Joshua D Guttman
+The MITRE Corporation
+
+
+From: Charles Clancy <tcc@mitre.org>
+Date: Friday, July 26, 2024 at 15:17
+To:
+Subject: Save the Date - MITRE=92s Safer World Symposium and IR&D Expo
+[Distro: All Employees]
+
+Dear Colleagues,
+
+I am excited to announce the first annual Safer World Symposium and IR&D Ex=
+po, a technical conference showcasing MITRE=92s highest impact research, to=
+ be hosted in McLean on November 19-20, 2024. MITRE Labs Distinguished Sect=
+or Chief Engineer, Dr. Shamik Das, is chairing this event.
+
+Sponsors and MITRE employees are warmly invited to attend this event, which=
+ will highlight the state of the art in strategic technologies and mission =
+areas critical to the nation and describe what MITRE researchers have achie=
+ved in these areas. Please stay tuned for further details to follow.
+
+Participants will hear from MITRE=92s leading subject-matter experts and pr=
+incipal investigators, as well as from invited external experts and thought=
+ leaders. We=92ll also encourage cross-discipline discussions around the re=
+al-world applications and impact of emerging developments.
+
+Example themes of the symposium include:
+
+  *   Artificial Intelligence and Data: accelerating assured adoption of le=
+ading-edge AI capabilities to address critical problems in national securit=
+y, healthcare delivery, and climate change, among others
+  *   Strategic Competition: efforts to maintain the techno-economic advant=
+age of the U.S. and its allies globally by using data and modeling to direc=
+t strategic capital investments, policy, and S&T research
+  *   Cybersecurity: innovating in threat- and risk-informed defense; explo=
+ring advances that AI can bring to addressing cybersecurity challenges
+  *   Resilient Infrastructure: protecting U.S. critical infrastructure fro=
+m a variety of threats including cyber attacks, natural disasters, and clim=
+ate and economic stressors
+  *   Social Services: innovating to improve delivery of capabilities that =
+form the backbone of our social safety net, including Government programs i=
+n health, housing, and disaster recovery
+  *   Transportation: developing digital twins to model transportation syst=
+ems at multiple scales and assess the integration of autonomous vehicles in=
+to the transportation environment
+  *   Financial Resilience: developing new regulatory frameworks addressing=
+ the emergent threats that arise as we migrate from physical to digital fin=
+ancial assets
+  *   Life Sciences: identifying and developing game changers that impact h=
+ealth and wellbeing, whether through metagenomics or modernizing healthcare=
+ delivery
+  *   Physical Sciences: disrupting the state of the art for computing, com=
+munications, and sensing via development of novel technologies such as in q=
+uantum information science
+
+More details will be available to employees in August. We plan to open symp=
+osium registration to our sponsors in September. In the meantime, please di=
+rect any questions to Dr. Shamik Das<mailto:sdas@mitre.org>, Conference Cha=
+ir or Leslie Anderson<mailto:landerson@mitre.org>, Conference Co-Chair.
+
+
+T. Charles Clancy, PhD
+Chief Technology Officer
+Senior Vice President, General Manager, MITRE Labs
+tcc@mitre.org<mailto:tcc@mitre.org>
+
+[MITRE: Solving Problems for a Safer World]<https://www.mitre.org/>

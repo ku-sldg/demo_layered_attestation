@@ -1,0 +1,150 @@
+policy_module(demo_pipeline, 1.0)
+
+########################################
+#
+# Declarations
+#
+
+type demo_pipeline_t;
+files_type(demo_pipeline_t)
+
+type demo_pipeline_config_t;
+files_type(demo_pipeline_config_t)
+
+type demo_pipeline_start_t;
+files_type(demo_pipeline_start_t)
+
+type demo_pipeline_finish_t;
+files_type(demo_pipeline_finish_t)
+
+type demo_pipeline_installed_dir_t;
+files_type(demo_pipeline_installed_dir_t)
+
+type demo_pipeline_dir_t;
+files_type(demo_pipeline_dir_t)
+
+type demo_pipeline_errors_t;
+files_type(demo_pipeline_errors_t)
+
+type demo_pipeline_incoming_t;
+files_type(demo_pipeline_incoming_t)
+
+type demo_pipeline_outgoing_t;
+files_type(demo_pipeline_outgoing_t)
+
+type demo_pipeline_rewritten_t;
+files_type(demo_pipeline_rewritten_t)
+
+type demo_pipeline_bin_t;
+files_type(demo_pipeline_bin_t)
+
+# Orchestrate
+type demo_pipeline_orchestrate_t;
+type demo_pipeline_orchestrate_exec_t;
+domain_type(demo_pipeline_orchestrate_t)
+domain_entry_file(demo_pipeline_orchestrate_t, demo_pipeline_orchestrate_exec_t)
+demo_pipeline_start_from_unconfined(demo_pipeline_orchestrate_t, demo_pipeline_orchestrate_exec_t)
+
+# Deliver
+type demo_pipeline_deliver_t;
+type demo_pipeline_deliver_exec_t;
+domain_type(demo_pipeline_deliver_t)
+domain_entry_file(demo_pipeline_deliver_t, demo_pipeline_deliver_exec_t)
+demo_pipeline_start_from_unconfined(demo_pipeline_deliver_t, demo_pipeline_deliver_exec_t)
+
+# Intake
+type demo_pipeline_intake_t;
+type demo_pipeline_intake_exec_t;
+domain_type(demo_pipeline_intake_t)
+domain_entry_file(demo_pipeline_intake_t, demo_pipeline_intake_exec_t)
+domain_auto_transition_pattern(demo_pipeline_orchestrate_t, demo_pipeline_intake_exec_t, demo_pipeline_intake_t)
+demo_pipeline_unconfined_role(demo_pipeline_intake_t)
+
+# Rewrite
+type demo_pipeline_rewrite_t;
+type demo_pipeline_rewrite_exec_t;
+domain_type(demo_pipeline_rewrite_t)
+domain_entry_file(demo_pipeline_rewrite_t, demo_pipeline_rewrite_exec_t)
+domain_auto_transition_pattern(demo_pipeline_intake_t, demo_pipeline_rewrite_exec_t, demo_pipeline_rewrite_t)
+demo_pipeline_unconfined_role(demo_pipeline_rewrite_t)
+
+# Diff
+type demo_pipeline_diff_t;
+domain_type(demo_pipeline_diff_t)
+demo_pipeline_run_diff(demo_pipeline_rewrite_t, demo_pipeline_diff_t)
+demo_pipeline_unconfined_role(demo_pipeline_diff_t)
+
+# Filter
+type demo_pipeline_filter_t;
+type demo_pipeline_filter_exec_t;
+domain_type(demo_pipeline_filter_t)
+domain_entry_file(demo_pipeline_filter_t, demo_pipeline_filter_exec_t)
+domain_auto_transition_pattern(demo_pipeline_rewrite_t, demo_pipeline_filter_exec_t, demo_pipeline_filter_t)
+demo_pipeline_unconfined_role(demo_pipeline_rewrite_t)
+
+# Export
+type demo_pipeline_export_t;
+type demo_pipeline_export_exec_t;
+domain_type(demo_pipeline_export_t)
+domain_entry_file(demo_pipeline_export_t, demo_pipeline_export_exec_t)
+domain_auto_transition_pattern(demo_pipeline_filter_t, demo_pipeline_export_exec_t, demo_pipeline_export_t)
+demo_pipeline_unconfined_role(demo_pipeline_export_t)
+
+# Receive
+type demo_pipeline_receive_t;
+type demo_pipeline_receive_exec_t;
+domain_type(demo_pipeline_receive_t)
+domain_entry_file(demo_pipeline_receive_t, demo_pipeline_receive_exec_t)
+domain_auto_transition_pattern(demo_pipeline_orchestrate_t, demo_pipeline_receive_exec_t, demo_pipeline_receive_t)
+demo_pipeline_unconfined_role(demo_pipeline_receive_t)
+
+
+########################################
+#
+# Local Policy
+#
+
+demo_pipeline_search_dirs(demo_pipeline_orchestrate_t)
+demo_pipeline_use_ptys(demo_pipeline_orchestrate_t)
+
+demo_pipeline_search_dirs(demo_pipeline_deliver_t)
+demo_pipeline_use_ptys(demo_pipeline_deliver_t)
+demo_pipeline_connect_socket(demo_pipeline_deliver_t)
+demo_pipeline_read_msgs(demo_pipeline_deliver_t, demo_pipeline_start_t)
+
+demo_pipeline_search_dirs(demo_pipeline_intake_t)
+demo_pipeline_use_ptys(demo_pipeline_intake_t)
+demo_pipeline_bind_socket(demo_pipeline_intake_t)
+demo_pipeline_write_msgs(demo_pipeline_intake_t, demo_pipeline_incoming_t)
+
+demo_pipeline_search_dirs(demo_pipeline_rewrite_t)
+demo_pipeline_use_ptys(demo_pipeline_rewrite_t)
+demo_pipeline_read_config(demo_pipeline_rewrite_t)
+demo_pipeline_write_log(demo_pipeline_rewrite_t)
+demo_pipeline_read_msgs(demo_pipeline_rewrite_t, demo_pipeline_incoming_t)
+demo_pipeline_remove_msgs(demo_pipeline_rewrite_t, demo_pipeline_incoming_t)
+demo_pipeline_write_msgs(demo_pipeline_rewrite_t, demo_pipeline_rewritten_t)
+
+demo_pipeline_search_dirs(demo_pipeline_diff_t)
+demo_pipeline_use_ptys(demo_pipeline_diff_t)
+demo_pipeline_write_log(demo_pipeline_diff_t)
+demo_pipeline_read_msgs(demo_pipeline_diff_t, demo_pipeline_incoming_t)
+demo_pipeline_read_msgs(demo_pipeline_diff_t, demo_pipeline_rewritten_t)
+
+demo_pipeline_search_dirs(demo_pipeline_filter_t)
+demo_pipeline_read_config(demo_pipeline_filter_t)
+demo_pipeline_write_log(demo_pipeline_filter_t)
+demo_pipeline_read_msgs(demo_pipeline_filter_t, demo_pipeline_rewritten_t)
+demo_pipeline_remove_msgs(demo_pipeline_filter_t, demo_pipeline_rewritten_t)
+demo_pipeline_write_msgs(demo_pipeline_filter_t, demo_pipeline_outgoing_t)
+
+demo_pipeline_search_dirs(demo_pipeline_export_t)
+demo_pipeline_use_ptys(demo_pipeline_export_t)
+demo_pipeline_connect_socket(demo_pipeline_export_t)
+demo_pipeline_read_msgs(demo_pipeline_export_t, demo_pipeline_outgoing_t)
+demo_pipeline_remove_msgs(demo_pipeline_export_t, demo_pipeline_outgoing_t)
+
+demo_pipeline_search_dirs(demo_pipeline_receive_t)
+demo_pipeline_use_ptys(demo_pipeline_receive_t)
+demo_pipeline_bind_socket(demo_pipeline_receive_t)
+demo_pipeline_write_msgs(demo_pipeline_receive_t, demo_pipeline_finish_t)

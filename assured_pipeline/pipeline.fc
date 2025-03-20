@@ -1,0 +1,21 @@
+/home/jim/work/test/other/modules/assured_pipeline -d gen_context(system_u:object_r:pipeline_dir_t,s0)
+
+/home/jim/work/test/other/modules/assured_pipeline/d1 -d gen_context(system_u:object_r:pipeline_dir1_t,s0)
+/home/jim/work/test/other/modules/assured_pipeline/d1(/.*)? -d gen_context(system_u:object_r:pipeline_file1_t,s0)
+
+/home/jim/work/test/other/modules/assured_pipeline/d2 -d gen_context(system_u:object_r:pipeline_dir2_t,s0)
+/home/jim/work/test/other/modules/assured_pipeline/d2(/.*)? -d gen_context(system_u:object_r:pipeline_file2_t,s0)
+
+/home/jim/work/test/other/modules/assured_pipeline/d3 -d gen_context(system_u:object_r:pipeline_dir3_t,s0)
+/home/jim/work/test/other/modules/assured_pipeline/d3(/.*)? -d gen_context(system_u:object_r:pipeline_file3_t,s0)
+
+/home/jim/work/test/other/modules/assured_pipeline/d4 -d gen_context(system_u:object_r:pipeline_dir4_t,s0)
+/home/jim/work/test/other/modules/assured_pipeline/d4(/.*)? -d gen_context(system_u:object_r:pipeline_file4_t,s0)
+
+/home/jim/work/test/other/modules/assured_pipeline/master\.sh -- gen_context(system_u:object_r:pipeline_master_exec_t,s0)
+
+/home/jim/work/test/other/modules/assured_pipeline/p12\.sh -- gen_context(system_u:object_r:pipeline_p12_exec_t,s0)
+
+/home/jim/work/test/other/modules/assured_pipeline/p23\.sh -- gen_context(system_u:object_r:pipeline_p23_exec_t,s0)
+
+/home/jim/work/test/other/modules/assured_pipeline/p34\.sh -- gen_context(system_u:object_r:pipeline_p34_exec_t,s0)

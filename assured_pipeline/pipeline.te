@@ -1,0 +1,131 @@
+policy_module(pipeline, 1.0)
+
+gen_require(`
+	role unconfined_r;
+')
+
+########################################
+#
+# Declarations
+#
+
+type pipeline_master_t;
+type pipeline_master_exec_t;
+domain_type(pipeline_master_t)
+domain_entry_file(pipeline_master_t, pipeline_master_exec_t)
+
+type pipeline_p12_t;
+type pipeline_p12_exec_t;
+domain_type(pipeline_p12_t)
+domain_entry_file(pipeline_p12_t, pipeline_p12_exec_t)
+role unconfined_r types pipeline_p12_t;
+
+type pipeline_p23_t;
+type pipeline_p23_exec_t;
+domain_type(pipeline_p23_t)
+domain_entry_file(pipeline_p23_t, pipeline_p23_exec_t)
+role unconfined_r types pipeline_p23_t;
+
+type pipeline_p34_t;
+type pipeline_p34_exec_t;
+domain_type(pipeline_p34_t)
+domain_entry_file(pipeline_p34_t, pipeline_p34_exec_t)
+role unconfined_r types pipeline_p34_t;
+
+type pipeline_dir_t;
+files_type(pipeline_dir_t)
+
+type pipeline_dir1_t;
+files_type(pipeline_dir1_t)
+
+type pipeline_dir2_t;
+files_type(pipeline_dir2_t)
+
+type pipeline_dir3_t;
+files_type(pipeline_dir3_t)
+
+type pipeline_dir4_t;
+files_type(pipeline_dir4_t)
+
+type pipeline_file1_t;
+files_type(pipeline_file1_t)
+
+type pipeline_file2_t;
+files_type(pipeline_file2_t)
+
+type pipeline_file3_t;
+files_type(pipeline_file3_t)
+
+type pipeline_file4_t;
+files_type(pipeline_file4_t)
+
+########################################
+#
+# Local Policy
+#
+
+unconfined_run_to(pipeline_master_t, pipeline_master_exec_t)
+allow pipeline_master_t pipeline_dir_t : dir { getattr search };
+allow pipeline_master_t pipeline_dir1_t : dir { add_name search write };
+allow pipeline_master_t pipeline_file1_t : file { create getattr open write };
+type_transition pipeline_master_t pipeline_dir1_t : file pipeline_file1_t;
+
+
+domain_auto_transition_pattern(pipeline_master_t, pipeline_p12_exec_t, pipeline_p12_t)
+allow pipeline_p12_t pipeline_dir_t : dir { getattr search };
+allow pipeline_p12_t pipeline_dir1_t : dir { remove_name search write };
+allow pipeline_p12_t pipeline_file1_t : file { getattr open unlink read };
+allow pipeline_p12_t pipeline_dir2_t : dir { add_name search write };
+allow pipeline_p12_t pipeline_file2_t : file { append create getattr open write };
+type_transition pipeline_p12_t pipeline_dir2_t : file pipeline_file2_t;
+
+
+domain_auto_transition_pattern(pipeline_master_t, pipeline_p23_exec_t, pipeline_p23_t)
+allow pipeline_p23_t pipeline_dir_t : dir { getattr search };
+allow pipeline_p23_t pipeline_dir2_t : dir { remove_name search write };
+allow pipeline_p23_t pipeline_file2_t : file { getattr open unlink read };
+allow pipeline_p23_t pipeline_dir3_t : dir { add_name search write };
+allow pipeline_p23_t pipeline_file3_t : file { append create getattr open write };
+type_transition pipeline_p23_t pipeline_dir3_t : file pipeline_file3_t;
+
+
+domain_auto_transition_pattern(pipeline_master_t, pipeline_p34_exec_t, pipeline_p34_t)
+allow pipeline_p34_t pipeline_dir_t : dir { getattr search };
+allow pipeline_p34_t pipeline_dir3_t : dir { remove_name search write };
+allow pipeline_p34_t pipeline_file3_t : file { getattr open unlink read };
+allow pipeline_p34_t pipeline_dir4_t : dir { add_name search write };
+allow pipeline_p34_t pipeline_file4_t : file { append create getattr open write };
+type_transition pipeline_p34_t pipeline_dir4_t : file pipeline_file4_t;
+
+
+########################################
+#
+# Other permissions needed for my shell script implementation
+#
+
+corecmd_check_exec_shell(pipeline_master_t)
+corecmd_exec_bin(pipeline_master_t)
+corecmd_mmap_bin_files(pipeline_master_t)
+corecmd_shell_entry_type(pipeline_master_t)
+files_list_isid_type_dirs(pipeline_master_t)
+
+corecmd_check_exec_shell(pipeline_p12_t)
+corecmd_exec_bin(pipeline_p12_t)
+corecmd_mmap_bin_files(pipeline_p12_t)
+corecmd_shell_entry_type(pipeline_p12_t)
+files_list_isid_type_dirs(pipeline_p12_t)
+userdom_use_inherited_user_ptys(pipeline_p12_t)
+
+corecmd_check_exec_shell(pipeline_p23_t)
+corecmd_exec_bin(pipeline_p23_t)
+corecmd_mmap_bin_files(pipeline_p23_t)
+corecmd_shell_entry_type(pipeline_p23_t)
+files_list_isid_type_dirs(pipeline_p23_t)
+userdom_use_inherited_user_ptys(pipeline_p23_t)
+
+corecmd_check_exec_shell(pipeline_p34_t)
+corecmd_exec_bin(pipeline_p34_t)
+corecmd_mmap_bin_files(pipeline_p34_t)
+corecmd_shell_entry_type(pipeline_p34_t)
+files_list_isid_type_dirs(pipeline_p34_t)
+userdom_use_inherited_user_ptys(pipeline_p34_t)

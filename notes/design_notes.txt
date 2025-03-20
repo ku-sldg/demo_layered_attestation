@@ -1,0 +1,61 @@
+Overall architecture:
+
+1.  The data pipeline.  We expect a setup in which there are two
+    network interfaces, which we will call *inside*, representing the
+    interior of the enclave, and *outside*, representing the broader
+    network.  
+
+2.  We will have two separately labeled instances of the Mail Transfer
+    Agent.  One accepts arriving transfers from *inside*, and writes
+    their contents (ie heading + body) to separate files in a
+    directory called *arrivals*.  The other reads separate files in a
+    directory called *departures* and transmits transfers over
+    *outside*.
+
+    In this demo, there will be no back-flow.
+
+3.  We have two programs implementing the pipeline between *arrivals*
+    and *departures* via an intermediate directory *mid*.
+
+4.  The first *sanitizes*, i.e. it reads a file in *arrivals*;
+    inspects the header fields in the heading; and applies rewrites
+    defined in a *sanitize-config* file.
+
+    If rewriting succeeds, it writes the resulting headings with the
+    unchanged body into a file in the directory *mid*, deleting the
+    original file from *arrivals*.  If rewriting fails, it writes the
+    original headings with the unchanged body into a file in the
+    directory *sanitize-reject*, deleting the original file from
+    *arrivals*.
+
+5.  The second *filters*, i.e. it reads a file in *mid*; inspects the
+    header fields in the heading; and applies predicates defined in a
+    *filter-config* file.
+
+    If the predicates are all satisfied, it writes the unchanged file
+    into the *departures* directory and deletes the file from *mid*.
+    If any predicate is not satisfied, it writes the unchanged file
+    into the *filter-reject* directory for auditing and review,
+    deleting the file from *mid*.
+
+6.  Some programs may exist to inspect the directories and the
+    contents of the files they contain, possibly logging information
+    as they do so.  They may also remove files from the *reject*
+    directories.
+
+7.  We will define the measurement actions subsequently.  
+
+8.  In predicates and rewrites for headers, we distinguish *required*
+    vs *prohibited* headers.
+
+    We also distinguish *recipient* and *reply* headers.
+
+    For *recipient* and *reply* headers, we isolate within them an
+    (address*text) list, separated by commas,
+
+    where an *address* is a pair (user * domain list).  The text is
+    the explanatory text, such as my name in
+
+    guttman@mitre.org (Joshua D. Guttman) or
+    "Joshua D. Guttman" <guttman@mitre.org> or
+    Joshua Guttman <guttman@mitre.org>

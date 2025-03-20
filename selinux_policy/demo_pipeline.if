@@ -1,0 +1,275 @@
+## <summary>CDS-like email processing demo pipeline</summary>
+
+########################################
+## <summary>
+##	Search demo pipeline directories
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain
+##	</summary>
+## </param>
+#
+interface(`demo_pipeline_search_dirs',`
+	gen_require(`
+		type user_home_dir_t;
+		type user_home_t;
+		type demo_pipeline_t;
+		type demo_pipeline_bin_t;
+		type demo_pipeline_installed_dir_t;
+
+		')
+
+	allow $1 user_home_dir_t:dir { getattr search };
+	allow $1 user_home_t:dir { getattr search };
+	allow $1 demo_pipeline_t:dir { getattr search };
+	allow $1 demo_pipeline_bin_t:dir { getattr search };
+	allow $1 demo_pipeline_installed_dir_t:dir { getattr search };
+')
+
+########################################
+## <summary>
+##	Read demo pipeline configuration
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain
+##	</summary>
+## </param>
+#
+interface(`demo_pipeline_read_config',`
+	gen_require(`
+		type demo_pipeline_config_t;
+		')
+
+	allow $1 demo_pipeline_config_t:dir { getattr search };
+	allow $1 demo_pipeline_config_t:file { getattr open read };
+')
+
+########################################
+## <summary>
+##	Write demo pipeline log messages
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain
+##	</summary>
+## </param>
+#
+interface(`demo_pipeline_write_log',`
+	gen_require(`
+		type demo_pipeline_errors_t;
+		type demo_pipeline_dir_t;
+	')
+
+	allow $1 demo_pipeline_dir_t:dir { getattr search };
+	allow $1 demo_pipeline_errors_t:dir { getattr add_name search write };
+	allow $1 demo_pipeline_errors_t:file { getattr create open write };
+')
+
+########################################
+## <summary>
+##	Read demo pipeline messages from dir
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain
+##	</summary>
+## </param>
+## <param name="type">
+##	<summary>
+##	Type
+##	</summary>
+## </param>
+#
+interface(`demo_pipeline_read_msgs',`
+	gen_require(`
+		type demo_pipeline_dir_t;
+	')
+
+	allow $1 demo_pipeline_dir_t:dir { getattr search };
+	allow $1 $2:dir { getattr open read search };
+	allow $1 $2:file { getattr open read };
+')
+
+########################################
+## <summary>
+##	Write demo pipeline messages to dir
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain
+##	</summary>
+## </param>
+## <param name="type">
+##	<summary>
+##	Type
+##	</summary>
+## </param>
+#
+interface(`demo_pipeline_write_msgs',`
+	gen_require(`
+		type demo_pipeline_dir_t;
+	')
+
+	allow $1 demo_pipeline_dir_t:dir { getattr search };
+	allow $1 $2:dir { add_name search write };
+	allow $1 $2:file { getattr create open write };
+')
+
+########################################
+## <summary>
+##	Remove demo pipeline messages from dir
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain
+##	</summary>
+## </param>
+## <param name="type">
+##	<summary>
+##	Type
+##	</summary>
+## </param>
+#
+interface(`demo_pipeline_remove_msgs',`
+	gen_require(`
+		type demo_pipeline_dir_t;
+	')
+
+	allow $1 demo_pipeline_dir_t:dir { getattr search };
+	allow $1 $2:dir { remove_name search write} ;
+	allow $1 $2:file { unlink };
+')
+
+
+########################################
+## <summary>
+##	Associate demo pipline domain with
+##  unconfined_r.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain
+##	</summary>
+## </param>
+#
+interface(`demo_pipeline_unconfined_role',`
+	gen_require(`
+		role unconfined_r;
+	')
+
+	role unconfined_r types $1;
+')
+
+########################################
+## <summary>
+##	Allow demo pipline program to be started by
+##  unconfined_t.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain to execute in.
+##	</summary>
+## </param>
+## <param name="entry_file">
+##	<summary>
+##	Domain entry point file.
+##	</summary>
+## </param>
+#
+interface(`demo_pipeline_start_from_unconfined',`
+	gen_require(`
+		type unconfined_t;
+	')
+
+	domtrans_pattern(unconfined_t,$2,$1)
+	demo_pipeline_unconfined_role($1)
+')
+
+########################################
+## <summary>
+##	Allow demo pipline program to run diff
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain to execute diff
+##	</summary>
+## <param name="domain">
+##	<summary>
+##	Domain diff should run in
+##	</summary>
+#
+interface(`demo_pipeline_run_diff',`
+	gen_require(`
+		type shell_exec_t;
+		type bin_t;
+		type user_devpts_t;
+	')
+
+	domain_entry_file($2, shell_exec_t)
+	domain_auto_transition_pattern($1, shell_exec_t, $2)
+	allow $2 bin_t:file { map execute execute_no_trans };
+	allow demo_pipeline_diff_t user_devpts_t:chr_file ioctl;
+')
+
+########################################
+## <summary>
+##	Allow demo pipline domain to
+##  connect socket
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain
+##	</summary>
+## </param>
+#
+interface(`demo_pipeline_connect_socket',`
+	gen_require(`
+		type unreserved_port_t;
+	')
+
+	allow $1 self:tcp_socket { connect create getattr getopt shutdown };
+	allow $1 unreserved_port_t:tcp_socket name_connect;
+')
+
+########################################
+## <summary>
+##	Allow demo pipline domain to
+##  bind socket
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain
+##	</summary>
+## </param>
+#
+interface(`demo_pipeline_bind_socket',`
+	gen_require(`
+		type node_t;
+		type unreserved_port_t;
+	')
+
+	allow $1 node_t:tcp_socket node_bind;
+	allow $1 self:tcp_socket { accept bind create getattr getopt listen setopt };
+	allow $1 unreserved_port_t:tcp_socket name_bind;
+')
+
+########################################
+## <summary>
+##	Allow demo pipline domain to
+##  read and write ptys
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain
+##	</summary>
+## </param>
+#
+interface(`demo_pipeline_use_ptys',`
+	gen_require(`
+		type user_devpts_t;
+	')
+
+	allow $1 user_devpts_t:chr_file { read write };
+')

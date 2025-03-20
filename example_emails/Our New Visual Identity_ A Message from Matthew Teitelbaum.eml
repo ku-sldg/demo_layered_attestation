@@ -1,0 +1,748 @@
+Delivered-To: joshua.guttman@gmail.com
+Received: by 2002:ab2:3988:0:b0:152:d955:5b47 with SMTP id a8csp445097lqc;
+        Wed, 31 Aug 2022 11:58:57 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR5yQyfqcrSA0ZclMC4wIx9NGWcGhgj4Q4SX1Rj5V3vbAMu8lvVGmqiOanGYDkp4WGK4vaAU
+X-Received: by 2002:a63:4142:0:b0:42b:5b22:f2fc with SMTP id o63-20020a634142000000b0042b5b22f2fcmr23770689pga.573.1661972337415;
+        Wed, 31 Aug 2022 11:58:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1661972337; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Yh7NChyIdV6L9qDyFJfaLVnXbN7feXBqsI6aGk/6NQe1jPxpOaCXnFXrZ+6CKgQNte
+         OnTUAsSDgolPBBJd1cIUdV8gC1oHyNNSD5tYOdVNxtXXv4265+XaRswKj00rykFHAafq
+         q41/D1f7SVwd49DQcP0wkdeVpPBsVUBtUMpWGyWXMgBJd4F/kZKWCdaUWIkV/zgu0Aiz
+         D2CoamElWf26hYcG8I0Zz53/P82UHemAneMx4jaQ27h7rbTbBNl39Py68wFyMDL3K7Lu
+         4NATmvPQmw/ZQZWRYz9T7s+GUAETfuM5AqJQfm2EWDJ228TJL6I6FVlT1yh0TnbUQt2t
+         h3NA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=subject:date:to:from:mime-version:signing-selector:signing-domain
+         :message-id:dkim-signature;
+        bh=Ys1jYzyhyCspJc0OjIteJsW3DP2Xa4QBTwHLkRGWX5Y=;
+        b=DQiCig30dppnfzQid9A61iSCw5D8LjCUXxMXjpm7vn0iFfPfMdOCBd7WTqeRERql5O
+         S3UEpJlQbOfOCj6yYVVh9o9HQVJOsEe5fXG+GDNormwRu0vedXUm/U+urgY5gHR6qfX8
+         UzbWEll5Q8VzqHqq3hHOaEGPyseiEai9fzMoMKn3NslScee+jmR1BNlGWwdzXz8OQZNl
+         PQ4RY9HySGJJ6i5+ZoAH675zbjZ1iCC5dqe5lhahrgx9mvVvEvIrm96l5AYT5W0fyTF2
+         w7B1idIvT64rUoVOx7+FES1FCu0DdU2aP+OV/l2a+zFQI8LLNEurAFcUrFfDvxgrRpzu
+         sSEQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mfa.org header.s=wordfly02 header.b=Q2FJ7jTG;
+       spf=pass (google.com: domain of museumoffineartsboston_odqwxzmymtuwxzk5mti0mv83mdcz@return.wordfly.com designates 52.124.61.139 as permitted sender) smtp.mailfrom=Museumoffineartsboston_ODQwXzMyMTUwXzk5MTI0MV83MDcz@return.wordfly.com
+Return-Path: <Museumoffineartsboston_ODQwXzMyMTUwXzk5MTI0MV83MDcz@return.wordfly.com>
+Received: from m120-mta1-lv.wordfly.com (m120-mta1-lv.wordfly.com. [52.124.61.139])
+        by mx.google.com with ESMTPS id ot4-20020a17090b3b4400b001fdf5fec918si2592149pjb.25.2022.08.31.11.58.57
+        for <joshua.guttman@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 31 Aug 2022 11:58:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of museumoffineartsboston_odqwxzmymtuwxzk5mti0mv83mdcz@return.wordfly.com designates 52.124.61.139 as permitted sender) client-ip=52.124.61.139;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mfa.org header.s=wordfly02 header.b=Q2FJ7jTG;
+       spf=pass (google.com: domain of museumoffineartsboston_odqwxzmymtuwxzk5mti0mv83mdcz@return.wordfly.com designates 52.124.61.139 as permitted sender) smtp.mailfrom=Museumoffineartsboston_ODQwXzMyMTUwXzk5MTI0MV83MDcz@return.wordfly.com
+Return-Path: <Museumoffineartsboston_ODQwXzMyMTUwXzk5MTI0MV83MDcz@return.wordfly.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mfa.org;
+	s=wordfly02; t=1661972337;
+	bh=Ys1jYzyhyCspJc0OjIteJsW3DP2Xa4QBTwHLkRGWX5Y=;
+	h=Message-ID:From:To:Date:Subject:Content-Type;
+	b=Q2FJ7jTG1+5zb7yPtsdFwp5Y18cwenBbjFacW30Xnl8ji2vruVRw6vcRyuWqj63/A
+	 qLaQcxW8gqXGO3ArmJUB/90/dCAC8zzKrVvT5Hy00h6+iX7j441oVrq3yXSeahUTGU
+	 f8OwQ0w1dEiW00BwAMXKjRgprx8VX+Ss829x7emQ=
+X-MSFBL: QvGt8SmeI4NnmIPVe8uk6W6+JlMh+Sc3FBhmgTA0e9c=|eyJyIjoiam9zaHVhLmd
+	1dHRtYW5AZ21haWwuY29tIiwiZyI6IjUyLjEyNC42MS4xMzkiLCJ1IjoiTXVzZXV
+	tb2ZmaW5lYXJ0c2Jvc3Rvbl9PRFF3WHpNeU1UVXdYems1TVRJME1WODNNRGN6Iiw
+	iYiI6Ik11c2V1bW9mZmluZWFydHNib3N0b25NYXJrZXRpbmcifQ==
+Received: from [172.24.0.101] ([172.24.0.101:38250] helo=lv-wf-pro-msrv1)
+	by lv-wf-pro-mta1.wf.local (envelope-from <Museumoffineartsboston_ODQwXzMyMTUwXzk5MTI0MV83MDcz@return.wordfly.com>)
+	(ecelerity 4.3.1.69410 r(Core:4.3.1.0)) with ESMTP
+	id C4/2C-02234-17FAF036; Wed, 31 Aug 2022 11:58:57 -0700
+X-Binding-ID: MuseumoffineartsbostonMarketing
+Message-ID: <C4.2C.02234.17FAF036@lv-wf-pro-mta1.wf.local>
+Signing-Domain: mfa.org
+Signing-Selector: wordfly02
+MIME-Version: 1.0
+From: "MFA Boston" <membership@mfa.org>
+To: joshua.guttman@gmail.com
+Date: 31 Aug 2022 11:58:57 -0700
+Subject: Our New Visual Identity: A Message from Matthew Teitelbaum
+Content-Type: multipart/alternative;
+ boundary=--boundary_1800095_f3966a5e-7180-47c3-84a4-6070911576a2
+
+
+----boundary_1800095_f3966a5e-7180-47c3-84a4-6070911576a2
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+View in browser=0D=0Ahttps://e.wordfly.com/click?sid=3DODQwXzMyMT=
+UwXzk5MTI0MV83MDcz&l=3D8461f1c5-1e18-ed11-a82a-0050569d9d1d&utm_s=
+ource=3Ddm_membership&utm_medium=3Demail&utm_campaign=3Dmembershi=
+p&utm_content=3Dversion_A&promo=3D44157=0D=0A=0D=0ADear Joshua,=0D=0A=
+=0D=0AI=E2=80=99m excited to unveil our =0D=0A=0D=0Anew visual id=
+entity=0D=0Ahttps://e.wordfly.com/click?sid=3DODQwXzMyMTUwXzk5MTI=
+0MV83MDcz&l=3D30e6c990-c427-ed11-a82a-0050569d9d1d&utm_source=3Dd=
+m_membership&utm_medium=3Demail&utm_campaign=3Dmembership&utm_con=
+tent=3Dversion_A&promo=3D44157=0D=0A=0D=0A=E2=80=94inspired by ou=
+r welcoming spirit, designed for the vibrant future that lies ahe=
+ad of us.=0D=0A=0D=0AOur new identity is more than a change in th=
+e way we look. It signals our ongoing commitment to make MFA Bost=
+on a space where people of all backgrounds feel welcome. We embra=
+ce diverse perspectives, challenge conventional narratives, and c=
+elebrate both difference and connection. This is true of the artw=
+ork and the people who come to see it. The MFA is a place for eve=
+ryone, so we=E2=80=99ve paired our new identity with a new promis=
+e: Here all belong.=0D=0A=0D=0A=E2=80=9CHere all belong=E2=80=9D =
+is an active commitment from us to you. We understand inclusion d=
+oesn=E2=80=99t happen by accident. From eliminating unpaid intern=
+ships to offering opportunities to see our presentation of =0D=0A=
+=0D=0A=E2=80=9CThe Obama Portraits Tour=E2=80=9D=0D=0Ahttps://e.w=
+ordfly.com/click?sid=3DODQwXzMyMTUwXzk5MTI0MV83MDcz&l=3Dfccaaed5-=
+5122-ed11-a82a-0050569d9d1d&utm_source=3Ddm_membership&utm_medium=
+=3Demail&utm_campaign=3Dmembership&utm_content=3Dversion_A&promo=3D=
+44157=0D=0A=0D=0Afor free, and displaying artworks submitted by o=
+ur community in the accompanying =E2=80=9CPortraits of Leadership=
+=E2=80=9D project, we will live up to this promise through intent=
+ional action.=0D=0A=0D=0AI invite you to join us in celebrating t=
+he many worlds that converge at the MFA. Whoever you are and wher=
+ever you come from, =E2=80=9Chere all belong=E2=80=9D means here =
+you belong.=0D=0A=0D=0AWith warmest wishes=0D=0A=0D=0AMatthew Tei=
+telbaum=0D=0AAnn and Graham Gund Director=0D=0A=0D=0APS Check you=
+r mailbox for a creative way to get acquainted with our new logo!=
+ Enjoy our colorful decals=E2=80=94for your car, laptop, or water=
+ bottle.=0D=0A=0D=0AMuseum of Fine Arts, Boston=0D=0A465 Huntingt=
+on Avenue=0D=0ABoston, MA 02115=0D=0A617-267-9300=0D=0A=0D=0APriv=
+acy Policy | =0D=0A=0D=0AUnsubscribe=0D=0Ahttps://e.wordfly.com/u=
+nsubscribe?sid=3DODQwXzMyMTUwXzk5MTI0MV83MDcz=0D=0A=0D=0A=C2=A9 2=
+022 Museum of Fine Arts, Boston=0D=0A=0D=0A<grammarly-desktop-int=
+egration data-grammarly-shadow-root=3D"true"></grammarly-desktop-=
+integration>
+----boundary_1800095_f3966a5e-7180-47c3-84a4-6070911576a2
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html xmlns=3D"http://www.w3.org/1999/xhtml" dir=3D=
+"ltr" lang=3D"en" style=3D"margin: 0px; min-width: 100%; padding:=
+ 0px; width: 100%;" xmlns:v=3D"urn:schemas-microsoft-com:vml" xml=
+ns:o=3D"urn:schemas-microsoft-com:office:office"><head>=0A		<meta=
+ charset=3D"utf-8" />=0A		<meta name=3D"generator" content=3D"Wor=
+dFly 3.1.0" />=0A		<!-- Derived from Starter A -->=0A=0A		<!-- We=
+lcome WordFly user! This is your HTML, we're just guests here.=0A=
+		Please don't modify attributes and styles with 'wf' in them, th=
+ose are for our editor. -->=0A=0A		<!-- Tell Outlook to use best =
+available rendering engine. -->=0A		<meta http-equiv=3D"X-UA-Comp=
+atible" content=3D"IE=3Dedge" />=0A=0A		<!-- For responsive email=
+ layout -->=0A		<meta name=3D"viewport" content=3D"width=3Ddevice=
+-width, initial-scale=3D1.0, minimum-scale=3D1.0, maximum-scale=3D=
+1.0" />=0A=0A		<!-- starter styles include a email-client reset, =
+utility classes, and content blocks styles. -->=0A		=0A=0A		<!-- =
+Media query resets, pseudo selectors, and other css rules that ca=
+nnot be inlined. -->=0A		<style type=3D"text/css" data-inline-opt=
+ions=3D"preserve: true; ignore: true">=0A			/* device width speci=
+fic (e.g. iPhone-ish) */=0A			@media only screen and (max-width: =
+520px) {=0A				/* used for 2 and 3 "column" areas */=0A				.two-c=
+olumns-block .column,=0A				.three-columns-block .column {=0A				=
+	display: block !important;=0A					width: 100% !important;=0A				=
+}=0A				/* mobile scale rules */=0A				.mobile-scale > .column { =
+display: inline-block !important; }=0A				.mobile-scale.desktop-r=
+everse { direction: rtl !important; }=0A				.mobile-scale.desktop=
+-reverse > .column { direction: ltr !important; }=0A				.mobile-s=
+cale.two-columns-block .column { width: 50% !important; }=0A				.=
+mobile-scale.three-columns-block .column { width: 33.33333333% !i=
+mportant; }=0A				[class*=3Dmobile-scale].two-columns-block.split=
+-33-66 .column:first-child { width: 33.33333333% !important; }=0A=
+				[class*=3Dmobile-scale].two-columns-block.split-33-66 .column=
+ { width: 66.66666666% !important; }=0A				[class*=3Dmobile-scale=
+].two-columns-block.split-66-33 .column:first-child { width: 66.6=
+6666666% !important; }=0A				[class*=3Dmobile-scale].two-columns-=
+block.split-66-33 .column { width: 33.33333333% !important; }=0A	=
+			[class*=3Dmobile-scale].two-columns-block.split-25-75 .column:=
+first-child { width: 25% !important; }=0A				[class*=3Dmobile-sca=
+le].two-columns-block.split-25-75 .column { width: 75% !important=
+; }=0A				[class*=3Dmobile-scale].two-columns-block.split-75-25 .=
+column:first-child { width: 75% !important; }=0A				[class*=3Dmob=
+ile-scale].two-columns-block.split-75-25 .column { width: 25% !im=
+portant; }=0A				[class*=3Dmobile-scale].two-columns-block.split-=
+20-80 .column:first-child { width: 20% !important; }=0A				[class=
+*=3Dmobile-scale].two-columns-block.split-20-80 .column { width: =
+80% !important; }=0A				[class*=3Dmobile-scale].two-columns-block=
+.split-80-20 .column:first-child { width: 80% !important; }=0A			=
+	[class*=3Dmobile-scale].two-columns-block.split-80-20 .column { =
+width: 20% !important; }=0A				[class*=3Dmobile-scale].three-colu=
+mns-block.split-50-25-25 .column:first-child { width: 50% !import=
+ant; }=0A				[class*=3Dmobile-scale].three-columns-block.split-50=
+-25-25 .column { width: 25% !important; }=0A				[class*=3Dmobile-=
+scale].three-columns-block.split-25-25-50 .column { width: 25% !i=
+mportant; }=0A				[class*=3Dmobile-scale].three-columns-block.spl=
+it-25-25-50 .column:nth-child(3) { width: 50% !important; }=0A			=
+	/* hide on desktop */=0A				.desktop-hide {=0A					display: bloc=
+k !important;=0A					float: inherit !important;=0A					max-height=
+: none !important;=0A					max-width: none !important;=0A					text=
+-indent: 0 !important;=0A					visibility: visible !important;=0A	=
+			}=0A				/* hide on mobile */=0A				.mobile-hide {=0A					displ=
+ay: none !important;=0A				}=0A			}=0A			a[x-apple-data-detectors=
+] {=0Acolor: inherit !important;=0Atext-decoration: none !importa=
+nt;=0Afont-size: inherit !important;=0Afont-family: inherit !impo=
+rtant;=0Afont-weight: inherit !important;=0Aline-height: inherit =
+!important;=0A}=0A		</style>=0A=0A		<!-- Starter file specific ru=
+les. -->=0A		=0A=0A		<!-- Basic styling: This is the style tag is=
+ edited by the style editor. -->=0A		=0A=0A		<!-- Advanced stylin=
+g: This is the style tag is edited by the style editor. -->=0A		<=
+style data-wfeditor=3D"" type=3D"text/css" data-inline-options=3D=
+"preserve: true; ignore: true">			=0A			@media only screen and (m=
+ax-width: 520px) {	=0A				#block-container-1591127876861 {=0A				=
+	padding-left: 0px !important;=0A					padding-bottom: 0px !import=
+ant;=0A					margin: 12px 15px 16px !important;=0A					max-width: =
+300px !important;=0A				}=0A				.button-block div.button a {=0A		=
+			font-size: 16px !important;=0A				}=0A				.button-block div.bu=
+tton div {=0A					padding: 12px 34px !important;=0A				}=0A				#c=
+ontainer-block-1591279788883 {=0A					margin-bottom: 0px !importa=
+nt;=0A				}=0A				h1 {=0A					margin: 10px 0px 10px 15px !importa=
+nt;=0A					padding: 0px !important;=0A				}=0A				h3 {=0A					mar=
+gin: 10px 0px 5px 15px !important;=0A					padding: 0px !important=
+;=0A				}=0A				.text-block h4 {=0A					margin: 5px 0px 5px 15px =
+!important;=0A					padding: 0px !important;=0A					color: #000000=
+ !important;=0A					font-size: 20px !important;=0A					line-heigh=
+t: 26px !important;=0A				}=0A				h4 {=0A					margin: 5px 0px 5px=
+ 15px !important;=0A					padding: 0px !important;=0A				}=0A				.=
+text-block p {=0A					font-size: 14px !important;=0A					line-hei=
+ght: 24px !important;=0A					padding: 0px !important;=0A					marg=
+in: 0px 15px 5px !important;=0A				}=0A				p {=0A					margin: 0px=
+ 15px 5px !important;=0A					padding: 0px !important;=0A				}=0A	=
+			h5 {=0A					padding: 0px !important;=0A					margin: 12px 15px =
+10px !important;=0A				}=0A				.text-block h5 {=0A					padding: 0=
+px !important;=0A					margin: 12px 15px 10px !important;=0A					c=
+olor: #000000 !important;=0A				}=0A				.text-block h6 {=0A					p=
+adding: 0px !important;=0A					margin: 10px 15px 5px !important;=0A=
+					color: #000000 !important;=0A				}=0A				h6 {=0A					padding=
+: 0px !important;=0A					margin: 10px 15px 5px !important;=0A				=
+}=0A				.text-block h3 {=0A					color: #000000 !important;=0A				=
+}=0A				.text-block a {=0A					color: #f51923 !important;=0A				}=
+=0A				.custom-block h6 {=0A					color: #000000 !important;=0A			=
+	}=0A				.text-block h1 {=0A					color: #000000 !important;=0A			=
+	}=0A				.text-block h2 {=0A					color: #000000 !important;=0A			=
+	}=0A				#custom-block-1654013066220 p {=0A					padding-left: 0px=
+ !important;=0A					text-align: left !important;=0A					padding-r=
+ight: 0px !important;=0A					line-height: 20px !important;=0A				=
+	margin-bottom: 10px !important;=0A				}=0A				#image-block-16600=
+67136949 img.image-left {=0A					margin-left: 15px !important;=0A=
+				}=0A				#text-block-1660067140425 p {=0A					font-size: 14px =
+!important;=0A					line-height: 20px !important;=0A					font-fami=
+ly: Helvetica, Arial, Verdana, sans-serif !important;=0A					colo=
+r: #000000 !important;=0A					font-weight: normal !important;=0A	=
+				padding: 0px !important;=0A					margin: 0px 15px 5px !importa=
+nt;=0A				}=0A				#text-block-1660074013546 p {=0A					font-size:=
+ 14px !important;=0A					line-height: 20px !important;=0A					fon=
+t-family: Helvetica, Arial, Verdana, sans-serif !important;=0A			=
+		color: #000000 !important;=0A					font-weight: normal !importan=
+t;=0A					padding: 0px !important;=0A					margin: 0px 15px 14px !=
+important;=0A				}=0A				#text-block-1660074038083 p {=0A					fon=
+t-size: 14px !important;=0A					line-height: 20px !important;=0A	=
+				font-family: Helvetica, Arial, Verdana, sans-serif !important=
+;=0A					color: #000000 !important;=0A					font-weight: normal !i=
+mportant;=0A					padding: 0px !important;=0A					margin: 0px 15px=
+ 14px !important;=0A				}=0A				#text-block-1660074038083 a {=0A	=
+				color: #000000 !important;=0A					font-size: 14px !important;=
+=0A					line-height: 20px !important;=0A					font-weight: normal =
+!important;=0A				}=0A				}=0A			</style>=0A=0A		<!--[if mso]>=0A=
+		<style data-wfstyle=3D"outlook" type=3D"text/css">=0A			/* Outl=
+ook specific duct tape styles */=0A			table { border-collapse: co=
+llapse; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspac=
+e: 0pt; }=0A			td, th { padding: 0; vertical-align: top; }=0A		</=
+style>=0A		<![endif]-->=0A	<title>Museum of Fine Arts, Boston</ti=
+tle>=0A<!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:Allow=
+PNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSetti=
+ngs></xml><![endif]--></head>=0A	<body data-new-gr-c-s-check-load=
+ed=3D"14.1064.0" data-gr-ext-installed=3D"" style=3D"margin: 0px;=
+ min-width: 100%; padding: 0px; width: 100%; background-color: rg=
+b(245, 245, 60); color: rgb(0, 0, 0); font-family: Helvetica, Ari=
+al, Verdana, sans-serif;">=0A		=0A<!--[if !mso]--><div id=3D"emai=
+l-container" data-wfeviltwin=3D"align: center; width: 1000px" sty=
+le=3D"background-color: rgb(245, 245, 60); margin-left: auto; mar=
+gin-right: auto; max-width: 1000px; padding: 15px; font-family: H=
+elvetica, Arial, Verdana, sans-serif; color: rgb(0, 0, 0);">=0A		=
+	<div class=3D"preheader-block block" id=3D"preheader-block-15912=
+00508028" style=3D"padding-top: 10px; overflow: hidden; zoom: 1; =
+padding-bottom: 0px; margin-bottom: 10px; font-family: Helvetica,=
+ Arial, Verdana, sans-serif; color: rgb(0, 0, 0);">=0A				<div st=
+yle=3D"font-family: Helvetica, Arial, Verdana, sans-serif; color:=
+ rgb(0, 0, 0);">=0A					<p class=3D"fine-print" style=3D"text-ali=
+gn: center; margin: 0px 50px 5px 30px; font-size: 12px; color: rg=
+b(102, 102, 102); line-height: 16px; padding: 0px; font-family: H=
+elvetica, Arial, Verdana, sans-serif;"><a href=3D"https://e.wordf=
+ly.com/click?sid=3DODQwXzMyMTUwXzk5MTI0MV83MDcz&l=3D8461f1c5-1e18=
+-ed11-a82a-0050569d9d1d&utm_source=3Ddm_membership&utm_medium=3De=
+mail&utm_campaign=3Dmembership&utm_content=3Dversion_A&promo=3D44=
+157" target=3D"_blank" style=3D"color: rgb(0, 0, 0); font-size: 1=
+3px; line-height: 18px; font-family: Helvetica, Arial, Verdana, s=
+ans-serif; font-weight: 400;">View in browser</a><br /></p>=0A			=
+	</div>=0A			</div><div class=3D"container-block block" id=3D"con=
+tainer-block-1591279788883" style=3D"overflow: hidden; zoom: 1; m=
+ax-width: 700px; margin: auto auto 20px; border-radius: 0px; back=
+ground-color: rgba(0, 0, 0, 0); font-family: Helvetica, Arial, Ve=
+rdana, sans-serif; color: rgb(0, 0, 0);"><div id=3D"block-contain=
+er-1591127876861" class=3D"block" style=3D"overflow: hidden; zoom=
+: 1; padding: 0px; background-color: rgba(0, 0, 0, 0); margin: 0p=
+x auto 0px 30px; max-width: 450px; font-family: Helvetica, Arial,=
+ Verdana, sans-serif; color: rgb(0, 0, 0);"><div class=3D"image-b=
+lock block" id=3D"image-block-3176631452856" style=3D"overflow: h=
+idden; zoom: 1; line-height: 0px; font-family: Helvetica, Arial, =
+Verdana, sans-serif; color: rgb(0, 0, 0);">=0A	<img src=3D"https:=
+//media.wordfly.com/museumoffineartsboston/emails/core-newsletter=
+-2022-new-branding/mfa-logo-rgb.png" class=3D"full-width" alt=3D"=
+" style=3D"border: 0px none rgb(0, 0, 0); outline: rgb(0, 0, 0) n=
+one 0px; text-decoration: none; width: 100%; font-size: 18px; mar=
+gin: 0px; font-family: Helvetica, Arial, Verdana, sans-serif; col=
+or: rgb(0, 0, 0);" />=0A</div></div></div>=0A=0A			<div class=3D"=
+container-block block" id=3D"container-block-1593110344404" style=
+=3D"overflow: hidden; zoom: 1; background-color: rgb(255, 255, 25=
+5); border-radius: 0px; max-width: 700px; margin: auto auto 0px; =
+padding-right: 0px; padding-left: 0px; font-family: Helvetica, Ar=
+ial, Verdana, sans-serif; color: rgb(0, 0, 0);"><div class=3D"tex=
+t-block block" id=3D"text-block-1660074038083" style=3D"overflow:=
+ hidden; zoom: 1; background-color: rgba(0, 0, 0, 0); margin-top:=
+ 15px; margin-bottom: 0px; font-family: Helvetica, Arial, Verdana=
+, sans-serif; color: rgb(0, 0, 0);">=0A	<div style=3D"font-family=
+: Helvetica, Arial, Verdana, sans-serif; color: rgb(0, 0, 0);">=0A=
+		<p dir=3D"ltr" id=3D"docs-internal-guid-2de07c8b-7fff-0e9c-b898=
+-c607137ef699" style=3D"text-align: left; margin: 0px 50px 14px 3=
+0px; font-size: 16px; line-height: 22px; font-family: Helvetica, =
+Arial, Verdana, sans-serif; font-weight: 400; color: rgb(0, 0, 0)=
+; padding: 0px;">Dear=C2=A0Joshua,</p><div style=3D"text-align: l=
+eft; font-family: Helvetica, Arial, Verdana, sans-serif; color: r=
+gb(0, 0, 0);"><br /></div><p style=3D"text-align: left; margin: 0=
+px 50px 14px 30px; font-size: 16px; line-height: 22px; font-famil=
+y: Helvetica, Arial, Verdana, sans-serif; font-weight: 400; color=
+: rgb(0, 0, 0); padding: 0px;">I=E2=80=99m excited to unveil our =
+<a href=3D"https://e.wordfly.com/click?sid=3DODQwXzMyMTUwXzk5MTI0=
+MV83MDcz&l=3D30e6c990-c427-ed11-a82a-0050569d9d1d&utm_source=3Ddm=
+_membership&utm_medium=3Demail&utm_campaign=3Dmembership&utm_cont=
+ent=3Dversion_A&promo=3D44157" target=3D"_blank" style=3D"color: =
+rgb(0, 0, 0); font-size: 16px; line-height: 22px; font-weight: 40=
+0; font-family: Helvetica, Arial, Verdana, sans-serif;">new visua=
+l identity</a>=E2=80=94inspired by our welcoming spirit, designed=
+ for=C2=A0the vibrant future that lies ahead of us.<br /><br />Ou=
+r new identity is more than a change in the way we look. It signa=
+ls our ongoing commitment=C2=A0to make MFA Boston a space where p=
+eople of all backgrounds feel welcome. We embrace diverse perspec=
+tives, challenge conventional narratives, and celebrate both diff=
+erence and connection. This is true of the artwork and the people=
+ who come to see it. The MFA is a place for everyone, so we=E2=80=
+=99ve paired our new identity with a new promise: Here all belong=
+.<br /><br />=E2=80=9CHere all belong=E2=80=9D is an active commi=
+tment from us to you. We understand inclusion doesn=E2=80=99t hap=
+pen by accident. From eliminating unpaid internships to offering =
+opportunities to see our presentation of <a href=3D"https://e.wor=
+dfly.com/click?sid=3DODQwXzMyMTUwXzk5MTI0MV83MDcz&l=3Dfccaaed5-51=
+22-ed11-a82a-0050569d9d1d&utm_source=3Ddm_membership&utm_medium=3D=
+email&utm_campaign=3Dmembership&utm_content=3Dversion_A&promo=3D4=
+4157" target=3D"_blank" style=3D"color: rgb(0, 0, 0); font-size: =
+16px; line-height: 22px; font-weight: 400; font-family: Helvetica=
+, Arial, Verdana, sans-serif;">=E2=80=9CThe Obama Portraits Tour=E2=
+=80=9D</a> for free, and displaying artworks submitted by our com=
+munity in the accompanying =E2=80=9CPortraits of Leadership=E2=80=
+=9D project, we will live up to this promise through intentional =
+action.<br /><br />I invite you to join us in celebrating the man=
+y worlds that converge at the MFA. Whoever you are and wherever y=
+ou come from, =E2=80=9Chere all belong=E2=80=9D means here you be=
+long.<br /><br /></p><p style=3D"text-align: left; margin: 0px 50=
+px 14px 30px; font-size: 16px; line-height: 22px; font-family: He=
+lvetica, Arial, Verdana, sans-serif; font-weight: 400; color: rgb=
+(0, 0, 0); padding: 0px;">With warmest wishes<br /></p></div>=0A<=
+/div><div class=3D"two-columns-block block" id=3D"two-columns-blo=
+ck-1654117122463" style=3D"font-size: 0px; overflow: hidden; zoom=
+: 1; margin-bottom: 0px; font-family: Helvetica, Arial, Verdana, =
+sans-serif; color: rgb(0, 0, 0);">=0A	<div class=3D"column" data-=
+wfmutate=3D"column" style=3D"font-size: 16px; display: inline-blo=
+ck; vertical-align: top; width: 50%; font-family: Helvetica, Aria=
+l, Verdana, sans-serif; color: rgb(0, 0, 0);"><div class=3D"image=
+-block block" id=3D"image-block-1660067136949" style=3D"overflow:=
+ hidden; zoom: 1; line-height: 0px; font-family: Helvetica, Arial=
+, Verdana, sans-serif; color: rgb(0, 0, 0);">=0A	<img src=3D"http=
+s://media.wordfly.com/museumoffineartsboston/emails/083122-dir-le=
+tter-rebrand-mbr/mt-signature-300px.png" class=3D"image-left" alt=
+=3D"" style=3D"border: 0px none rgb(0, 0, 0); outline: rgb(0, 0, =
+0) none 0px; text-decoration: none; float: left; margin: 15px aut=
+o 15px 30px; font-size: 18px; max-width: 130px; font-family: Helv=
+etica, Arial, Verdana, sans-serif; color: rgb(0, 0, 0);" />=0A</d=
+iv><div class=3D"text-block block" id=3D"text-block-1660067140425=
+" style=3D"overflow: hidden; zoom: 1; background-color: rgba(0, 0=
+, 0, 0); margin-bottom: 10px; font-family: Helvetica, Arial, Verd=
+ana, sans-serif; color: rgb(0, 0, 0);">=0A	<div style=3D"font-fam=
+ily: Helvetica, Arial, Verdana, sans-serif; color: rgb(0, 0, 0);"=
+>=0A		<p style=3D"text-align: left; margin: 0px 50px 5px 30px; fo=
+nt-size: 16px; line-height: 22px; font-family: Helvetica, Arial, =
+Verdana, sans-serif; font-weight: 400; color: rgb(0, 0, 0); paddi=
+ng: 0px;">Matthew Teitelbaum<br />Ann and Graham Gund Director</p=
+></div>=0A</div></div><div class=3D"column" data-wfmutate=3D"colu=
+mn" style=3D"font-size: 16px; display: inline-block; vertical-ali=
+gn: top; width: 50%; font-family: Helvetica, Arial, Verdana, sans=
+-serif; color: rgb(0, 0, 0);"></div>=0A	<div class=3D"clear" data=
+-wfmutate=3D"false" style=3D"clear: both; font-family: Helvetica,=
+ Arial, Verdana, sans-serif; color: rgb(0, 0, 0);"></div>=0A</div=
+></div>=0A=0A			=0A=0A			=0A=0A			=0A=0A			<div class=3D"containe=
+r-block block" id=3D"container-block-1660074035563" style=3D"over=
+flow: hidden; zoom: 1; background-color: rgb(255, 255, 255); bord=
+er-radius: 0px; max-width: 700px; margin: 0px auto auto; font-fam=
+ily: Helvetica, Arial, Verdana, sans-serif; color: rgb(0, 0, 0);"=
+><div class=3D"text-block block" id=3D"text-block-1660074013546" =
+style=3D"overflow: hidden; zoom: 1; background-color: rgba(0, 0, =
+0, 0); margin-top: 15px; margin-bottom: 40px; font-family: Helvet=
+ica, Arial, Verdana, sans-serif; color: rgb(0, 0, 0);">=0A	<div s=
+tyle=3D"font-family: Helvetica, Arial, Verdana, sans-serif; color=
+: rgb(0, 0, 0);">=0A		<p style=3D"text-align: left; margin: 0px 5=
+0px 14px 30px; font-size: 16px; line-height: 22px; font-family: H=
+elvetica, Arial, Verdana, sans-serif; font-weight: 400; color: rg=
+b(0, 0, 0); padding: 0px;">PS Check your mailbox for a creative w=
+ay to get acquainted with our new logo! Enjoy our colorful decals=
+=E2=80=94for your car, laptop, or water bottle.</p></div>=0A</div=
+></div><div class=3D"container-block block" id=3D"container-block=
+-1591202341840" style=3D"overflow: hidden; zoom: 1; background-co=
+lor: rgb(255, 255, 255); border-radius: 0px; max-width: 700px; ma=
+rgin: 0px auto auto; font-family: Helvetica, Arial, Verdana, sans=
+-serif; color: rgb(0, 0, 0);"><div id=3D"custom-block-16540130662=
+20" class=3D"block custom-block" style=3D"overflow: hidden; zoom:=
+ 1; background-color: rgb(255, 255, 255); margin-bottom: 10px; fo=
+nt-family: Helvetica, Arial, Verdana, sans-serif; color: rgb(0, 0=
+, 0);"><div class=3D"text-block block" id=3D"text-block-165401306=
+6233" style=3D"overflow: hidden; zoom: 1; padding-left: 0px; font=
+-family: Helvetica, Arial, Verdana, sans-serif; color: rgb(0, 0, =
+0);">=0A	<div style=3D"font-family: Helvetica, Arial, Verdana, sa=
+ns-serif; color: rgb(0, 0, 0);"><h4 style=3D"text-align: left; ma=
+rgin: 5px 0px 5px 30px; padding: 0px; font-weight: 700; font-fami=
+ly: Helvetica, Arial, Verdana, sans-serif; font-size: 20px; line-=
+height: 26px; color: rgb(0, 0, 0); text-transform: none;"><br /><=
+/h4><p style=3D"text-align: left; margin: 0px 50px 0px 30px; font=
+-size: 14px; line-height: 20px; font-family: Helvetica, Arial, Ve=
+rdana, sans-serif; font-weight: 400; color: rgb(0, 0, 0); padding=
+: 0px;">Museum of Fine Arts, Boston<br />465 Huntington Avenue<br=
+ />Boston, MA 02115<br />617-267-9300</p><p style=3D"text-align: =
+left; margin: 0px 50px 0px 30px; font-size: 14px; line-height: 20=
+px; font-family: Helvetica, Arial, Verdana, sans-serif; font-weig=
+ht: 400; color: rgb(0, 0, 0); padding: 0px;"></p></div>=0A</div><=
+/div></div><div id=3D"block-container-1654624444395" class=3D"blo=
+ck" style=3D"overflow: hidden; zoom: 1; margin-bottom: 20px; marg=
+in-top: 0px; font-family: Helvetica, Arial, Verdana, sans-serif; =
+color: rgb(0, 0, 0);"><div class=3D"footer-block block" id=3D"foo=
+ter-block-3245825766924" style=3D"padding-top: 14px; overflow: hi=
+dden; zoom: 1; margin-top: 10px; font-family: Helvetica, Arial, V=
+erdana, sans-serif; color: rgb(0, 0, 0);">=0A				<div style=3D"fo=
+nt-family: Helvetica, Arial, Verdana, sans-serif; color: rgb(0, 0=
+, 0);">=0A					<p class=3D"fine-print" style=3D"text-align: cente=
+r; margin: 0px 50px 5px 30px; font-size: 12px; color: rgb(0, 0, 0=
+); line-height: 15px; padding: 0px; font-family: Helvetica, Arial=
+, Verdana, sans-serif; font-weight: 400;"><a href=3D"https://e.wo=
+rdfly.com/click?sid=3DODQwXzMyMTUwXzk5MTI0MV83MDcz&l=3D8661f1c5-1=
+e18-ed11-a82a-0050569d9d1d&utm_source=3Ddm_membership&utm_medium=3D=
+email&utm_campaign=3Dmembership&utm_content=3Dversion_A&promo=3D4=
+4157" class=3D"fine-print a" target=3D"_blank" style=3D"color: rg=
+b(0, 0, 0); font-family: Helvetica, Arial, Verdana, sans-serif; f=
+ont-weight: 400; font-size: 12px; line-height: 15px;">=0A						Pr=
+ivacy Policy</a> |=C2=A0<a href=3D"https://e.wordfly.com/unsubscr=
+ibe?sid=3DODQwXzMyMTUwXzk5MTI0MV83MDcz" target=3D"_blank" style=3D=
+"color: rgb(0, 0, 0); font-family: Helvetica, Arial, Verdana, san=
+s-serif; font-weight: 400; font-size: 12px; line-height: 15px;">U=
+nsubscribe</a></p><p class=3D"fine-print" style=3D"text-align: ce=
+nter; margin: 0px 50px 5px 30px; font-size: 12px; color: rgb(0, 0=
+, 0); line-height: 15px; padding: 0px; font-family: Helvetica, Ar=
+ial, Verdana, sans-serif; font-weight: 400;">=C2=A9 2022 Museum o=
+f Fine Arts, Boston<br /></p>=0A				</div>=0A			</div></div>=0A=0A=
+			=0A=0A			=0A		<img src=3D"https://e.wordfly.com/open?sid=3DODQ=
+wXzMyMTUwXzk5MTI0MV83MDcz" width=3D"1" height=3D"1" border=3D"0" =
+style=3D"position:absolute; left: -10000px;" />=0D=0A</div>=0A<!-=
+-<![endif]--><!--[if mso]><table border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" data-wfmutant=3D"box div" id=3D"wfeviltwin-conta=
+iner" align=3D"center"><tr><td style=3D"padding-left: 0px;"><tabl=
+e border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1030"=
+ style=3D"background-color: rgb(245, 245, 60); width: 1030px;"><t=
+r><td style=3D"padding: 15px; margin-left: auto; margin-right: au=
+to; max-width: 1000px; font-family: Helvetica, Arial, Verdana, sa=
+ns-serif; color: rgb(0, 0, 0); width: 1000px;"><table border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" data-wfmutant=3D"box div.pr=
+eheader-block block" class=3D"preheader-block block" id=3D"prehea=
+der-block-1591200508028"><tr><td style=3D"padding-bottom: 10px;">=
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"=
+1000" style=3D"width: 1000px;"><tr><td style=3D"padding-top: 10px=
+; padding-bottom: 0px; overflow: hidden; zoom: 1; font-family: He=
+lvetica, Arial, Verdana, sans-serif; color: rgb(0, 0, 0);"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" data-wfmutant=3D=
+"box div"><tr><td><table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" width=3D"1000" style=3D"width: 1000px;"><tr><td style=3D=
+"font-family: Helvetica, Arial, Verdana, sans-serif; color: rgb(0=
+, 0, 0);"><p class=3D"fine-print" style=3D"text-align: center; ma=
+rgin: 0px 50px 5px 30px; font-size: 12px; color: rgb(102, 102, 10=
+2); line-height: 16px; padding: 0px; font-family: Helvetica, Aria=
+l, Verdana, sans-serif;"><a href=3D"https://e.wordfly.com/click?s=
+id=3DODQwXzMyMTUwXzk5MTI0MV83MDcz&l=3D8461f1c5-1e18-ed11-a82a-005=
+0569d9d1d&utm_source=3Ddm_membership&utm_medium=3Demail&utm_campa=
+ign=3Dmembership&utm_content=3Dversion_A&promo=3D44157" target=3D=
+"_blank" style=3D"color: rgb(0, 0, 0); font-size: 13px; line-heig=
+ht: 18px; font-family: Helvetica, Arial, Verdana, sans-serif; fon=
+t-weight: 400;">View in browser</a><br /></p></td></tr></table></=
+td></tr></table></td></tr></table></td></tr></table><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" data-wfmutant=3D"box d=
+iv.container-block block" class=3D"container-block block" id=3D"c=
+ontainer-block-1591279788883"><tr><td style=3D"padding-bottom: 20=
+px; padding-left: 150px;"><table border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" width=3D"700" style=3D"background-color: rgba(0,=
+ 0, 0, 0); width: 700px;"><tr><td style=3D"overflow: hidden; zoom=
+: 1; max-width: 700px; margin-top: auto; margin-right: auto; marg=
+in-left: auto; border-radius: 0px; font-family: Helvetica, Arial,=
+ Verdana, sans-serif; color: rgb(0, 0, 0);"><table border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" data-wfmutant=3D"box div.block=
+" id=3D"block-container-1591127876861" class=3D"block"><tr><td st=
+yle=3D"padding-top: 0px; padding-bottom: 0px; padding-left: 30px;=
+"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"450" style=3D"background-color: rgba(0, 0, 0, 0); width: 450px;"=
+><tr><td style=3D"padding: 0px; overflow: hidden; zoom: 1; margin=
+-right: auto; max-width: 450px; font-family: Helvetica, Arial, Ve=
+rdana, sans-serif; color: rgb(0, 0, 0);"><table border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" data-wfmutant=3D"box div.image-bl=
+ock block" class=3D"image-block block" id=3D"image-block-31766314=
+52856"><tr><td><table border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" width=3D"450" style=3D"width: 450px;"><tr><td style=3D"overfl=
+ow: hidden; zoom: 1; line-height: 0px; font-family: Helvetica, Ar=
+ial, Verdana, sans-serif; color: rgb(0, 0, 0);"><img src=3D"https=
+://media.wordfly.com/museumoffineartsboston/emails/core-newslette=
+r-2022-new-branding/mfa-logo-rgb.png" class=3D"full-width" alt=3D=
+"" style=3D"border: 0px none rgb(0, 0, 0); outline: rgb(0, 0, 0) =
+none 0px; text-decoration: none; width: 100%; font-size: 18px; ma=
+rgin: 0px; font-family: Helvetica, Arial, Verdana, sans-serif; co=
+lor: rgb(0, 0, 0);" width=3D"450" /></td></tr></table></td></tr><=
+/table></td></tr></table></td></tr></table></td></tr></table></td=
+></tr></table><table border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" data-wfmutant=3D"box div.container-block block" class=3D"cont=
+ainer-block block" id=3D"container-block-1593110344404"><tr><td s=
+tyle=3D"padding-bottom: 0px; padding-left: 150px;"><table border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"700" style=3D"ba=
+ckground-color: rgb(255, 255, 255); width: 700px;"><tr><td style=3D=
+"padding-right: 0px; padding-left: 0px; overflow: hidden; zoom: 1=
+; border-radius: 0px; max-width: 700px; margin-top: auto; margin-=
+right: auto; margin-left: auto; font-family: Helvetica, Arial, Ve=
+rdana, sans-serif; color: rgb(0, 0, 0);"><table border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" data-wfmutant=3D"box div.text-blo=
+ck block" align=3D"center" class=3D"text-block block" id=3D"text-=
+block-1660074038083" style=3D"width: 100%;"><tr><td style=3D"padd=
+ing-top: 15px; padding-bottom: 0px;"><table border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" width=3D"700" style=3D"background-col=
+or: rgba(0, 0, 0, 0); width: 700px;"><tr><td style=3D"overflow: h=
+idden; zoom: 1; font-family: Helvetica, Arial, Verdana, sans-seri=
+f; color: rgb(0, 0, 0);"><table border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" data-wfmutant=3D"box div"><tr><td><table border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"700" style=3D"wi=
+dth: 700px;"><tr><td style=3D"font-family: Helvetica, Arial, Verd=
+ana, sans-serif; color: rgb(0, 0, 0);"><p dir=3D"ltr" id=3D"docs-=
+internal-guid-2de07c8b-7fff-0e9c-b898-c607137ef699" style=3D"text=
+-align: left; margin: 0px 50px 14px 30px; font-size: 16px; line-h=
+eight: 22px; font-family: Helvetica, Arial, Verdana, sans-serif; =
+font-weight: 400; color: rgb(0, 0, 0); padding: 0px;">Dear=C2=A0J=
+oshua,</p><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ data-wfmutant=3D"box div"><tr><td><table border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"700" align=3D"left" style=3D"w=
+idth: 700px;"><tr><td style=3D"text-align: left; font-family: Hel=
+vetica, Arial, Verdana, sans-serif; color: rgb(0, 0, 0);"><br /><=
+/td></tr></table></td></tr></table><p style=3D"text-align: left; =
+margin: 0px 50px 14px 30px; font-size: 16px; line-height: 22px; f=
+ont-family: Helvetica, Arial, Verdana, sans-serif; font-weight: 4=
+00; color: rgb(0, 0, 0); padding: 0px;">I=E2=80=99m excited to un=
+veil our <a href=3D"https://e.wordfly.com/click?sid=3DODQwXzMyMTU=
+wXzk5MTI0MV83MDcz&l=3D30e6c990-c427-ed11-a82a-0050569d9d1d&utm_so=
+urce=3Ddm_membership&utm_medium=3Demail&utm_campaign=3Dmembership=
+&utm_content=3Dversion_A&promo=3D44157" target=3D"_blank" style=3D=
+"color: rgb(0, 0, 0); font-size: 16px; line-height: 22px; font-we=
+ight: 400; font-family: Helvetica, Arial, Verdana, sans-serif;">n=
+ew visual identity</a>=E2=80=94inspired by our welcoming spirit, =
+designed for=C2=A0the vibrant future that lies ahead of us.<br />=
+<br />Our new identity is more than a change in the way we look. =
+It signals our ongoing commitment=C2=A0to make MFA Boston a space=
+ where people of all backgrounds feel welcome. We embrace diverse=
+ perspectives, challenge conventional narratives, and celebrate b=
+oth difference and connection. This is true of the artwork and th=
+e people who come to see it. The MFA is a place for everyone, so =
+we=E2=80=99ve paired our new identity with a new promise: Here al=
+l belong.<br /><br />=E2=80=9CHere all belong=E2=80=9D is an acti=
+ve commitment from us to you. We understand inclusion doesn=E2=80=
+=99t happen by accident. From eliminating unpaid internships to o=
+ffering opportunities to see our presentation of <a href=3D"https=
+://e.wordfly.com/click?sid=3DODQwXzMyMTUwXzk5MTI0MV83MDcz&l=3Dfcc=
+aaed5-5122-ed11-a82a-0050569d9d1d&utm_source=3Ddm_membership&utm_=
+medium=3Demail&utm_campaign=3Dmembership&utm_content=3Dversion_A&=
+promo=3D44157" target=3D"_blank" style=3D"color: rgb(0, 0, 0); fo=
+nt-size: 16px; line-height: 22px; font-weight: 400; font-family: =
+Helvetica, Arial, Verdana, sans-serif;">=E2=80=9CThe Obama Portra=
+its Tour=E2=80=9D</a> for free, and displaying artworks submitted=
+ by our community in the accompanying =E2=80=9CPortraits of Leade=
+rship=E2=80=9D project, we will live up to this promise through i=
+ntentional action.<br /><br />I invite you to join us in celebrat=
+ing the many worlds that converge at the MFA. Whoever you are and=
+ wherever you come from, =E2=80=9Chere all belong=E2=80=9D means =
+here you belong.<br /><br /></p><p style=3D"text-align: left; mar=
+gin: 0px 50px 14px 30px; font-size: 16px; line-height: 22px; font=
+-family: Helvetica, Arial, Verdana, sans-serif; font-weight: 400;=
+ color: rgb(0, 0, 0); padding: 0px;">With warmest wishes<br /></p=
+></td></tr></table></td></tr></table></td></tr></table></td></tr>=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" d=
+ata-wfmutant=3D"box div.two-columns-block block" class=3D"two-col=
+umns-block block" id=3D"two-columns-block-1654117122463"><tr><td =
+style=3D"padding-bottom: 0px;"><table border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" width=3D"700" style=3D"width: 700px;"><tr><=
+td data-store-width=3D"700" style=3D"font-size: 0px; overflow: hi=
+dden; zoom: 1; font-family: Helvetica, Arial, Verdana, sans-serif=
+; color: rgb(0, 0, 0); vertical-align: top;"><table border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" data-wfmutant=3D"box div.colu=
+mn" class=3D"column"><tr><td><table border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" width=3D"350" style=3D"width: 350px;"><tr><td=
+ style=3D"font-size: 16px; display: inline-block; vertical-align:=
+ top; font-family: Helvetica, Arial, Verdana, sans-serif; color: =
+rgb(0, 0, 0);"><table border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" data-wfmutant=3D"box div.image-block block" class=3D"image-bl=
+ock block" id=3D"image-block-1660067136949"><tr><td><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"350" style=3D=
+"width: 350px;"><tr><td style=3D"overflow: hidden; zoom: 1; line-=
+height: 0px; font-family: Helvetica, Arial, Verdana, sans-serif; =
+color: rgb(0, 0, 0);"><table border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" data-wfmutant=3D"wrap img.image-left" align=3D"left"=
+><tr><td style=3D"padding-top: 15px; padding-bottom: 15px; paddin=
+g-left: 30px;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" width=3D"0" style=3D"border-color: rgb(0, 0, 0); border-style=
+: none; border-width: 0px; width: 0px;"><tr><td><img src=3D"https=
+://media.wordfly.com/museumoffineartsboston/emails/083122-dir-let=
+ter-rebrand-mbr/mt-signature-300px.png" class=3D"image-left" alt=3D=
+"" style=3D"border-image: none 100% / 1 / 0px stretch; outline: r=
+gb(0, 0, 0) none 0px; text-decoration: none; float: left; margin-=
+right: auto; font-size: 18px; max-width: 130px; font-family: Helv=
+etica, Arial, Verdana, sans-serif; color: rgb(0, 0, 0);" /></td><=
+/tr></table></td></tr></table></td></tr></table></td></tr></table=
+><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" data-wfm=
+utant=3D"box div.text-block block" align=3D"center" class=3D"text=
+-block block" id=3D"text-block-1660067140425" style=3D"width: 100=
+%;"><tr><td style=3D"padding-bottom: 10px;"><table border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" width=3D"350" style=3D"backgro=
+und-color: rgba(0, 0, 0, 0); width: 350px;"><tr><td style=3D"over=
+flow: hidden; zoom: 1; font-family: Helvetica, Arial, Verdana, sa=
+ns-serif; color: rgb(0, 0, 0);"><table border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" data-wfmutant=3D"box div"><tr><td><table bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"350" styl=
+e=3D"width: 350px;"><tr><td style=3D"font-family: Helvetica, Aria=
+l, Verdana, sans-serif; color: rgb(0, 0, 0);"><p style=3D"text-al=
+ign: left; margin: 0px 50px 5px 30px; font-size: 16px; line-heigh=
+t: 22px; font-family: Helvetica, Arial, Verdana, sans-serif; font=
+-weight: 400; color: rgb(0, 0, 0); padding: 0px;">Matthew Teitelb=
+aum<br />Ann and Graham Gund Director</p></td></tr></table></td><=
+/tr></table></td></tr></table></td></tr></table></td></tr></table=
+></td></tr></table><div class=3D"column" data-wfmutate=3D"column"=
+ style=3D"font-size: 16px; display: inline-block; vertical-align:=
+ top; width: 50%; font-family: Helvetica, Arial, Verdana, sans-se=
+rif; color: rgb(0, 0, 0);"></div><div class=3D"clear" data-wfmuta=
+te=3D"false" style=3D"clear: both; font-family: Helvetica, Arial,=
+ Verdana, sans-serif; color: rgb(0, 0, 0);"></div></td><td style=3D=
+"font-size: 0px; overflow: hidden; zoom: 1; font-family: Helvetic=
+a, Arial, Verdana, sans-serif; color: rgb(0, 0, 0);"></td></tr></=
+table></td></tr></table></td></tr></table></td></tr></table><tabl=
+e border=3D"0" cellpadding=3D"0" cellspacing=3D"0" data-wfmutant=3D=
+"box div.container-block block" class=3D"container-block block" i=
+d=3D"container-block-1660074035563"><tr><td style=3D"padding-top:=
+ 0px; padding-left: 150px;"><table border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" width=3D"700" style=3D"background-color: rgb(2=
+55, 255, 255); width: 700px;"><tr><td style=3D"overflow: hidden; =
+zoom: 1; border-radius: 0px; max-width: 700px; margin-right: auto=
+; margin-bottom: auto; margin-left: auto; font-family: Helvetica,=
+ Arial, Verdana, sans-serif; color: rgb(0, 0, 0);"><table border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" data-wfmutant=3D"box div.=
+text-block block" align=3D"center" class=3D"text-block block" id=3D=
+"text-block-1660074013546" style=3D"width: 100%;"><tr><td style=3D=
+"padding-top: 15px; padding-bottom: 40px;"><table border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" width=3D"700" style=3D"backgrou=
+nd-color: rgba(0, 0, 0, 0); width: 700px;"><tr><td style=3D"overf=
+low: hidden; zoom: 1; font-family: Helvetica, Arial, Verdana, san=
+s-serif; color: rgb(0, 0, 0);"><table border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" data-wfmutant=3D"box div"><tr><td><table bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"700" styl=
+e=3D"width: 700px;"><tr><td style=3D"font-family: Helvetica, Aria=
+l, Verdana, sans-serif; color: rgb(0, 0, 0);"><p style=3D"text-al=
+ign: left; margin: 0px 50px 14px 30px; font-size: 16px; line-heig=
+ht: 22px; font-family: Helvetica, Arial, Verdana, sans-serif; fon=
+t-weight: 400; color: rgb(0, 0, 0); padding: 0px;">PS Check your =
+mailbox for a creative way to get acquainted with our new logo! E=
+njoy our colorful decals=E2=80=94for your car, laptop, or water b=
+ottle.</p></td></tr></table></td></tr></table></td></tr></table><=
+/td></tr></table></td></tr></table></td></tr></table><table borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" data-wfmutant=3D"box =
+div.container-block block" class=3D"container-block block" id=3D"=
+container-block-1591202341840"><tr><td style=3D"padding-top: 0px;=
+ padding-left: 150px;"><table border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" width=3D"700" style=3D"background-color: rgb(255, 2=
+55, 255); width: 700px;"><tr><td style=3D"overflow: hidden; zoom:=
+ 1; border-radius: 0px; max-width: 700px; margin-right: auto; mar=
+gin-bottom: auto; margin-left: auto; font-family: Helvetica, Aria=
+l, Verdana, sans-serif; color: rgb(0, 0, 0);"><table border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" data-wfmutant=3D"box div.blo=
+ck custom-block" id=3D"custom-block-1654013066220" class=3D"block=
+ custom-block"><tr><td style=3D"padding-bottom: 10px;"><table bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"700" style=
+=3D"background-color: rgb(255, 255, 255); width: 700px;"><tr><td =
+style=3D"overflow: hidden; zoom: 1; font-family: Helvetica, Arial=
+, Verdana, sans-serif; color: rgb(0, 0, 0);"><table border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" data-wfmutant=3D"box div.text=
+-block block" align=3D"center" class=3D"text-block block" id=3D"t=
+ext-block-1654013066233" style=3D"width: 100%;"><tr><td><table bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"700" styl=
+e=3D"width: 700px;"><tr><td style=3D"padding-left: 0px; overflow:=
+ hidden; zoom: 1; font-family: Helvetica, Arial, Verdana, sans-se=
+rif; color: rgb(0, 0, 0);"><table border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" data-wfmutant=3D"box div"><tr><td><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"700" style=3D=
+"width: 700px;"><tr><td style=3D"font-family: Helvetica, Arial, V=
+erdana, sans-serif; color: rgb(0, 0, 0);"><h4 style=3D"text-align=
+: left; margin: 5px 0px 5px 30px; padding: 0px; font-weight: 700;=
+ font-family: Helvetica, Arial, Verdana, sans-serif; font-size: 2=
+0px; line-height: 26px; color: rgb(0, 0, 0); text-transform: none=
+;"><br /></h4><p style=3D"text-align: left; margin: 0px 50px 0px =
+30px; font-size: 14px; line-height: 20px; font-family: Helvetica,=
+ Arial, Verdana, sans-serif; font-weight: 400; color: rgb(0, 0, 0=
+); padding: 0px;">Museum of Fine Arts, Boston<br />465 Huntington=
+ Avenue<br />Boston, MA 02115<br />617-267-9300</p><p style=3D"te=
+xt-align: left; margin: 0px 50px 0px 30px; font-size: 14px; line-=
+height: 20px; font-family: Helvetica, Arial, Verdana, sans-serif;=
+ font-weight: 400; color: rgb(0, 0, 0); padding: 0px;"></p></td><=
+/tr></table></td></tr></table></td></tr></table></td></tr></table=
+></td></tr></table></td></tr></table></td></tr></table></td></tr>=
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" d=
+ata-wfmutant=3D"box div.block" id=3D"block-container-165462444439=
+5" class=3D"block"><tr><td style=3D"padding-top: 0px; padding-bot=
+tom: 20px;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"=
+0" width=3D"1000" style=3D"width: 1000px;"><tr><td style=3D"overf=
+low: hidden; zoom: 1; font-family: Helvetica, Arial, Verdana, san=
+s-serif; color: rgb(0, 0, 0);"><table border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" data-wfmutant=3D"box div.footer-block block=
+" class=3D"footer-block block" id=3D"footer-block-3245825766924">=
+<tr><td style=3D"padding-top: 10px;"><table border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" width=3D"1000" style=3D"width: 1000px=
+;"><tr><td style=3D"padding-top: 14px; overflow: hidden; zoom: 1;=
+ font-family: Helvetica, Arial, Verdana, sans-serif; color: rgb(0=
+, 0, 0);"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ data-wfmutant=3D"box div"><tr><td><table border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"1000" style=3D"width: 1000px;"=
+><tr><td style=3D"font-family: Helvetica, Arial, Verdana, sans-se=
+rif; color: rgb(0, 0, 0);"><p class=3D"fine-print" style=3D"text-=
+align: center; margin: 0px 50px 5px 30px; font-size: 12px; color:=
+ rgb(0, 0, 0); line-height: 15px; padding: 0px; font-family: Helv=
+etica, Arial, Verdana, sans-serif; font-weight: 400;"><a href=3D"=
+https://e.wordfly.com/click?sid=3DODQwXzMyMTUwXzk5MTI0MV83MDcz&l=3D=
+8661f1c5-1e18-ed11-a82a-0050569d9d1d&utm_source=3Ddm_membership&u=
+tm_medium=3Demail&utm_campaign=3Dmembership&utm_content=3Dversion=
+_A&promo=3D44157" class=3D"fine-print a" target=3D"_blank" style=3D=
+"color: rgb(0, 0, 0); font-family: Helvetica, Arial, Verdana, san=
+s-serif; font-weight: 400; font-size: 12px; line-height: 15px;">=0A=
+						Privacy Policy</a> |=C2=A0<a href=3D"https://e.wordfly.com/=
+unsubscribe?sid=3DODQwXzMyMTUwXzk5MTI0MV83MDcz" target=3D"_blank"=
+ style=3D"color: rgb(0, 0, 0); font-family: Helvetica, Arial, Ver=
+dana, sans-serif; font-weight: 400; font-size: 12px; line-height:=
+ 15px;">Unsubscribe</a></p><p class=3D"fine-print" style=3D"text-=
+align: center; margin: 0px 50px 5px 30px; font-size: 12px; color:=
+ rgb(0, 0, 0); line-height: 15px; padding: 0px; font-family: Helv=
+etica, Arial, Verdana, sans-serif; font-weight: 400;">=C2=A9 2022=
+ Museum of Fine Arts, Boston<br /></p></td></tr></table></td></tr=
+></table></td></tr></table></td></tr></table></td></tr></table></=
+td></tr></table>=0A=0A			=0A=0A			=0A		<img src=3D"https://e.word=
+fly.com/open?sid=3DODQwXzMyMTUwXzk5MTI0MV83MDcz" width=3D"1" heig=
+ht=3D"1" border=3D"0" style=3D"position:absolute; left: -10000px;=
+" />=0D=0A</td></tr></table></td></tr></table><![endif]-->=0A=0A	=
+=0A=0A<grammarly-desktop-integration data-grammarly-shadow-root=3D=
+"true"></grammarly-desktop-integration></body></html>
+----boundary_1800095_f3966a5e-7180-47c3-84a4-6070911576a2--
+
+

@@ -1,0 +1,133 @@
+Copyright (c) 2025, The MITRE Corporation.  All rights reserved.
+
+Approved for Public Release; Distribution Unlimited.
+Public Release Case Number 25-0682 
+
+
+This directory contains a demo for a built-for-appraisal miniature
+cross-domain solution.  Functionally, it:
+
+a.  Receives incoming msgs, one per connection, placing them in an
+    *incoming* directory
+
+b.  Applies a set of rewrites which, if they succeed, causes the msg
+    as rewritten to be placed in a *rewritten* directory
+
+c.  Applies a filter to ensure that a msg in the rewritten directory
+    is now acceptable; if so, it is written into an *outgoing*
+    directory
+
+d.  Transmits the msg from the outgoing directory to the external
+    server that will handle it as email.
+
+Thus, the CDS functionality is in a sequence of four executables.
+Their Ocaml code is in the email_header_filtering_demo/bin directory, in the
+files (a) intake_server.ml, (b) rewrite_one.ml, (c) filter_one.ml, and
+(d) export_one.ml.
+
+There are also other programs there.  One is deliver_to_cds.ml, which
+connects to the intake_server and delivers all of the messages in its
+source directory to the intake_server.  Another is
+receive_externally.ml, which starts a server externally to receive the
+messages passing successfully through the CDS.
+
+The programs rewrite_one.ml and filter_one.ml read their configuration
+files and do the rewriting or filtering to determine whether to pass a
+msg along, and if so what it should be.
+
+Instructions.  
+
+0.  Ensure that the environment variable DEMO_ROOT is exported,
+    pointing to the demo_layered_attestation/ directory within the
+    repo.  If the LayeredAttestation repo is at $REPO in your
+    filesystem, this would be $REPO/src/demo_layered_attestation
+
+Quick demo:
+
+Q1.  cd $DEMO_ROOT.
+
+Q2.  ./email_header_filtering_demo/bin/script.sh
+
+     This script will do the full build if you have opam, ocaml,
+     yojson, and dune (the build system) installed.
+
+     It then runs the demo.  See below for more info on what's
+     actually going on.
+
+Q3.  When starting up the server processes, the program prints out
+     lines saying:
+
+     started intake_server and receive_externally
+     to kill them, type: 
+     kill -15 *pid1* *pid2* 
+
+     with the process ids of the two server processes, such as "kill
+     -15 43496 43497".  Before you rerun the demo, you will need to
+     execute this line to kill the server processes and free the ports
+     that they are listening on.  Otherwise the new versions of these
+     server processes can't obtain those ports.
+
+Detailed instructions:  
+
+To run the demo, *after* building for your system (see below, steps
+Build.1, Build.2, and Build.3):
+
+1.  cd $DEMO_ROOT/installed_dir/bin/
+
+2.  Start the intake_server and the far end receive_externally server
+    by typing:
+
+    ./orchestrate
+
+3.  Observe that there are some email msg files in
+    $DEMO_ROOT/example_emails/.  Running the demo will cause them to
+    arrive in $DEMO_ROOT/external_arrivals/ with randomized filenames.
+    They will pass through the pipeline directories:
+
+    $DEMO_ROOT/installed_dir/demo_pipeline_dirs/incoming/
+    $DEMO_ROOT/installed_dir/demo_pipeline_dirs/rewritten/
+    $DEMO_ROOT/installed_dir/demo_pipeline_dirs/outgoing/
+
+    After a succesful run they will no longer be there.  If you want
+    to break the processing to see, try removing the outgoing/
+    directory, which will cause them to back up in rewritten/.  To
+    restore this, do git checkout outgoing/sample in the
+    demo_pipeline_dirs.  There's a 'sample' file in each so that git
+    will preserve them.
+
+4.  To run the pipeline on all the files in
+    $DEMO_ROOT/example_emails/, type
+
+    ./deliver_to_cds
+
+    It causes the files there to be delivered one per connection to
+    the server, which initiates the pipeline of programs for all the
+    steps.  Messages rejected by the rewriter will remain in
+    incoming/, and messages rejected by the filter stage will remain
+    in rewritten/.
+
+5.  You can see (very basic) log files in the err_log/ directory.
+    When the rewriter has made a change the effect is logged as a diff
+    to this directory in filename.diff.  
+
+6.  You can also run the demo on another set of messages by executing
+
+    ./deliver_to_cds example_emails/modified_for_testing
+
+    where the relevant path prefix for the argument is $DEMO_ROOT.
+
+7.  When done using the server processes started by ./orchestrate in
+    step 2, kill them using the *pid*s printed out when they started.  
+
+In order to build the system, if you have opam, ocaml, yojson, and the
+build system dune installed, and have exported the environment
+variable DEMO_ROOT as in step 0 above:
+
+Build.1.  cd $DEMO_ROOT/email_header_filtering_demo/
+
+Build.2.  dune build
+
+Build.3.  dune install --bin $DEMO_ROOT/installed_dir/bin/
+
+Now you can do steps 1-4 for running it.  
+

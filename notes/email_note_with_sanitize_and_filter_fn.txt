@@ -1,0 +1,67 @@
+From: "Joshua D. Guttman" <guttman@mitre.org>
+To: Perry Alexander <palexand@ku.edu>,
+    Adam Petz <ampetz@ku.edu>, James W Carter <jwcart2@uwe.nsa.gov>, 
+    "Stephen D. Smalley" <sdsmall@uwe.nsa.gov>,
+    Daniel De Graaf <dgdegra@uwe.nsa.gov> 
+Cc: guttman@mitre.org (Joshua D. Guttman),
+    "Ransom K. Winder" <rwinder@mitre.org>
+Subject: Layered attestation demo functionality 
+Reply-To: guttman@mitre.org (Joshua D. Guttman)
+Date: Thu, 15 Aug 2024 10:02:35 -0400
+Message-ID: <m2wmkhyjd0.fsf@mitre.org>
+
+All --
+
+I now have code that reads email msgs, extracts
+each header into its own string.
+
+For headers that contain addresses, such as To:,
+CC:, From:, and Reply-to:, it further breaks them
+down into fields at comma-separated boundaries,
+and digests each field into pre-text such as
+"Guttman, Joshua D.", post-text such as (Joshua
+D. Guttman), username, and a sequence of domains.
+
+So the actual email address is username@x where x
+is the result of concatenating the domains using
+the separator '.'.  And the address field, for
+this x, is
+
+  pre-text ^ username ^ "@" ^ x ^ post-text
+
+The lines of the email body are simply retained as
+a sequence of lines.  
+
+What should the email guard do with a msg?  Well,
+my take is that there should be two steps.
+
+*First*, an incoming msg is subjected to
+*rewriting*.  Rewriting may reject a msg as
+unsalvageable, it may find that no changes are
+needed, or it may perform a sequence of rewrite
+steps, yielding a new msg.
+
+This is then written out to a new location, unless
+it was rejected.
+
+*Second*, a rewritten msg is inspected to
+determine whether it is acceptable with no further
+rewriting.  This can be done using the same
+recipes as rewriting, with the proviso that any
+actual rewriting results in failure, just as much
+as the actions that previously caused rejection as
+unsalvageable.
+
+So, attached -- in pristine text format -- is a
+specification for the configuration files, as well
+as a description of the effect of each clause,
+both in rewriting mode and in final inspection
+mode.
+
+What do you think?  What would you change?  What's
+just missing?  Where have I gone ultra-baroque?
+
+I have one additional elaboration in mind, but I
+thought it would be good to give y'all this
+version so you could get the main picture.
+

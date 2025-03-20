@@ -1,0 +1,44 @@
+; Copyright (c) 2025, The MITRE Corporation.
+
+
+(executable
+ (public_name deliver_to_cds)	
+ (name deliver_to_cds)
+ (libraries pipeline set_up_env unix))
+
+(executable
+ (public_name orchestrate)
+ (name orchestrate)
+ (libraries pipeline set_up_env unix))
+
+(executable
+ (public_name intake_server)
+ (name intake_server)
+ (libraries pipeline set_up_env unix))
+
+(executable
+ (public_name rewrite_one)
+ (name rewrite_one)
+ (libraries act))
+
+(executable 
+ (public_name filter_one)
+ (libraries act)
+ (name filter_one))
+
+(executable 
+ (public_name export_one)
+ (name export_one)
+ (libraries pipeline set_up_env unix))
+
+(executable 
+ (public_name receive_externally)
+ (name receive_externally)
+ (libraries pipeline set_up_env unix))
+
+(executable
+ (libraries set_up_env config_types
+ 	    pipeline header_fns transforms)
+ (modules some_actions)
+ (public_name some_actions)
+ (name some_actions))

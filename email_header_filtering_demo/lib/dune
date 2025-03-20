@@ -1,0 +1,48 @@
+; Copyright (c) 2025, The MITRE Corporation.
+
+
+(library
+ (modes byte native)
+ (modules scan_field)
+ (name scan_field))
+
+(library
+ (modes byte native)
+ (libraries scan_field config_types unix)
+ (modules header_fns)
+ (name header_fns))
+
+(library
+ (modes byte native) 
+ (modules config_types)
+ (name config_types))
+
+(library
+ (modes byte native)
+ (libraries header_fns scan_field config_types)
+ (modules transforms)
+ (name transforms))
+
+(library
+ (libraries unix)
+ (modes byte native)
+ (modules pipeline)
+ (name pipeline))
+
+(library
+ (libraries unix)	
+ (modes byte native)
+ (modules set_up_env)
+ (name set_up_env))
+
+(library
+ (libraries yojson config_types transforms)	
+ (modes byte native)
+ (modules read_config)
+ (name read_config))
+
+(library 
+ (modes byte native)
+ (libraries config_types transforms unix read_config pipeline header_fns set_up_env)
+ (modules act)
+ (name act))

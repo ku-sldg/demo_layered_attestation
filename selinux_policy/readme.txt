@@ -11,7 +11,7 @@ make -f /usr/share/selinux/devel/Makefile demo_pipeline.pp
 sudo semodule -i demo_pipeline.pp
 
 3) Update labeling
-sudo restorecon -RFv $REPO/LayeredAttestation/src/demo_layered_attestation/
+sudo restorecon -RFv $REPO/demo_layered_attestation/
 
 4) If you want more details about the denials, try:
 sudo ausearch -m avc -ts today &> today-01.txt

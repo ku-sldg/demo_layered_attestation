@@ -12,8 +12,8 @@ export CDS_BIN=$CDS_INSTALLED/bin
 export DIFF_PROG=`which diff`
 mkdir -p $CDS_BIN
 
-(cd $DEMO_SRC/lib; dune build; echo 'built lib')
-(cd $DEMO_SRC/bin; dune build; echo 'built bin')
+(cd $DEMO_SRC/lib; dune build @install; echo 'built lib')
+(cd $DEMO_SRC/bin; dune build @install; echo 'built bin')
 (cd $DEMO_SRC; dune install --bin $CDS_BIN; echo installed)
 
 $CDS_BIN/orchestrate  
